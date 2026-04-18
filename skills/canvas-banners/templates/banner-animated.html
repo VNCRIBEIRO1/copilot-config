@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Banner Animado — Canvas Template</title>
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+    body {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 100vh; background: #111; font-family: system-ui, sans-serif; color: #fff; padding: 20px;
+    }
+    canvas { border: 1px solid #333; max-width: 95vw; height: auto; }
+    .controls { margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      padding: 12px 32px; color: #fff; border: none;
+      border-radius: 8px; font-size: 16px; cursor: pointer; transition: background 0.2s;
+    }
+    .btn-primary { background: #2563eb; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-secondary { background: #374151; }
+    .btn-secondary:hover { background: #4b5563; }
+  </style>
+</head>
+<body>
+
+<canvas id="bannerCanvas"></canvas>
+<div class="controls">
+  <button class="btn btn-primary" onclick="exportPNG()">Baixar PNG</button>
+  <button class="btn btn-secondary" id="playPauseBtn" onclick="toggleAnimation()">Pause</button>
+</div>
+
+<script>
+// ============================================================
+// BANNER ANIMADO — requestAnimationFrame
+// Fade-in texto, scale produto, partículas de fundo
+// ============================================================
+
+const canvas = document.getElementById('bannerCanvas');
+const ctx = canvas.getContext('2d');
+
+// --- Utilities ---
+function drawRoundedRect(x, y, w, h, r, fill, stroke) {
+  ctx.beginPath();
+  if (ctx.roundRect) { ctx.roundRect(x, y, w, h, r); }
+  else {
+    const rad = typeof r === 'number' ? r : r[0] || 0;
+    ctx.moveTo(x + rad, y); ctx.arcTo(x + w, y, x + w, y + h, rad);
+    ctx.arcTo(x + w, y + h, x, y + h, rad); ctx.arcTo(x, y + h, x, y, rad);
+    ctx.arcTo(x, y, x + w, y, rad);
+  }
+  ctx.closePath();
+  if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+  if (stroke) { ctx.strokeStyle = stroke; ctx.stroke(); }
+}
+
+function wrapText(text, x, y, maxWidth, lineHeight) {
+  const words = text.split(' ');
+  let line = '';
+  const lines = [];
+  for (const word of words) {
+    const test = line + word + ' ';
+    if (ctx.measureText(test).width > maxWidth && line !== '') {
+      lines.push(line.trim()); line = word + ' ';
+    } else { line = test; }
+  }
+  lines.push(line.trim());
+  for (let i = 0; i < lines.length; i++) ctx.fillText(lines[i], x, y + i * lineHeight);
+  return lines.length;
+}
+
+function exportPNG(filename = 'banner-animated.png') {
+  const link = document.createElement('a');
+  link.download = filename;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+// ============================================================
+// CONFIG
+// ============================================================
+const CONFIG = {
+  width: 1200,
+  height: 628,
+  bgStart: '#0c0c1d',
+  bgEnd: '#1a1a3e',
+  accentColor: '#6366f1',
+  accentLight: '#a5b4fc',
+  ctaColor: '#ef4444',
+  headline: 'Descubra o Futuro',
+  subtitle: 'Soluções inovadoras para transformar seu negócio. Tecnologia de ponta ao seu alcance.',
+  ctaText: 'Saiba Mais',
+  // Animação (durações em segundos)
+  headlineFadeIn: 0.8,
+  subtitleFadeIn: 1.2,
+  ctaFadeIn: 1.6,
+  particleCount: 50,
+};
+
+// ============================================================
+// PARTICLES
+// ============================================================
+const particles = [];
+function initParticles() {
+  for (let i = 0; i < CONFIG.particleCount; i++) {
+    particles.push({
+      x: Math.random() * CONFIG.width,
+      y: Math.random() * CONFIG.height,
+      r: Math.random() * 2.5 + 0.5,
+      speedX: (Math.random() - 0.5) * 0.5,
+      speedY: (Math.random() - 0.5) * 0.5,
+      alpha: Math.random() * 0.4 + 0.1,
+    });
+  }
+}
+
+function updateParticles() {
+  for (const p of particles) {
+    p.x += p.speedX;
+    p.y += p.speedY;
+    if (p.x < 0) p.x = CONFIG.width;
+    if (p.x > CONFIG.width) p.x = 0;
+    if (p.y < 0) p.y = CONFIG.height;
+    if (p.y > CONFIG.height) p.y = 0;
+  }
+}
+
+function drawParticles() {
+  for (const p of particles) {
+    ctx.save();
+    ctx.globalAlpha = p.alpha;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = CONFIG.accentLight;
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+// ============================================================
+// EASING
+// ============================================================
+function easeOutCubic(t) {
+  return 1 - Math.pow(1 - t, 3);
+}
+
+function fadeValue(time, startAt, duration) {
+  if (time < startAt) return 0;
+  const progress = Math.min((time - startAt) / duration, 1);
+  return easeOutCubic(progress);
+}
+
+// ============================================================
+// ANIMATION STATE
+// ============================================================
+let animating = true;
+let animFrame = null;
+let startTime = null;
+
+function toggleAnimation() {
+  animating = !animating;
+  const btn = document.getElementById('playPauseBtn');
+  btn.textContent = animating ? 'Pause' : 'Play';
+  if (animating) {
+    startTime = null; // Reset para continuar smooth
+    animate();
+  } else if (animFrame) {
+    cancelAnimationFrame(animFrame);
+  }
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function render(elapsed) {
+  const W = CONFIG.width, H = CONFIG.height;
+
+  // 1. Background gradient
+  const bgGrad = ctx.createLinearGradient(0, 0, W, H);
+  bgGrad.addColorStop(0, CONFIG.bgStart);
+  bgGrad.addColorStop(1, CONFIG.bgEnd);
+  ctx.fillStyle = bgGrad;
+  ctx.fillRect(0, 0, W, H);
+
+  // 2. Partículas de fundo
+  updateParticles();
+  drawParticles();
+
+  // 3. Círculos decorativos animados
+  const breathe = Math.sin(elapsed * 1.5) * 20;
+  ctx.save();
+  ctx.globalAlpha = 0.06;
+  ctx.beginPath();
+  ctx.arc(W * 0.8, H * 0.3, 200 + breathe, 0, Math.PI * 2);
+  ctx.fillStyle = CONFIG.accentColor;
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(W * 0.15, H * 0.7, 150 - breathe, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // 4. Headline — fade-in + slide up
+  const headAlpha = fadeValue(elapsed, 0.2, CONFIG.headlineFadeIn);
+  const headSlide = (1 - headAlpha) * 30;
+  ctx.save();
+  ctx.globalAlpha = headAlpha;
+  ctx.font = '900 64px system-ui, sans-serif';
+  ctx.fillStyle = CONFIG.accentLight;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(CONFIG.headline, W / 2, H * 0.3 + headSlide);
+  ctx.restore();
+
+  // 5. Linha decorativa
+  const lineAlpha = fadeValue(elapsed, 0.5, 0.6);
+  ctx.save();
+  ctx.globalAlpha = lineAlpha;
+  const lineW = 80 * lineAlpha;
+  ctx.fillStyle = CONFIG.accentColor;
+  ctx.fillRect(W / 2 - lineW / 2, H * 0.40, lineW, 3);
+  ctx.restore();
+
+  // 6. Subtitle — fade-in + slide up
+  const subAlpha = fadeValue(elapsed, 0.6, CONFIG.subtitleFadeIn);
+  const subSlide = (1 - subAlpha) * 20;
+  ctx.save();
+  ctx.globalAlpha = subAlpha;
+  ctx.font = '400 24px system-ui, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.75)';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  wrapText(CONFIG.subtitle, W / 2 - 250, H * 0.47 + subSlide, 500, 34);
+  ctx.restore();
+
+  // 7. CTA — fade-in + scale
+  const ctaAlpha = fadeValue(elapsed, 1.0, CONFIG.ctaFadeIn);
+  const ctaScale = 0.8 + 0.2 * ctaAlpha;
+  ctx.save();
+  ctx.globalAlpha = ctaAlpha;
+  ctx.translate(W / 2, H * 0.73);
+  ctx.scale(ctaScale, ctaScale);
+
+  ctx.font = '700 22px system-ui, sans-serif';
+  const ctaMetrics = ctx.measureText(CONFIG.ctaText);
+  const ctaW = ctaMetrics.width + 64;
+  const ctaH = 56;
+
+  // Glow
+  ctx.shadowColor = CONFIG.ctaColor + '88';
+  ctx.shadowBlur = 20;
+  drawRoundedRect(-ctaW / 2, -ctaH / 2, ctaW, ctaH, 28, CONFIG.ctaColor);
+  ctx.shadowColor = 'transparent';
+
+  ctx.fillStyle = '#ffffff';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(CONFIG.ctaText, 0, 0);
+  ctx.restore();
+}
+
+// ============================================================
+// ANIMATION LOOP
+// ============================================================
+function setup() {
+  canvas.width = CONFIG.width;
+  canvas.height = CONFIG.height;
+  canvas.style.maxWidth = '95vw';
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  initParticles();
+}
+
+function animate(timestamp) {
+  if (!animating) return;
+  if (!startTime) startTime = timestamp;
+  const elapsed = (timestamp - startTime) / 1000; // em segundos
+  render(elapsed);
+  animFrame = requestAnimationFrame(animate);
+}
+
+setup();
+animFrame = requestAnimationFrame(animate);
+</script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+﻿{"name":"business-proposal","version":"1.0.0","private":true,"type":"module","scripts":{"pdf":"node scripts/export-pdf.mjs"},"dependencies":{"playwright":"^1.59.1"}}

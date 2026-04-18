@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Article Card Generator</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; color: #fff; font-family: system-ui; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; gap: 24px; }
+  h1 { font-size: 20px; opacity: 0.7; }
+  .controls { display: flex; flex-wrap: wrap; gap: 12px; max-width: 900px; }
+  .controls label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; opacity: 0.6; }
+  .controls input, .controls select, .controls textarea { background: #222; border: 1px solid #333; color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 14px; }
+  .controls textarea { resize: vertical; min-height: 60px; width: 300px; }
+  .controls input[type="text"], .controls input[type="url"] { width: 300px; }
+  canvas { border: 1px solid #222; border-radius: 8px; max-width: 100%; }
+  .actions { display: flex; gap: 12px; }
+  button { background: #009C3B; color: #fff; border: none; padding: 10px 24px; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 14px; }
+  button:hover { opacity: 0.9; }
+  button.secondary { background: #333; }
+</style>
+</head>
+<body>
+<h1>Article Card Generator — Photo Montage Skill</h1>
+
+<div class="controls">
+  <label>Foto URL
+    <input type="url" id="photoUrl" value="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800" />
+  </label>
+  <label>Título
+    <textarea id="title">Novo projeto de lei beneficia comunidade local com investimentos em infraestrutura</textarea>
+  </label>
+  <label>Tema
+    <select id="theme">
+      <option value="legislacao">Legislação</option>
+      <option value="saude">Saúde</option>
+      <option value="seguranca">Segurança</option>
+      <option value="educacao">Educação</option>
+      <option value="infraestrutura" selected>Infraestrutura</option>
+      <option value="meioambiente">Meio Ambiente</option>
+      <option value="economia">Economia</option>
+      <option value="campanha">Campanha</option>
+      <option value="denuncia">Denúncia</option>
+      <option value="evento">Evento</option>
+      <option value="cultura">Cultura</option>
+      <option value="esporte">Esporte</option>
+      <option value="juventude">Juventude</option>
+      <option value="animal">Causa Animal</option>
+    </select>
+  </label>
+  <label>Data
+    <input type="text" id="date" value="15 Jun 2026" />
+  </label>
+  <label>Autor
+    <input type="text" id="author" value="Equipe de Comunicação" />
+  </label>
+  <label>Site
+    <input type="text" id="siteUrl" value="spinelli.vercel.app" />
+  </label>
+  <label>Tamanho
+    <select id="size">
+      <option value="1200x630" selected>OG Image (1200×630)</option>
+      <option value="1080x1080">Instagram Square (1080×1080)</option>
+      <option value="1080x1350">Instagram Vertical (1080×1350)</option>
+      <option value="1080x1920">Story (1080×1920)</option>
+      <option value="1280x720">YouTube Thumb (1280×720)</option>
+      <option value="800x420">Blog Card (800×420)</option>
+    </select>
+  </label>
+</div>
+
+<canvas id="canvas"></canvas>
+
+<div class="actions">
+  <button onclick="generate()">Gerar Card</button>
+  <button class="secondary" onclick="download()">Baixar PNG</button>
+</div>
+
+<script>
+const THEME_BADGES = {
+  legislacao:      { label: 'LEGISLAÇÃO',      bgColor: '#D4AF37', textColor: '#000000', overlayIntensity: 0.7 },
+  saude:           { label: 'SAÚDE',           bgColor: '#16A34A', textColor: '#FFFFFF', overlayIntensity: 0.6 },
+  seguranca:       { label: 'SEGURANÇA',       bgColor: '#DC2626', textColor: '#FFFFFF', overlayIntensity: 0.7 },
+  educacao:        { label: 'EDUCAÇÃO',        bgColor: '#2563EB', textColor: '#FFFFFF', overlayIntensity: 0.6 },
+  infraestrutura:  { label: 'INFRAESTRUTURA',  bgColor: '#EA580C', textColor: '#FFFFFF', overlayIntensity: 0.6 },
+  meioambiente:    { label: 'MEIO AMBIENTE',   bgColor: '#059669', textColor: '#FFFFFF', overlayIntensity: 0.55 },
+  economia:        { label: 'ECONOMIA',        bgColor: '#7C3AED', textColor: '#FFFFFF', overlayIntensity: 0.6 },
+  campanha:        { label: 'CAMPANHA',        bgColor: '#009C3B', textColor: '#FFFFFF', overlayIntensity: 0.6 },
+  denuncia:        { label: 'DENÚNCIA',        bgColor: '#991B1B', textColor: '#FFFFFF', overlayIntensity: 0.75 },
+  evento:          { label: 'EVENTO',          bgColor: '#0891B2', textColor: '#FFFFFF', overlayIntensity: 0.55 },
+  cultura:         { label: 'CULTURA',         bgColor: '#A855F7', textColor: '#FFFFFF', overlayIntensity: 0.55 },
+  esporte:         { label: 'ESPORTE',         bgColor: '#F59E0B', textColor: '#000000', overlayIntensity: 0.55 },
+  juventude:       { label: 'JUVENTUDE',       bgColor: '#FFCC00', textColor: '#000000', overlayIntensity: 0.55 },
+  animal:          { label: 'CAUSA ANIMAL',    bgColor: '#22C55E', textColor: '#000000', overlayIntensity: 0.6 },
+};
+
+function loadImage(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error('Falha ao carregar imagem'));
+    img.src = url;
+  });
+}
+
+function coverFit(img, cw, ch) {
+  const ir = img.naturalWidth / img.naturalHeight;
+  const cr = cw / ch;
+  let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
+  if (ir > cr) { sw = img.naturalHeight * cr; sx = (img.naturalWidth - sw) / 2; }
+  else { sh = img.naturalWidth / cr; sy = (img.naturalHeight - sh) / 2; }
+  return { sx, sy, sw, sh };
+}
+
+function wrapText(ctx, text, x, y, maxW, lineH) {
+  const words = text.split(' ');
+  let line = '', cy = y, lines = [];
+  for (const w of words) {
+    const test = line + (line ? ' ' : '') + w;
+    if (ctx.measureText(test).width > maxW && line) {
+      lines.push({ text: line, y: cy }); cy += lineH; line = w;
+    } else { line = test; }
+  }
+  lines.push({ text: line, y: cy });
+  for (const l of lines) ctx.fillText(l.text, x, l.y);
+  return { totalHeight: cy - y + lineH, lineCount: lines.length };
+}
+
+function drawPill(ctx, text, x, y, bg, fg, font = '700 13px system-ui') {
+  ctx.font = font;
+  const m = ctx.measureText(text);
+  const px = 14, py = 6, h = parseInt(font) + py * 2, w = m.width + px * 2;
+  ctx.beginPath(); ctx.roundRect(x, y, w, h, 100); ctx.fillStyle = bg; ctx.fill();
+  ctx.fillStyle = fg; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+  ctx.fillText(text, x + px, y + py);
+  return w;
+}
+
+function autoFit(ctx, text, maxW, family, min = 16, max = 56, weight = '700') {
+  let lo = min, hi = max;
+  while (lo < hi - 1) {
+    const mid = Math.floor((lo + hi) / 2);
+    ctx.font = `${weight} ${mid}px ${family}`;
+    if (ctx.measureText(text).width <= maxW) lo = mid; else hi = mid;
+  }
+  ctx.font = `${weight} ${lo}px ${family}`;
+  return lo;
+}
+
+async function generate() {
+  const [tw, th] = document.getElementById('size').value.split('x').map(Number);
+  const dpr = 2;
+  const canvas = document.getElementById('canvas');
+  canvas.width = tw * dpr; canvas.height = th * dpr;
+  canvas.style.width = Math.min(tw, 700) + 'px';
+  canvas.style.height = Math.min(th, 700 * th / tw) + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  const theme = document.getElementById('theme').value;
+  const badge = THEME_BADGES[theme];
+  const pad = Math.round(tw * 0.04);
+  const title = document.getElementById('title').value;
+  const date = document.getElementById('date').value;
+  const author = document.getElementById('author').value;
+  const siteUrl = document.getElementById('siteUrl').value;
+  const photoUrl = document.getElementById('photoUrl').value;
+
+  // BG
+  ctx.fillStyle = '#0D0D0D';
+  ctx.fillRect(0, 0, tw, th);
+
+  // Photo
+  try {
+    const img = await loadImage(photoUrl);
+    const f = coverFit(img, tw, th);
+    ctx.drawImage(img, f.sx, f.sy, f.sw, f.sh, 0, 0, tw, th);
+  } catch (e) {
+    ctx.fillStyle = '#1a1a1a'; ctx.fillRect(0, 0, tw, th);
+  }
+
+  // Gradient scrim
+  const g = ctx.createLinearGradient(0, th * 0.25, 0, th);
+  g.addColorStop(0, 'rgba(0,0,0,0)');
+  g.addColorStop(0.35, `rgba(0,0,0,${badge.overlayIntensity * 0.35})`);
+  g.addColorStop(1, `rgba(0,0,0,${badge.overlayIntensity})`);
+  ctx.fillStyle = g; ctx.fillRect(0, 0, tw, th);
+
+  // Badge
+  drawPill(ctx, badge.label, pad, pad, badge.bgColor, badge.textColor, `700 ${Math.round(tw * 0.012)}px system-ui`);
+
+  // Title
+  const fontSize = Math.max(18, Math.round(tw * 0.032));
+  ctx.fillStyle = '#FFFFFF';
+  ctx.font = `700 ${fontSize}px system-ui`;
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  const titleMaxW = tw - pad * 2;
+  const titleY = th - pad - Math.round(th * 0.12);
+  wrapText(ctx, title, pad, titleY, titleMaxW, fontSize * 1.25);
+
+  // Accent line
+  ctx.fillStyle = badge.bgColor;
+  ctx.fillRect(pad, th - pad - Math.round(th * 0.07), Math.round(tw * 0.04), 3);
+
+  // Meta
+  let meta = '';
+  if (date) meta += date;
+  if (author) meta += (meta ? ' • ' : '') + author;
+  if (meta) {
+    ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    ctx.font = `400 ${Math.round(tw * 0.014)}px system-ui`;
+    ctx.textBaseline = 'bottom';
+    ctx.fillText(meta, pad, th - pad);
+  }
+
+  // Site URL
+  if (siteUrl) {
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.font = `400 ${Math.round(tw * 0.011)}px system-ui`;
+    ctx.textAlign = 'right';
+    ctx.fillText(siteUrl, tw - pad, th - pad);
+  }
+}
+
+function download() {
+  const canvas = document.getElementById('canvas');
+  const link = document.createElement('a');
+  const size = document.getElementById('size').value;
+  const theme = document.getElementById('theme').value;
+  link.download = `card-${theme}-${size}.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+// Auto-generate on load
+generate();
+</script>
+</body>
+</html>

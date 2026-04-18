@@ -1,0 +1,411 @@
+{
+  "services": [
+    {
+      "id": "site-institucional",
+      "name": "Site Institucional / Landing Page",
+      "category": "web",
+      "description": "Site profissional com design responsivo, SEO otimizado e painel de conteúdo",
+      "tiers": {
+        "basico": {
+          "price_range": [1500, 3000],
+          "delivery_days": [7, 14],
+          "includes": [
+            "Até 5 páginas",
+            "Design responsivo (mobile-first)",
+            "Formulário de contato com WhatsApp",
+            "SEO básico (meta tags, sitemap)",
+            "Hospedagem Vercel (1 ano)",
+            "Certificado SSL gratuito"
+          ]
+        },
+        "profissional": {
+          "price_range": [3000, 8000],
+          "delivery_days": [14, 30],
+          "includes": [
+            "Até 15 páginas",
+            "Design customizado (Figma)",
+            "Blog integrado",
+            "Painel admin (CMS headless)",
+            "SEO avançado + Google Analytics",
+            "Integração WhatsApp + redes sociais",
+            "Otimização de performance (Core Web Vitals)",
+            "3 meses de suporte"
+          ]
+        },
+        "enterprise": {
+          "price_range": [8000, 20000],
+          "delivery_days": [30, 60],
+          "includes": [
+            "Páginas ilimitadas",
+            "Design system completo",
+            "Multi-idioma",
+            "CMS completo com permissões",
+            "Integração com ERP/CRM",
+            "CDN global + cache otimizado",
+            "Testes A/B",
+            "6 meses de suporte dedicado"
+          ]
+        }
+      },
+      "tech_stack": ["Next.js", "React", "Tailwind CSS", "Vercel", "Sanity/Strapi"]
+    },
+    {
+      "id": "site-politico",
+      "name": "Site Político / Campanha Eleitoral",
+      "category": "web",
+      "description": "Site de campanha com foco em engajamento, propostas e captação de apoiadores",
+      "tiers": {
+        "basico": {
+          "price_range": [2000, 4000],
+          "delivery_days": [7, 14],
+          "includes": [
+            "Landing page de campanha",
+            "Seções: biografia, propostas, notícias",
+            "Formulário de apoiador + WhatsApp",
+            "Design nas cores do partido",
+            "SEO local otimizado",
+            "Responsivo mobile-first"
+          ]
+        },
+        "profissional": {
+          "price_range": [5000, 12000],
+          "delivery_days": [14, 30],
+          "includes": [
+            "Site completo multi-página",
+            "Sistema de notícias/blog",
+            "Galeria de fotos e vídeos",
+            "Agenda de eventos",
+            "Mapa interativo de propostas por bairro",
+            "Integração redes sociais",
+            "Analytics de campanha",
+            "Painel de administração"
+          ]
+        },
+        "enterprise": {
+          "price_range": [12000, 30000],
+          "delivery_days": [30, 60],
+          "includes": [
+            "Tudo do profissional",
+            "App PWA para militância",
+            "Sistema de doações (TSE-compliant)",
+            "CRM de apoiadores integrado",
+            "Dashboard de campanha em tempo real",
+            "Chatbot de propostas",
+            "LGPD compliance total",
+            "Suporte durante toda a campanha"
+          ]
+        }
+      },
+      "tech_stack": ["Next.js", "React", "Tailwind CSS", "Vercel", "Firebase"]
+    },
+    {
+      "id": "ecommerce",
+      "name": "E-commerce / Loja Virtual",
+      "category": "web",
+      "description": "Loja online completa com carrinho, pagamentos e gestão de produtos",
+      "tiers": {
+        "basico": {
+          "price_range": [3000, 6000],
+          "delivery_days": [14, 21],
+          "includes": [
+            "Até 50 produtos",
+            "Carrinho de compras",
+            "Checkout com PIX + cartão (Stripe/Mercado Pago)",
+            "Painel de gestão de produtos",
+            "Cálculo de frete (Correios/Melhor Envio)",
+            "Design responsivo",
+            "Certificado SSL"
+          ]
+        },
+        "profissional": {
+          "price_range": [6000, 15000],
+          "delivery_days": [21, 45],
+          "includes": [
+            "Produtos ilimitados + variações",
+            "Multi-gateway de pagamento",
+            "Cupons e promoções",
+            "Gestão de estoque avançada",
+            "E-mails transacionais",
+            "Integração ERP (Bling, Tiny)",
+            "Dashboard de vendas",
+            "WhatsApp de pós-venda automático"
+          ]
+        },
+        "enterprise": {
+          "price_range": [15000, 40000],
+          "delivery_days": [45, 90],
+          "includes": [
+            "Marketplace multi-seller",
+            "Assinaturas recorrentes",
+            "IA de recomendação de produtos",
+            "Multi-CD (centros de distribuição)",
+            "API headless commerce",
+            "Programa de fidelidade",
+            "Analytics avançado",
+            "SLA de suporte"
+          ]
+        }
+      },
+      "tech_stack": ["Next.js", "Medusa.js", "Stripe", "Mercado Pago", "PostgreSQL"]
+    },
+    {
+      "id": "crm",
+      "name": "CRM Customizado",
+      "category": "system",
+      "description": "Sistema de gestão de clientes e vendas sob medida para o negócio",
+      "tiers": {
+        "basico": {
+          "price_range": [4000, 8000],
+          "delivery_days": [21, 30],
+          "includes": [
+            "Cadastro de clientes e leads",
+            "Pipeline de vendas (kanban)",
+            "Histórico de interações",
+            "Dashboard básico",
+            "Filtros e busca avançada",
+            "Exportação CSV/Excel",
+            "Autenticação segura"
+          ]
+        },
+        "profissional": {
+          "price_range": [8000, 20000],
+          "delivery_days": [30, 60],
+          "includes": [
+            "Tudo do básico",
+            "Automação de follow-up",
+            "Integração WhatsApp (envio/recebimento)",
+            "E-mail marketing integrado",
+            "Relatórios e gráficos avançados",
+            "Permissões por equipe/cargo",
+            "App mobile (PWA)",
+            "API para integrações"
+          ]
+        },
+        "enterprise": {
+          "price_range": [20000, 50000],
+          "delivery_days": [60, 120],
+          "includes": [
+            "Tudo do profissional",
+            "IA para scoring de leads",
+            "Automações complexas (workflows)",
+            "Multi-empresa/filial",
+            "Integração ERP completa",
+            "Auditoria e logs de atividade",
+            "SSO (Single Sign-On)",
+            "SLA dedicado + treinamento"
+          ]
+        }
+      },
+      "tech_stack": ["Next.js", "Node.js", "PostgreSQL", "Prisma", "Redis"]
+    },
+    {
+      "id": "whatsapp-automation",
+      "name": "Automação WhatsApp",
+      "category": "automation",
+      "description": "Automação de atendimento e vendas via WhatsApp com WPPConnect ou Evolution API",
+      "tiers": {
+        "basico": {
+          "price_range": [2000, 5000],
+          "delivery_days": [7, 14],
+          "includes": [
+            "Conexão de 1 número WhatsApp",
+            "Mensagens automáticas de boas-vindas",
+            "Menu interativo por botões/lista",
+            "Respostas automáticas por palavra-chave",
+            "Encaminhamento para atendente humano",
+            "Painel web de monitoramento"
+          ]
+        },
+        "profissional": {
+          "price_range": [5000, 12000],
+          "delivery_days": [14, 30],
+          "includes": [
+            "Multi-número / multi-atendente",
+            "Chatbot com fluxos condicionais",
+            "Integração com CRM/sistema existente",
+            "Campanhas em massa (com controle anti-ban)",
+            "Agendamento de mensagens",
+            "Relatórios de atendimento",
+            "API webhooks para eventos",
+            "Dashboard de métricas"
+          ]
+        },
+        "enterprise": {
+          "price_range": [12000, 30000],
+          "delivery_days": [30, 60],
+          "includes": [
+            "Tudo do profissional",
+            "Chatbot com IA (GPT/Claude)",
+            "Integração catálogo de produtos",
+            "Pagamentos via WhatsApp",
+            "Multi-departamento com roteamento inteligente",
+            "Análise de sentimento",
+            "Backup automático de conversas",
+            "SLA + suporte 24h"
+          ]
+        }
+      },
+      "tech_stack": ["WPPConnect", "Evolution API", "Node.js", "Redis", "PostgreSQL"]
+    },
+    {
+      "id": "chatbot-ia",
+      "name": "Chatbot / Assistente IA",
+      "category": "ai",
+      "description": "Chatbot inteligente com LLM para atendimento, vendas ou suporte",
+      "tiers": {
+        "basico": {
+          "price_range": [3000, 6000],
+          "delivery_days": [7, 14],
+          "includes": [
+            "Chatbot com base de conhecimento fixa",
+            "Integração em 1 canal (site ou WhatsApp)",
+            "Respostas baseadas em FAQ",
+            "Fallback para humano",
+            "Painel de gerenciamento",
+            "Treinamento inicial"
+          ]
+        },
+        "profissional": {
+          "price_range": [6000, 18000],
+          "delivery_days": [14, 30],
+          "includes": [
+            "IA com RAG (busca em documentos)",
+            "Multi-canal (site + WhatsApp + redes)",
+            "Personalidade e tom customizados",
+            "Integração com APIs do cliente",
+            "Analytics de conversas",
+            "Auto-aprendizado com feedback",
+            "Escalação inteligente"
+          ]
+        },
+        "enterprise": {
+          "price_range": [18000, 50000],
+          "delivery_days": [30, 90],
+          "includes": [
+            "Agente IA multi-tool (consulta DB, agenda, CRM)",
+            "Fine-tuning com dados do cliente",
+            "Multi-idioma",
+            "Voz (speech-to-text / text-to-speech)",
+            "Compliance e auditoria",
+            "Cluster de alta disponibilidade",
+            "Treinamento da equipe + documentação"
+          ]
+        }
+      },
+      "tech_stack": ["OpenAI/Claude API", "LangChain", "Pinecone/Qdrant", "Node.js", "Next.js"]
+    },
+    {
+      "id": "dashboard",
+      "name": "Dashboard / Painel Administrativo",
+      "category": "system",
+      "description": "Painel de visualização de dados e gestão administrativa",
+      "tiers": {
+        "basico": {
+          "price_range": [3000, 6000],
+          "delivery_days": [14, 21],
+          "includes": [
+            "Até 5 telas/módulos",
+            "Gráficos interativos (Chart.js/Recharts)",
+            "Tabelas com filtros e paginação",
+            "Autenticação + login",
+            "Design responsivo",
+            "Exportação PDF/CSV"
+          ]
+        },
+        "profissional": {
+          "price_range": [6000, 15000],
+          "delivery_days": [21, 45],
+          "includes": [
+            "Módulos ilimitados",
+            "Permissões por cargo/setor",
+            "Dados em tempo real (WebSocket)",
+            "Notificações e alertas",
+            "Multi-tenant",
+            "API REST documentada",
+            "Logs de auditoria"
+          ]
+        },
+        "enterprise": {
+          "price_range": [15000, 40000],
+          "delivery_days": [45, 90],
+          "includes": [
+            "BI integrado com IA",
+            "ETL de múltiplas fontes",
+            "White-label customizável",
+            "SSO corporativo",
+            "Cache distribuído",
+            "Deploy multi-região",
+            "SLA + monitoramento 24/7"
+          ]
+        }
+      },
+      "tech_stack": ["Next.js", "React", "Recharts", "Prisma", "PostgreSQL", "Redis"]
+    },
+    {
+      "id": "api-integracao",
+      "name": "API / Integração de Sistemas",
+      "category": "backend",
+      "description": "APIs RESTful/GraphQL e integrações entre sistemas",
+      "tiers": {
+        "basico": {
+          "price_range": [2000, 5000],
+          "delivery_days": [7, 14],
+          "includes": [
+            "API REST com até 10 endpoints",
+            "Autenticação JWT",
+            "Documentação Swagger/OpenAPI",
+            "Validação de dados",
+            "Rate limiting básico",
+            "Deploy em produção"
+          ]
+        },
+        "profissional": {
+          "price_range": [5000, 15000],
+          "delivery_days": [14, 30],
+          "includes": [
+            "API REST + GraphQL",
+            "Webhooks bidirecionais",
+            "Integração com 3+ sistemas externos",
+            "Queue de mensagens (Bull/BullMQ)",
+            "Cache Redis",
+            "Monitoramento e logs",
+            "Testes automatizados",
+            "CI/CD configurado"
+          ]
+        },
+        "enterprise": {
+          "price_range": [15000, 40000],
+          "delivery_days": [30, 60],
+          "includes": [
+            "Microservices architecture",
+            "API Gateway",
+            "Event-driven (Kafka/RabbitMQ)",
+            "Multi-database",
+            "Observability (logs, traces, metrics)",
+            "Auto-scaling",
+            "Documentação técnica completa",
+            "SLA 99.9%"
+          ]
+        }
+      },
+      "tech_stack": ["Node.js", "Express/Fastify", "PostgreSQL", "Redis", "Docker"]
+    }
+  ],
+  "multipliers": {
+    "complexity": {
+      "simple": 1.0,
+      "medium": 1.5,
+      "complex": 2.0,
+      "enterprise": 3.0
+    },
+    "urgency": {
+      "standard": 1.0,
+      "fast_track": 1.3,
+      "rush": 1.5
+    },
+    "bundle_discount": {
+      "2_services": 0.90,
+      "3_plus_services": 0.85
+    }
+  }
+}

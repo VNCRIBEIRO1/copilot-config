@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Banner Image Manipulation — Canvas Template</title>
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+    body {
+      display: flex; flex-direction: column; align-items: center;
+      min-height: 100vh; background: #111; font-family: system-ui, sans-serif; color: #fff; padding: 20px;
+    }
+    canvas { border: 1px solid #333; max-width: 95vw; height: auto; }
+    .controls {
+      margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;
+      justify-content: center; align-items: center; max-width: 800px;
+    }
+    .btn {
+      padding: 10px 24px; color: #fff; border: none;
+      border-radius: 8px; font-size: 14px; cursor: pointer; transition: background 0.2s;
+    }
+    .btn-primary { background: #2563eb; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-filter { background: #374151; }
+    .btn-filter:hover { background: #4b5563; }
+    .btn-filter.active { background: #6366f1; }
+    .slider-group { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .slider-group label { font-size: 12px; color: #9ca3af; }
+    .slider-group input[type="range"] { width: 120px; }
+    .section-label { font-size: 12px; color: #6b7280; width: 100%; text-align: center; margin-top: 8px; }
+    .file-input { display: none; }
+    .upload-btn {
+      padding: 10px 24px; background: #059669; color: #fff; border: none;
+      border-radius: 8px; font-size: 14px; cursor: pointer;
+    }
+    .upload-btn:hover { background: #047857; }
+  </style>
+</head>
+<body>
+
+<canvas id="bannerCanvas"></canvas>
+
+<div class="controls">
+  <input type="file" id="fileInput" class="file-input" accept="image/*">
+  <button class="upload-btn" onclick="document.getElementById('fileInput').click()">Carregar Imagem</button>
+  <button class="btn btn-primary" onclick="exportPNG()">Baixar PNG</button>
+
+  <div class="section-label">Filtros Básicos</div>
+  <button class="btn btn-filter" onclick="setFilter('none')">Original</button>
+  <button class="btn btn-filter" onclick="setFilter('grayscale')">Grayscale</button>
+  <button class="btn btn-filter" onclick="setFilter('sepia')">Sepia</button>
+  <button class="btn btn-filter" onclick="setFilter('invert')">Invert</button>
+  <button class="btn btn-filter" onclick="setFilter('duotone')">Duotone</button>
+
+  <div class="section-label">Filtros Avançados (Convolution)</div>
+  <button class="btn btn-filter" onclick="setFilter('blur')">Blur</button>
+  <button class="btn btn-filter" onclick="setFilter('sharpen')">Sharpen</button>
+  <button class="btn btn-filter" onclick="setFilter('emboss')">Emboss</button>
+  <button class="btn btn-filter" onclick="setFilter('edge')">Edge Detect</button>
+
+  <div class="section-label">Color Grading</div>
+  <button class="btn btn-filter" onclick="setFilter('vintage')">Vintage</button>
+  <button class="btn btn-filter" onclick="setFilter('warm')">Warm</button>
+  <button class="btn btn-filter" onclick="setFilter('cool')">Cool</button>
+  <button class="btn btn-filter" onclick="setFilter('saturate')">Saturate+</button>
+
+  <div class="section-label">Ajustes</div>
+  <div class="slider-group">
+    <label>Brilho</label>
+    <input type="range" id="brightness" min="50" max="200" value="100" oninput="applyAdjustments()">
+  </div>
+  <div class="slider-group">
+    <label>Contraste</label>
+    <input type="range" id="contrast" min="50" max="200" value="100" oninput="applyAdjustments()">
+  </div>
+  <div class="slider-group">
+    <label>Hue Shift</label>
+    <input type="range" id="hueShift" min="0" max="360" value="0" oninput="applyAdjustments()">
+  </div>
+  <div class="slider-group">
+    <label>Saturação</label>
+    <input type="range" id="saturation" min="0" max="200" value="100" oninput="applyAdjustments()">
+  </div>
+
+  <div class="section-label">Overlay</div>
+  <button class="btn btn-filter" onclick="toggleOverlay('none')">Sem Overlay</button>
+  <button class="btn btn-filter" onclick="toggleOverlay('gradient')">Gradient</button>
+  <button class="btn btn-filter" onclick="toggleOverlay('dark')">Dark</button>
+  <button class="btn btn-filter" onclick="toggleOverlay('brand')">Brand</button>
+  <button class="btn btn-filter" onclick="toggleOverlay('vignette')">Vignette</button>
+  <button class="btn btn-filter" onclick="toggleOverlay('noise')">Noise</button>
+</div>
+
+<script>
+// ============================================================
+// BANNER IMAGE MANIPULATION
+// Pipeline: load → getImageData → filter → overlay → text → export
+// 100% Safari Safe — sem ctx.filter!
+// ============================================================
+
+const canvas = document.getElementById('bannerCanvas');
+const ctx = canvas.getContext('2d');
+
+const W = 1200, H = 628;
+canvas.width = W;
+canvas.height = H;
+canvas.style.maxWidth = '95vw';
+ctx.imageSmoothingEnabled = true;
+ctx.imageSmoothingQuality = 'high';
+
+// State
+let originalImage = null;
+let currentFilter = 'none';
+let currentOverlay = 'none';
+let brightnessVal = 100;
+let contrastVal = 100;
+let hueShiftVal = 0;
+let saturationVal = 100;
+
+// ============================================================
+// IMAGE LOADING
+// ============================================================
+document.getElementById('fileInput').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    const img = new Image();
+    img.onload = function() {
+      originalImage = img;
+      renderFull();
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+function loadImageFromUrl(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error('Falha ao carregar: ' + src));
+    img.src = src;
+  });
+}
+
+// ============================================================
+// PIXEL FILTERS (Safari Safe — sem ctx.filter)
+// ============================================================
+function applyPixelFilter(imageData, filterName) {
+  const data = imageData.data;
+
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i], g = data[i + 1], b = data[i + 2];
+
+    switch (filterName) {
+      case 'grayscale': {
+        const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+        data[i] = data[i + 1] = data[i + 2] = gray;
+        break;
+      }
+      case 'sepia': {
+        data[i]     = Math.min(0.393 * r + 0.769 * g + 0.189 * b, 255);
+        data[i + 1] = Math.min(0.349 * r + 0.686 * g + 0.168 * b, 255);
+        data[i + 2] = Math.min(0.272 * r + 0.534 * g + 0.131 * b, 255);
+        break;
+      }
+      case 'invert': {
+        data[i] = 255 - r;
+        data[i + 1] = 255 - g;
+        data[i + 2] = 255 - b;
+        break;
+      }
+      case 'duotone': {
+        // Dark: navy #1a365d, Light: gold #d4af37
+        const gray = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        data[i]     = 26  + (212 - 26)  * gray; // #1a → #d4
+        data[i + 1] = 54  + (175 - 54)  * gray; // #36 → #af
+        data[i + 2] = 93  + (55  - 93)  * gray; // #5d → #37
+        break;
+      }
+    }
+  }
+  return imageData;
+}
+
+function applyBrightnessContrast(imageData, brightness, contrast) {
+  const data = imageData.data;
+  const bFactor = brightness / 100;
+  const cFactor = contrast / 100;
+
+  for (let i = 0; i < data.length; i += 4) {
+    for (let c = 0; c < 3; c++) {
+      let val = data[i + c];
+      // Brightness
+      val = val * bFactor;
+      // Contrast
+      val = ((val / 255 - 0.5) * cFactor + 0.5) * 255;
+      data[i + c] = Math.min(Math.max(val, 0), 255);
+    }
+  }
+  return imageData;
+}
+
+// ============================================================
+// CONVOLUTION ENGINE (blur, sharpen, emboss, edge detect)
+// ============================================================
+function applyConvolution(imageData, kernel, divisor = 1, offset = 0) {
+  const { data, width, height } = imageData;
+  const output = new Uint8ClampedArray(data);
+  const kSize = Math.sqrt(kernel.length);
+  const half = Math.floor(kSize / 2);
+
+  for (let py = half; py < height - half; py++) {
+    for (let px = half; px < width - half; px++) {
+      let r = 0, g = 0, b = 0;
+      for (let ky = 0; ky < kSize; ky++) {
+        for (let kx = 0; kx < kSize; kx++) {
+          const idx = ((py + ky - half) * width + (px + kx - half)) * 4;
+          const weight = kernel[ky * kSize + kx];
+          r += data[idx] * weight;
+          g += data[idx + 1] * weight;
+          b += data[idx + 2] * weight;
+        }
+      }
+      const idx = (py * width + px) * 4;
+      output[idx]     = Math.min(Math.max(r / divisor + offset, 0), 255);
+      output[idx + 1] = Math.min(Math.max(g / divisor + offset, 0), 255);
+      output[idx + 2] = Math.min(Math.max(b / divisor + offset, 0), 255);
+    }
+  }
+  imageData.data.set(output);
+  return imageData;
+}
+
+const KERNELS = {
+  BLUR:    { k: [1,2,1, 2,4,2, 1,2,1], d: 16 },
+  SHARPEN: { k: [0,-1,0, -1,5,-1, 0,-1,0], d: 1 },
+  EMBOSS:  { k: [-2,-1,0, -1,1,1, 0,1,2], d: 1, o: 128 },
+  EDGE:    { k: [-1,-1,-1, -1,8,-1, -1,-1,-1], d: 1 },
+};
+
+// ============================================================
+// COLOR MATRIX TRANSFORM
+// ============================================================
+function applyColorMatrix(imageData, matrix) {
+  const d = imageData.data;
+  for (let i = 0; i < d.length; i += 4) {
+    const r = d[i], g = d[i+1], b = d[i+2], a = d[i+3];
+    d[i]   = Math.min(Math.max(matrix[0]*r + matrix[1]*g + matrix[2]*b + matrix[3]*a + matrix[4], 0), 255);
+    d[i+1] = Math.min(Math.max(matrix[5]*r + matrix[6]*g + matrix[7]*b + matrix[8]*a + matrix[9], 0), 255);
+    d[i+2] = Math.min(Math.max(matrix[10]*r + matrix[11]*g + matrix[12]*b + matrix[13]*a + matrix[14], 0), 255);
+  }
+  return imageData;
+}
+
+const COLOR_MATRICES = {
+  VINTAGE:  [0.6, 0.3, 0.1, 0, 20,  0.2, 0.6, 0.2, 0, 10,  0.1, 0.2, 0.5, 0, 30,  0,0,0,1,0],
+  WARM:     [1.2, 0.1, 0, 0, 10,  0, 1.0, 0, 0, 0,  0, 0, 0.8, 0, 0,  0,0,0,1,0],
+  COOL:     [0.8, 0, 0, 0, 0,  0, 1.0, 0.1, 0, 0,  0, 0.1, 1.2, 0, 10,  0,0,0,1,0],
+  SATURATE: [1.3, -0.15, -0.15, 0, 0,  -0.15, 1.3, -0.15, 0, 0,  -0.15, -0.15, 1.3, 0, 0,  0,0,0,1,0],
+};
+
+// ============================================================
+// HSL MANIPULATION
+// ============================================================
+function rgbToHsl(r, g, b) {
+  r /= 255; g /= 255; b /= 255;
+  const max = Math.max(r,g,b), min = Math.min(r,g,b);
+  let h, s, l = (max+min)/2;
+  if (max === min) { h = s = 0; }
+  else {
+    const d = max - min;
+    s = l > 0.5 ? d/(2-max-min) : d/(max+min);
+    switch(max) {
+      case r: h = ((g-b)/d + (g<b?6:0))/6; break;
+      case g: h = ((b-r)/d + 2)/6; break;
+      case b: h = ((r-g)/d + 4)/6; break;
+    }
+  }
+  return [h*360, s, l];
+}
+
+function hslToRgb(h, s, l) {
+  h /= 360;
+  const hue2rgb = (p,q,t) => {
+    if(t<0)t+=1; if(t>1)t-=1;
+    if(t<1/6) return p+(q-p)*6*t;
+    if(t<1/2) return q;
+    if(t<2/3) return p+(q-p)*(2/3-t)*6;
+    return p;
+  };
+  if(s===0) return [Math.round(l*255), Math.round(l*255), Math.round(l*255)];
+  const q = l<0.5 ? l*(1+s) : l+s-l*s;
+  const p = 2*l-q;
+  return [Math.round(hue2rgb(p,q,h+1/3)*255), Math.round(hue2rgb(p,q,h)*255), Math.round(hue2rgb(p,q,h-1/3)*255)];
+}
+
+function applyHslAdjustments(imageData, hueShift, satMul) {
+  const d = imageData.data;
+  for (let i = 0; i < d.length; i += 4) {
+    let [h, s, l] = rgbToHsl(d[i], d[i+1], d[i+2]);
+    h = (h + hueShift) % 360;
+    if (h < 0) h += 360;
+    s = Math.min(Math.max(s * (satMul / 100), 0), 1);
+    const [r, g, b] = hslToRgb(h, s, l);
+    d[i] = r; d[i+1] = g; d[i+2] = b;
+  }
+  return imageData;
+}
+
+// ============================================================
+// OVERLAYS (expanded)
+// ============================================================
+function drawOverlay(type) {
+  switch (type) {
+    case 'gradient': {
+      const grad = ctx.createLinearGradient(0, 0, 0, H);
+      grad.addColorStop(0, 'rgba(0,0,0,0.1)');
+      grad.addColorStop(0.5, 'rgba(0,0,0,0.3)');
+      grad.addColorStop(1, 'rgba(0,0,0,0.7)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, W, H);
+      break;
+    }
+    case 'dark': {
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fillRect(0, 0, W, H);
+      break;
+    }
+    case 'brand': {
+      // Overlay com cor de marca (indigo)
+      ctx.save();
+      ctx.globalCompositeOperation = 'multiply';
+      ctx.fillStyle = '#312e81';
+      ctx.fillRect(0, 0, W, H);
+      ctx.restore();
+      // Transparência adicional
+      ctx.fillStyle = 'rgba(0,0,0,0.2)';
+      ctx.fillRect(0, 0, W, H);
+      break;
+    }
+    case 'vignette': {
+      const grad = ctx.createRadialGradient(W/2, H/2, W*0.25, W/2, H/2, W*0.75);
+      grad.addColorStop(0, 'rgba(0,0,0,0)');
+      grad.addColorStop(1, 'rgba(0,0,0,0.65)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, W, H);
+      break;
+    }
+    case 'noise': {
+      const imgData = ctx.createImageData(W, H);
+      const nd = imgData.data;
+      for (let y = 0; y < H; y++) {
+        for (let x = 0; x < W; x++) {
+          const n = Math.sin(x * 127.1 + y * 311.7 + 42) * 43758.5453;
+          const val = (n - Math.floor(n)) * 255;
+          const idx = (y * W + x) * 4;
+          nd[idx] = nd[idx+1] = nd[idx+2] = val;
+          nd[idx+3] = 15; // ~6% opacity
+        }
+      }
+      ctx.save();
+      ctx.globalCompositeOperation = 'overlay';
+      ctx.putImageData(imgData, 0, 0);
+      ctx.restore();
+      break;
+    }
+  }
+}
+
+// ============================================================
+// TEXT OVERLAY
+// ============================================================
+function drawTextOverlay() {
+  // Headline
+  ctx.save();
+  ctx.shadowColor = 'rgba(0,0,0,0.6)';
+  ctx.shadowBlur = 8;
+  ctx.shadowOffsetY = 2;
+
+  ctx.font = '900 56px system-ui, sans-serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('Seu Título Aqui', W / 2, H / 2 - 30);
+
+  ctx.font = '400 24px system-ui, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  ctx.fillText('Subtítulo descritivo da peça', W / 2, H / 2 + 30);
+
+  // CTA
+  ctx.font = '700 20px system-ui, sans-serif';
+  const ctaText = 'Saiba Mais';
+  const ctaW = ctx.measureText(ctaText).width + 48;
+  const ctaH = 48;
+  const ctaX = W / 2 - ctaW / 2;
+  const ctaY = H / 2 + 70;
+
+  ctx.beginPath();
+  if (ctx.roundRect) ctx.roundRect(ctaX, ctaY, ctaW, ctaH, 24);
+  else {
+    ctx.moveTo(ctaX + 24, ctaY);
+    ctx.arcTo(ctaX + ctaW, ctaY, ctaX + ctaW, ctaY + ctaH, 24);
+    ctx.arcTo(ctaX + ctaW, ctaY + ctaH, ctaX, ctaY + ctaH, 24);
+    ctx.arcTo(ctaX, ctaY + ctaH, ctaX, ctaY, 24);
+    ctx.arcTo(ctaX, ctaY, ctaX + ctaW, ctaY, 24);
+  }
+  ctx.closePath();
+  ctx.fillStyle = '#ef4444';
+  ctx.fill();
+
+  ctx.fillStyle = '#ffffff';
+  ctx.shadowColor = 'transparent';
+  ctx.fillText(ctaText, W / 2, ctaY + ctaH / 2);
+
+  ctx.restore();
+}
+
+// ============================================================
+// FULL RENDER PIPELINE
+// ============================================================
+function renderFull() {
+  ctx.clearRect(0, 0, W, H);
+
+  if (!originalImage) {
+    drawPlaceholder();
+    return;
+  }
+
+  // 1. Desenhar imagem (cover fit)
+  const imgRatio = originalImage.width / originalImage.height;
+  const canvasRatio = W / H;
+  let sx, sy, sw, sh;
+  if (imgRatio > canvasRatio) {
+    sh = originalImage.height;
+    sw = sh * canvasRatio;
+    sx = (originalImage.width - sw) / 2;
+    sy = 0;
+  } else {
+    sw = originalImage.width;
+    sh = sw / canvasRatio;
+    sx = 0;
+    sy = (originalImage.height - sh) / 2;
+  }
+  ctx.drawImage(originalImage, sx, sy, sw, sh, 0, 0, W, H);
+
+  // 2. Aplicar filtro de pixel
+  if (currentFilter !== 'none') {
+    const imageData = ctx.getImageData(0, 0, W, H);
+
+    // Pixel-based filters
+    if (['grayscale','sepia','invert','duotone'].includes(currentFilter)) {
+      applyPixelFilter(imageData, currentFilter);
+    }
+    // Convolution-based filters
+    else if (KERNELS[currentFilter.toUpperCase()]) {
+      const { k, d, o } = KERNELS[currentFilter.toUpperCase()];
+      applyConvolution(imageData, k, d || 1, o || 0);
+    }
+    // Color matrix filters
+    else if (COLOR_MATRICES[currentFilter.toUpperCase()]) {
+      applyColorMatrix(imageData, COLOR_MATRICES[currentFilter.toUpperCase()]);
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  // 3. Aplicar brilho/contraste
+  if (brightnessVal !== 100 || contrastVal !== 100) {
+    const imageData = ctx.getImageData(0, 0, W, H);
+    applyBrightnessContrast(imageData, brightnessVal, contrastVal);
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  // 4. Aplicar HSL (hue shift + saturação)
+  if (hueShiftVal !== 0 || saturationVal !== 100) {
+    const imageData = ctx.getImageData(0, 0, W, H);
+    applyHslAdjustments(imageData, hueShiftVal, saturationVal);
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  // 4. Overlay
+  if (currentOverlay !== 'none') {
+    drawOverlay(currentOverlay);
+  }
+
+  // 5. Texto
+  drawTextOverlay();
+}
+
+// ============================================================
+// PLACEHOLDER (sem imagem)
+// ============================================================
+function drawPlaceholder() {
+  const grad = ctx.createLinearGradient(0, 0, W, H);
+  grad.addColorStop(0, '#1e1b4b');
+  grad.addColorStop(1, '#312e81');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Grid pattern
+  ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+  ctx.lineWidth = 1;
+  for (let x = 0; x < W; x += 40) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+  for (let y = 0; y < H; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+
+  ctx.fillStyle = 'rgba(255,255,255,0.3)';
+  ctx.font = '400 20px system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('Clique em "Carregar Imagem" para começar', W / 2, H / 2 - 20);
+  ctx.font = '400 14px system-ui, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.2)';
+  ctx.fillText('Formatos: JPG, PNG, WebP', W / 2, H / 2 + 15);
+}
+
+// ============================================================
+// CONTROLS
+// ============================================================
+function setFilter(name) {
+  currentFilter = name;
+  renderFull();
+  // Update active state
+  document.querySelectorAll('.btn-filter').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+function toggleOverlay(type) {
+  currentOverlay = type;
+  renderFull();
+}
+
+function applyAdjustments() {
+  brightnessVal = parseInt(document.getElementById('brightness').value);
+  contrastVal = parseInt(document.getElementById('contrast').value);
+  hueShiftVal = parseInt(document.getElementById('hueShift').value);
+  saturationVal = parseInt(document.getElementById('saturation').value);
+  renderFull();
+}
+
+function exportPNG(filename = 'banner-manipulated.png') {
+  const link = document.createElement('a');
+  link.download = filename;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+// Init
+drawPlaceholder();
+</script>
+</body>
+</html>

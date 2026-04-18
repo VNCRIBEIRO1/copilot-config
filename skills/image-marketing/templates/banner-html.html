@@ -1,0 +1,64 @@
+<!-- TEMPLATE: Banner HTML/CSS Responsivo -->
+<!-- Substitua os valores entre {{ }} -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .banner {
+    width: {{LARGURA}}px;
+    max-width: 100%;
+    height: {{ALTURA}}px;
+    background: linear-gradient(135deg, {{COR_PRIMARIA}}, {{COR_SECUNDARIA}});
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: #ffffff;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .banner__headline {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0 0 12px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .banner__subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0 0 20px;
+    opacity: 0.9;
+  }
+  .banner__cta {
+    display: inline-block;
+    padding: 14px 32px;
+    background: #ffffff;
+    color: {{COR_PRIMARIA}};
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .banner__cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+</style>
+</head>
+<body>
+  <div class="banner" role="img" aria-label="{{ALT_TEXT}}">
+    <h2 class="banner__headline">{{HEADLINE}}</h2>
+    <p class="banner__subtitle">{{SUBTITULO}}</p>
+    <a href="{{LINK}}" class="banner__cta">{{TEXTO_CTA}}</a>
+  </div>
+</body>
+</html>

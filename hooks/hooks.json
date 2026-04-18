@@ -1,0 +1,56 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": "node .github/hooks/optimize-screenshot.mjs",
+        "windows": "node .github\\hooks\\optimize-screenshot.mjs",
+        "timeout": 15,
+        "env": { "NODE_NO_WARNINGS": "1" },
+        "matcher": "mcp_microsoft_pla_browser_take_screenshot"
+      },
+      {
+        "type": "command",
+        "command": "node .github/hooks/validate-dataset.mjs",
+        "windows": "node .github\\hooks\\validate-dataset.mjs",
+        "timeout": 10,
+        "env": { "NODE_NO_WARNINGS": "1" },
+        "matcher": "create_file"
+      },
+      {
+        "type": "command",
+        "command": "node .github/hooks/validate-dataset.mjs",
+        "windows": "node .github\\hooks\\validate-dataset.mjs",
+        "timeout": 10,
+        "env": { "NODE_NO_WARNINGS": "1" },
+        "matcher": "replace_string_in_file"
+      },
+      {
+        "type": "command",
+        "command": "node .github/hooks/validate-dataset.mjs",
+        "windows": "node .github\\hooks\\validate-dataset.mjs",
+        "timeout": 10,
+        "env": { "NODE_NO_WARNINGS": "1" },
+        "matcher": "multi_replace_string_in_file"
+      },
+      {
+        "type": "command",
+        "command": "node .github/hooks/validate-legal-refs.mjs",
+        "windows": "node .github\\hooks\\validate-legal-refs.mjs",
+        "timeout": 10,
+        "env": { "NODE_NO_WARNINGS": "1" },
+        "matcher": "run_in_terminal"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "type": "command",
+        "command": "node .github/hooks/validate-pdf-assets.mjs",
+        "windows": "node .github\\hooks\\validate-pdf-assets.mjs",
+        "timeout": 20,
+        "env": { "NODE_NO_WARNINGS": "1" },
+        "matcher": "run_in_terminal"
+      }
+    ]
+  }
+}

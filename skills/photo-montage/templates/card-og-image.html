@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>OG Image Generator</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; color: #fff; font-family: system-ui; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; gap: 24px; }
+  h1 { font-size: 20px; opacity: 0.7; }
+  .controls { display: flex; flex-wrap: wrap; gap: 12px; max-width: 900px; }
+  .controls label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; opacity: 0.6; }
+  .controls input, .controls select, .controls textarea { background: #222; border: 1px solid #333; color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 14px; }
+  .controls textarea { resize: vertical; min-height: 60px; width: 340px; }
+  .controls input[type="text"], .controls input[type="url"] { width: 300px; }
+  .controls input[type="color"] { width: 48px; height: 36px; padding: 2px; }
+  canvas { border: 1px solid #222; border-radius: 8px; max-width: 100%; }
+  .actions { display: flex; gap: 12px; }
+  button { background: #009C3B; color: #fff; border: none; padding: 10px 24px; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 14px; }
+  button:hover { opacity: 0.9; }
+  button.secondary { background: #333; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<h1>OG Image Generator (1200×630) — Photo Montage Skill</h1>
+
+<div class="controls">
+  <label>Foto URL
+    <input type="url" id="photoUrl" value="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200" />
+  </label>
+  <label>Título
+    <textarea id="title">Projeto de lei garante investimentos em infraestrutura para o município</textarea>
+  </label>
+  <label>Subtítulo (opcional)
+    <input type="text" id="subtitle" value="Saiba mais sobre as melhorias previstas para 2026" />
+  </label>
+  <label>Nome do Site
+    <input type="text" id="siteName" value="Tenente Spinelli" />
+  </label>
+  <label>URL do Site
+    <input type="text" id="siteUrl" value="spinelli.vercel.app" />
+  </label>
+  <div class="row">
+    <label>Cor Accent
+      <input type="color" id="accent" value="#009C3B" />
+    </label>
+    <label>Cor Gold
+      <input type="color" id="gold" value="#FFCC00" />
+    </label>
+  </div>
+  <label>Estilo
+    <select id="style">
+      <option value="scrim" selected>Gradient Scrim</option>
+      <option value="split">Split Layout</option>
+      <option value="dark">Dark Overlay</option>
+    </select>
+  </label>
+</div>
+
+<canvas id="canvas" width="2400" height="1260"></canvas>
+
+<div class="actions">
+  <button onclick="generate()">Gerar OG</button>
+  <button class="secondary" onclick="download()">Baixar PNG</button>
+  <button class="secondary" onclick="downloadJPEG()">Baixar JPEG</button>
+</div>
+
+<script>
+const W = 1200, H = 630, DPR = 2;
+
+function loadImage(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error('Falha ao carregar imagem'));
+    img.src = url;
+  });
+}
+
+function coverFit(img, cw, ch) {
+  const ir = img.naturalWidth / img.naturalHeight;
+  const cr = cw / ch;
+  let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
+  if (ir > cr) { sw = img.naturalHeight * cr; sx = (img.naturalWidth - sw) / 2; }
+  else { sh = img.naturalWidth / cr; sy = (img.naturalHeight - sh) / 2; }
+  return { sx, sy, sw, sh };
+}
+
+function wrapText(ctx, text, x, y, maxW, lineH) {
+  const words = text.split(' ');
+  let line = '', cy = y, lines = [];
+  for (const w of words) {
+    const test = line + (line ? ' ' : '') + w;
+    if (ctx.measureText(test).width > maxW && line) {
+      lines.push({ text: line, y: cy }); cy += lineH; line = w;
+    } else { line = test; }
+  }
+  lines.push({ text: line, y: cy });
+  for (const l of lines) ctx.fillText(l.text, x, l.y);
+  return { totalHeight: cy - y + lineH, lineCount: lines.length };
+}
+
+function autoFitTitle(ctx, text, maxW, family, min, max) {
+  let lo = min, hi = max;
+  while (lo < hi - 1) {
+    const mid = Math.floor((lo + hi) / 2);
+    ctx.font = `700 ${mid}px ${family}`;
+    const words = text.split(' ');
+    let line = '', lines = 0;
+    for (const w of words) {
+      const test = line + (line ? ' ' : '') + w;
+      if (ctx.measureText(test).width > maxW && line) { lines++; line = w; }
+      else { line = test; }
+    }
+    lines++;
+    if (lines <= 3) lo = mid; else hi = mid;
+  }
+  return lo;
+}
+
+async function generate() {
+  const canvas = document.getElementById('canvas');
+  canvas.width = W * DPR; canvas.height = H * DPR;
+  canvas.style.width = '700px'; canvas.style.height = `${700 * H / W}px`;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(DPR, DPR);
+
+  const accent = document.getElementById('accent').value;
+  const gold = document.getElementById('gold').value;
+  const title = document.getElementById('title').value;
+  const subtitle = document.getElementById('subtitle').value;
+  const siteName = document.getElementById('siteName').value;
+  const siteUrl = document.getElementById('siteUrl').value;
+  const photoUrl = document.getElementById('photoUrl').value;
+  const style = document.getElementById('style').value;
+
+  const pad = 48, safeL = 60, safeR = W - 60, safeT = 60, safeB = H - 60;
+
+  // Background
+  ctx.fillStyle = '#0D0D0D';
+  ctx.fillRect(0, 0, W, H);
+
+  // Photo
+  try {
+    const img = await loadImage(photoUrl);
+    const f = coverFit(img, W, H);
+
+    if (style === 'split') {
+      // Right half photo
+      ctx.save();
+      ctx.beginPath(); ctx.rect(W * 0.45, 0, W * 0.55, H); ctx.clip();
+      ctx.drawImage(img, f.sx, f.sy, f.sw, f.sh, 0, 0, W, H);
+      ctx.restore();
+      // Left-to-right gradient fade
+      const gFade = ctx.createLinearGradient(W * 0.35, 0, W * 0.6, 0);
+      gFade.addColorStop(0, '#0D0D0D');
+      gFade.addColorStop(1, 'rgba(13,13,13,0)');
+      ctx.fillStyle = gFade; ctx.fillRect(W * 0.35, 0, W * 0.35, H);
+    } else {
+      ctx.drawImage(img, f.sx, f.sy, f.sw, f.sh, 0, 0, W, H);
+    }
+  } catch (e) { /* bg already drawn */ }
+
+  if (style === 'scrim') {
+    // Left-heavy gradient
+    const g1 = ctx.createLinearGradient(0, 0, W * 0.7, 0);
+    g1.addColorStop(0, 'rgba(0,0,0,0.82)');
+    g1.addColorStop(0.6, 'rgba(0,0,0,0.5)');
+    g1.addColorStop(1, 'rgba(0,0,0,0.15)');
+    ctx.fillStyle = g1; ctx.fillRect(0, 0, W, H);
+    // Bottom gradient
+    const g2 = ctx.createLinearGradient(0, H * 0.6, 0, H);
+    g2.addColorStop(0, 'rgba(0,0,0,0)');
+    g2.addColorStop(1, 'rgba(0,0,0,0.5)');
+    ctx.fillStyle = g2; ctx.fillRect(0, 0, W, H);
+  } else if (style === 'dark') {
+    ctx.fillStyle = 'rgba(0,0,0,0.7)';
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  // Accent stripe (top)
+  ctx.fillStyle = accent;
+  ctx.fillRect(0, 0, W, 4);
+
+  // Site name badge (top-left safe zone)
+  if (siteName) {
+    ctx.font = '700 14px system-ui';
+    const tw = ctx.measureText(siteName.toUpperCase()).width;
+    ctx.fillStyle = accent;
+    ctx.beginPath(); ctx.roundRect(safeL, safeT, tw + 28, 30, 4); ctx.fill();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText(siteName.toUpperCase(), safeL + 14, safeT + 15);
+  }
+
+  // Title
+  const titleFont = 'system-ui';
+  const maxTitleW = style === 'split' ? W * 0.4 : W - safeL * 2;
+  const titleSize = autoFitTitle(ctx, title, maxTitleW, titleFont, 24, 52);
+  ctx.font = `700 ${titleSize}px ${titleFont}`;
+  ctx.fillStyle = '#FFFFFF';
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  const titleY = style === 'split' ? 200 : H * 0.52;
+  const { totalHeight } = wrapText(ctx, title, safeL, titleY, maxTitleW, titleSize * 1.2);
+
+  // Accent underline
+  const underlineY = titleY + totalHeight + 8;
+  ctx.fillStyle = gold;
+  ctx.fillRect(safeL, underlineY, 48, 3);
+
+  // Subtitle
+  if (subtitle) {
+    ctx.fillStyle = 'rgba(255,255,255,0.6)';
+    ctx.font = `400 ${Math.min(18, titleSize * 0.45)}px system-ui`;
+    ctx.fillText(subtitle, safeL, underlineY + 24, maxTitleW);
+  }
+
+  // Footer line
+  ctx.fillStyle = 'rgba(255,255,255,0.1)';
+  ctx.fillRect(safeL, H - 50, W - safeL * 2, 1);
+
+  // Footer URL
+  if (siteUrl) {
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.font = '400 12px system-ui';
+    ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
+    ctx.fillText(siteUrl, safeR, safeB);
+  }
+}
+
+function download() {
+  const canvas = document.getElementById('canvas');
+  const link = document.createElement('a');
+  link.download = `og-image-${Date.now()}.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+function downloadJPEG() {
+  const canvas = document.getElementById('canvas');
+  const link = document.createElement('a');
+  link.download = `og-image-${Date.now()}.jpg`;
+  link.href = canvas.toDataURL('image/jpeg', 0.92);
+  link.click();
+}
+
+generate();
+</script>
+</body>
+</html>

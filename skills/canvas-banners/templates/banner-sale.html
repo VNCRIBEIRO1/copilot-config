@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Banner Sale — Canvas Template</title>
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+    body {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 100vh; background: #111; font-family: system-ui, sans-serif; color: #fff; padding: 20px;
+    }
+    canvas { border: 1px solid #333; max-width: 95vw; height: auto; }
+    .controls { margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .download-btn {
+      padding: 12px 32px; background: #2563eb; color: #fff; border: none;
+      border-radius: 8px; font-size: 16px; cursor: pointer; transition: background 0.2s;
+    }
+    .download-btn:hover { background: #1d4ed8; }
+    .btn-secondary {
+      padding: 12px 32px; background: #374151; color: #fff; border: none;
+      border-radius: 8px; font-size: 16px; cursor: pointer;
+    }
+    .btn-secondary:hover { background: #4b5563; }
+  </style>
+</head>
+<body>
+
+<canvas id="bannerCanvas"></canvas>
+<div class="controls">
+  <button class="download-btn" onclick="exportPNG()">Baixar PNG</button>
+  <button class="btn-secondary" onclick="toggleAnimation()">Play/Pause</button>
+</div>
+
+<script>
+// ============================================================
+// BANNER SALE — Black Friday / Promoção
+// Badge desconto + preço cortado + pulse animation
+// + spark particles + noise grain + HiDPI
+// Paleta: preto/dourado/vermelho
+// ============================================================
+
+const canvas = document.getElementById('bannerCanvas');
+const ctx = canvas.getContext('2d');
+
+// --- Utilities ---
+function drawRoundedRect(x, y, w, h, r, fill, stroke) {
+  ctx.beginPath();
+  if (ctx.roundRect) { ctx.roundRect(x, y, w, h, r); }
+  else {
+    const rad = typeof r === 'number' ? r : r[0] || 0;
+    ctx.moveTo(x + rad, y); ctx.arcTo(x + w, y, x + w, y + h, rad);
+    ctx.arcTo(x + w, y + h, x, y + h, rad); ctx.arcTo(x, y + h, x, y, rad);
+    ctx.arcTo(x, y, x + w, y, rad);
+  }
+  ctx.closePath();
+  if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+  if (stroke) { ctx.strokeStyle = stroke; ctx.stroke(); }
+}
+
+function exportPNG(filename = 'banner-sale.png') {
+  const link = document.createElement('a');
+  link.download = filename;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+// ============================================================
+// CONFIG
+// ============================================================
+const CONFIG = {
+  width: 1200,
+  height: 628,
+  // Paleta Black Friday
+  bgColor: '#0a0a0a',
+  goldColor: '#d4af37',
+  goldLight: '#f7e8a4',
+  redColor: '#e53e3e',
+  whiteColor: '#ffffff',
+  // Textos
+  headline: 'BLACK FRIDAY',
+  discount: '-70%',
+  oldPrice: 'R$ 299,90',
+  newPrice: 'R$ 89,97',
+  ctaText: 'APROVEITE AGORA',
+  subtitle: 'Oferta por tempo limitado',
+};
+
+// ============================================================
+// ANIMATION STATE
+// ============================================================
+let animating = true;
+let animFrame = null;
+let time = 0;
+
+// --- Spark particles around badge ---
+const sparks = [];
+function initSparks(cx, cy, count = 20) {
+  for (let i = 0; i < count; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 100 + Math.random() * 60;
+    sparks.push({
+      angle, dist,
+      speed: 0.3 + Math.random() * 0.7,
+      size: 1 + Math.random() * 2.5,
+      alpha: 0.3 + Math.random() * 0.5,
+      phase: Math.random() * Math.PI * 2,
+    });
+  }
+}
+initSparks(0, 0); // positions updated in render relative to badge center
+
+function toggleAnimation() {
+  animating = !animating;
+  if (animating) animate();
+  else if (animFrame) cancelAnimationFrame(animFrame);
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function render(t) {
+  const { width: W, height: H } = CONFIG;
+
+  // Background
+  ctx.fillStyle = CONFIG.bgColor;
+  ctx.fillRect(0, 0, W, H);
+
+  // Pattern decorativo (linhas diagonais douradas sutis)
+  ctx.save();
+  ctx.globalAlpha = 0.03;
+  ctx.strokeStyle = CONFIG.goldColor;
+  ctx.lineWidth = 1;
+  for (let i = -H; i < W + H; i += 40) {
+    ctx.beginPath();
+    ctx.moveTo(i, 0);
+    ctx.lineTo(i + H, H);
+    ctx.stroke();
+  }
+  ctx.restore();
+
+  // Borda dourada
+  ctx.strokeStyle = CONFIG.goldColor;
+  ctx.lineWidth = 3;
+  drawRoundedRect(20, 20, W - 40, H - 40, 0, null, CONFIG.goldColor);
+
+  // Borda interna
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = CONFIG.goldColor + '44';
+  drawRoundedRect(30, 30, W - 60, H - 60, 0, null, CONFIG.goldColor + '44');
+
+  // === BADGE DE DESCONTO (com pulse) ===
+  const badgeCX = W * 0.22;
+  const badgeCY = H * 0.48;
+  const baseRadius = 110;
+  const pulse = Math.sin(t * 3) * 8; // Pulse suave
+  const badgeRadius = baseRadius + pulse;
+
+  // Glow
+  ctx.save();
+  ctx.shadowColor = CONFIG.redColor;
+  ctx.shadowBlur = 30 + pulse;
+  ctx.beginPath();
+  ctx.arc(badgeCX, badgeCY, badgeRadius, 0, Math.PI * 2);
+  ctx.fillStyle = CONFIG.redColor;
+  ctx.fill();
+  ctx.restore();
+
+  // Borda dourada do badge
+  ctx.beginPath();
+  ctx.arc(badgeCX, badgeCY, badgeRadius + 4, 0, Math.PI * 2);
+  ctx.strokeStyle = CONFIG.goldColor;
+  ctx.lineWidth = 3;
+  ctx.stroke();
+
+  // Texto do desconto
+  ctx.fillStyle = CONFIG.whiteColor;
+  ctx.font = '900 72px system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(CONFIG.discount, badgeCX, badgeCY);
+
+  // === HEADLINE ===
+  const textX = W * 0.55;
+  ctx.textAlign = 'center';
+
+  // "BLACK FRIDAY" com gradient dourado
+  ctx.font = '900 68px system-ui, sans-serif';
+  const headGrad = ctx.createLinearGradient(textX - 200, 0, textX + 200, 0);
+  headGrad.addColorStop(0, CONFIG.goldColor);
+  headGrad.addColorStop(0.5, CONFIG.goldLight);
+  headGrad.addColorStop(1, CONFIG.goldColor);
+  ctx.fillStyle = headGrad;
+  ctx.fillText(CONFIG.headline, textX, H * 0.22);
+
+  // Linha decorativa
+  ctx.fillStyle = CONFIG.goldColor;
+  ctx.fillRect(textX - 120, H * 0.30, 240, 2);
+
+  // Subtitle
+  ctx.font = '400 20px system-ui, sans-serif';
+  ctx.fillStyle = CONFIG.goldColor + 'cc';
+  ctx.fillText(CONFIG.subtitle, textX, H * 0.37);
+
+  // Preço antigo (cortado)
+  ctx.font = '400 28px system-ui, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  const oldPriceY = H * 0.50;
+  ctx.fillText(CONFIG.oldPrice, textX, oldPriceY);
+  // Linha cortando o preço
+  const oldPriceW = ctx.measureText(CONFIG.oldPrice).width;
+  ctx.strokeStyle = CONFIG.redColor;
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(textX - oldPriceW / 2 - 10, oldPriceY);
+  ctx.lineTo(textX + oldPriceW / 2 + 10, oldPriceY);
+  ctx.stroke();
+
+  // Preço novo (grande, destaque)
+  ctx.font = '900 56px system-ui, sans-serif';
+  ctx.fillStyle = CONFIG.whiteColor;
+  ctx.fillText(CONFIG.newPrice, textX, H * 0.63);
+
+  // === CTA ===
+  ctx.font = '700 22px system-ui, sans-serif';
+  const ctaMetrics = ctx.measureText(CONFIG.ctaText);
+  const ctaW = ctaMetrics.width + 64;
+  const ctaH = 56;
+  const ctaX = textX - ctaW / 2;
+  const ctaY = H * 0.76;
+
+  // CTA com gradiente dourado
+  const ctaGrad = ctx.createLinearGradient(ctaX, ctaY, ctaX + ctaW, ctaY);
+  ctaGrad.addColorStop(0, CONFIG.goldColor);
+  ctaGrad.addColorStop(0.5, CONFIG.goldLight);
+  ctaGrad.addColorStop(1, CONFIG.goldColor);
+
+  ctx.save();
+  ctx.shadowColor = CONFIG.goldColor + '66';
+  ctx.shadowBlur = 15;
+  drawRoundedRect(ctaX, ctaY, ctaW, ctaH, 28, ctaGrad);
+  ctx.restore();
+
+  ctx.fillStyle = CONFIG.bgColor;
+  ctx.textBaseline = 'middle';
+  ctx.fillText(CONFIG.ctaText, textX, ctaY + ctaH / 2);
+
+  // === SPARK PARTICLES around badge ===
+  for (const s of sparks) {
+    const a = s.angle + t * s.speed;
+    const flicker = 0.5 + 0.5 * Math.sin(t * 4 + s.phase);
+    const sx = badgeCX + Math.cos(a) * s.dist;
+    const sy = badgeCY + Math.sin(a) * s.dist;
+    ctx.save();
+    ctx.globalAlpha = s.alpha * flicker;
+    ctx.fillStyle = CONFIG.goldLight;
+    ctx.beginPath();
+    ctx.arc(sx, sy, s.size, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // === NOISE GRAIN (cinematic feel) ===
+  const dpr = window.devicePixelRatio || 1;
+  const pw = W * dpr, ph = H * dpr;
+  const imgData = ctx.createImageData(pw, ph);
+  const nd = imgData.data;
+  for (let i = 0; i < nd.length; i += 4) {
+    const v = Math.random() * 255;
+    nd[i] = nd[i+1] = nd[i+2] = v;
+    nd[i+3] = 10; // ~4% opacity
+  }
+  ctx.save();
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.globalCompositeOperation = 'overlay';
+  ctx.putImageData(imgData, 0, 0);
+  ctx.restore();
+}
+
+// ============================================================
+// ANIMATION LOOP
+// ============================================================
+function setup() {
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = CONFIG.width * dpr;
+  canvas.height = CONFIG.height * dpr;
+  canvas.style.width = CONFIG.width + 'px';
+  canvas.style.height = 'auto';
+  canvas.style.maxWidth = '95vw';
+  ctx.scale(dpr, dpr);
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+}
+
+function animate() {
+  if (!animating) return;
+  time += 0.016; // ~60fps
+  render(time);
+  animFrame = requestAnimationFrame(animate);
+}
+
+setup();
+animate();
+</script>
+</body>
+</html>

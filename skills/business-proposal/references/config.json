@@ -1,0 +1,23 @@
+{
+  "provider": {
+    "name": "Vinícius Ribeiro",
+    "whatsapp": "+5518996311933",
+    "whatsapp_display": "(18) 99631-1933",
+    "email": "vncribeiro1@gmail.com",
+    "location": "São Paulo, Brasil"
+  },
+  "proposal": {
+    "validity_days": 15,
+    "warranty_days": 30,
+    "currency": "BRL",
+    "number_prefix": "VR"
+  },
+  "payment": {
+    "default_conditions": [
+      "50% na aprovação do projeto (sinal)",
+      "25% na entrega do protótipo funcional",
+      "25% na entrega final e aprovação"
+    ],
+    "methods": ["PIX", "Transferência bancária", "Boleto"]
+  }
+}

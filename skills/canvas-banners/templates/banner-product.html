@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Banner Produto — Canvas Template</title>
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+    body {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 100vh; background: #111; font-family: system-ui, sans-serif; color: #fff; padding: 20px;
+    }
+    canvas { border: 1px solid #333; max-width: 95vw; height: auto; }
+    .controls { margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .download-btn {
+      padding: 12px 32px; background: #2563eb; color: #fff; border: none;
+      border-radius: 8px; font-size: 16px; cursor: pointer; transition: background 0.2s;
+    }
+    .download-btn:hover { background: #1d4ed8; }
+  </style>
+</head>
+<body>
+
+<canvas id="bannerCanvas"></canvas>
+<div class="controls">
+  <button class="download-btn" onclick="exportPNG()">Baixar PNG</button>
+</div>
+
+<script>
+// ============================================================
+// BANNER PRODUTO — Layout: imagem + headline + CTA
+// Template para banners de produto com gradient overlay
+// HiDPI aware + noise + glow headline + gradient CTA
+// ============================================================
+
+const canvas = document.getElementById('bannerCanvas');
+const ctx = canvas.getContext('2d');
+
+// --- HiDPI Support ---
+function setupCanvas(w, h) {
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width = w + 'px';
+  canvas.style.height = 'auto';
+  canvas.style.maxWidth = '95vw';
+  ctx.scale(dpr, dpr);
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+}
+
+function drawRoundedRect(x, y, w, h, r, fill, stroke) {
+  ctx.beginPath();
+  if (ctx.roundRect) { ctx.roundRect(x, y, w, h, r); }
+  else {
+    const rad = typeof r === 'number' ? r : r[0] || 0;
+    ctx.moveTo(x + rad, y); ctx.arcTo(x + w, y, x + w, y + h, rad);
+    ctx.arcTo(x + w, y + h, x, y + h, rad); ctx.arcTo(x, y + h, x, y, rad);
+    ctx.arcTo(x, y, x + w, y, rad);
+  }
+  ctx.closePath();
+  if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+  if (stroke) { ctx.strokeStyle = stroke; ctx.stroke(); }
+}
+
+function wrapText(text, x, y, maxWidth, lineHeight) {
+  const words = text.split(' ');
+  let line = '';
+  const lines = [];
+  for (const word of words) {
+    const test = line + word + ' ';
+    if (ctx.measureText(test).width > maxWidth && line !== '') {
+      lines.push(line.trim()); line = word + ' ';
+    } else { line = test; }
+  }
+  lines.push(line.trim());
+  for (let i = 0; i < lines.length; i++) ctx.fillText(lines[i], x, y + i * lineHeight);
+  return lines.length;
+}
+
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error('Falha ao carregar: ' + src));
+    img.src = src;
+  });
+}
+
+function exportPNG(filename = 'banner-produto.png') {
+  const link = document.createElement('a');
+  link.download = filename;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+// ============================================================
+// CONFIG — Ajuste estes valores para personalizar o banner
+// ============================================================
+const CONFIG = {
+  width: 1200,
+  height: 628,
+  // Cores (paleta tech/moderna)
+  bgGradientStart: '#0f172a',
+  bgGradientEnd: '#1e293b',
+  accentColor: '#3b82f6',
+  ctaColor: '#ef4444',
+  ctaTextColor: '#ffffff',
+  headlineColor: '#ffffff',
+  subtitleColor: 'rgba(255,255,255,0.7)',
+  // Textos
+  headline: 'Produto Incrível',
+  subtitle: 'A melhor solução para o seu negócio. Resultados reais em 30 dias.',
+  ctaText: 'Comprar Agora',
+  badge: 'NOVO',
+  // Produto placeholder (retângulo colorido se sem imagem)
+  productImageUrl: '', // Deixe vazio para usar placeholder
+};
+
+// ============================================================
+// RENDER
+// ============================================================
+async function render() {
+  const { width: W, height: H } = CONFIG;
+  setupCanvas(W, H);
+
+  // 1. Background gradient
+  const bgGrad = ctx.createLinearGradient(0, 0, W, H);
+  bgGrad.addColorStop(0, CONFIG.bgGradientStart);
+  bgGrad.addColorStop(1, CONFIG.bgGradientEnd);
+  ctx.fillStyle = bgGrad;
+  ctx.fillRect(0, 0, W, H);
+
+  // 2. Accent decorativo (círculo grande semi-transparente)
+  ctx.save();
+  ctx.globalAlpha = 0.08;
+  ctx.beginPath();
+  ctx.arc(W * 0.75, H * 0.5, 320, 0, Math.PI * 2);
+  ctx.fillStyle = CONFIG.accentColor;
+  ctx.fill();
+  ctx.restore();
+
+  // 3. Área do produto (direita)
+  const prodX = W * 0.58, prodY = H * 0.12;
+  const prodW = W * 0.35, prodH = H * 0.76;
+
+  if (CONFIG.productImageUrl) {
+    try {
+      const img = await loadImage(CONFIG.productImageUrl);
+      // Drop shadow
+      ctx.save();
+      ctx.shadowColor = 'rgba(0,0,0,0.4)';
+      ctx.shadowBlur = 30;
+      ctx.shadowOffsetY = 10;
+      ctx.drawImage(img, prodX, prodY, prodW, prodH);
+      ctx.restore();
+    } catch {
+      drawProductPlaceholder(prodX, prodY, prodW, prodH);
+    }
+  } else {
+    drawProductPlaceholder(prodX, prodY, prodW, prodH);
+  }
+
+  // 4. Badge "NOVO" (topo-esquerda do produto)
+  if (CONFIG.badge) {
+    ctx.font = '700 14px system-ui, sans-serif';
+    const badgeW = ctx.measureText(CONFIG.badge).width + 20;
+    drawRoundedRect(prodX, prodY - 8, badgeW, 28, 6, CONFIG.accentColor);
+    ctx.fillStyle = '#fff';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(CONFIG.badge, prodX + badgeW / 2, prodY + 6);
+  }
+
+  // 5. Headline (esquerda) — with subtle glow
+  const textX = 80;
+  const textMaxW = W * 0.45;
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'top';
+
+  ctx.font = '900 52px system-ui, sans-serif';
+  // Glow layer
+  ctx.save();
+  ctx.shadowColor = CONFIG.accentColor + '66';
+  ctx.shadowBlur = 25;
+  ctx.fillStyle = CONFIG.headlineColor;
+  const headlineLines = wrapText(CONFIG.headline, textX, H * 0.2, textMaxW, 62);
+  ctx.restore();
+
+  // 6. Subtitle
+  const subY = H * 0.2 + headlineLines * 62 + 20;
+  ctx.font = '400 22px system-ui, sans-serif';
+  ctx.fillStyle = CONFIG.subtitleColor;
+  wrapText(CONFIG.subtitle, textX, subY, textMaxW, 32);
+
+  // 7. CTA pill
+  ctx.font = '700 20px system-ui, sans-serif';
+  const ctaMetrics = ctx.measureText(CONFIG.ctaText);
+  const ctaPadX = 32, ctaPadY = 16;
+  const ctaW = ctaMetrics.width + ctaPadX * 2;
+  const ctaH = 52;
+  const ctaX = textX;
+  const ctaY = H * 0.68;
+
+  // Sombra do CTA
+  ctx.save();
+  ctx.shadowColor = CONFIG.ctaColor + '66';
+  ctx.shadowBlur = 20;
+  ctx.shadowOffsetY = 4;
+  drawRoundedRect(ctaX, ctaY, ctaW, ctaH, 26, CONFIG.ctaColor);
+  ctx.restore();
+
+  ctx.fillStyle = CONFIG.ctaTextColor;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(CONFIG.ctaText, ctaX + ctaW / 2, ctaY + ctaH / 2);
+
+  // 8. Linha decorativa accent
+  ctx.fillStyle = CONFIG.accentColor;
+  drawRoundedRect(textX, H * 0.15, 60, 4, 2, CONFIG.accentColor);
+
+  // 9. Noise texture overlay (premium feel)
+  applyNoise(W, H, 0.05);
+
+  // 10. Vignette sutil
+  const vig = ctx.createRadialGradient(W/2, H/2, W*0.3, W/2, H/2, W*0.75);
+  vig.addColorStop(0, 'rgba(0,0,0,0)');
+  vig.addColorStop(1, 'rgba(0,0,0,0.3)');
+  ctx.fillStyle = vig;
+  ctx.fillRect(0, 0, W, H);
+}
+
+// --- Noise texture ---
+function applyNoise(w, h, opacity) {
+  const dpr = window.devicePixelRatio || 1;
+  const pw = w * dpr, ph = h * dpr;
+  const imgData = ctx.createImageData(pw, ph);
+  const d = imgData.data;
+  for (let i = 0; i < d.length; i += 4) {
+    const v = Math.random() * 255;
+    d[i] = d[i+1] = d[i+2] = v;
+    d[i+3] = opacity * 255;
+  }
+  // Need to work in pixel space for putImageData
+  ctx.save();
+  ctx.setTransform(1, 0, 0, 1, 0, 0); // reset to pixel space
+  ctx.globalCompositeOperation = 'overlay';
+  ctx.putImageData(imgData, 0, 0);
+  ctx.restore();
+}
+
+function drawProductPlaceholder(x, y, w, h) {
+  // Drop shadow
+  ctx.save();
+  ctx.shadowColor = 'rgba(0,0,0,0.4)';
+  ctx.shadowBlur = 30;
+  ctx.shadowOffsetY = 10;
+  drawRoundedRect(x, y, w, h, 16, 'rgba(255,255,255,0.05)', 'rgba(255,255,255,0.1)');
+  ctx.restore();
+
+  // Ícone placeholder
+  ctx.fillStyle = 'rgba(255,255,255,0.15)';
+  ctx.font = '400 48px system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('📦', x + w / 2, y + h / 2);
+
+  ctx.font = '400 14px system-ui, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.3)';
+  ctx.fillText('Imagem do Produto', x + w / 2, y + h / 2 + 40);
+}
+
+render();
+</script>
+</body>
+</html>
