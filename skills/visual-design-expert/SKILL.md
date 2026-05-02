@@ -1,6 +1,6 @@
 ---
 name: visual-design-expert
-description: 'Expert in visual design: Photoshop, web design, Canva, image editing, frames/borders (molduras), compositing, retouching, color correction, typography, layout, responsive design, UI/UX, branding, social media graphics. WHEN: edit image, create design, photoshop technique, web design layout, canva template, image retouching, color grading, photo manipulation, create banner, design mockup, create frame, add border, image composition, brand identity, social media post, design system, typography guide, responsive layout, UI design, create logo, photo editing tips, moldura, edição de imagem, design gráfico.'
+description: 'Expert in visual design: Photoshop, web design, Canva, image editing, frames/borders (molduras), compositing, retouching, color correction, typography, layout, responsive design, UI/UX, branding, social media graphics. Geração local de assets via sd-webdesign (https://github.com/VNCRIBEIRO1/sd-webdesign). WHEN: edit image, create design, photoshop technique, web design layout, canva template, image retouching, color grading, photo manipulation, create banner, design mockup, SD local generation, web mockup generation, hero image, OG image, device mockup, blob asset, create frame, add border, image composition, brand identity, social media post, design system, typography guide, responsive layout, UI design, create logo, photo editing tips, moldura, edição de imagem, design gráfico.'
 ---
 
 # Visual Design Expert
@@ -377,15 +377,66 @@ Subtle particle field, magenta-to-violet bokeh dots, very soft blur, dark navy
 background, edge-to-edge horizontal banner, decorative web design element --ar 21:9
 ```
 
-### Choosing SVG vs raster
+### Stable Diffusion Local — sd-webdesign
 
-| Use SVG when... | Use Midjourney/DALL·E when... |
-|---|---|
-| Element is iconic/geometric (phone, blob, avatar fallback) | Need a real human face / location / texture |
-| Performance budget is tight (< 50kB hero) | Need photorealistic depth, lighting, atmosphere |
-| Element animates (rotation, morph, color shift) | Single still hero/OG image |
-| Brand requires perfect color match | Brand allows soft variation |
-| Localizing copy inside the visual | Pure decorative imagery |
+**Repo:** https://github.com/VNCRIBEIRO1/sd-webdesign  
+Instância local de SD otimizada para assets de webdesign. Usar **sempre** antes de recorrer a Midjourney/DALL-E (sem custo por geração, sem limites de uso comercial).
+
+#### Modelos por tipo de asset
+
+| Asset | Modelo |
+|-------|--------|
+| Phone / device mockups | `dreamshaper_8.safetensors` |
+| Retratos de fundadores | `realisticVisionV60B1_v60B1VAE.safetensors` |
+| Hero illustrations SaaS | `protogenX34Photorealism_1.ckpt` |
+| Background blobs / abstratos | `deliberate_v6.safetensors` |
+
+#### Parâmetros de referência
+
+```yaml
+# Mockup de dispositivo (9:16)
+sampler: DPM++ 2M Karras | steps: 28 | cfg: 7 | w: 512 | h: 768
+hires_fix: true | upscaler: 4x-UltraSharp | denoising: 0.4
+
+# Hero fotorrealista (16:9)
+sampler: DPM++ 2M Karras | steps: 30 | cfg: 6.5 | w: 768 | h: 512
+hires_fix: true | upscaler: 4x-UltraSharp | denoising: 0.35
+
+# OG image / social card (2:1)
+sampler: DPM++ SDE Karras | steps: 25 | cfg: 7.5 | w: 1024 | h: 512
+
+# Background abstrato
+sampler: Euler a | steps: 20 | cfg: 5 | w: 512 | h: 512
+```
+
+#### ControlNet para mockups web
+
+| Preprocessor | Uso |
+|-------------|-----|
+| `canny` | Reproduzir estrutura de wireframe/sketch |
+| `depth` (MiDaS) | Manter perspectiva de referência |
+| `openpose` | Match de pose em fotos de fundadores |
+| `tile` | Upscale com detalhe (alternativa ao hires.fix) |
+| `ip-adapter` FaceID | Consistência de rosto entre gerações |
+
+#### Workflow iterativo (img2img + inpainting)
+
+1. Gerar texto → imagem com prompt completo
+2. Identificar área problemática (texto corrompido, mão distorcida)
+3. Inpainting: maskar só a área problemática, denoising 0.55–0.70
+4. **Nunca deixar texto gerado pelo SD no asset final** — sempre sobrepor HTML/CSS real
+5. Exportar → squoosh.app → WebP 80% + AVIF fallback
+
+---
+
+### Choosing SVG vs SD local vs Midjourney/DALL·E
+
+| Use SVG quando... | Use SD local (sd-webdesign) quando... | Use MJ/DALL·E quando... |
+|---|---|---|
+| Elemento é icônico/geométrico (phone frame, blob, avatar fallback) | Precisa de fotorrealismo ou textura | SD local não entregar qualidade suficiente |
+| Performance crítica (< 50kB hero) | Mockup de dispositivo com UI na tela | Imagem única e editorial de alto impacto |
+| Elemento vai animar (rotação, morph, cor) | Portrait de fundador / pessoa real | Cliente exige geração em nuvem auditável |
+| Brand exige cor exata (hex perfeito) | Hero shots, OG images, thumbnails | Variações criativas rápidas sem setup |
 
 ### Hand-off checklist for AI-generated images
 
