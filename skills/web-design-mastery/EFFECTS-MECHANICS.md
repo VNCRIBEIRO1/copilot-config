@@ -517,3 +517,4 @@ img { filter: blur(calc(var(--vel) * 0.3px)); transition: filter .1s; }
 **Tutoriais profundos**: Codrops (`tympanus.net/codrops`), CSS Tricks, Smashing Magazine, GSAP docs, Three.js Journey (Bruno Simon), motion.dev.
 
 **Inspiração curada**: awwwards.com/elements, godly.website, lapa.ninja, httpster.net, siteinspire.com.
+

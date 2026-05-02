@@ -1,17 +1,48 @@
 # Copilot Config
 
-Repositório central com **agentes, skills, prompts e instructions** customizados para GitHub Copilot. Consolida assets de múltiplos workspaces em um único catálogo unificado e auditado.
+Repositório central com **agentes, skills, prompts, instructions e chatmodes** customizados para GitHub Copilot. Consolida assets de múltiplos workspaces em um único catálogo unificado e auditado.
 
 ## Estrutura
 
 ```
 ├── agents/          # Agentes customizados (.agent.md)
+├── chatmodes/       # Chat modes do VS Code Copilot (.chatmode.md)
 ├── skills/          # Skills (SKILL.md + references/templates)
 ├── prompts/         # Prompts e instructions (user-level)
 ├── hooks/           # Copilot hooks (validação, otimização)
 ├── instructions/    # Instructions por domínio (workspace-level)
 └── copilot-instructions.md
 ```
+
+## ⚡ Instalação rápida em um projeto novo
+
+```powershell
+# Clone como subpasta do seu projeto
+git clone https://github.com/VNCRIBEIRO1/copilot-config.git .copilot-config
+
+# OU integre como sparse checkout (apenas skills + chatmodes)
+git clone --filter=blob:none --no-checkout https://github.com/VNCRIBEIRO1/copilot-config.git .copilot-config
+cd .copilot-config
+git sparse-checkout init --cone
+git sparse-checkout set skills chatmodes prompts
+git checkout consolidate/all-skills
+
+# Linkar chatmode no VS Code (Windows PowerShell)
+New-Item -ItemType Directory -Force -Path .github\chatmodes
+Copy-Item .copilot-config\chatmodes\*.chatmode.md .github\chatmodes\
+
+# Linkar skills (formato .agents/skills)
+New-Item -ItemType Directory -Force -Path .agents
+New-Item -ItemType SymbolicLink -Path .agents\skills -Target ..\.copilot-config\skills
+```
+
+> No VS Code: abra a Copilot Chat → clique no seletor de modo (canto inferior) → escolha **Webdesign Director**.
+
+## 🎨 Agente de Webdesign (chatmode)
+
+**`webdesign-director`** — Diretor criativo full-stack que roteia automaticamente para a skill correta (`web-design-mastery`, `visual-design-expert`, `frontend-design-auditor`, `nextjs-expert`, `canvas-banners`, `editorial-composer`, `image-marketing`) e usa **`sd-webdesign`** ([repo](https://github.com/VNCRIBEIRO1/sd-webdesign)) como plataforma padrão de geração de imagem. Awwwards-tier por padrão.
+
+Ver [`chatmodes/webdesign-director.chatmode.md`](chatmodes/webdesign-director.chatmode.md).
 
 ## Agentes
 

@@ -8,6 +8,22 @@ argument-hint: "Informe a URL ou cole o código HTML/Astro para auditoria. Espec
 
 Auditor sênior de front-end especializado em qualidade visual, UX, acessibilidade e performance para sites de agências, portfólios e SaaS. Emite relatórios estruturados com severidade e plano de ação.
 
+> **Referência obrigatória:** Para auditoria de efeitos/animações/microinterações contra padrão Awwwards SOTD 2024-2026, consulte [`../web-design-mastery/references/awwwards-effects-2026.md`](../web-design-mastery/references/awwwards-effects-2026.md). Contém checklist de 16 efeitos vencedores (cursor contextual, magnetic buttons, image trail, marquee skew, distortion shaders, page transitions, bento grids, aurora, audio-reactive, etc).
+
+## Critérios de auditoria Awwwards-tier (resumo)
+
+| Categoria | Critério mínimo |
+|-----------|------------------|
+| **Loading** | Não branco. Tem hero animation/progress. |
+| **Cursor** | Custom com estados contextuais (view/drag/play). |
+| **Hover** | Cada elemento clicável tem feedback (scale/color/sound). |
+| **Scroll** | Suave (Lenis). ScrollTriggers ativam revelações. |
+| **Tipografia** | Fonte variável. Split reveal em h1. Hierarquia clara. |
+| **Transições** | View Transitions API ou FLIP. Não navegação tradicional branca. |
+| **Performance** | 60fps em scroll. Lighthouse Performance > 85. |
+| **Reduced motion** | Fallback respeitado em `prefers-reduced-motion`. |
+| **Detalhes** | Easings específicos (não linear). Color stops bem definidos. |
+
 ## Procedimento de Auditoria
 
 ### Fase 1: Coleta

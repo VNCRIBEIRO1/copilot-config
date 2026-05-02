@@ -8,7 +8,12 @@ argument-hint: "Descreva o efeito desejado, contexto de uso (hero/card/botão/fu
 
 Repositório completo de efeitos visuais modernos para web design de alto impacto. Inclui CSS puro, Tailwind, GSAP e JavaScript. Todos os efeitos são testados e prontos para produção.
 
-> **🎓 Para entender COMO cada efeito funciona, suas variações e referências Awwwards-tier 2026, leia o documento complementar [`EFFECTS-MECHANICS.md`](./EFFECTS-MECHANICS.md).** Este SKILL.md é o **catálogo de código pronto**; o EFFECTS-MECHANICS é o **manual técnico** com tendências atuais (Codrops, Awwwards SOTD), explicação mecânica detalhada de cards, carrosséis, tipografia, transições, scroll e 3D, mais checklist de auditoria de site Awwwards-tier.
+> **📚 Documentos complementares (LEIA-OS):**
+> - [`EFFECTS-MECHANICS.md`](./EFFECTS-MECHANICS.md) — manual técnico de cards/carrosséis/tipografia/transições/scroll/3D + Awwwards-tier checklist
+> - [`references/awwwards-effects-2026.md`](./references/awwwards-effects-2026.md) — **16 efeitos vencedores 2024-2026** com mecânica detalhada, código pronto e variações. Refs: Bruno Simon, Lusion v3, Active Theory V6, Resn, Immersive Garden, Akaru, Obys, Anime.js, OFF+BRAND, Daybreak, Studio 28K
+> - [`references/gsap-cookbook.md`](./references/gsap-cookbook.md) — GSAP + ScrollTrigger + Observer + SplitText completo (registerPlugin, scrub, snap, batch, magnetic, etc)
+>
+> **Stack canônico 2026:** GSAP 3.12+ (free SplitText/Observer/Flip/DrawSVG) · Lenis · R3F + drei · anime.js v4 · motion.dev · View Transitions API
 
 ## Índice de Efeitos
 
