@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixelCode Studio</title>
+  <meta name="description" content="Design digital premium e engenharia front-end por Vinícius Ribeiro." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Usando Clash Display (simulada via Syne/Inter) e JetBrains Mono para o ar brutalista -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body class="loading">
+  <!-- LOADING SPLIT SCREEN -->
+  <div class="loader">
+    <div class="loader__half loader__half--top"></div>
+    <div class="loader__half loader__half--bottom"></div>
+    <div class="loader__content">
+      <div class="loader__counter">0%</div>
+    </div>
+  </div>
+
+  <!-- NOISE -->
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor">
+    <div class="cursor__text"></div>
+  </div>
+
+  <!-- WEBGL CANVAS (For Portfolio Shaders) -->
+  <div class="webgl-container">
+    <canvas id="webgl-canvas"></canvas>
+  </div>
+
+  <!-- FLOATING MAGNETIC PILL NAV -->
+  <nav class="pill-nav" id="pill-nav">
+    <a href="#hero" class="pill-nav__logo" data-magnetic>PXC</a>
+    <div class="pill-nav__links">
+      <a href="#portfolio" data-magnetic>TRABALHOS</a>
+      <a href="#about" data-magnetic>SOBRE NÓS</a>
+    </div>
+    <a href="https://wa.me/5518996311933" target="_blank" class="pill-nav__cta" data-magnetic>
+      <span class="pulse-dot"></span> ORÇAMENTO
+    </a>
+  </nav>
+
+  <main id="smooth-wrapper">
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero__wrapper">
+        <h1 class="hero__title glitch-wrapper">
+          <span class="hero__title-line glitch-text" data-text="PIXELCODE" data-scroll-speed="1.2">PIXELCODE</span>
+          <span class="hero__title-line outline" data-scroll-speed="0.8">STUDIO</span>
+        </h1>
+      </div>
+      <div class="hero__footer">
+        <div class="hero__copy">
+          <p class="hero__desc">NÃO CONSTRUÍMOS APENAS SITES.
+PROJETAMOS ATIVOS DIGITAIS IMERSIVOS
+DE ALTA PERFORMANCE PARA MARCAS QUE
+NÃO ACEITAM O PADRÃO.</p>
+          <div class="hero__tags">
+            <span class="tag-hover">AWWWARDS-TIER</span>
+            <span class="tag-hover">THREE.JS</span>
+            <span class="tag-hover">GSAP</span>
+          </div>
+        </div>
+        <div class="hero__scroll">SCROLL /</div>
+      </div>
+    </section>
+
+    <!-- BENTO GRID CARDS (Holo-Cards) -->
+    <section class="bento-section">
+      <div class="bento-header">
+        <h2 class="section-title matrix-reveal">ARSENAL TÉCNICO</h2>
+        <p class="section-subtitle">A engenharia por trás do design.</p>
+      </div>
+      
+      <div class="bento-grid">
+        <!-- Card Grande -->
+        <article class="bento-card bento-card--large" data-video-scrub>
+          <div class="bento-card__inner">
+            <div class="bento-card__video-container">
+              <video src="https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-his-laptop-34440-large.mp4" muted loop playsinline></video>
+            </div>
+            <div class="bento-card__spotlight"></div>
+            <div class="hud-corners"></div>
+            <div class="bento-card__content">
+              <span class="bento-card__tag"><span class="pulse-dot"></span> [ SYS: CORE ]</span>
+              <h3 class="hover-bug">DESENVOLVIMENTO<br/>WEB ELITE</h3>
+              <p class="matrix-reveal">Sites institucionais e plataformas que unem design cinematográfico a arquiteturas escaláveis em Next.js e Vite.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card Médio 1 -->
+        <article class="bento-card">
+          <div class="bento-card__inner">
+            <canvas class="magnetic-grid"></canvas>
+            <div class="bento-card__spotlight"></div>
+            <div class="hud-corners"></div>
+            <div class="bento-card__content">
+              <span class="bento-card__tag"><span class="pulse-dot"></span> [ SYS: WEBGL ]</span>
+              <h3 class="hover-bug">EXPERIÊNCIAS 3D</h3>
+              <p class="matrix-reveal">Integração de Three.js e shaders customizados para criar navegações imersivas incomparáveis.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card Médio 2 -->
+        <article class="bento-card">
+          <div class="bento-card__inner">
+            <div class="bento-card__spotlight"></div>
+            <div class="hud-corners"></div>
+            <div class="bento-card__content">
+              <span class="bento-card__tag"><span class="pulse-dot"></span> [ SYS: AI_DEV ]</span>
+              <h3 class="hover-bug">INTEGRAÇÃO LLM</h3>
+              <p class="matrix-reveal">Sistemas conversacionais, pipelines automatizados e chatbots usando Gemini/OpenAI API.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card Horizontal -->
+        <article class="bento-card bento-card--wide">
+          <div class="bento-card__inner">
+            <div class="bento-card__spotlight"></div>
+            <div class="hud-corners"></div>
+            <div class="bento-card__content bento-card__content--flex">
+              <div>
+                <span class="bento-card__tag"><span class="pulse-dot"></span> [ SYS: CONVERSION ]</span>
+                <h3 class="hover-bug">LANDING PAGES HIGH-TICKET</h3>
+                <p class="matrix-reveal">Estruturadas com copy agressivo e interações (GSAP/Lenis) focadas em conversão máxima.</p>
+              </div>
+              <a href="https://wa.me/5518996311933" class="btn-holo" data-cursor-text="GO">SOLICITAR ORÇAMENTO</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MARQUEE SERVICES -->
+    <section class="marquee-section">
+      <div class="marquee" data-speed="1">
+        <div class="marquee__inner">
+          <span>WEB DESIGN</span><span>—</span>
+          <span>SISTEMAS</span><span>—</span>
+          <span>IA & LLMS</span><span>—</span>
+          <span>E-COMMERCE</span><span>—</span>
+        </div>
+      </div>
+      <div class="marquee marquee--reverse" data-speed="-1">
+        <div class="marquee__inner">
+          <span class="outline">A PARTIR DE R$ 2.500</span><span>—</span>
+          <span class="outline">LANDING PAGES</span><span>—</span>
+          <span class="outline">PROMOÇÕES ATIVAS</span><span>—</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO (Typographic List + WebGL) -->
+    <section class="portfolio" id="portfolio">
+      <div class="portfolio__header">
+        <h2 class="matrix-reveal">TRABALHOS RECENTES</h2>
+      </div>
+      <ul class="portfolio__list">
+        <div class="portfolio__spine"></div>
+        <li class="portfolio__item" data-image="/showcase-1.png">
+          <div class="portfolio__branch"></div>
+          <div class="portfolio__item-border-top"></div>
+          <div class="portfolio__item-border-right"></div>
+          <div class="portfolio__item-border-bottom"></div>
+          <div class="portfolio__item-content">
+            <div class="portfolio__item-index">01</div>
+            <h3 class="portfolio__item-title hover-bug">STOCKAI STUDIO</h3>
+            <div class="portfolio__item-meta">GEMINI API / NEXT.JS</div>
+          </div>
+        </li>
+        <li class="portfolio__item" data-image="/showcase-2.png">
+          <div class="portfolio__branch"></div>
+          <div class="portfolio__item-border-top"></div>
+          <div class="portfolio__item-border-right"></div>
+          <div class="portfolio__item-border-bottom"></div>
+          <div class="portfolio__item-content">
+            <div class="portfolio__item-index">02</div>
+            <h3 class="portfolio__item-title hover-bug">PORTAL JURÍDICO</h3>
+            <div class="portfolio__item-meta">SEO / RESEND / CHATBOT</div>
+          </div>
+        </li>
+        <li class="portfolio__item" data-image="/og-image.png">
+          <div class="portfolio__branch"></div>
+          <div class="portfolio__item-border-top"></div>
+          <div class="portfolio__item-border-right"></div>
+          <div class="portfolio__item-border-bottom"></div>
+          <div class="portfolio__item-content">
+            <div class="portfolio__item-index">03</div>
+            <h3 class="portfolio__item-title hover-bug">DRA. LUCIANA</h3>
+            <div class="portfolio__item-meta">ASTRO / VERCEL / LGPD</div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ABOUT / SPLIT SCREEN -->
+    <section class="about" id="about">
+      <div class="about__split">
+        <!-- Left Side (Sticky) -->
+        <div class="about__left">
+          <div class="about__sticky">
+            <h2 class="about__number">00</h2>
+            
+            <!-- Brutalist Ticket Stack -->
+            <div class="promo-stack">
+              <!-- Tier 1: Simple -->
+              <div class="promo-ticket promo-ticket--tier1">
+                <div class="promo-ticket__header">
+                  <span class="promo-badge"><span class="pulse-dot"></span> ESSENTIAL</span>
+                  <span class="promo-id">ID: LP-SMPL</span>
+                </div>
+                <h3 class="promo-ticket__title">LANDING PAGE<br/>SIMPLES</h3>
+                <p class="ticket-desc">FOCADA EM PERFORMANCE</p>
+                <div class="promo-ticket__price-box">
+                  <p class="price">R$ 399,00</p>
+                </div>
+                <div class="promo-ticket__footer">
+                  <span class="promo-barcode">| |||| | ||</span>
+                </div>
+              </div>
+
+              <!-- Tier 3: Systems (Behind) -->
+              <div class="promo-ticket promo-ticket--tier3">
+                <div class="promo-ticket__header">
+                  <span class="promo-badge"><span class="pulse-dot"></span> ENTERPRISE</span>
+                  <span class="promo-id">ID: SYS-CRM</span>
+                </div>
+                <h3 class="promo-ticket__title">SISTEMAS &<br/>MOBILE</h3>
+                <p class="ticket-desc">APP / CRM / DASHBOARD</p>
+                <div class="promo-ticket__price-box">
+                  <p class="strike">SOB CONSULTA</p>
+                  <p class="price">R$ 2.000+</p>
+                </div>
+                <div class="promo-ticket__footer">
+                  <span class="promo-barcode">|| ||| ||| |</span>
+                </div>
+              </div>
+
+              <!-- Tier 2: Premium (Front) -->
+              <div class="promo-ticket promo-ticket--tier2">
+                <div class="promo-ticket__header">
+                  <span class="promo-badge"><span class="pulse-dot"></span> VAGAS LIMITADAS</span>
+                  <span class="promo-id">ID: PXC-992</span>
+                </div>
+                <h3 class="promo-ticket__title">LANDING PAGE<br/>PREMIUM</h3>
+                <p class="ticket-desc">+ THREE.JS / GSAP / IMERSÃO</p>
+                <div class="promo-ticket__price-box">
+                  <p class="strike">DE: R$ 2.500</p>
+                  <p class="price">R$ 999,00</p>
+                </div>
+                <div class="promo-ticket__footer">
+                  <a href="https://wa.me/5518996311933" class="btn-holo" data-cursor-text="RESERVAR">RESERVAR VAGA</a>
+                  <span class="promo-barcode">||| |||| || ||| |</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Side (Scrollable) -->
+        <div class="about__right">
+          <p class="huge-text matrix-reveal">VENDEMOS EXPERIÊNCIA.</p>
+          <div class="about__bio">
+            <p class="small-text matrix-reveal">Sou Vinícius Ribeiro, Full Stack Developer e fundador da PixelCode Studio.</p>
+            <br/>
+            <p class="small-text matrix-reveal">Minha missão é entregar engenharia de ponta e design imersivo que transforma visitantes em clientes de alto ticket. Cada pixel é planejado para retenção absoluta e conversão.</p>
+            <br/>
+            <p class="small-text matrix-reveal">Não usamos templates. Construímos ativos digitais exclusivos em arquiteturas escaláveis (Next.js/Vite/Three.js) para marcas que não aceitam o padrão e exigem o máximo de performance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE ACCORDION / PROCESS -->
+    <section class="process-section" id="process">
+      <div class="bento-header">
+        <h2 class="section-title matrix-reveal">O FLUXO DE TRABALHO</h2>
+        <p class="section-subtitle">Engenharia reversa do sucesso.</p>
+      </div>
+      
+      <div class="accordion">
+        <div class="accordion__item" data-cursor-text="EXPANDIR">
+          <div class="accordion__header">
+            <span><span class="process-num hover-bug">01.</span> <span class="matrix-reveal">DISCOVERY</span></span>
+            <span class="icon">+</span>
+          </div>
+          <div class="accordion__content">
+            <p class="matrix-reveal">Mergulho profundo no seu negócio. Não escrevemos uma linha de código antes de entender sua oferta, público e as métricas exatas que definem o sucesso do seu projeto (KPIs).</p>
+          </div>
+        </div>
+        
+        <div class="accordion__item" data-cursor-text="EXPANDIR">
+          <div class="accordion__header">
+            <span><span class="process-num hover-bug">02.</span> <span class="matrix-reveal">DESIGN SYSTEM</span></span>
+            <span class="icon">+</span>
+          </div>
+          <div class="accordion__content">
+            <p class="matrix-reveal">Esboço da arquitetura visual focada em conversão. Criamos wireframes brutalistas e desenhamos interações que fogem dos templates comuns, focando 100% em retenção de atenção.</p>
+          </div>
+        </div>
+
+        <div class="accordion__item" data-cursor-text="EXPANDIR">
+          <div class="accordion__header">
+            <span><span class="process-num hover-bug">03.</span> <span class="matrix-reveal">WEBGL & GSAP</span></span>
+            <span class="icon">+</span>
+          </div>
+          <div class="accordion__content">
+            <p class="matrix-reveal">A mágica acontece. Injetamos shaders em Three.js e coreografias físicas em GSAP para criar transições cinematográficas impossíveis de serem ignoradas.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- O elemento fantasma que segue o cursor -->
+      <div class="hover-reveal"></div>
+    </section>
+
+    <!-- FOOTER / CONTACT / LIQUID EFFECT -->
+    <footer class="footer" id="contact">
+      <!-- Filtro SVG Oculto -->
+      <svg style="display: none;">
+        <defs>
+          <filter id="liquid-filter">
+            <feTurbulence type="fractalNoise" baseFrequency="0" numOctaves="1" result="warp" id="feTurbulence"></feTurbulence>
+            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="40" in="SourceGraphic" in2="warp"></feDisplacementMap>
+          </filter>
+        </defs>
+      </svg>
+      
+      <div class="footer__big-text" data-cursor-text="CLICK" id="liquid-text">VAMOS<br/>CRIAR.</div>
+      <div class="footer__bottom">
+        <div class="footer__col">
+          <span>PIXELCODE STUDIO LTDA</span>
+          <span>CNPJ 66.257.657/0001-47</span>
+        </div>
+        <div class="footer__col">
+          <a href="mailto:contato@pixelcodestudio.com.br" class="hover-line">EMAIL</a>
+          <a href="https://wa.me/5518996311933" class="hover-line">WHATSAPP</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Shaders na tag script para facilitar acesso no JS -->
+  <script id="vertexShader" type="x-shader/x-vertex">
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  </script>
+
+  <script id="fragmentShader" type="x-shader/x-fragment">
+    uniform sampler2D tDiffuse;
+    uniform vec2 uMouse;
+    uniform float uTime;
+    uniform float uHoverState;
+    varying vec2 vUv;
+    
+    void main() {
+      vec2 uv = vUv;
+      
+      // Distorção Ripple baseada no mouse
+      float dist = distance(uv, uMouse);
+      float ripple = sin(dist * 20.0 - uTime * 5.0) * 0.02 * uHoverState;
+      uv += ripple;
+      
+      // Aberração Cromática Sutil
+      float r = texture2D(tDiffuse, uv + vec2(0.005 * uHoverState, 0.0)).r;
+      float g = texture2D(tDiffuse, uv).g;
+      float b = texture2D(tDiffuse, uv - vec2(0.005 * uHoverState, 0.0)).b;
+      
+      vec4 finalColor = vec4(r, g, b, 1.0);
+      gl_FragColor = finalColor;
+    }
+  </script>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
