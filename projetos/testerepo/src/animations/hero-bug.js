@@ -182,9 +182,29 @@ export class HeroBugger {
     this.stopBugLoop();
     this.stopScrambleLoop();
   }
+
+  async erase() {
+    this.stopBreathingLoop();
+    await this.formText(true);
+  }
 }
 
-export async function initHeroBug() {
+let activeBuggers = [];
+let loopActive = true;
+
+export async function exitHeroTitle() {
+  loopActive = false;
+  const promises = activeBuggers.map(b => b.erase());
+  await Promise.all(promises);
+}
+
+export function resetHeroTitle() {
+  loopActive = true;
+  // This will be picked up when initHeroBug is called again or if the loop is still alive
+}
+
+export async function initHeroBug(options = {}) {
+  const { initialDelay = 300 } = options;
   const lines = document.querySelectorAll('.hero__title-line');
   if (!lines.length) return;
 
@@ -196,15 +216,17 @@ export async function initHeroBug() {
     line.innerHTML = ''; 
   });
 
-  await new Promise(r => setTimeout(r, 1500));
+  await new Promise(r => setTimeout(r, initialDelay));
 
   // Instancia com alwaysBugStyle = true para a linha STUDIO
-  const buggers = Array.from(lines).map((line, index) => {
+  activeBuggers = Array.from(lines).map((line, index) => {
     return new HeroBugger(line, index === 1);
   });
+  
+  const buggers = activeBuggers;
 
   while(true) {
-    // 1. Forma o texto Sequencialmente
+    // 1. Forma o texto Sequencialmente (PIXELCODE depois STUDIO)
     await buggers[0].formText(false);
     if(buggers[1]) await buggers[1].formText(false);
     
@@ -216,6 +238,8 @@ export async function initHeroBug() {
     
     buggers[0].stopBugLoop();
     if(buggers[1]) buggers[1].stopBreathingLoop(); // Trava a respiração para apagar
+    
+    if (!loopActive) break; // Check if we should exit the loop
     
     // 3. Desfaz o texto Simultaneamente para que nenhuma palavra fique sozinha
     const erasePromises = [buggers[0].formText(true)];

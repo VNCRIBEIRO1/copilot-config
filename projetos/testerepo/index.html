@@ -14,12 +14,22 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 </head>
 <body class="loading">
-  <!-- LOADING SPLIT SCREEN -->
-  <div class="loader">
-    <div class="loader__half loader__half--top"></div>
-    <div class="loader__half loader__half--bottom"></div>
-    <div class="loader__content">
+  <!-- LOADING COMMAND PANEL -->
+  <div class="loader" role="status" aria-live="polite">
+    <div class="loader__panel">
+      <div class="loader__scanline"></div>
+      <div class="loader__label">ORBITAL BOOT PANEL</div>
       <div class="loader__counter">0%</div>
+      <div class="loader__bar" aria-hidden="true">
+        <div class="loader__bar-fill"></div>
+      </div>
+      <div class="loader__telemetry">SINCRONIZANDO PAINEL ORBITAL</div>
+      <div class="loader__grid">
+        <span>MEMORY</span>
+        <span>SHADER</span>
+        <span>GSAP</span>
+        <span>MATRIX</span>
+      </div>
     </div>
   </div>
 
@@ -28,12 +38,6 @@
   <div class="tv-frame"></div>
 
   <!-- CUSTOM CURSOR -->
-  <!-- SYSTEM WIREFRAME OVERLAY (For Slide Transitions) -->
-  <div class="system-overlay">
-    <div class="system-overlay__grid"></div>
-    <div class="system-overlay__scanner"></div>
-  </div>
-
   <div class="cursor">
     <div class="cursor__text"></div>
   </div>
@@ -83,26 +87,24 @@
           <span class="hero__title-line outline" data-scroll-speed="0.8">STUDIO</span>
         </h1>
         <div class="hero__copy hero__copy--centered">
-          <p class="hero__desc">NÃO CONSTRUÍMOS APENAS SITES. PROJETAMOS ATIVOS DIGITAIS IMERSIVOS DE ALTA PERFORMANCE PARA MARCAS QUE NÃO ACEITAM O PADRÃO.</p>
+          <p id="hero-dynamic-text" class="hero__desc matrix-reveal" data-text="NÃO CONSTRUÍMOS APENAS SITES.">NÃO CONSTRUÍMOS APENAS SITES.</p>
         </div>
-      </div>
-      <div class="hero__footer">
-        <div class="hero__boot">
-          <button id="boot-system" class="btn-holo" data-cursor-text="BOOT">BOOT SYSTEM</button>
+        <div class="hero__actions" style="margin-top: 2rem; opacity: 0; pointer-events: none;">
+          <button id="continue-to-arsenal" class="btn-continue">CONTINUE</button>
         </div>
       </div>
     </section>
 
     <!-- BENTO GRID CARDS (Holo-Cards) -->
-    <section class="bento-section" data-slide="1">
-      <div class="bento-header">
+    <section class="bento section-safe" data-slide="1">
+      <div class="section-header section-header--left">
         <h2 class="section-title matrix-reveal">ARSENAL TÉCNICO</h2>
-        <p class="section-subtitle">A engenharia por trás do design.</p>
+        <p class="section-subtitle matrix-reveal">A engenharia por trás do design.</p>
       </div>
       
-      <div class="bento-grid">
-        <!-- Card Grande -->
-        <article class="bento-card bento-card--large" data-video-scrub>
+      <div class="bento__grid">
+        <!-- Card 1: Web Elite -->
+        <article class="bento-card" data-video-scrub>
           <div class="bento-card__inner">
             <div class="bento-card__video-container">
               <video src="https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-his-laptop-34440-large.mp4" muted loop playsinline></video>
@@ -111,13 +113,13 @@
             <div class="hud-corners"></div>
             <div class="bento-card__content">
               <span class="bento-card__tag"><span class="pulse-dot"></span> [ SYS: CORE ]</span>
-              <h3 class="hover-bug">DESENVOLVIMENTO<br/>WEB ELITE</h3>
-              <p class="matrix-reveal">Sites institucionais e plataformas que unem design cinematográfico a arquiteturas escaláveis em Next.js e Vite.</p>
+              <h3 class="hover-bug">DESENVOLVIMENTO<BR/>WEB ELITE</h3>
+              <p class="matrix-reveal">Plataformas escaláveis em Next.js e Vite.</p>
             </div>
           </div>
         </article>
 
-        <!-- Card Médio 1 -->
+        <!-- Card 2: 3D Experiences -->
         <article class="bento-card">
           <div class="bento-card__inner">
             <canvas class="magnetic-grid"></canvas>
@@ -126,12 +128,12 @@
             <div class="bento-card__content">
               <span class="bento-card__tag"><span class="pulse-dot"></span> [ SYS: WEBGL ]</span>
               <h3 class="hover-bug">EXPERIÊNCIAS 3D</h3>
-              <p class="matrix-reveal">Integração de Three.js e shaders customizados para criar navegações imersivas incomparáveis.</p>
+              <p class="matrix-reveal">Imersão total com Three.js.</p>
             </div>
           </div>
         </article>
 
-        <!-- Card Médio 2 -->
+        <!-- Card 3: AI/LLM -->
         <article class="bento-card">
           <div class="bento-card__inner">
             <div class="bento-card__spotlight"></div>
@@ -139,23 +141,33 @@
             <div class="bento-card__content">
               <span class="bento-card__tag"><span class="pulse-dot"></span> [ SYS: AI_DEV ]</span>
               <h3 class="hover-bug">INTEGRAÇÃO LLM</h3>
-              <p class="matrix-reveal">Sistemas conversacionais, pipelines automatizados e chatbots usando Gemini/OpenAI API.</p>
+              <p class="matrix-reveal">Inteligência Gemini & OpenAI.</p>
             </div>
           </div>
         </article>
 
-        <!-- Card Horizontal -->
-        <article class="bento-card bento-card--wide">
+        <!-- Card 4: Mobile Elite -->
+        <article class="bento-card">
           <div class="bento-card__inner">
             <div class="bento-card__spotlight"></div>
             <div class="hud-corners"></div>
-            <div class="bento-card__content bento-card__content--flex">
-              <div>
-                <span class="bento-card__tag"><span class="pulse-dot"></span> [ SYS: CONVERSION ]</span>
-                <h3 class="hover-bug">LANDING PAGES HIGH-TICKET</h3>
-                <p class="matrix-reveal">Estruturadas com copy agressivo e interações (GSAP/Lenis) focadas em conversão máxima.</p>
-              </div>
-              <a href="https://wa.me/5518996311933" class="btn-holo" data-cursor-text="GO">SOLICITAR ORÇAMENTO</a>
+            <div class="bento-card__content">
+              <span class="bento-card__tag"><span class="pulse-dot"></span> [ SYS: MOBILE ]</span>
+              <h3 class="hover-bug">MOBILE ELITE</h3>
+              <p class="matrix-reveal">Apps nativos de alta performance.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5: Landing Pages -->
+        <article class="bento-card">
+          <div class="bento-card__inner">
+            <div class="bento-card__spotlight"></div>
+            <div class="hud-corners"></div>
+            <div class="bento-card__content">
+              <span class="bento-card__tag"><span class="pulse-dot"></span> [ SYS: CONVERSION ]</span>
+              <h3 class="hover-bug">LANDING PAGES</h3>
+              <p class="matrix-reveal">Focadas em conversão máxima.</p>
             </div>
           </div>
         </article>

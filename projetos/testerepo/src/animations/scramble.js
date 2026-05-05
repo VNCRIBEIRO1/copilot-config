@@ -77,27 +77,39 @@ export function initHackerText() {
   const el = document.querySelector('.hero__desc');
   if (!el) return;
 
-  const originalText = el.innerText.trim();
+  const phrases = [
+    "NÃO CONSTRUÍMOS APENAS SITES. PROJETAMOS ATIVOS DIGITAIS DE ALTO IMPACTO.",
+    "ENGENHARIA FRONT-END DE ELITE E DESIGN BRUTALISTA PARA MARCAS QUE EXIGEM O MÁXIMO.",
+    "IMERSÃO TOTAL EM THREE.JS E GSAP. ONDE A ESTÉTICA ENCONTRA A PERFORMANCE BRUTA.",
+    "SISTEMAS ESCALÁVEIS E EXPERIÊNCIAS CINEMATOGRÁFICAS PARA O NOVO PADRÃO WEB."
+  ];
+
   const scrambler = new ScrambleText(el);
-  
-  // Limpa o texto inicialmente para começar com o efeito
   el.innerText = '';
 
   let isRunning = true;
+  let counter = 0;
 
   const loop = async () => {
     while (isRunning) {
+      const phrase = phrases[counter % phrases.length];
+      
       // 1. Escreve a frase hackeando
-      await scrambler.setText(originalText);
-      // 2. Fica um tempo parada para leitura
-      await new Promise(r => setTimeout(r, 4000));
+      await scrambler.setText(phrase);
+      
+      // 2. Fica um tempo parada para leitura (proporcional ao tamanho da frase)
+      const readTime = Math.max(3000, phrase.length * 50); 
+      await new Promise(r => setTimeout(r, readTime));
+      
       // 3. Hackeia a frase de volta pro nada (apaga)
       await scrambler.setText('');
+      
       // 4. Pausa dramática apagada
-      await new Promise(r => setTimeout(r, 1000));
+      await new Promise(r => setTimeout(r, 800));
+      
+      counter++;
     }
   };
 
-  // Só inicia depois de um tempinho pra não conflitar com a tela de loading
   setTimeout(loop, 2000);
 }

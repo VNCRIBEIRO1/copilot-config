@@ -1,5 +1,20 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { exitHeroTitle, resetHeroTitle, initHeroBug } from './hero-bug.js';
+import {
+  decodeMatrixReveals,
+  eraseMatrixReveals,
+  hideArsenalContent,
+  resetArsenalContent,
+  revealArsenalContent,
+} from './arsenal-sequence.js';
+
+const HERO_INITIAL_TEXT = 'NÃO CONSTRUÍMOS APENAS SITES.';
+const HERO_FINAL_TEXT = 'PROJETAMOS ATIVOS DIGITAIS IMERSIVOS DE ALTA PERFORMANCE PARA MARCAS QUE NÃO ACEITAM O PADRÃO';
+
+function wait(ms) {
+  return ms > 0 ? new Promise(resolve => setTimeout(resolve, ms)) : Promise.resolve();
+}
 
 export function initGSAP() {
   gsap.registerPlugin(ScrollTrigger);
@@ -11,15 +26,18 @@ export function initGSAP() {
   const playPauseBtn = document.getElementById('play-pause-btn');
   const currentNum = document.getElementById('nav-current');
   const totalNum = document.getElementById('nav-total');
-  const bootBtn = document.getElementById('boot-system');
   
   let currentIndex = 0;
   let isAnimating = false;
   let isAutoplay = false;
   let autoplayTimer = null;
-  let scanFromTop = true; // Flag for alternating scan direction
 
   if (totalNum) totalNum.innerText = String(slides.length).padStart(2, '0');
+
+  const continueBtn = document.getElementById('continue-to-arsenal');
+  window.addEventListener('app:loader-complete', () => {
+    if (slides[0]) revealSlideContent(slides[0]);
+  }, { once: true });
 
   function updateNavUI() {
     if (currentNum) currentNum.innerText = String(currentIndex + 1).padStart(2, '0');
@@ -32,7 +50,7 @@ export function initGSAP() {
     }
   }
 
-  function transitionTo(index) {
+  async function transitionTo(index) {
     if (isAnimating || index === currentIndex || index < 0 || index >= slides.length) {
       if (isAutoplay && index >= slides.length) toggleAutoplay(false); // Stop at end
       return;
@@ -43,117 +61,150 @@ export function initGSAP() {
 
     const currentSection = slides[currentIndex];
     const nextSection = slides[index];
-    const overlay = document.querySelector('.system-overlay');
-    const scanner = document.querySelector('.system-overlay__scanner');
 
-    const tl = gsap.timeline({
-      onComplete: () => {
-        currentSection.classList.remove('active');
-        nextSection.classList.add('active');
-        currentIndex = index;
-        isAnimating = false;
-        scanFromTop = !scanFromTop; 
-        updateNavUI();
-        
-        // Trigger Matrix reveal on new section
-        const reveals = nextSection.querySelectorAll('.matrix-reveal');
-        reveals.forEach(el => {
-          if (el._matrixReveal) el._matrixReveal.decode();
-        });
-        
-        // Trigger Bugger boot on new section
-        const buggers = nextSection.querySelectorAll('.hover-bug');
-        buggers.forEach(el => {
-          if (el._hoverBugger) el._hoverBugger.boot();
-        });
+    try {
+      await cleanupSlideContent(currentSection);
+      await wait(220);
+      prepareSlideContent(nextSection);
 
-        // REVEAL INTERNAL CONTENT
-        revealSlideContent(nextSection);
+      currentSection.classList.remove('active');
+      nextSection.classList.add('active');
 
-        // Autoplay next after delay
-        if (isAutoplay) {
-          autoplayTimer = setTimeout(() => {
-            transitionTo(currentIndex + 1);
-          }, 4000); 
-        }
-      }
-    });
-
-    function revealSlideContent(section) {
-      const type = section.getAttribute('data-slide');
-      
-      // Reveal all generic contents first
-      gsap.to(section.querySelectorAll('.portfolio__item-content, .footer__big-text, .small-text, .promo-ticket'), {
+      gsap.set(currentSection, {
+        opacity: 0,
+        pointerEvents: 'none',
+        scale: 1,
+        filter: 'none',
+        clearProps: 'clipPath',
+      });
+      gsap.set(nextSection, {
         opacity: 1,
-        y: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power2.out"
+        pointerEvents: 'auto',
+        scale: 1,
+        filter: 'none',
+        clearProps: 'clipPath',
       });
 
-      // ARSENAL TECNICO (Type 1) - SLIDE IN FROM CORNERS
-      if (type === "1") {
-        gsap.to(section.querySelectorAll('.bento-card'), {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          stagger: 0.05,
-          duration: 1.2,
-          ease: "expo.out"
-        });
-      }
+      currentIndex = index;
+      updateNavUI();
 
-      // Special handling for Portfolio (Wireframe draw)
-      if (type === "2") {
-        gsap.to(section.querySelectorAll('.portfolio__spine, .portfolio__branch, .portfolio__item-border-top, .portfolio__item-border-right, .portfolio__item-border-bottom'), {
-          scaleX: 1,
-          scaleY: 1,
-          stagger: 0.05,
-          duration: 0.5,
-          ease: "power2.out"
-        });
+      await revealSlideContent(nextSection);
+    } finally {
+      isAnimating = false;
+      updateNavUI();
+
+      if (isAutoplay) {
+        autoplayTimer = setTimeout(() => {
+          transitionTo(currentIndex + 1);
+        }, 4000);
       }
     }
+  }
 
-    // --- TRANSITION PARAMETERS ---
-    const startScan = scanFromTop ? "0%" : "100%";
-    const endScan = scanFromTop ? "100%" : "0%";
+  function prepareSlideContent(section) {
+    if (section.getAttribute('data-slide') === '1') {
+      resetArsenalContent(section, gsap);
+    }
+  }
+
+  async function revealSlideContent(section) {
+    const type = section.getAttribute('data-slide');
     
-    // Initial States
-    tl.set(overlay, { opacity: 1 });
-    tl.set(scanner, { top: startScan });
-    tl.set(nextSection, { 
-      opacity: 1, 
-      pointerEvents: "auto",
-      filter: "blur(20px) brightness(2)",
-      clipPath: scanFromTop ? "inset(0% 0% 100% 0%)" : "inset(100% 0% 0% 0%)"
+    if (type === '0') {
+      await revealHeroContent(section);
+      return;
+    }
+
+    const revealTargets = section.querySelectorAll('.portfolio__item-content, .footer__big-text, .small-text, .promo-ticket, .hero__title, .hero__copy, .hero__actions, .hero__tags');
+    if (revealTargets.length) {
+      gsap.to(revealTargets, {
+        opacity: 1,
+        y: 0,
+        filter: 'none',
+        stagger: 0.1,
+        duration: 0.8,
+        ease: 'power2.out',
+      });
+    }
+
+    const buggers = section.querySelectorAll('.hover-bug');
+    buggers.forEach(el => {
+      if (el._hoverBugger) el._hoverBugger.boot();
     });
-    tl.set(currentSection, { clipPath: "inset(0% 0% 0% 0%)" });
 
-    // SLOW FADE OUT HERO (If moving from Hero)
-    if (currentIndex === 0) {
-      tl.to(currentSection.querySelectorAll('.hero__title, .hero__copy'), {
+    if (type === '1') {
+      await revealArsenalContent(section, gsap);
+      return;
+    }
+
+    await decodeMatrixReveals(section);
+  }
+
+  async function cleanupSlideContent(section) {
+    const type = section.getAttribute('data-slide');
+
+    if (type === '0') {
+      await hideHeroContent(section);
+    }
+
+    if (type === '1') {
+      await hideArsenalContent(section, gsap);
+    }
+  }
+
+  async function revealHeroContent(section) {
+    resetHeroTitle();
+
+    const copy = section.querySelector('.hero__copy');
+    const actions = section.querySelector('.hero__actions');
+    const text = section.querySelector('#hero-dynamic-text');
+
+    if (copy) gsap.set(copy, { opacity: 1, y: 0, filter: 'none' });
+    if (actions) gsap.set(actions, { opacity: 0, pointerEvents: 'none', y: 0 });
+
+    initHeroBug({ initialDelay: 250 });
+
+    if (text?._matrixReveal) {
+      text._matrixReveal.setText(HERO_INITIAL_TEXT, true);
+      text.setAttribute('data-text', HERO_INITIAL_TEXT);
+      await text._matrixReveal.decode();
+      await wait(650);
+      await text._matrixReveal.erase();
+      text._matrixReveal.setText(HERO_FINAL_TEXT, true);
+      text.setAttribute('data-text', HERO_FINAL_TEXT);
+      await text._matrixReveal.decode();
+    } else if (text) {
+      text.innerText = HERO_FINAL_TEXT;
+    }
+
+    if (actions) {
+      gsap.to(actions, {
+        opacity: 1,
+        pointerEvents: 'auto',
+        duration: 0.8,
+        ease: 'power2.out',
+      });
+    }
+  }
+
+  async function hideHeroContent(section) {
+    const exitTargets = section.querySelectorAll('.hero__actions');
+    if (exitTargets.length) {
+      gsap.to(exitTargets, {
         opacity: 0,
-        scale: 0.95,
-        duration: 1.2,
-        ease: "power2.in"
-      }, 0);
+        duration: 0.35,
+        stagger: 0.05,
+        ease: 'power2.in',
+      });
     }
 
-    // Parallel Animation
-    tl.to(scanner, { top: endScan, duration: 1.5, ease: "power2.inOut" }, 0);
-    
-    if (scanFromTop) {
-      // Top to Bottom
-      tl.to(currentSection, { clipPath: "inset(100% 0% 0% 0%)", duration: 1.5, ease: "power2.inOut" }, 0);
-      tl.to(nextSection, { clipPath: "inset(0% 0% 0% 0%)", filter: "blur(0px) brightness(1)", duration: 1.5, ease: "power2.inOut" }, 0);
-    } else {
-      // Bottom to Top
-      tl.to(currentSection, { clipPath: "inset(0% 0% 100% 0%)", duration: 1.5, ease: "power2.inOut" }, 0);
-      tl.to(nextSection, { clipPath: "inset(0% 0% 0% 0%)", filter: "blur(0px) brightness(1)", duration: 1.5, ease: "power2.inOut" }, 0);
-    }
+    await Promise.all([
+      exitHeroTitle(),
+      eraseMatrixReveals(section),
+    ]);
 
-    tl.to(overlay, { opacity: 0, duration: 0.5 });
+    const copy = section.querySelector('.hero__copy');
+    if (copy) gsap.set(copy, { opacity: 0 });
   }
 
   function toggleAutoplay(val) {
@@ -169,7 +220,7 @@ export function initGSAP() {
   // Bind Controls
   if (nextBtn) nextBtn.addEventListener('click', () => { toggleAutoplay(false); transitionTo(currentIndex + 1); });
   if (prevBtn) prevBtn.addEventListener('click', () => { toggleAutoplay(false); transitionTo(currentIndex - 1); });
-  if (bootBtn) bootBtn.addEventListener('click', () => { toggleAutoplay(false); transitionTo(1); });
+  if (continueBtn) continueBtn.addEventListener('click', () => { toggleAutoplay(false); transitionTo(1); });
   if (playPauseBtn) playPauseBtn.addEventListener('click', () => toggleAutoplay());
 
   // Keyboard Navigation
@@ -181,7 +232,7 @@ export function initGSAP() {
   // Initialize first section
   if (slides.length) {
     slides[0].classList.add('active');
-    gsap.set(slides[0], { opacity: 1, pointerEvents: "auto", clipPath: "inset(0% 0% 0% 0%)" });
+    gsap.set(slides[0], { opacity: 1, pointerEvents: "auto", scale: 1, filter: "none" });
     updateNavUI();
   }
 
