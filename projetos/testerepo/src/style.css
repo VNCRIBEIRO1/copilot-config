@@ -518,19 +518,23 @@ section {
 .about__sticky {
   position: sticky;
   top: 6rem; /* Offset for pill-nav */
-  height: calc(100vh - 10rem);
+  height: auto;
+  min-height: fit-content;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 3rem;
+  padding-bottom: 4rem;
 }
 
 .about__number {
   font-family: var(--font-display);
-  font-size: 15vw;
+  font-size: 12vw;
   line-height: 1;
   color: var(--accent);
-  opacity: 0.2; /* Increased from 0.1 */
+  opacity: 0.15; /* Subtle but visible */
   margin: 0;
+  padding-bottom: 2rem;
   pointer-events: none;
   -webkit-text-stroke: 1px var(--accent);
 }
@@ -539,9 +543,11 @@ section {
 .promo-stack {
   position: relative;
   width: 100%;
-  max-width: 380px; /* Slightly narrower */
-  height: 480px;
-  margin-top: 1rem;
+  max-width: 380px;
+  height: auto;
+  min-height: 520px;
+  margin-top: 2rem;
+  perspective: 1200px;
 }
 
 .promo-ticket {
@@ -553,9 +559,13 @@ section {
   top: 0;
   left: 0;
   width: 100%;
+  min-height: 450px;
   box-shadow: 10px 10px 0 rgba(0, 255, 255, 0.2);
   transition: all 0.5s var(--curve);
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Tier Specific Stack Order */
@@ -666,19 +676,22 @@ section {
 
 /* RIGHT SIDE (Scrollable Content) */
 .about__right {
-  padding: 4rem 2rem 10rem;
+  padding: 6rem 3rem 10rem;
   display: flex;
   flex-direction: column;
-  gap: 6rem;
+  gap: 4rem;
+  justify-content: flex-start;
+  min-height: 100vh;
 }
 
 .huge-text {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 7vw, 10rem); /* Significantly reduced from 15vw */
+  font-size: clamp(2.5rem, 6.5vw, 9rem); /* More responsive */
   font-weight: 800;
-  line-height: 1;
+  line-height: 1.1;
   margin-bottom: 2rem;
   text-transform: uppercase;
+  max-width: 90%;
 }
 
 .about__bio {
@@ -700,22 +713,40 @@ section {
   .about__left {
     border-right: none;
     border-bottom: 1px solid var(--accent);
-    padding: 2rem;
+    padding: 3rem 2rem;
   }
   .about__sticky {
     position: relative;
     top: 0;
     height: auto;
+    min-height: auto;
     gap: 4rem;
+    padding-bottom: 2rem;
   }
   .about__number {
-    font-size: 40vw;
+    font-size: 24vw;
+    opacity: 0.12;
   }
   .huge-text {
-    font-size: 20vw;
+    font-size: 5vw;
   }
   .about__bio {
     max-width: 100%;
+  }
+  .promo-stack {
+    max-width: 100%;
+    min-height: auto;
+  }
+  .promo-ticket {
+    min-height: auto;
+    position: relative !important;
+    transform: none !important;
+    margin-bottom: 2rem;
+  }
+  .promo-stack:hover .promo-ticket--tier1,
+  .promo-stack:hover .promo-ticket--tier2,
+  .promo-stack:hover .promo-ticket--tier3 {
+    transform: none !important;
   }
 }
 
