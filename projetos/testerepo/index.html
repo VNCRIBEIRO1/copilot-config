@@ -25,8 +25,15 @@
 
   <!-- NOISE -->
   <div class="noise" aria-hidden="true"></div>
+  <div class="tv-frame"></div>
 
   <!-- CUSTOM CURSOR -->
+  <!-- SYSTEM WIREFRAME OVERLAY (For Slide Transitions) -->
+  <div class="system-overlay">
+    <div class="system-overlay__grid"></div>
+    <div class="system-overlay__scanner"></div>
+  </div>
+
   <div class="cursor">
     <div class="cursor__text"></div>
   </div>
@@ -36,45 +43,58 @@
     <canvas id="webgl-canvas"></canvas>
   </div>
 
-  <!-- FLOATING MAGNETIC PILL NAV -->
-  <nav class="pill-nav" id="pill-nav">
-    <a href="#hero" class="pill-nav__logo" data-magnetic>PXC</a>
-    <div class="pill-nav__links">
-      <a href="#portfolio" data-magnetic>TRABALHOS</a>
-      <a href="#about" data-magnetic>SOBRE NÓS</a>
+  <!-- CINEMATIC TV HUD (Fixed Navigation) -->
+  <div class="tv-hud">
+    <div class="tv-hud__left">
+      <div class="hero__tags">
+        <span class="tag-hover">AWWWARDS-TIER</span>
+        <span class="tag-hover">THREE.JS</span>
+        <span class="tag-hover">GSAP</span>
+      </div>
     </div>
-    <a href="https://wa.me/5518996311933" target="_blank" class="pill-nav__cta" data-magnetic>
-      <span class="pulse-dot"></span> ORÇAMENTO
-    </a>
-  </nav>
+    
+    <div class="tv-hud__center">
+      <button id="play-pause-btn" class="hud-btn" data-cursor-text="PLAY">
+        <span class="hud-btn__icon">PLAY</span>
+      </button>
+      <div class="nav-status">
+        <span id="nav-current">01</span> / <span id="nav-total">06</span>
+      </div>
+    </div>
+
+    <div class="tv-hud__right">
+      <button id="prev-btn" class="nav-btn" data-cursor-text="PREV" disabled>
+        <span class="nav-btn__icon">←</span>
+      </button>
+      <button id="next-btn" class="nav-btn" data-cursor-text="NEXT">
+        <span class="nav-btn__icon">→</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- FLOATING MAGNETIC PILL NAV -->
 
   <main id="smooth-wrapper">
     <!-- HERO -->
-    <section class="hero" id="hero">
+    <section class="hero" id="hero" data-slide="0">
       <div class="hero__wrapper">
         <h1 class="hero__title glitch-wrapper">
           <span class="hero__title-line glitch-text" data-text="PIXELCODE" data-scroll-speed="1.2">PIXELCODE</span>
           <span class="hero__title-line outline" data-scroll-speed="0.8">STUDIO</span>
         </h1>
+        <div class="hero__copy hero__copy--centered">
+          <p class="hero__desc">NÃO CONSTRUÍMOS APENAS SITES. PROJETAMOS ATIVOS DIGITAIS IMERSIVOS DE ALTA PERFORMANCE PARA MARCAS QUE NÃO ACEITAM O PADRÃO.</p>
+        </div>
       </div>
       <div class="hero__footer">
-        <div class="hero__copy">
-          <p class="hero__desc">NÃO CONSTRUÍMOS APENAS SITES.
-PROJETAMOS ATIVOS DIGITAIS IMERSIVOS
-DE ALTA PERFORMANCE PARA MARCAS QUE
-NÃO ACEITAM O PADRÃO.</p>
-          <div class="hero__tags">
-            <span class="tag-hover">AWWWARDS-TIER</span>
-            <span class="tag-hover">THREE.JS</span>
-            <span class="tag-hover">GSAP</span>
-          </div>
+        <div class="hero__boot">
+          <button id="boot-system" class="btn-holo" data-cursor-text="BOOT">BOOT SYSTEM</button>
         </div>
-        <div class="hero__scroll">SCROLL /</div>
       </div>
     </section>
 
     <!-- BENTO GRID CARDS (Holo-Cards) -->
-    <section class="bento-section">
+    <section class="bento-section" data-slide="1">
       <div class="bento-header">
         <h2 class="section-title matrix-reveal">ARSENAL TÉCNICO</h2>
         <p class="section-subtitle">A engenharia por trás do design.</p>
@@ -161,8 +181,8 @@ NÃO ACEITAM O PADRÃO.</p>
       </div>
     </section>
 
-    <!-- PORTFOLIO (Typographic List + WebGL) -->
-    <section class="portfolio" id="portfolio">
+    <!-- WIREFRAME REVEAL (PORTFOLIO) -->
+    <section class="portfolio" id="portfolio" data-slide="2">
       <div class="portfolio__header">
         <h2 class="matrix-reveal">TRABALHOS RECENTES</h2>
       </div>
@@ -204,8 +224,8 @@ NÃO ACEITAM O PADRÃO.</p>
       </ul>
     </section>
 
-    <!-- ABOUT / SPLIT SCREEN -->
-    <section class="about" id="about">
+    <!-- ABOUT SECTION (SPLIT SCREEN) -->
+    <section class="about" id="about" data-slide="3">
       <div class="about__split">
         <!-- Left Side (Sticky) -->
         <div class="about__left">
@@ -282,8 +302,8 @@ NÃO ACEITAM O PADRÃO.</p>
       </div>
     </section>
 
-    <!-- INTERACTIVE ACCORDION / PROCESS -->
-    <section class="process-section" id="process">
+    <!-- INTERACTIVE ACCORDION (Process) -->
+    <section class="process-section" id="process" data-slide="4">
       <div class="bento-header">
         <h2 class="section-title matrix-reveal">O FLUXO DE TRABALHO</h2>
         <p class="section-subtitle">Engenharia reversa do sucesso.</p>
@@ -326,7 +346,7 @@ NÃO ACEITAM O PADRÃO.</p>
     </section>
 
     <!-- FOOTER / CONTACT / LIQUID EFFECT -->
-    <footer class="footer" id="contact">
+    <footer class="footer" id="contact" data-slide="5">
       <!-- Filtro SVG Oculto -->
       <svg style="display: none;">
         <defs>

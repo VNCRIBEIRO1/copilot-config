@@ -17,7 +17,7 @@ async function initApp() {
   // Acessibilidade: respeita quem odeia muita animação
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  initLenis();
+  // initLenis(); // Disabled for Slide Mode Test
   initGSAP();
   initCursor();
   initAccordion();
