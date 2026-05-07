@@ -3,12 +3,13 @@ import { initLenis } from './utils/lenis-init.js';
 import { initGSAP } from './animations/gsap-init.js';
 import { initCursor } from './animations/cursor.js';
 import { initWebGLShader } from './three/image-shader.js';
-import { initAccordion } from './animations/accordion.js';
 import { initHoverBugs } from './animations/hover-bug.js';
 import { initScrollMatrix } from './animations/scroll-matrix.js';
 import { initCards } from './animations/cards.js';
 import { initMagneticGrids } from './animations/magnetic-grid.js';
 import { initVideoScrub } from './animations/video-scrub.js';
+import { initFolderStack } from './animations/folder-stack.js';
+import { initContactMagnet } from './animations/contact-magnet.js';
 
 function wait(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -102,12 +103,20 @@ async function initApp() {
   // initLenis(); // Disabled for Slide Mode Test
   initGSAP();
   initCursor();
-  initAccordion();
   initHoverBugs();
   initScrollMatrix();
   initCards();
   initMagneticGrids();
   initVideoScrub();
+
+  // Folder system (P4) — auto-rotate paused; gsap-init resumes when slide active
+  document.querySelectorAll('[data-folder-rotation]').forEach(root => {
+    const api = initFolderStack(root);
+    if (api) api.pause();
+  });
+
+  // Contact cinematic (P6)
+  initContactMagnet();
 
   if (!prefersReducedMotion) {
     initWebGLShader();

@@ -194,9 +194,10 @@
     </section>
 
     <!-- WIREFRAME REVEAL (PORTFOLIO) -->
-    <section class="portfolio" id="portfolio" data-slide="2">
+    <section class="portfolio section-safe" id="portfolio" data-slide="2">
       <div class="portfolio__header">
         <h2 class="matrix-reveal">TRABALHOS RECENTES</h2>
+        <span class="portfolio__header-meta matrix-reveal">// BLUEPRINT_MODE :: 03 ATIVOS</span>
       </div>
       <ul class="portfolio__list">
         <div class="portfolio__spine"></div>
@@ -205,6 +206,14 @@
           <div class="portfolio__item-border-top"></div>
           <div class="portfolio__item-border-right"></div>
           <div class="portfolio__item-border-bottom"></div>
+          <span class="wf-grid-overlay" aria-hidden="true"></span>
+          <span class="wf-node wf-node--tl">+</span>
+          <span class="wf-node wf-node--tr">+</span>
+          <span class="wf-node wf-node--bl">+</span>
+          <span class="wf-node wf-node--br">+</span>
+          <span class="wf-dim wf-dim--h">1440 × 900</span>
+          <span class="wf-dim wf-dim--v">PERF 98</span>
+          <span class="wf-callout">[ 01 / WEB APP — DELIVERED 2025 ]</span>
           <div class="portfolio__item-content">
             <div class="portfolio__item-index">01</div>
             <h3 class="portfolio__item-title hover-bug">STOCKAI STUDIO</h3>
@@ -216,6 +225,14 @@
           <div class="portfolio__item-border-top"></div>
           <div class="portfolio__item-border-right"></div>
           <div class="portfolio__item-border-bottom"></div>
+          <span class="wf-grid-overlay" aria-hidden="true"></span>
+          <span class="wf-node wf-node--tl">+</span>
+          <span class="wf-node wf-node--tr">+</span>
+          <span class="wf-node wf-node--bl">+</span>
+          <span class="wf-node wf-node--br">+</span>
+          <span class="wf-dim wf-dim--h">1280 × 720</span>
+          <span class="wf-dim wf-dim--v">SEO 100</span>
+          <span class="wf-callout">[ 02 / PORTAL — DELIVERED 2025 ]</span>
           <div class="portfolio__item-content">
             <div class="portfolio__item-index">02</div>
             <h3 class="portfolio__item-title hover-bug">PORTAL JURÍDICO</h3>
@@ -227,6 +244,14 @@
           <div class="portfolio__item-border-top"></div>
           <div class="portfolio__item-border-right"></div>
           <div class="portfolio__item-border-bottom"></div>
+          <span class="wf-grid-overlay" aria-hidden="true"></span>
+          <span class="wf-node wf-node--tl">+</span>
+          <span class="wf-node wf-node--tr">+</span>
+          <span class="wf-node wf-node--bl">+</span>
+          <span class="wf-node wf-node--br">+</span>
+          <span class="wf-dim wf-dim--h">1920 × 1080</span>
+          <span class="wf-dim wf-dim--v">LCP 1.1s</span>
+          <span class="wf-callout">[ 03 / LANDING — DELIVERED 2024 ]</span>
           <div class="portfolio__item-content">
             <div class="portfolio__item-index">03</div>
             <h3 class="portfolio__item-title hover-bug">DRA. LUCIANA</h3>
@@ -236,151 +261,238 @@
       </ul>
     </section>
 
-    <!-- ABOUT SECTION (SPLIT SCREEN) -->
-    <section class="about" id="about" data-slide="3">
-      <div class="about__split">
-        <!-- Left Side (Sticky) -->
-        <div class="about__left">
-          <div class="about__sticky">
-            <h2 class="about__number">00</h2>
-            
-            <!-- Brutalist Ticket Stack -->
-            <div class="promo-stack">
-              <!-- Tier 1: Simple -->
-              <div class="promo-ticket promo-ticket--tier1">
-                <div class="promo-ticket__header">
-                  <span class="promo-badge"><span class="pulse-dot"></span> ESSENTIAL</span>
-                  <span class="promo-id">ID: LP-SMPL</span>
-                </div>
-                <h3 class="promo-ticket__title">LANDING PAGE<br/>SIMPLES</h3>
-                <p class="ticket-desc">FOCADA EM PERFORMANCE</p>
-                <div class="promo-ticket__price-box">
-                  <p class="price">R$ 399,00</p>
-                </div>
-                <div class="promo-ticket__footer">
-                  <span class="promo-barcode">| |||| | ||</span>
-                </div>
-              </div>
+    <!-- ABOUT — FOLDER SYSTEM (auto-rotate + manual select) -->
+    <section class="folders-section section-safe" id="about" data-slide="3">
+      <div class="folders-section__header">
+        <h2 class="section-title matrix-reveal">QUEM SOMOS</h2>
+        <p class="section-subtitle matrix-reveal">Vendemos experiência. Entregamos resultado.</p>
+      </div>
+      <div class="folders" data-folder-rotation>
+        <article class="folder folder--active" data-folder-index="0" style="--tab-offset: 0">
+          <div class="folder__tab" data-folder-target="0">
+            <span class="folder__tab-index">01</span>
+            <span class="folder__tab-label">SOBRE</span>
+          </div>
+          <div class="folder__body">
+            <div class="folder__lead">
+              <span class="folder__eyebrow">// IDENTIDADE</span>
+              <h3 class="folder__title">VENDEMOS<br/>EXPERIÊNCIA.</h3>
+            </div>
+            <div class="folder__content">
+              <p>Sou <strong>Vinícius Ribeiro</strong>, Full Stack Developer e fundador da PixelCode Studio. Construímos ativos digitais exclusivos para marcas que não aceitam o padrão.</p>
+              <p>Cada pixel é planejado para retenção absoluta e conversão. Engenharia de ponta + design imersivo, sem templates.</p>
+            </div>
+            <div class="folder__meta">
+              <span>CNPJ 66.257.657/0001-47</span>
+              <span>contato@pixelcodestudio.com.br</span>
+            </div>
+          </div>
+        </article>
 
-              <!-- Tier 3: Systems (Behind) -->
-              <div class="promo-ticket promo-ticket--tier3">
-                <div class="promo-ticket__header">
-                  <span class="promo-badge"><span class="pulse-dot"></span> ENTERPRISE</span>
-                  <span class="promo-id">ID: SYS-CRM</span>
-                </div>
-                <h3 class="promo-ticket__title">SISTEMAS &<br/>MOBILE</h3>
-                <p class="ticket-desc">APP / CRM / DASHBOARD</p>
-                <div class="promo-ticket__price-box">
-                  <p class="strike">SOB CONSULTA</p>
-                  <p class="price">R$ 2.000+</p>
-                </div>
-                <div class="promo-ticket__footer">
-                  <span class="promo-barcode">|| ||| ||| |</span>
-                </div>
-              </div>
+        <article class="folder" data-folder-index="1" style="--tab-offset: 1">
+          <div class="folder__tab" data-folder-target="1">
+            <span class="folder__tab-index">02</span>
+            <span class="folder__tab-label">STACK</span>
+          </div>
+          <div class="folder__body">
+            <div class="folder__lead">
+              <span class="folder__eyebrow">// ENGENHARIA</span>
+              <h3 class="folder__title">STACK<br/>CIRÚRGICA.</h3>
+            </div>
+            <div class="folder__chips">
+              <span class="folder__chip">NEXT.JS</span>
+              <span class="folder__chip">VITE</span>
+              <span class="folder__chip">THREE.JS</span>
+              <span class="folder__chip">GSAP</span>
+              <span class="folder__chip">GEMINI</span>
+              <span class="folder__chip">OPENAI</span>
+              <span class="folder__chip">RESEND</span>
+              <span class="folder__chip">VERCEL</span>
+              <span class="folder__chip">SUPABASE</span>
+              <span class="folder__chip">TAILWIND</span>
+            </div>
+            <div class="folder__meta">
+              <span>WEBGL · SHADERS · AI · SSR</span>
+            </div>
+          </div>
+        </article>
 
-              <!-- Tier 2: Premium (Front) -->
-              <div class="promo-ticket promo-ticket--tier2">
-                <div class="promo-ticket__header">
-                  <span class="promo-badge"><span class="pulse-dot"></span> VAGAS LIMITADAS</span>
-                  <span class="promo-id">ID: PXC-992</span>
-                </div>
-                <h3 class="promo-ticket__title">LANDING PAGE<br/>PREMIUM</h3>
-                <p class="ticket-desc">+ THREE.JS / GSAP / IMERSÃO</p>
-                <div class="promo-ticket__price-box">
-                  <p class="strike">DE: R$ 2.500</p>
-                  <p class="price">R$ 999,00</p>
-                </div>
-                <div class="promo-ticket__footer">
-                  <a href="https://wa.me/5518996311933" class="btn-holo" data-cursor-text="RESERVAR">RESERVAR VAGA</a>
-                  <span class="promo-barcode">||| |||| || ||| |</span>
-                </div>
+        <article class="folder" data-folder-index="2" style="--tab-offset: 2">
+          <div class="folder__tab" data-folder-target="2">
+            <span class="folder__tab-index">03</span>
+            <span class="folder__tab-label">NÚMEROS</span>
+          </div>
+          <div class="folder__body">
+            <div class="folder__lead">
+              <span class="folder__eyebrow">// MÉTRICAS</span>
+              <h3 class="folder__title">DADOS,<br/>NÃO PROMESSAS.</h3>
+            </div>
+            <div class="folder__stats">
+              <div class="folder__stat">
+                <span class="folder__stat-value">98<small>/100</small></span>
+                <span class="folder__stat-label">LIGHTHOUSE PERF MÉDIO</span>
+              </div>
+              <div class="folder__stat">
+                <span class="folder__stat-value">1.1<small>s</small></span>
+                <span class="folder__stat-label">LCP MÉDIO</span>
+              </div>
+              <div class="folder__stat">
+                <span class="folder__stat-value">42<small>+</small></span>
+                <span class="folder__stat-label">PROJETOS ENTREGUES</span>
+              </div>
+              <div class="folder__stat">
+                <span class="folder__stat-value">7<small>anos</small></span>
+                <span class="folder__stat-label">CÓDIGO EM PRODUÇÃO</span>
               </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Right Side (Scrollable) -->
-        <div class="about__right">
-          <p class="huge-text matrix-reveal">VENDEMOS EXPERIÊNCIA.</p>
-          <div class="about__bio">
-            <p class="small-text matrix-reveal">Sou Vinícius Ribeiro, Full Stack Developer e fundador da PixelCode Studio.</p>
-            <br/>
-            <p class="small-text matrix-reveal">Minha missão é entregar engenharia de ponta e design imersivo que transforma visitantes em clientes de alto ticket. Cada pixel é planejado para retenção absoluta e conversão.</p>
-            <br/>
-            <p class="small-text matrix-reveal">Não usamos templates. Construímos ativos digitais exclusivos em arquiteturas escaláveis (Next.js/Vite/Three.js) para marcas que não aceitam o padrão e exigem o máximo de performance.</p>
+        </article>
+
+        <article class="folder" data-folder-index="3" style="--tab-offset: 3">
+          <div class="folder__tab" data-folder-target="3">
+            <span class="folder__tab-index">04</span>
+            <span class="folder__tab-label">DIFERENCIAL</span>
           </div>
-        </div>
+          <div class="folder__body">
+            <div class="folder__lead">
+              <span class="folder__eyebrow">// POR QUE NÓS</span>
+              <h3 class="folder__title">FORA DO<br/>PADRÃO.</h3>
+            </div>
+            <ul class="folder__bullets">
+              <li><strong>PERFORMANCE PRIMEIRO.</strong> Cada KB e cada frame são auditados antes de entregar.</li>
+              <li><strong>ESTÉTICA AWWWARDS-TIER.</strong> Não construímos sites; coreografamos experiências.</li>
+              <li><strong>CÓDIGO LIMPO E ESCALÁVEL.</strong> Arquiteturas que crescem com a marca, sem dívida técnica.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <nav class="folders__dots" aria-label="Seleção manual de pasta">
+        <button type="button" class="folders__dot is-active" data-folder-target="0" aria-label="01 — Sobre"></button>
+        <button type="button" class="folders__dot" data-folder-target="1" aria-label="02 — Stack"></button>
+        <button type="button" class="folders__dot" data-folder-target="2" aria-label="03 — Números"></button>
+        <button type="button" class="folders__dot" data-folder-target="3" aria-label="04 — Diferencial"></button>
+      </nav>
+    </section>
+
+    <!-- PROCESS PIPELINE (Development Process) -->
+    <section class="process-pipeline-section section-safe" id="process" data-slide="4">
+      <div class="section-header section-header--left">
+        <h2 class="section-title matrix-reveal">PROCESSO DE DESENVOLVIMENTO</h2>
+        <p class="section-subtitle matrix-reveal">// FROM_BRIEFING_TO_PRODUCTION :: 5 ETAPAS</p>
+      </div>
+
+      <div class="process-pipeline">
+        <article class="process-step" data-step="1">
+          <span class="process-step__index">01</span>
+          <div class="process-step__body">
+            <h3 class="process-step__title hover-bug">DISCOVERY</h3>
+            <p class="process-step__desc">Briefing profundo, análise de concorrência, definição de KPIs e objetivos de negócio.</p>
+            <span class="process-step__deliverable">DOC. ESTRATÉGICO</span>
+          </div>
+          <span class="process-step__duration">~3 DIAS</span>
+          <svg class="process-step__arrow" viewBox="0 0 60 24" aria-hidden="true">
+            <path d="M0 12 L48 12 M40 4 L48 12 L40 20" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </article>
+
+        <article class="process-step" data-step="2">
+          <span class="process-step__index">02</span>
+          <div class="process-step__body">
+            <h3 class="process-step__title hover-bug">ARQUITETURA</h3>
+            <p class="process-step__desc">Wireframes brutalistas, fluxo de usuário, escolha de stack e infraestrutura.</p>
+            <span class="process-step__deliverable">WIREFRAMES + STACK</span>
+          </div>
+          <span class="process-step__duration">~5 DIAS</span>
+          <svg class="process-step__arrow" viewBox="0 0 60 24" aria-hidden="true">
+            <path d="M0 12 L48 12 M40 4 L48 12 L40 20" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </article>
+
+        <article class="process-step" data-step="3">
+          <span class="process-step__index">03</span>
+          <div class="process-step__body">
+            <h3 class="process-step__title hover-bug">DESIGN SYSTEM</h3>
+            <p class="process-step__desc">Tokens, componentes, prototipação interativa, microinterações e validação visual.</p>
+            <span class="process-step__deliverable">UI KIT + PROTÓTIPO</span>
+          </div>
+          <span class="process-step__duration">~7 DIAS</span>
+          <svg class="process-step__arrow" viewBox="0 0 60 24" aria-hidden="true">
+            <path d="M0 12 L48 12 M40 4 L48 12 L40 20" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </article>
+
+        <article class="process-step" data-step="4">
+          <span class="process-step__index">04</span>
+          <div class="process-step__body">
+            <h3 class="process-step__title hover-bug">DEV &amp; WEBGL</h3>
+            <p class="process-step__desc">Implementação Next.js / Vite, shaders Three.js, coreografias GSAP, integrações com IA.</p>
+            <span class="process-step__deliverable">BUILD COMPLETO</span>
+          </div>
+          <span class="process-step__duration">~14 DIAS</span>
+          <svg class="process-step__arrow" viewBox="0 0 60 24" aria-hidden="true">
+            <path d="M0 12 L48 12 M40 4 L48 12 L40 20" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </article>
+
+        <article class="process-step" data-step="5">
+          <span class="process-step__index">05</span>
+          <div class="process-step__body">
+            <h3 class="process-step__title hover-bug">DEPLOY &amp; MONITOR</h3>
+            <p class="process-step__desc">Auditoria de performance, SEO, analytics, monitoramento e handoff técnico.</p>
+            <span class="process-step__deliverable">PRODUÇÃO + DASH</span>
+          </div>
+          <span class="process-step__duration">~3 DIAS</span>
+        </article>
       </div>
     </section>
 
-    <!-- INTERACTIVE ACCORDION (Process) -->
-    <section class="process-section" id="process" data-slide="4">
-      <div class="bento-header">
-        <h2 class="section-title matrix-reveal">O FLUXO DE TRABALHO</h2>
-        <p class="section-subtitle">Engenharia reversa do sucesso.</p>
-      </div>
-      
-      <div class="accordion">
-        <div class="accordion__item" data-cursor-text="EXPANDIR">
-          <div class="accordion__header">
-            <span><span class="process-num hover-bug">01.</span> <span class="matrix-reveal">DISCOVERY</span></span>
-            <span class="icon">+</span>
-          </div>
-          <div class="accordion__content">
-            <p class="matrix-reveal">Mergulho profundo no seu negócio. Não escrevemos uma linha de código antes de entender sua oferta, público e as métricas exatas que definem o sucesso do seu projeto (KPIs).</p>
-          </div>
-        </div>
-        
-        <div class="accordion__item" data-cursor-text="EXPANDIR">
-          <div class="accordion__header">
-            <span><span class="process-num hover-bug">02.</span> <span class="matrix-reveal">DESIGN SYSTEM</span></span>
-            <span class="icon">+</span>
-          </div>
-          <div class="accordion__content">
-            <p class="matrix-reveal">Esboço da arquitetura visual focada em conversão. Criamos wireframes brutalistas e desenhamos interações que fogem dos templates comuns, focando 100% em retenção de atenção.</p>
-          </div>
-        </div>
-
-        <div class="accordion__item" data-cursor-text="EXPANDIR">
-          <div class="accordion__header">
-            <span><span class="process-num hover-bug">03.</span> <span class="matrix-reveal">WEBGL & GSAP</span></span>
-            <span class="icon">+</span>
-          </div>
-          <div class="accordion__content">
-            <p class="matrix-reveal">A mágica acontece. Injetamos shaders em Three.js e coreografias físicas em GSAP para criar transições cinematográficas impossíveis de serem ignoradas.</p>
-          </div>
-        </div>
-      </div>
-      
-      <!-- O elemento fantasma que segue o cursor -->
-      <div class="hover-reveal"></div>
-    </section>
-
-    <!-- FOOTER / CONTACT / LIQUID EFFECT -->
-    <footer class="footer" id="contact" data-slide="5">
-      <!-- Filtro SVG Oculto -->
-      <svg style="display: none;">
+    <!-- CONTACT — CINEMATIC FULL-SCREEN CTA -->
+    <section class="contact-cinema" id="contact" data-slide="5">
+      <!-- Filtro SVG Líquido -->
+      <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
         <defs>
           <filter id="liquid-filter">
-            <feTurbulence type="fractalNoise" baseFrequency="0" numOctaves="1" result="warp" id="feTurbulence"></feTurbulence>
-            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="40" in="SourceGraphic" in2="warp"></feDisplacementMap>
+            <feTurbulence type="fractalNoise" baseFrequency="0" numOctaves="2" result="warp" id="feTurbulence"></feTurbulence>
+            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="35" in="SourceGraphic" in2="warp"></feDisplacementMap>
           </filter>
         </defs>
       </svg>
-      
-      <div class="footer__big-text" data-cursor-text="CLICK" id="liquid-text">VAMOS<br/>CRIAR.</div>
-      <div class="footer__bottom">
-        <div class="footer__col">
-          <span>PIXELCODE STUDIO LTDA</span>
-          <span>CNPJ 66.257.657/0001-47</span>
-        </div>
-        <div class="footer__col">
-          <a href="mailto:contato@pixelcodestudio.com.br" class="hover-line">EMAIL</a>
-          <a href="https://wa.me/5518996311933" class="hover-line">WHATSAPP</a>
-        </div>
+
+      <canvas class="contact-particles" aria-hidden="true"></canvas>
+
+      <div class="contact-cinema__inner">
+        <p class="contact-cinema__eyebrow matrix-reveal">[ TRANSMISSÃO FINAL ]</p>
+        <h2 class="contact-cinema__title">
+          <span class="contact-cinema__word">VAMOS</span>
+          <span class="contact-cinema__word contact-cinema__word--liquid" id="liquid-text">CRIAR</span>
+          <span class="contact-cinema__word">ALGO ÚNICO</span>
+        </h2>
+        <p class="contact-cinema__lead matrix-reveal">Toda obra-prima começa com uma conversa. Chame agora e vamos engenheirar seu próximo ativo digital.</p>
+
+        <a class="contact-cta" data-magnetic data-cursor-text="WHATSAPP"
+           href="https://wa.me/5518996311933?text=Ol%C3%A1%20Vinicius%2C%20vim%20pelo%20site%20da%20PixelCode%20Studio%20e%20quero%20iniciar%20um%20projeto."
+           target="_blank" rel="noopener">
+          <span class="contact-cta__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="28" height="28">
+              <path fill="currentColor" d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.7 1.9 6.6L4 29l7.6-2c1.8 1 3.9 1.5 6 1.5h.4c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.7h-.3c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-4.5 1.2 1.2-4.4-.3-.4c-1-1.6-1.6-3.5-1.6-5.5 0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10.7-9 10.7zm5.5-7.6c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.7 4.4 3.8 1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.3-.6-.4z"/>
+            </svg>
+          </span>
+          <span class="contact-cta__label">CHAMAR NO WHATSAPP</span>
+          <span class="contact-cta__number">+55 18 99631-1933</span>
+        </a>
+
+        <footer class="contact-cinema__meta">
+          <div class="contact-cinema__meta-col">
+            <span>VINICIUS RIBEIRO · PIXELCODE STUDIO</span>
+            <span>CNPJ 66.257.657/0001-47</span>
+          </div>
+          <div class="contact-cinema__meta-col contact-cinema__meta-col--right">
+            <a href="mailto:contato@pixelcodestudio.com.br" class="hover-line">contato@pixelcodestudio.com.br</a>
+            <span>FIM DA TRANSMISSÃO ◼</span>
+          </div>
+        </footer>
       </div>
-    </footer>
+    </section>
   </main>
 
   <!-- Shaders na tag script para facilitar acesso no JS -->

@@ -8,6 +8,10 @@ import {
   resetArsenalContent,
   revealArsenalContent,
 } from './arsenal-sequence.js';
+import { revealWireframeContent, hideWireframeContent, resetWireframeContent } from './wireframe-build.js';
+import { revealFolders, hideFolders } from './folder-stack.js';
+import { revealProcessPipeline, hideProcessPipeline, resetProcessPipeline } from './process-pipeline.js';
+import { revealContactCinema, hideContactCinema } from './contact-magnet.js';
 
 const HERO_INITIAL_TEXT = 'NÃO CONSTRUÍMOS APENAS SITES.';
 const HERO_FINAL_TEXT = 'PROJETAMOS ATIVOS DIGITAIS IMERSIVOS DE ALTA PERFORMANCE PARA MARCAS QUE NÃO ACEITAM O PADRÃO';
@@ -102,29 +106,18 @@ export function initGSAP() {
   }
 
   function prepareSlideContent(section) {
-    if (section.getAttribute('data-slide') === '1') {
-      resetArsenalContent(section, gsap);
-    }
+    const type = section.getAttribute('data-slide');
+    if (type === '1') resetArsenalContent(section, gsap);
+    if (type === '2') resetWireframeContent(section);
+    if (type === '4') resetProcessPipeline(section);
   }
 
   async function revealSlideContent(section) {
     const type = section.getAttribute('data-slide');
-    
+
     if (type === '0') {
       await revealHeroContent(section);
       return;
-    }
-
-    const revealTargets = section.querySelectorAll('.portfolio__item-content, .footer__big-text, .small-text, .promo-ticket, .hero__title, .hero__copy, .hero__actions, .hero__tags');
-    if (revealTargets.length) {
-      gsap.to(revealTargets, {
-        opacity: 1,
-        y: 0,
-        filter: 'none',
-        stagger: 0.1,
-        duration: 0.8,
-        ease: 'power2.out',
-      });
     }
 
     const buggers = section.querySelectorAll('.hover-bug');
@@ -137,19 +130,41 @@ export function initGSAP() {
       return;
     }
 
+    if (type === '2') {
+      await revealWireframeContent(section);
+      return;
+    }
+
+    if (type === '3') {
+      await decodeMatrixReveals(section.querySelector('.folders-section__header'));
+      await revealFolders(section);
+      return;
+    }
+
+    if (type === '4') {
+      await revealProcessPipeline(section);
+      return;
+    }
+
+    if (type === '5') {
+      await revealContactCinema(section);
+      return;
+    }
+
     await decodeMatrixReveals(section);
   }
 
   async function cleanupSlideContent(section) {
     const type = section.getAttribute('data-slide');
 
-    if (type === '0') {
-      await hideHeroContent(section);
-    }
+    if (type === '0') return hideHeroContent(section);
+    if (type === '1') return hideArsenalContent(section, gsap);
+    if (type === '2') return hideWireframeContent(section);
+    if (type === '3') return hideFolders(section);
+    if (type === '4') return hideProcessPipeline(section);
+    if (type === '5') return hideContactCinema(section);
 
-    if (type === '1') {
-      await hideArsenalContent(section, gsap);
-    }
+    await eraseMatrixReveals(section);
   }
 
   async function revealHeroContent(section) {
@@ -237,19 +252,6 @@ export function initGSAP() {
   }
 
   // --- GLOBAL EFFECTS ---
-  const liquidText = document.getElementById('liquid-text');
-  const feTurbulence = document.getElementById('feTurbulence');
-  
-  if(liquidText && feTurbulence) {
-    liquidText.style.filter = 'url(#liquid-filter)';
-    liquidText.addEventListener('mouseenter', () => {
-      gsap.to(feTurbulence, { attr: { baseFrequency: 0.04 }, duration: 0.5, ease: "power2.out" });
-    });
-    liquidText.addEventListener('mouseleave', () => {
-      gsap.to(feTurbulence, { attr: { baseFrequency: 0 }, duration: 1, ease: "elastic.out(1, 0.3)" });
-    });
-  }
-
   const marquees = document.querySelectorAll('.marquee');
   marquees.forEach(marquee => {
     const speed = parseFloat(marquee.getAttribute('data-speed')) || 1;
