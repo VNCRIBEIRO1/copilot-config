@@ -28,7 +28,7 @@ export function initGSAP() {
   const slides = document.querySelectorAll('[data-slide]');
   const nextBtn = document.getElementById('next-btn');
   const prevBtn = document.getElementById('prev-btn');
-  const slideNav = document.getElementById('slide-nav');
+  const slideCounter = document.getElementById('slide-nav');
   const currentNum = document.getElementById('nav-current');
   const totalNum = document.getElementById('nav-total');
 
@@ -37,10 +37,14 @@ export function initGSAP() {
   const isAutoplay = false;
 
   function showSlideNav() {
-    if (slideNav) slideNav.classList.add('is-ready');
+    if (nextBtn) nextBtn.classList.add('is-ready');
+    if (prevBtn) prevBtn.classList.add('is-ready');
+    if (slideCounter) slideCounter.classList.add('is-ready');
   }
   function hideSlideNav() {
-    if (slideNav) slideNav.classList.remove('is-ready');
+    if (nextBtn) nextBtn.classList.remove('is-ready');
+    if (prevBtn) prevBtn.classList.remove('is-ready');
+    if (slideCounter) slideCounter.classList.remove('is-ready');
   }
 
   if (totalNum) totalNum.innerText = String(slides.length).padStart(2, '0');
@@ -108,6 +112,12 @@ export function initGSAP() {
     const type = section.getAttribute('data-slide');
     if (type === '1') resetArsenalContent(section, gsap);
     if (type === '2') resetWireframeContent(section);
+    if (type === '3') {
+      // Limpa estilos inline e força repaint dos tickets/panes
+      section.querySelectorAll('.ticket, .pricing-pane').forEach(el => {
+        gsap.set(el, { clearProps: 'all' });
+      });
+    }
     if (type === '4') resetProcessPipeline(section);
   }
 
