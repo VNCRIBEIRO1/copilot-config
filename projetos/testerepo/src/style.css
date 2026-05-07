@@ -191,80 +191,47 @@ body::after {
   z-index: 9997;
 }
 
-/* TV HUD CONTROLS */
-.tv-hud {
+/* SLIDE NAV (continue-style, floating) */
+.slide-nav {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background: rgba(0, 0, 0, 0.9);
-  border-top: 1px solid var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 4rem;
-  z-index: 10000;
-  backdrop-filter: blur(20px);
-}
-
-.tv-hud__left, .tv-hud__center, .tv-hud__right {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.tv-hud__center {
-  position: absolute;
+  bottom: clamp(2rem, 4vh, 3rem);
   left: 50%;
-  transform: translateX(-50%);
-}
-
-.hud-btn {
-  background: var(--fg);
-  color: var(--bg);
-  border: none;
-  padding: 0.5rem 2rem;
-  border-radius: 50px;
-  font-family: var(--font-display);
-  font-weight: 800;
-  cursor: pointer;
-  transition: all 0.3s var(--curve);
-}
-
-.hud-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-}
-
-.hud-btn.is-playing {
-  background: var(--accent-cyan);
-  color: var(--bg);
-}
-
-.nav-status {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9rem;
-  color: var(--accent);
-}
-
-.nav-btn {
-  background: none;
-  border: 1px solid var(--accent);
-  color: var(--accent);
-  width: 40px;
-  height: 40px;
+  transform: translateX(-50%) translateY(20px);
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s var(--curve);
+  gap: 1rem;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s var(--curve), transform 0.5s var(--curve);
 }
 
-.nav-btn:hover:not(:disabled) {
-  background: var(--accent);
-  color: var(--bg);
+.slide-nav.is-ready {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
 }
+
+.slide-nav__btn {
+  font-size: 0.75rem !important;
+  padding: 0.7rem 1.6rem !important;
+  letter-spacing: 3px !important;
+}
+
+.slide-nav__btn:disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.slide-nav__counter {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  letter-spacing: 0.15em;
+  padding: 0 0.5rem;
+}
+
+.play-pause-btn { display: none !important; }
 
 .hero__wrapper {
   display: flex;
@@ -1626,6 +1593,119 @@ section {
 }
 
 /* ═══════════════════════════════════════════
+   BENTO CARDS — extra "alive" layers
+   ═══════════════════════════════════════════ */
+
+.bento-card__matrix-rain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.25;
+  background-image:
+    linear-gradient(180deg, transparent 0%, rgba(0,229,255,0.18) 50%, transparent 100%),
+    repeating-linear-gradient(0deg, rgba(0,229,255,0.08) 0px, transparent 2px, transparent 4px);
+  background-size: 100% 200%, 100% 4px;
+  animation: matrixRain 6s linear infinite;
+}
+
+.bento-card:hover .bento-card__matrix-rain { opacity: 0.55; }
+
+@keyframes matrixRain {
+  0% { background-position: 0% 0%, 0 0; }
+  100% { background-position: 0% 200%, 0 0; }
+}
+
+.bento-card__device {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+}
+
+.bento-card:hover .bento-card__device { opacity: 1; }
+
+.bento-card__device-screen {
+  width: 38%;
+  height: 70%;
+  border: 1.5px solid rgba(0, 229, 255, 0.35);
+  border-radius: 14px;
+  padding: 14% 8% 8% 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: linear-gradient(180deg, rgba(0,229,255,0.06), rgba(0,0,0,0.2));
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-card__device-screen::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28%;
+  height: 4px;
+  background: rgba(0,229,255,0.4);
+  border-radius: 2px;
+}
+
+.bento-card__device-bar {
+  display: block;
+  height: 5px;
+  background: linear-gradient(90deg, rgba(0,229,255,0.6), rgba(0,229,255,0.1));
+  border-radius: 2px;
+  animation: deviceScroll 2.4s ease-in-out infinite;
+}
+
+.bento-card__device-bar:nth-child(1) { width: 70%; }
+.bento-card__device-bar:nth-child(2) { width: 50%; animation-delay: 0.3s; }
+.bento-card__device-bar:nth-child(3) { width: 85%; animation-delay: 0.6s; }
+
+@keyframes deviceScroll {
+  0%, 100% { transform: translateX(0); opacity: 0.7; }
+  50% { transform: translateX(8%); opacity: 1; }
+}
+
+.bento-card__chart {
+  position: absolute;
+  bottom: 12%;
+  left: 8%;
+  right: 8%;
+  height: 50%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 6%;
+  pointer-events: none;
+  opacity: 0.55;
+  transition: opacity 0.4s ease;
+}
+
+.bento-card:hover .bento-card__chart { opacity: 1; }
+
+.bento-card__bar {
+  flex: 1;
+  height: var(--h, 50%);
+  background: linear-gradient(180deg, var(--accent-cyan), rgba(0, 229, 255, 0.15));
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
+  transform-origin: bottom;
+  animation: barPulse 2.6s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes barPulse {
+  0%, 100% { transform: scaleY(0.85); }
+  50% { transform: scaleY(1.08); }
+}
+
+
+/* ═══════════════════════════════════════════
    PRICING SECTION (P4 — slide 3)
    30/70 split: brutalist tickets + detail pane
    ═══════════════════════════════════════════ */
@@ -1635,7 +1715,7 @@ section {
   inset: 0;
   width: 100%;
   height: 100vh;
-  padding: clamp(2rem, 4vh, 3.5rem) clamp(2rem, 4vw, 4rem);
+  padding: clamp(1.5rem, 3vh, 2.5rem) clamp(1.5rem, 3vw, 3rem);
   display: flex;
   overflow: hidden;
   box-sizing: border-box;
@@ -1809,16 +1889,14 @@ section {
 .pricing-pane {
   display: none;
   flex-direction: column;
-  gap: clamp(0.5rem, 1vh, 0.9rem);
+  gap: clamp(0.4rem, 0.8vh, 0.7rem);
   flex: 1;
   min-height: 0;
   min-width: 0;
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.4s var(--curve), transform 0.45s var(--curve);
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-cyan) transparent;
+  overflow: hidden;
 }
 
 .pricing-pane.is-active {
@@ -1838,7 +1916,7 @@ section {
 .pricing-pane__heading {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  font-size: clamp(1.5rem, 2.6vw, 2.4rem);
   line-height: 0.95;
   letter-spacing: -0.03em;
   text-transform: uppercase;
@@ -1846,10 +1924,11 @@ section {
 }
 
 .pricing-pane__lead {
-  font-size: clamp(0.95rem, 1.05vw, 1.1rem);
-  line-height: 1.5;
+  font-size: clamp(0.85rem, 0.95vw, 1rem);
+  line-height: 1.45;
   max-width: 60ch;
   color: rgba(250,250,250,0.85);
+  margin: 0;
 }
 
 .pricing-pane__stats {
@@ -1862,15 +1941,15 @@ section {
 .pricing-pane__stat {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  padding: 1rem;
+  gap: 0.2rem;
+  padding: 0.7rem 0.8rem;
   border: 1px solid rgba(250,250,250,0.08);
   background: rgba(0, 229, 255, 0.03);
 }
 
 .pricing-pane__stat strong {
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-size: clamp(1.2rem, 1.8vw, 1.7rem);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--accent-cyan);
@@ -1901,17 +1980,17 @@ section {
 .pricing-pane__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(1rem, 2vw, 2rem);
-  margin-top: 0.5rem;
+  gap: clamp(0.8rem, 1.5vw, 1.5rem);
+  margin-top: 0.2rem;
 }
 
 .pricing-pane__grid h4,
 .pricing-pane__deliverables h4 {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   letter-spacing: 0.15em;
   color: var(--accent-cyan);
-  margin: 0 0 0.6rem 0;
+  margin: 0 0 0.4rem 0;
   text-transform: uppercase;
 }
 
@@ -1922,15 +2001,15 @@ section {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.3rem;
   counter-reset: step;
 }
 
 .pricing-pane__grid li {
   position: relative;
-  padding-left: 1.4rem;
-  font-size: clamp(0.85rem, 0.95vw, 0.95rem);
-  line-height: 1.4;
+  padding-left: 1.3rem;
+  font-size: clamp(0.78rem, 0.85vw, 0.88rem);
+  line-height: 1.35;
   color: rgba(250,250,250,0.85);
 }
 
@@ -1968,9 +2047,9 @@ section {
 
 .pricing-pane__chips span {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   letter-spacing: 0.08em;
-  padding: 0.4em 0.8em;
+  padding: 0.35em 0.7em;
   border: 1px solid rgba(0, 229, 255, 0.3);
   background: rgba(0, 229, 255, 0.05);
   color: rgba(250,250,250,0.85);
@@ -1979,7 +2058,7 @@ section {
 .pricing-pane__cta {
   align-self: flex-start;
   margin-top: auto;
-  padding: 0.9em 1.6em;
+  padding: 0.7em 1.3em;
   font-family: var(--font-mono);
   font-size: clamp(0.8rem, 0.9vw, 0.95rem);
   font-weight: 700;

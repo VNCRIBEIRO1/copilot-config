@@ -75,15 +75,15 @@ export async function revealPricingTickets(section) {
     duration: 0.65,
     stagger: 0.1,
     ease: 'power3.out',
-  });
+  }, 0);
 
   if (activePane) {
     tl.from(activePane, {
       opacity: 0,
       x: 30,
-      duration: 0.55,
+      duration: 0.6,
       ease: 'power2.out',
-    }, '-=0.4');
+    }, 0.05);
   }
 
   await tl.then();

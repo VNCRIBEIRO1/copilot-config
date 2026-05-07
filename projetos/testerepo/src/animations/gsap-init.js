@@ -28,41 +28,44 @@ export function initGSAP() {
   const slides = document.querySelectorAll('[data-slide]');
   const nextBtn = document.getElementById('next-btn');
   const prevBtn = document.getElementById('prev-btn');
-  const playPauseBtn = document.getElementById('play-pause-btn');
+  const slideNav = document.getElementById('slide-nav');
   const currentNum = document.getElementById('nav-current');
   const totalNum = document.getElementById('nav-total');
-  
+
   let currentIndex = 0;
   let isAnimating = false;
-  let isAutoplay = false;
-  let autoplayTimer = null;
+  const isAutoplay = false;
+
+  function showSlideNav() {
+    if (slideNav) slideNav.classList.add('is-ready');
+  }
+  function hideSlideNav() {
+    if (slideNav) slideNav.classList.remove('is-ready');
+  }
 
   if (totalNum) totalNum.innerText = String(slides.length).padStart(2, '0');
 
   const continueBtn = document.getElementById('continue-to-arsenal');
-  window.addEventListener('app:loader-complete', () => {
-    if (slides[0]) revealSlideContent(slides[0]);
+  window.addEventListener('app:loader-complete', async () => {
+    if (slides[0]) {
+      await revealSlideContent(slides[0]);
+      showSlideNav();
+    }
   }, { once: true });
 
   function updateNavUI() {
     if (currentNum) currentNum.innerText = String(currentIndex + 1).padStart(2, '0');
     if (prevBtn) prevBtn.disabled = currentIndex === 0;
     if (nextBtn) nextBtn.disabled = currentIndex === slides.length - 1;
-    
-    if (playPauseBtn) {
-      playPauseBtn.querySelector('.hud-btn__icon').innerText = isAutoplay ? "PAUSE" : "PLAY";
-      playPauseBtn.classList.toggle('is-playing', isAutoplay);
-    }
   }
 
   async function transitionTo(index) {
     if (isAnimating || index === currentIndex || index < 0 || index >= slides.length) {
-      if (isAutoplay && index >= slides.length) toggleAutoplay(false); // Stop at end
       return;
     }
-    
+
     isAnimating = true;
-    if (autoplayTimer) clearTimeout(autoplayTimer);
+    hideSlideNav();
 
     const currentSection = slides[currentIndex];
     const nextSection = slides[index];
@@ -97,12 +100,7 @@ export function initGSAP() {
     } finally {
       isAnimating = false;
       updateNavUI();
-
-      if (isAutoplay) {
-        autoplayTimer = setTimeout(() => {
-          transitionTo(currentIndex + 1);
-        }, 4000);
-      }
+      showSlideNav();
     }
   }
 
@@ -226,21 +224,10 @@ export function initGSAP() {
     if (copy) gsap.set(copy, { opacity: 0 });
   }
 
-  function toggleAutoplay(val) {
-    isAutoplay = (val !== undefined) ? val : !isAutoplay;
-    updateNavUI();
-    if (isAutoplay && !isAnimating) {
-      transitionTo(currentIndex + 1);
-    } else if (!isAutoplay && autoplayTimer) {
-      clearTimeout(autoplayTimer);
-    }
-  }
-
   // Bind Controls
-  if (nextBtn) nextBtn.addEventListener('click', () => { toggleAutoplay(false); transitionTo(currentIndex + 1); });
-  if (prevBtn) prevBtn.addEventListener('click', () => { toggleAutoplay(false); transitionTo(currentIndex - 1); });
-  if (continueBtn) continueBtn.addEventListener('click', () => { toggleAutoplay(false); transitionTo(1); });
-  if (playPauseBtn) playPauseBtn.addEventListener('click', () => toggleAutoplay());
+  if (nextBtn) nextBtn.addEventListener('click', () => transitionTo(currentIndex + 1));
+  if (prevBtn) prevBtn.addEventListener('click', () => transitionTo(currentIndex - 1));
+  if (continueBtn) continueBtn.addEventListener('click', () => transitionTo(1));
 
   // Keyboard Navigation
   window.addEventListener('keydown', (e) => {

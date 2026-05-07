@@ -47,34 +47,13 @@
     <canvas id="webgl-canvas"></canvas>
   </div>
 
-  <!-- CINEMATIC TV HUD (Fixed Navigation) -->
-  <div class="tv-hud">
-    <div class="tv-hud__left">
-      <div class="hero__tags">
-        <span class="tag-hover">AWWWARDS-TIER</span>
-        <span class="tag-hover">THREE.JS</span>
-        <span class="tag-hover">GSAP</span>
-      </div>
-    </div>
-    
-    <div class="tv-hud__center">
-      <button id="play-pause-btn" class="hud-btn" data-cursor-text="PLAY">
-        <span class="hud-btn__icon">PLAY</span>
-      </button>
-      <div class="nav-status">
-        <span id="nav-current">01</span> / <span id="nav-total">06</span>
-      </div>
-    </div>
-
-    <div class="tv-hud__right">
-      <button id="prev-btn" class="nav-btn" data-cursor-text="PREV" disabled>
-        <span class="nav-btn__icon">←</span>
-      </button>
-      <button id="next-btn" class="nav-btn" data-cursor-text="NEXT">
-        <span class="nav-btn__icon">→</span>
-      </button>
-    </div>
-  </div>
+  <!-- FLOATING SLIDE NAVIGATION (continue-style) -->
+  <nav class="slide-nav" id="slide-nav" aria-hidden="true">
+    <button id="prev-btn" class="btn-continue slide-nav__btn" data-cursor-text="VOLTAR" disabled>← VOLTAR</button>
+    <span class="slide-nav__counter" aria-hidden="true"><span id="nav-current">01</span> / <span id="nav-total">06</span></span>
+    <button id="next-btn" class="btn-continue slide-nav__btn" data-cursor-text="AVANÇAR">AVANÇAR →</button>
+  </nav>
+  <button id="play-pause-btn" class="play-pause-btn" hidden aria-hidden="true"><span class="hud-btn__icon">PLAY</span></button>
 
   <!-- FLOATING MAGNETIC PILL NAV -->
 
@@ -136,6 +115,8 @@
         <!-- Card 3: AI/LLM -->
         <article class="bento-card">
           <div class="bento-card__inner">
+            <canvas class="magnetic-grid"></canvas>
+            <div class="bento-card__matrix-rain" aria-hidden="true"></div>
             <div class="bento-card__spotlight"></div>
             <div class="hud-corners"></div>
             <div class="bento-card__content">
@@ -149,6 +130,14 @@
         <!-- Card 4: Mobile Elite -->
         <article class="bento-card">
           <div class="bento-card__inner">
+            <canvas class="magnetic-grid"></canvas>
+            <div class="bento-card__device" aria-hidden="true">
+              <div class="bento-card__device-screen">
+                <span class="bento-card__device-bar"></span>
+                <span class="bento-card__device-bar"></span>
+                <span class="bento-card__device-bar"></span>
+              </div>
+            </div>
             <div class="bento-card__spotlight"></div>
             <div class="hud-corners"></div>
             <div class="bento-card__content">
@@ -162,6 +151,14 @@
         <!-- Card 5: Landing Pages -->
         <article class="bento-card">
           <div class="bento-card__inner">
+            <canvas class="magnetic-grid"></canvas>
+            <div class="bento-card__chart" aria-hidden="true">
+              <span class="bento-card__bar" style="--h: 40%; --d: 0s"></span>
+              <span class="bento-card__bar" style="--h: 65%; --d: 0.2s"></span>
+              <span class="bento-card__bar" style="--h: 50%; --d: 0.4s"></span>
+              <span class="bento-card__bar" style="--h: 80%; --d: 0.6s"></span>
+              <span class="bento-card__bar" style="--h: 95%; --d: 0.8s"></span>
+            </div>
             <div class="bento-card__spotlight"></div>
             <div class="hud-corners"></div>
             <div class="bento-card__content">
