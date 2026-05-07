@@ -292,7 +292,13 @@
       <div class="pricing-layout" data-pricing-layout>
 
         <aside class="pricing-tickets" data-pricing-tickets>
-          <article class="ticket ticket--tier1 is-active" data-ticket="essential" tabindex="0">
+          <button type="button" class="pricing-overview-btn is-active" data-pane-target="default" aria-label="Ver visão geral">
+            <span class="pricing-overview-btn__icon" aria-hidden="true">◀</span>
+            <span class="pricing-overview-btn__label">VISÃO GERAL</span>
+            <span class="pricing-overview-btn__sub">// MANIFESTO</span>
+          </button>
+
+          <article class="ticket ticket--tier1" data-ticket="essential" tabindex="0">
             <header class="ticket__head">
               <span class="ticket__badge"><span class="pulse-dot"></span> ESSENTIAL</span>
               <span class="ticket__id">ID: LP-SMPL</span>

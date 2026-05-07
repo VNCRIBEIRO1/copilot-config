@@ -1941,6 +1941,55 @@ section {
   min-height: 0;
 }
 
+.pricing-overview-btn {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.pricing-overview-btn:hover {
+  background: rgba(0, 229, 255, 0.08);
+  border-color: rgba(0, 229, 255, 0.6);
+  transform: translateX(-2px);
+}
+
+.pricing-overview-btn.is-active {
+  background: var(--accent-cyan);
+  color: var(--bg);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.3);
+}
+
+.pricing-overview-btn__icon {
+  font-size: 0.7rem;
+  color: var(--accent-cyan);
+  transition: color 0.25s ease;
+}
+
+.pricing-overview-btn.is-active .pricing-overview-btn__icon { color: var(--bg); }
+
+.pricing-overview-btn__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-align: left;
+}
+
+.pricing-overview-btn__sub {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  opacity: 0.55;
+}
+
 .ticket {
   position: relative;
   flex: 1 1 0;
