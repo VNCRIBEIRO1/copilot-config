@@ -9,7 +9,7 @@ import {
   revealArsenalContent,
 } from './arsenal-sequence.js';
 import { revealWireframeContent, hideWireframeContent, resetWireframeContent } from './wireframe-build.js';
-import { revealFolders, hideFolders } from './folder-stack.js';
+import { revealPricingTickets, hidePricingTickets } from './pricing-tickets.js';
 import { revealProcessPipeline, hideProcessPipeline, resetProcessPipeline } from './process-pipeline.js';
 import { revealContactCinema, hideContactCinema } from './contact-magnet.js';
 import { revealContactFinale, hideContactFinale } from './contact-finale.js';
@@ -137,8 +137,8 @@ export function initGSAP() {
     }
 
     if (type === '3') {
-      await decodeMatrixReveals(section.querySelector('.folders-section__header'));
-      await revealFolders(section);
+      await decodeMatrixReveals(section.querySelector('.pricing-section__header'));
+      await revealPricingTickets(section);
       return;
     }
 
@@ -162,7 +162,7 @@ export function initGSAP() {
     if (type === '0') return hideHeroContent(section);
     if (type === '1') return hideArsenalContent(section, gsap);
     if (type === '2') return hideWireframeContent(section);
-    if (type === '3') return hideFolders(section);
+    if (type === '3') return hidePricingTickets(section);
     if (type === '4') return hideProcessPipeline(section);
     if (type === '5') {
       hideContactFinale(section);

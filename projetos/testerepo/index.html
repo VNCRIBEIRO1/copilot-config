@@ -243,127 +243,222 @@
     </section>
 
     <!-- ABOUT — FOLDER SYSTEM (auto-rotate + manual select) -->
-    <section class="folders-section section-safe" id="about" data-slide="3">
-      <div class="folders-section__header">
+    <section class="pricing-section section-safe" id="about" data-slide="3">
+      <div class="pricing-section__header">
         <h2 class="section-title matrix-reveal">INVISTA NO SEU CRESCIMENTO</h2>
-        <p class="section-subtitle matrix-reveal">Escolha o tier que define o próximo nível da sua marca.</p>
+        <p class="section-subtitle matrix-reveal">// SELECIONE UM TICKET PARA DETALHAR</p>
       </div>
-      <div class="folders" data-folder-rotation>
-        <article class="folder folder--active" data-folder-index="0" style="--tab-offset: 0">
-          <div class="folder__tab" data-folder-target="0">
-            <span class="folder__tab-index">01</span>
-            <span class="folder__tab-label">ESSENTIAL</span>
-          </div>
-          <div class="folder__body">
-            <div class="folder__lead">
-              <span class="folder__eyebrow">// ID: LP-SMPL · <span class="folder__badge"><span class="pulse-dot"></span> DISPONÍVEL</span></span>
-              <h3 class="folder__title">LANDING PAGE<br/>SIMPLES</h3>
-            </div>
-            <div class="folder__content">
-              <p>Focada em performance e conversão. Estrutura limpa, carregamento ultrarrápido e CTA irresistível para capturar leads qualificados.</p>
-            </div>
-            <div class="folder__price-row">
-              <span class="folder__price">R$ 399<small>,00</small></span>
-              <span class="folder__price-label">ENTREGA EM 7 DIAS</span>
-            </div>
-            <div class="folder__chips">
-              <span class="folder__chip">VITE</span>
-              <span class="folder__chip">GSAP</span>
-              <span class="folder__chip">SEO</span>
-              <span class="folder__chip">VERCEL</span>
-            </div>
-          </div>
-        </article>
 
-        <article class="folder" data-folder-index="1" style="--tab-offset: 1">
-          <div class="folder__tab" data-folder-target="1">
-            <span class="folder__tab-index">02</span>
-            <span class="folder__tab-label">PREMIUM</span>
-          </div>
-          <div class="folder__body">
-            <div class="folder__lead">
-              <span class="folder__eyebrow">// ID: PXC-992 · <span class="folder__badge folder__badge--hot"><span class="pulse-dot"></span> VAGAS LIMITADAS</span></span>
-              <h3 class="folder__title">LANDING PAGE<br/>PREMIUM</h3>
-            </div>
-            <div class="folder__content">
-              <p>Experiência cinematográfica com shaders Three.js, animações GSAP e design awwwards-tier. Para marcas que exigem o máximo de imersão e retenção.</p>
-            </div>
-            <div class="folder__price-row">
-              <span class="folder__price-strike">DE: R$ 2.500</span>
-              <span class="folder__price">R$ 999<small>,00</small></span>
-              <span class="folder__price-label">ENTREGA EM 14 DIAS</span>
-            </div>
-            <div class="folder__chips">
-              <span class="folder__chip">THREE.JS</span>
-              <span class="folder__chip">GSAP</span>
-              <span class="folder__chip">WEBGL</span>
-              <span class="folder__chip">NEXT.JS</span>
-            </div>
-            <a href="https://wa.me/5518996311933?text=Ol%C3%A1%20Vinicius%2C%20tenho%20interesse%20no%20plano%20Premium." target="_blank" rel="noopener" class="folder__cta">RESERVAR VAGA</a>
-          </div>
-        </article>
+      <div class="pricing-layout" data-pricing-layout>
 
-        <article class="folder" data-folder-index="2" style="--tab-offset: 2">
-          <div class="folder__tab" data-folder-target="2">
-            <span class="folder__tab-index">03</span>
-            <span class="folder__tab-label">ENTERPRISE</span>
-          </div>
-          <div class="folder__body">
-            <div class="folder__lead">
-              <span class="folder__eyebrow">// ID: SYS-CRM · <span class="folder__badge"><span class="pulse-dot"></span> SOB CONSULTA</span></span>
-              <h3 class="folder__title">SISTEMAS &<br/>MOBILE</h3>
+        <aside class="pricing-tickets" data-pricing-tickets>
+          <article class="ticket ticket--tier1 is-active" data-ticket="essential" tabindex="0">
+            <header class="ticket__head">
+              <span class="ticket__badge"><span class="pulse-dot"></span> ESSENTIAL</span>
+              <span class="ticket__id">ID: LP-SMPL</span>
+            </header>
+            <div class="ticket__divider"></div>
+            <h3 class="ticket__title">LANDING<br/>PAGE<br/>SIMPLES</h3>
+            <div class="ticket__prices">
+              <p class="ticket__price">R$ 399</p>
             </div>
-            <div class="folder__content">
-              <p>App, CRM, Dashboard ou plataforma completa. Arquitetura escalável, AI integrada e design system proprietário para marcas enterprise.</p>
-            </div>
-            <div class="folder__price-row">
-              <span class="folder__price">R$ 2.000<small>+</small></span>
-              <span class="folder__price-label">PRAZO SOB BRIEFING</span>
-            </div>
-            <div class="folder__chips">
-              <span class="folder__chip">NEXT.JS</span>
-              <span class="folder__chip">SUPABASE</span>
-              <span class="folder__chip">AI</span>
-              <span class="folder__chip">MOBILE</span>
-            </div>
-          </div>
-        </article>
+            <div class="ticket__divider"></div>
+            <footer class="ticket__foot">
+              <span class="ticket__action">VER DETALHES</span>
+              <span class="ticket__barcode">| |||| | ||</span>
+            </footer>
+            <span class="ticket__edge" aria-hidden="true"></span>
+          </article>
 
-        <article class="folder" data-folder-index="3" style="--tab-offset: 3">
-          <div class="folder__tab" data-folder-target="3">
-            <span class="folder__tab-index">04</span>
-            <span class="folder__tab-label">POR QUE NÓS</span>
-          </div>
-          <div class="folder__body">
-            <div class="folder__lead">
-              <span class="folder__eyebrow">// DIFERENCIAL</span>
-              <h3 class="folder__title">FORA DO<br/>PADRÃO.</h3>
+          <article class="ticket ticket--tier2" data-ticket="premium" tabindex="0">
+            <header class="ticket__head">
+              <span class="ticket__badge ticket__badge--hot"><span class="pulse-dot"></span> VAGAS LIMITADAS</span>
+              <span class="ticket__id">ID: PXC-992</span>
+            </header>
+            <div class="ticket__divider"></div>
+            <h3 class="ticket__title">LANDING<br/>PAGE<br/>PREMIUM</h3>
+            <div class="ticket__prices">
+              <p class="ticket__strike">DE: R$ 2.500</p>
+              <p class="ticket__price">R$ 999</p>
             </div>
-            <div class="folder__stats">
-              <div class="folder__stat">
-                <span class="folder__stat-value">98<small>/100</small></span>
-                <span class="folder__stat-label">LIGHTHOUSE MÉDIO</span>
+            <div class="ticket__divider"></div>
+            <footer class="ticket__foot">
+              <span class="ticket__action">RESERVAR VAGA</span>
+              <span class="ticket__barcode">||| |||| || |||</span>
+            </footer>
+            <span class="ticket__edge" aria-hidden="true"></span>
+          </article>
+
+          <article class="ticket ticket--tier3" data-ticket="enterprise" tabindex="0">
+            <header class="ticket__head">
+              <span class="ticket__badge"><span class="pulse-dot"></span> ENTERPRISE</span>
+              <span class="ticket__id">ID: SYS-CRM</span>
+            </header>
+            <div class="ticket__divider"></div>
+            <h3 class="ticket__title">SISTEMAS<br/>&amp; MOBILE</h3>
+            <div class="ticket__prices">
+              <p class="ticket__strike">SOB CONSULTA</p>
+              <p class="ticket__price">R$ 2.000+</p>
+            </div>
+            <div class="ticket__divider"></div>
+            <footer class="ticket__foot">
+              <span class="ticket__action">CONSULTAR</span>
+              <span class="ticket__barcode">|| ||| ||| |</span>
+            </footer>
+            <span class="ticket__edge" aria-hidden="true"></span>
+          </article>
+        </aside>
+
+        <div class="pricing-detail" data-pricing-detail>
+
+          <div class="pricing-pane is-active" data-pane="default">
+            <span class="pricing-pane__eyebrow">// PIXELCODE STUDIO · MANIFESTO</span>
+            <h3 class="pricing-pane__heading">VENDEMOS<br/>EXPERIÊNCIA.</h3>
+            <p class="pricing-pane__lead">Estúdio independente focado em performance, design awwwards-tier e arquiteturas escaláveis. Sem templates, sem atalhos — cada projeto desenhado do zero para a sua marca.</p>
+            <div class="pricing-pane__stats">
+              <div class="pricing-pane__stat"><strong>98<small>/100</small></strong><span>LIGHTHOUSE</span></div>
+              <div class="pricing-pane__stat"><strong>1.1<small>s</small></strong><span>LCP MÉDIO</span></div>
+              <div class="pricing-pane__stat"><strong>42<small>+</small></strong><span>PROJETOS</span></div>
+              <div class="pricing-pane__stat"><strong>7<small>anos</small></strong><span>EM PRODUÇÃO</span></div>
+            </div>
+            <p class="pricing-pane__hint">→ SELECIONE UM TICKET À ESQUERDA PARA VER ESCOPO, APLICAÇÃO E ENTREGÁVEIS</p>
+          </div>
+
+          <div class="pricing-pane" data-pane="essential">
+            <span class="pricing-pane__eyebrow">// 01 ESSENTIAL · LP-SMPL · R$ 399</span>
+            <h3 class="pricing-pane__heading">LANDING PAGE<br/>SIMPLES</h3>
+            <p class="pricing-pane__lead">Página única focada em performance e conversão. Estrutura limpa, carregamento ultrarrápido e CTA irresistível para capturar leads qualificados.</p>
+
+            <div class="pricing-pane__grid">
+              <section>
+                <h4>ONDE SE APLICA</h4>
+                <ul>
+                  <li>Captura de leads B2B/B2C</li>
+                  <li>Lançamentos e infoprodutos</li>
+                  <li>Página institucional enxuta</li>
+                  <li>Validação de novo serviço</li>
+                </ul>
+              </section>
+              <section>
+                <h4>COMO FUNCIONA</h4>
+                <ol>
+                  <li>Briefing &amp; arquitetura — 1 dia</li>
+                  <li>Design &amp; copy estratégico — 2 dias</li>
+                  <li>Dev em Vite + GSAP — 3 dias</li>
+                  <li>Deploy Vercel + entrega — 1 dia</li>
+                </ol>
+              </section>
+            </div>
+
+            <div class="pricing-pane__deliverables">
+              <h4>O QUE VEM JUNTO</h4>
+              <div class="pricing-pane__chips">
+                <span>Hero animado</span>
+                <span>SEO técnico</span>
+                <span>Form integrado</span>
+                <span>Analytics</span>
+                <span>Domínio + SSL</span>
+                <span>3 revisões</span>
               </div>
-              <div class="folder__stat">
-                <span class="folder__stat-value">42<small>+</small></span>
-                <span class="folder__stat-label">PROJETOS ENTREGUES</span>
+            </div>
+
+            <a class="pricing-pane__cta" href="https://wa.me/5518996311933?text=Ol%C3%A1%20Vinicius%2C%20quero%20o%20plano%20Essential." target="_blank" rel="noopener">
+              CONTRATAR ESSENTIAL · R$ 399
+            </a>
+          </div>
+
+          <div class="pricing-pane" data-pane="premium">
+            <span class="pricing-pane__eyebrow">// 02 PREMIUM · PXC-992 · R$ 999</span>
+            <h3 class="pricing-pane__heading">LANDING PAGE<br/>PREMIUM</h3>
+            <p class="pricing-pane__lead">Experiência cinematográfica com shaders Three.js, coreografias GSAP e design awwwards-tier. Para marcas que exigem o máximo de imersão e retenção.</p>
+
+            <div class="pricing-pane__grid">
+              <section>
+                <h4>ONDE SE APLICA</h4>
+                <ul>
+                  <li>Marcas premium e luxo</li>
+                  <li>Lançamento de produto/coleção</li>
+                  <li>Posicionamento awwwards</li>
+                  <li>Portfólio de criadores</li>
+                </ul>
+              </section>
+              <section>
+                <h4>COMO FUNCIONA</h4>
+                <ol>
+                  <li>Discovery + benchmark (2 dias)</li>
+                  <li>Design system + storyboard (4 dias)</li>
+                  <li>Dev WebGL + GSAP (6 dias)</li>
+                  <li>QA + deploy + handoff (2 dias)</li>
+                </ol>
+              </section>
+            </div>
+
+            <div class="pricing-pane__deliverables">
+              <h4>O QUE VEM JUNTO</h4>
+              <div class="pricing-pane__chips">
+                <span>Three.js + shaders</span>
+                <span>GSAP avançado</span>
+                <span>Cursor cinematográfico</span>
+                <span>Loader custom</span>
+                <span>Lighthouse 95+</span>
+                <span>5 revisões</span>
+                <span>Suporte 30 dias</span>
               </div>
             </div>
-            <ul class="folder__bullets">
-              <li><strong>SEM TEMPLATES.</strong> Cada projeto construído do zero para a sua marca.</li>
-              <li><strong>AWWWARDS-TIER.</strong> Design que converte e impressiona.</li>
-              <li><strong>SUPORTE PÓS-ENTREGA.</strong> Parceria de longo prazo.</li>
-            </ul>
+
+            <a class="pricing-pane__cta pricing-pane__cta--hot" href="https://wa.me/5518996311933?text=Ol%C3%A1%20Vinicius%2C%20quero%20reservar%20uma%20vaga%20Premium." target="_blank" rel="noopener">
+              RESERVAR VAGA PREMIUM · R$ 999
+            </a>
           </div>
-        </article>
+
+          <div class="pricing-pane" data-pane="enterprise">
+            <span class="pricing-pane__eyebrow">// 03 ENTERPRISE · SYS-CRM · R$ 2.000+</span>
+            <h3 class="pricing-pane__heading">SISTEMAS<br/>&amp; MOBILE</h3>
+            <p class="pricing-pane__lead">App, CRM, Dashboard ou plataforma completa. Arquitetura escalável, AI integrada e design system proprietário para marcas enterprise.</p>
+
+            <div class="pricing-pane__grid">
+              <section>
+                <h4>ONDE SE APLICA</h4>
+                <ul>
+                  <li>SaaS B2B/B2C</li>
+                  <li>App mobile (iOS/Android)</li>
+                  <li>CRM &amp; dashboards internos</li>
+                  <li>Plataformas com AI</li>
+                </ul>
+              </section>
+              <section>
+                <h4>COMO FUNCIONA</h4>
+                <ol>
+                  <li>Discovery profundo (1 sem.)</li>
+                  <li>Arquitetura &amp; design system (2 sem.)</li>
+                  <li>Sprints de dev (4–12 sem.)</li>
+                  <li>Deploy + métricas + iteração</li>
+                </ol>
+              </section>
+            </div>
+
+            <div class="pricing-pane__deliverables">
+              <h4>O QUE VEM JUNTO</h4>
+              <div class="pricing-pane__chips">
+                <span>Next.js / React Native</span>
+                <span>Supabase / Postgres</span>
+                <span>Integração OpenAI/Gemini</span>
+                <span>Auth + permissões</span>
+                <span>CI/CD + monitoring</span>
+                <span>Documentação técnica</span>
+                <span>Suporte contínuo</span>
+              </div>
+            </div>
+
+            <a class="pricing-pane__cta" href="https://wa.me/5518996311933?text=Ol%C3%A1%20Vinicius%2C%20quero%20discutir%20um%20projeto%20Enterprise." target="_blank" rel="noopener">
+              SOLICITAR PROPOSTA · A PARTIR DE R$ 2.000
+            </a>
+          </div>
+
+        </div>
       </div>
-      <nav class="folders__dots" aria-label="Seleção manual de pasta">
-        <button type="button" class="folders__dot is-active" data-folder-target="0" aria-label="01 — Essential"></button>
-        <button type="button" class="folders__dot" data-folder-target="1" aria-label="02 — Premium"></button>
-        <button type="button" class="folders__dot" data-folder-target="2" aria-label="03 — Enterprise"></button>
-        <button type="button" class="folders__dot" data-folder-target="3" aria-label="04 — Por que nós"></button>
-      </nav>
     </section>
+
 
     <!-- PROCESS PIPELINE (Development Process) -->
     <section class="process-pipeline-section section-safe" id="process" data-slide="4">
