@@ -2,7 +2,6 @@ import { gsap } from 'gsap';
 import { decodeMatrixReveals, eraseMatrixReveals } from './arsenal-sequence.js';
 
 let particleSystem = null;
-let liquidLoop = null;
 
 function initParticles(canvas) {
   if (!canvas) return null;
@@ -131,27 +130,6 @@ function initMagnetic(button) {
   refreshRect();
 }
 
-function startLiquidLoop() {
-  const turbulence = document.getElementById('feTurbulence');
-  if (!turbulence || liquidLoop) return;
-  liquidLoop = gsap.to(turbulence, {
-    attr: { baseFrequency: 0.05 },
-    duration: 6,
-    yoyo: true,
-    repeat: -1,
-    ease: 'sine.inOut',
-  });
-}
-
-function stopLiquidLoop() {
-  if (liquidLoop) {
-    liquidLoop.kill();
-    liquidLoop = null;
-  }
-  const turbulence = document.getElementById('feTurbulence');
-  if (turbulence) gsap.set(turbulence, { attr: { baseFrequency: 0 } });
-}
-
 export function initContactMagnet() {
   const section = document.querySelector('.contact-cinema');
   if (!section) return;
@@ -165,44 +143,21 @@ export function initContactMagnet() {
 export async function revealContactCinema(section) {
   if (!section) return;
   const eyebrow = section.querySelector('.contact-cinema__eyebrow');
-  const words = section.querySelectorAll('.contact-cinema__word');
   const lead = section.querySelector('.contact-cinema__lead');
-  const cta = section.querySelector('.contact-cta');
   const meta = section.querySelector('.contact-cinema__meta');
 
-  gsap.set(words, { clipPath: 'inset(0 100% 0 0)' });
-  gsap.set(cta, { opacity: 0, scale: 0.85 });
-  gsap.set(meta, { opacity: 0, y: 20 });
+  gsap.set(meta, { opacity: 0, y: 12 });
 
   if (particleSystem) particleSystem.start();
-  startLiquidLoop();
 
   if (eyebrow?._matrixReveal?.decode) await eyebrow._matrixReveal.decode();
-
-  await new Promise(resolve => {
-    gsap.to(words, {
-      clipPath: 'inset(0 0% 0 0)',
-      duration: 0.8,
-      stagger: 0.15,
-      ease: 'expo.out',
-      onComplete: resolve,
-    });
-  });
-
   if (lead?._matrixReveal?.decode) lead._matrixReveal.decode();
-
-  gsap.to(cta, {
-    opacity: 1,
-    scale: 1,
-    duration: 0.7,
-    ease: 'back.out(1.6)',
-  });
 
   gsap.to(meta, {
     opacity: 1,
     y: 0,
     duration: 0.6,
-    delay: 0.3,
+    delay: 1.6,
     ease: 'power2.out',
   });
 }
@@ -211,17 +166,13 @@ export async function hideContactCinema(section) {
   if (!section) return;
 
   if (particleSystem) particleSystem.stop();
-  stopLiquidLoop();
 
-  const targets = section.querySelectorAll('.contact-cinema__word, .contact-cta, .contact-cinema__meta, .contact-cinema__lead, .contact-cinema__eyebrow');
+  const targets = section.querySelectorAll('.contact-cinema__lead, .contact-cinema__eyebrow, .contact-cinema__meta');
 
-  await new Promise(resolve => {
-    gsap.to(targets, {
-      opacity: 0,
-      duration: 0.35,
-      ease: 'power2.in',
-      onComplete: resolve,
-    });
+  gsap.to(targets, {
+    opacity: 0,
+    duration: 0.3,
+    ease: 'power2.in',
   });
 
   await eraseMatrixReveals(section);

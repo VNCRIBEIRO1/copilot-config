@@ -106,6 +106,7 @@ export async function revealFolders(section) {
   const folders = root.querySelectorAll('.folder');
   const dots = section.querySelectorAll('.folders__dot');
 
+  // Animate parent .folder only — never touch .folder__body opacity (CSS owns it)
   gsap.set(folders, { y: '40vh', opacity: 0 });
   gsap.set(dots, { opacity: 0, y: 10 });
 
@@ -114,11 +115,14 @@ export async function revealFolders(section) {
       y: 0,
       opacity: 1,
       duration: 0.8,
-      stagger: 0.1,
+      stagger: 0.08,
       ease: 'expo.out',
       onComplete: resolve,
     });
   });
+
+  // Clear inline opacity from GSAP so CSS layering rules govern from here on
+  gsap.set(folders, { clearProps: 'opacity,y' });
 
   gsap.to(dots, { opacity: 1, y: 0, duration: 0.5, stagger: 0.05, ease: 'power2.out' });
 

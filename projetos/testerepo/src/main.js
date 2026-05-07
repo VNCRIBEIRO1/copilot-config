@@ -10,6 +10,7 @@ import { initMagneticGrids } from './animations/magnetic-grid.js';
 import { initVideoScrub } from './animations/video-scrub.js';
 import { initFolderStack } from './animations/folder-stack.js';
 import { initContactMagnet } from './animations/contact-magnet.js';
+import { initContactFinale } from './animations/contact-finale.js';
 
 function wait(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -117,6 +118,7 @@ async function initApp() {
 
   // Contact cinematic (P6)
   initContactMagnet();
+  initContactFinale();
 
   if (!prefersReducedMotion) {
     initWebGLShader();

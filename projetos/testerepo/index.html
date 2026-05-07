@@ -199,66 +199,47 @@
         <h2 class="matrix-reveal">TRABALHOS RECENTES</h2>
         <span class="portfolio__header-meta matrix-reveal">// BLUEPRINT_MODE :: 03 ATIVOS</span>
       </div>
-      <ul class="portfolio__list">
-        <div class="portfolio__spine"></div>
-        <li class="portfolio__item" data-image="/showcase-1.png">
-          <div class="portfolio__branch"></div>
-          <div class="portfolio__item-border-top"></div>
-          <div class="portfolio__item-border-right"></div>
-          <div class="portfolio__item-border-bottom"></div>
-          <span class="wf-grid-overlay" aria-hidden="true"></span>
-          <span class="wf-node wf-node--tl">+</span>
-          <span class="wf-node wf-node--tr">+</span>
-          <span class="wf-node wf-node--bl">+</span>
-          <span class="wf-node wf-node--br">+</span>
-          <span class="wf-dim wf-dim--h">1440 × 900</span>
-          <span class="wf-dim wf-dim--v">PERF 98</span>
-          <span class="wf-callout">[ 01 / WEB APP — DELIVERED 2025 ]</span>
-          <div class="portfolio__item-content">
-            <div class="portfolio__item-index">01</div>
-            <h3 class="portfolio__item-title hover-bug">STOCKAI STUDIO</h3>
-            <div class="portfolio__item-meta">GEMINI API / NEXT.JS</div>
+      <div class="portfolio__layout">
+        <ul class="portfolio__list">
+          <div class="portfolio__spine"></div>
+          <li class="portfolio__item is-active" data-image="/showcase-1.png" data-meta="GEMINI API / NEXT.JS" data-tag="01 / WEB APP · 2025">
+            <div class="portfolio__branch"></div>
+            <div class="portfolio__item-content">
+              <div class="portfolio__item-index">01</div>
+              <h3 class="portfolio__item-title">STOCKAI STUDIO</h3>
+              <div class="portfolio__item-meta">GEMINI API / NEXT.JS</div>
+            </div>
+          </li>
+          <li class="portfolio__item" data-image="/showcase-2.png" data-meta="SEO / RESEND / CHATBOT" data-tag="02 / PORTAL · 2025">
+            <div class="portfolio__branch"></div>
+            <div class="portfolio__item-content">
+              <div class="portfolio__item-index">02</div>
+              <h3 class="portfolio__item-title">PORTAL JURÍDICO</h3>
+              <div class="portfolio__item-meta">SEO / RESEND / CHATBOT</div>
+            </div>
+          </li>
+          <li class="portfolio__item" data-image="/og-image.png" data-meta="ASTRO / VERCEL / LGPD" data-tag="03 / LANDING · 2024">
+            <div class="portfolio__branch"></div>
+            <div class="portfolio__item-content">
+              <div class="portfolio__item-index">03</div>
+              <h3 class="portfolio__item-title">DRA. LUCIANA</h3>
+              <div class="portfolio__item-meta">ASTRO / VERCEL / LGPD</div>
+            </div>
+          </li>
+        </ul>
+        <div class="portfolio__preview" data-portfolio-preview>
+          <div class="portfolio__preview-frame">
+            <span class="portfolio__preview-corner portfolio__preview-corner--tl">+</span>
+            <span class="portfolio__preview-corner portfolio__preview-corner--tr">+</span>
+            <span class="portfolio__preview-corner portfolio__preview-corner--bl">+</span>
+            <span class="portfolio__preview-corner portfolio__preview-corner--br">+</span>
+            <span class="portfolio__preview-grid" aria-hidden="true"></span>
+            <img class="portfolio__preview-image" src="/showcase-1.png" alt="Preview do projeto" data-preview-image>
+            <span class="portfolio__preview-tag" data-preview-tag>[ 01 / WEB APP · 2025 ]</span>
+            <span class="portfolio__preview-meta" data-preview-meta>GEMINI API / NEXT.JS</span>
           </div>
-        </li>
-        <li class="portfolio__item" data-image="/showcase-2.png">
-          <div class="portfolio__branch"></div>
-          <div class="portfolio__item-border-top"></div>
-          <div class="portfolio__item-border-right"></div>
-          <div class="portfolio__item-border-bottom"></div>
-          <span class="wf-grid-overlay" aria-hidden="true"></span>
-          <span class="wf-node wf-node--tl">+</span>
-          <span class="wf-node wf-node--tr">+</span>
-          <span class="wf-node wf-node--bl">+</span>
-          <span class="wf-node wf-node--br">+</span>
-          <span class="wf-dim wf-dim--h">1280 × 720</span>
-          <span class="wf-dim wf-dim--v">SEO 100</span>
-          <span class="wf-callout">[ 02 / PORTAL — DELIVERED 2025 ]</span>
-          <div class="portfolio__item-content">
-            <div class="portfolio__item-index">02</div>
-            <h3 class="portfolio__item-title hover-bug">PORTAL JURÍDICO</h3>
-            <div class="portfolio__item-meta">SEO / RESEND / CHATBOT</div>
-          </div>
-        </li>
-        <li class="portfolio__item" data-image="/og-image.png">
-          <div class="portfolio__branch"></div>
-          <div class="portfolio__item-border-top"></div>
-          <div class="portfolio__item-border-right"></div>
-          <div class="portfolio__item-border-bottom"></div>
-          <span class="wf-grid-overlay" aria-hidden="true"></span>
-          <span class="wf-node wf-node--tl">+</span>
-          <span class="wf-node wf-node--tr">+</span>
-          <span class="wf-node wf-node--bl">+</span>
-          <span class="wf-node wf-node--br">+</span>
-          <span class="wf-dim wf-dim--h">1920 × 1080</span>
-          <span class="wf-dim wf-dim--v">LCP 1.1s</span>
-          <span class="wf-callout">[ 03 / LANDING — DELIVERED 2024 ]</span>
-          <div class="portfolio__item-content">
-            <div class="portfolio__item-index">03</div>
-            <h3 class="portfolio__item-title hover-bug">DRA. LUCIANA</h3>
-            <div class="portfolio__item-meta">ASTRO / VERCEL / LGPD</div>
-          </div>
-        </li>
-      </ul>
+        </div>
+      </div>
     </section>
 
     <!-- ABOUT — FOLDER SYSTEM (auto-rotate + manual select) -->
@@ -446,40 +427,38 @@
       </div>
     </section>
 
-    <!-- CONTACT — CINEMATIC FULL-SCREEN CTA -->
+    <!-- CONTACT — FREQUÊNCIA · ÚLTIMO QUADRO -->
     <section class="contact-cinema" id="contact" data-slide="5">
-      <!-- Filtro SVG Líquido -->
-      <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
-        <defs>
-          <filter id="liquid-filter">
-            <feTurbulence type="fractalNoise" baseFrequency="0" numOctaves="2" result="warp" id="feTurbulence"></feTurbulence>
-            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="35" in="SourceGraphic" in2="warp"></feDisplacementMap>
-          </filter>
-        </defs>
-      </svg>
-
       <canvas class="contact-particles" aria-hidden="true"></canvas>
 
       <div class="contact-cinema__inner">
-        <p class="contact-cinema__eyebrow matrix-reveal">[ TRANSMISSÃO FINAL ]</p>
-        <h2 class="contact-cinema__title">
-          <span class="contact-cinema__word">VAMOS</span>
-          <span class="contact-cinema__word contact-cinema__word--liquid" id="liquid-text">CRIAR</span>
-          <span class="contact-cinema__word">ALGO ÚNICO</span>
-        </h2>
-        <p class="contact-cinema__lead matrix-reveal">Toda obra-prima começa com uma conversa. Chame agora e vamos engenheirar seu próximo ativo digital.</p>
+        <p class="contact-cinema__eyebrow matrix-reveal">[ FREQUÊNCIA SINTONIZADA · 06 / 06 ]</p>
 
-        <a class="contact-cta" data-magnetic data-cursor-text="WHATSAPP"
-           href="https://wa.me/5518996311933?text=Ol%C3%A1%20Vinicius%2C%20vim%20pelo%20site%20da%20PixelCode%20Studio%20e%20quero%20iniciar%20um%20projeto."
+        <div class="manifesto" data-spotlight>
+          <p class="manifesto__line" data-text="ESTÚDIO INDEPENDENTE.">ESTÚDIO INDEPENDENTE.</p>
+          <p class="manifesto__line" data-text="OBSESSIVO COM DETALHES.">OBSESSIVO COM DETALHES.</p>
+          <p class="manifesto__line" data-text="BUILT IN BRAZIL · DISPONÍVEL AGORA.">BUILT IN BRAZIL · DISPONÍVEL AGORA.</p>
+        </div>
+
+        <p class="contact-cinema__lead matrix-reveal">Conversa em tempo real abaixo. Resposta em até 12 horas úteis.</p>
+
+        <div class="flipclock" data-flipclock="+55 18 99631-1933" aria-label="WhatsApp +55 18 99631-1933"></div>
+
+        <a class="contact-cta" data-magnetic
+           href="https://wa.me/5518996311933?text=Ol%C3%A1%20Vinicius%2C%20vim%20pelo%20site%20da%20PixelCode%20Studio."
            target="_blank" rel="noopener">
           <span class="contact-cta__icon" aria-hidden="true">
             <svg viewBox="0 0 32 32" width="28" height="28">
               <path fill="currentColor" d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.7 1.9 6.6L4 29l7.6-2c1.8 1 3.9 1.5 6 1.5h.4c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.7h-.3c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-4.5 1.2 1.2-4.4-.3-.4c-1-1.6-1.6-3.5-1.6-5.5 0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10.7-9 10.7zm5.5-7.6c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.7 4.4 3.8 1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.3-.6-.4z"/>
             </svg>
           </span>
-          <span class="contact-cta__label">CHAMAR NO WHATSAPP</span>
-          <span class="contact-cta__number">+55 18 99631-1933</span>
+          <span class="contact-cta__label">ABRIR CANAL</span>
         </a>
+
+        <svg class="signature" viewBox="0 0 600 110" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+          <path class="signature__path" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            d="M30,70 C40,40 60,30 75,55 C82,72 78,88 70,86 C62,84 70,60 90,55 L110,50 M120,40 L120,80 M120,55 C140,40 165,55 150,75 C140,88 122,82 122,82 M170,80 L170,40 C190,40 200,55 195,68 C188,86 170,80 170,80 M210,40 L210,80 M210,40 L235,80 L235,40 M260,80 L260,40 C280,40 290,55 285,68 C278,86 260,80 260,80 M310,80 L310,40 M310,40 L335,80 L335,40 M360,40 L380,80 L400,40 M420,80 C440,40 470,40 470,55 C470,80 440,80 440,80 L470,80 M495,80 L495,40 M495,40 L520,80 L520,40 M540,40 L560,80 L580,40" />
+        </svg>
 
         <footer class="contact-cinema__meta">
           <div class="contact-cinema__meta-col">
@@ -488,7 +467,6 @@
           </div>
           <div class="contact-cinema__meta-col contact-cinema__meta-col--right">
             <a href="mailto:contato@pixelcodestudio.com.br" class="hover-line">contato@pixelcodestudio.com.br</a>
-            <span>FIM DA TRANSMISSÃO ◼</span>
           </div>
         </footer>
       </div>

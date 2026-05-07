@@ -12,6 +12,7 @@ import { revealWireframeContent, hideWireframeContent, resetWireframeContent } f
 import { revealFolders, hideFolders } from './folder-stack.js';
 import { revealProcessPipeline, hideProcessPipeline, resetProcessPipeline } from './process-pipeline.js';
 import { revealContactCinema, hideContactCinema } from './contact-magnet.js';
+import { revealContactFinale, hideContactFinale } from './contact-finale.js';
 
 const HERO_INITIAL_TEXT = 'NÃO CONSTRUÍMOS APENAS SITES.';
 const HERO_FINAL_TEXT = 'PROJETAMOS ATIVOS DIGITAIS IMERSIVOS DE ALTA PERFORMANCE PARA MARCAS QUE NÃO ACEITAM O PADRÃO';
@@ -148,6 +149,7 @@ export function initGSAP() {
 
     if (type === '5') {
       await revealContactCinema(section);
+      revealContactFinale(section);
       return;
     }
 
@@ -162,7 +164,10 @@ export function initGSAP() {
     if (type === '2') return hideWireframeContent(section);
     if (type === '3') return hideFolders(section);
     if (type === '4') return hideProcessPipeline(section);
-    if (type === '5') return hideContactCinema(section);
+    if (type === '5') {
+      hideContactFinale(section);
+      return hideContactCinema(section);
+    }
 
     await eraseMatrixReveals(section);
   }
