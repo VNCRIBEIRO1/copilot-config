@@ -1631,23 +1631,22 @@ section {
    ═══════════════════════════════════════════ */
 
 .pricing-section {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  padding: clamp(2rem, 4vh, 3.5rem) clamp(2rem, 4vw, 4rem);
   display: flex;
-  flex-direction: column;
-  padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 5vw, 5rem);
-  gap: clamp(1rem, 2.5vh, 2rem);
-}
-
-.pricing-section__header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .pricing-layout {
   display: grid;
-  grid-template-columns: minmax(260px, 30%) 1fr;
-  gap: clamp(1.5rem, 3vw, 3rem);
-  flex: 1;
+  grid-template-columns: 30% 70%;
+  gap: clamp(1.25rem, 2vw, 2rem);
+  width: 100%;
+  height: 100%;
   min-height: 0;
 }
 
@@ -1666,17 +1665,19 @@ section {
   min-height: 0;
   background: #fafafa;
   color: #09090b;
-  padding: clamp(0.9rem, 1.6vh, 1.4rem) clamp(1rem, 1.6vw, 1.6rem);
-  padding-right: clamp(1.6rem, 2.4vw, 2.2rem);
+  padding: clamp(0.9rem, 1.4vh, 1.3rem) clamp(1.1rem, 1.4vw, 1.5rem);
+  padding-right: clamp(1.8rem, 2.2vw, 2.4rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: clamp(0.4rem, 0.8vh, 0.7rem);
   cursor: pointer;
-  transform: perspective(1400px) rotateY(-3deg);
+  transform: perspective(1400px) rotateY(-2deg);
   transform-origin: right center;
-  transition: transform 0.5s var(--curve), opacity 0.4s ease, filter 0.4s ease;
+  transition: transform 0.5s var(--curve), opacity 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
   font-family: var(--font-display);
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .ticket:not(.is-active) {
@@ -1794,31 +1795,35 @@ section {
 
 .pricing-detail {
   position: relative;
+  min-width: 0;
   min-height: 0;
   border: 1px solid rgba(250,250,250,0.08);
   background: rgba(250,250,250,0.02);
-  padding: clamp(1.5rem, 3vh, 2.5rem) clamp(1.5rem, 3vw, 3rem);
+  padding: clamp(1.25rem, 2.5vh, 2rem) clamp(1.5rem, 2.5vw, 2.5rem);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 .pricing-pane {
-  position: absolute;
-  inset: clamp(1.5rem, 3vh, 2.5rem) clamp(1.5rem, 3vw, 3rem);
-  display: flex;
+  display: none;
   flex-direction: column;
-  gap: clamp(0.6rem, 1.2vh, 1rem);
+  gap: clamp(0.5rem, 1vh, 0.9rem);
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
   opacity: 0;
-  pointer-events: none;
-  transform: translateY(20px);
-  transition: opacity 0.45s var(--curve), transform 0.5s var(--curve);
+  transform: translateY(16px);
+  transition: opacity 0.4s var(--curve), transform 0.45s var(--curve);
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--accent-cyan) transparent;
 }
 
 .pricing-pane.is-active {
+  display: flex;
   opacity: 1;
-  pointer-events: auto;
   transform: translateY(0);
 }
 
@@ -1833,7 +1838,7 @@ section {
 .pricing-pane__heading {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2rem, 4vw, 3.6rem);
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
   line-height: 0.95;
   letter-spacing: -0.03em;
   text-transform: uppercase;

@@ -61,34 +61,29 @@ export async function revealPricingTickets(section) {
 
   api.reset();
 
-  const header = section.querySelector('.pricing-section__header');
   const tickets = api.tickets;
   const activePane = section.querySelector('.pricing-pane.is-active');
 
-  gsap.set([header, ...tickets, activePane].filter(Boolean), { clearProps: 'all' });
+  gsap.set([...tickets, activePane].filter(Boolean), { clearProps: 'opacity,x,y,rotateY' });
 
   const tl = gsap.timeline();
 
-  if (header) {
-    tl.from(header, { opacity: 0, y: 20, duration: 0.5, ease: 'power2.out' });
-  }
-
   tl.from(tickets, {
     opacity: 0,
-    x: -60,
-    rotateY: -15,
-    duration: 0.7,
-    stagger: 0.12,
+    x: -50,
+    rotateY: -12,
+    duration: 0.65,
+    stagger: 0.1,
     ease: 'power3.out',
-  }, '-=0.2');
+  });
 
   if (activePane) {
     tl.from(activePane, {
       opacity: 0,
-      x: 40,
-      duration: 0.6,
+      x: 30,
+      duration: 0.55,
       ease: 'power2.out',
-    }, '-=0.5');
+    }, '-=0.4');
   }
 
   await tl.then();
@@ -97,10 +92,9 @@ export async function revealPricingTickets(section) {
 export async function hidePricingTickets(section) {
   if (!section) return;
   const tickets = section.querySelectorAll('.ticket');
-  const panes = section.querySelectorAll('.pricing-pane');
-  const header = section.querySelector('.pricing-section__header');
+  const panes = section.querySelectorAll('.pricing-pane.is-active');
 
-  await gsap.to([header, ...tickets, ...panes].filter(Boolean), {
+  await gsap.to([...tickets, ...panes], {
     opacity: 0,
     duration: 0.3,
     ease: 'power2.in',

@@ -137,7 +137,6 @@ export function initGSAP() {
     }
 
     if (type === '3') {
-      await decodeMatrixReveals(section.querySelector('.pricing-section__header'));
       await revealPricingTickets(section);
       return;
     }
