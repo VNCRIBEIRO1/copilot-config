@@ -1,0 +1,62 @@
+# skill.yaml — Configuração de registro da skill para OpenClaw
+# Coloque este arquivo junto com SKILL.md em ~/.openclaw/skills/mapeador-executor/
+
+id: mapeador-executor
+name: "Mapeador e Executor de Scripts Locais"
+version: "1.0.0"
+description: "Mapeia pastas, lista arquivos recursivamente, executa comandos shell seguros e salva resultados no workspace. Controle remoto do PC via WhatsApp/Telegram."
+entry: SKILL.md
+language: pt-BR
+enabled: true
+priority: 10   # Prioridade de ativação (maior = mais prioritário)
+
+triggers:
+  keywords:
+    - mapear
+    - listar
+    - escanear
+    - escaneia
+    - mapeia
+    - lista
+    - árvore
+    - tree
+    - estrutura
+    - find
+    - grep
+    - buscar
+    - arquivos
+    - diretório
+    - pasta
+  phrases:
+    - "mapear pasta"
+    - "listar arquivos"
+    - "escanear diretório"
+    - "ver estrutura"
+    - "quais arquivos"
+    - "executa comando"
+    - "rodar script"
+    - "busca em arquivos"
+
+security:
+  sandbox: true
+  readonly_first: true
+  workspace_path: "~/.openclaw/workspace"
+  memory_path: "~/.openclaw/memory/MEMORY.md"
+
+tools_required:
+  - exec
+  - read
+  - write
+  - append
+
+bins_optional:
+  - tree
+  - grep
+
+bins_required:
+  - find   # ou dir no Windows
+
+platforms:
+  - linux
+  - macos
+  - windows

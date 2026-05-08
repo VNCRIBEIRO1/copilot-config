@@ -12,6 +12,10 @@ Specialist skill for building **production-ready Next.js applications** with:
 - **Campaign-specific patterns** (political, military, institutional sites)
 - **Optimized performance** (Core Web Vitals, ISR, SSG)
 
+> **Awwwards-tier refs:** Para efeitos vencedores 2024-2026 (R3F sticky-scrub, image trail, magnetic, distortion shaders, View Transitions, bento grid premium), consulte [`../web-design-mastery/references/awwwards-effects-2026.md`](../web-design-mastery/references/awwwards-effects-2026.md) e [`../web-design-mastery/references/gsap-cookbook.md`](../web-design-mastery/references/gsap-cookbook.md).
+>
+> **Stack canon Next.js 2026:** Next 15 (App Router) + GSAP 3.12 + Lenis + `@react-three/fiber` + `@react-three/drei` + `motion.dev` + Tailwind 4 + View Transitions API.
+
 ## Stack Base
 
 - **Framework**: Next.js 14–16+ (App Router)
