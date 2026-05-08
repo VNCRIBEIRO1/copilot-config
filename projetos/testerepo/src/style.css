@@ -426,7 +426,7 @@ section {
   padding-left: 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: clamp(0.5rem, 1.2vh, 1.2rem);
+  gap: clamp(0.2rem, 0.6vh, 0.6rem);
   margin: 0;
 }
 
@@ -444,7 +444,7 @@ section {
 
 .portfolio__item {
   position: relative;
-  padding: clamp(0.75rem, 1.6vh, 1.4rem) 0.75rem;
+  padding: clamp(0.45rem, 1vh, 0.9rem) 0.75rem;
   cursor: pointer;
   opacity: 0.55;
   border-left: 2px solid transparent;
@@ -472,7 +472,7 @@ section {
 .portfolio__item-content {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.2rem;
   width: 100%;
   opacity: 0;
   transform: translateX(-20px);
@@ -2063,8 +2063,8 @@ section {
 /* Pane main row (grid + art side-by-side) */
 .pricing-pane__main {
   display: grid;
-  grid-template-columns: 1fr clamp(180px, 28%, 260px);
-  gap: clamp(1rem, 2vw, 2rem);
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.2rem, 2.5vw, 2.4rem);
   align-items: stretch;
   min-height: 0;
 }
@@ -2133,7 +2133,7 @@ section {
 }
 
 .pricing-pane__art--inline {
-  min-height: clamp(140px, 22vh, 220px);
+  min-height: clamp(220px, 42vh, 440px);
 }
 
 /* Gallery slideshow inside art panel */
@@ -2583,8 +2583,8 @@ section {
 .pricing-pane__grid li {
   position: relative;
   padding-left: 1.3rem;
-  font-size: clamp(0.78rem, 0.85vw, 0.88rem);
-  line-height: 1.35;
+  font-size: clamp(0.82rem, 0.92vw, 0.95rem);
+  line-height: 1.45;
   color: rgba(250,250,250,0.85);
 }
 
@@ -2622,9 +2622,9 @@ section {
 
 .pricing-pane__chips span {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   letter-spacing: 0.08em;
-  padding: 0.35em 0.7em;
+  padding: 0.5em 1em;
   border: 1px solid rgba(0, 229, 255, 0.3);
   background: rgba(0, 229, 255, 0.05);
   color: rgba(250,250,250,0.85);
