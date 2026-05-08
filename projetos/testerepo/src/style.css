@@ -2136,6 +2136,58 @@ section {
   min-height: clamp(140px, 22vh, 220px);
 }
 
+/* Gallery slideshow inside art panel */
+.pricing-pane__gallery {
+  position: absolute;
+  inset: 0;
+}
+
+@keyframes gallery-fade {
+  0%     { opacity: 0; }
+  8.33%  { opacity: 1; }
+  25%    { opacity: 1; }
+  33.33% { opacity: 0; }
+  100%   { opacity: 0; }
+}
+
+.pricing-pane__gallery-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7) saturate(1.1);
+  opacity: 0;
+  animation: gallery-fade 12s ease-in-out infinite both;
+  transition: filter 0.4s ease;
+}
+
+.pricing-pane__gallery-img:nth-child(1) { animation-delay: -1s; }
+.pricing-pane__gallery-img:nth-child(2) { animation-delay: 3s; }
+.pricing-pane__gallery-img:nth-child(3) { animation-delay: 7s; }
+
+.pricing-pane__art:hover .pricing-pane__gallery-img {
+  filter: brightness(0.95) saturate(1.2);
+}
+
+/* Support / hosting notes */
+.pricing-pane__support {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(0, 229, 255, 0.15);
+}
+
+.pricing-pane__support-item {
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 0.8vw, 0.7rem);
+  letter-spacing: 0.06em;
+  color: rgba(0, 229, 255, 0.7);
+  line-height: 1.4;
+}
+
 
 .pricing-pane__feature {
   display: grid;
