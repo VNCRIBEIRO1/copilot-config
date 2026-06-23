@@ -2887,3 +2887,41 @@ section {
 }
 
 
+
+/* ─── Link fixo para a Vitrine / Whitelabel ─── */
+.home-vitrine {
+  position: fixed;
+  top: 20px; left: 50%; transform: translateX(-50%);
+  z-index: 1200;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase; white-space: nowrap;
+  color: var(--accent-cyan);
+  background: rgba(9, 9, 11, 0.55);
+  border: 1px solid rgba(0, 229, 255, 0.45);
+  border-radius: 100px;
+  padding: 0.6rem 1.15rem;
+  text-decoration: none;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: 0 6px 24px -10px rgba(0, 229, 255, 0.35);
+  transition: background .28s ease, color .28s ease, border-color .28s ease, box-shadow .28s ease, transform .28s ease;
+}
+.home-vitrine:hover,
+.home-vitrine:focus-visible {
+  background: var(--accent-cyan); color: #04121a; border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 1px var(--accent-cyan), 0 8px 30px -8px rgba(0, 229, 255, 0.6);
+  transform: translateX(-50%) translateY(-1px);
+}
+.home-vitrine__dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan);
+  animation: hv-pulse 2s ease-in-out infinite;
+}
+.home-vitrine:hover .home-vitrine__dot,
+.home-vitrine:focus-visible .home-vitrine__dot { background: #04121a; box-shadow: none; animation: none; }
+@keyframes hv-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@media (max-width: 560px) {
+  .home-vitrine { top: 12px; font-size: 0.6rem; letter-spacing: 0.12em; padding: 0.5rem 0.85rem; gap: 0.45rem; }
+  .home-vitrine__label { display: inline; }
+}
+@media (prefers-reduced-motion: reduce) { .home-vitrine__dot { animation: none; } }
