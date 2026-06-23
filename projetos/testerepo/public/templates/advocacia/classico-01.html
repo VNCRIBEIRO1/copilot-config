@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silva, Mendes & Associados — Advocacia e Consultoria Jurídica</title>
+<meta name="description" content="Silva, Mendes & Associados — Escritório de advocacia com tradição e excelência em Direito Civil, Empresarial, Tributário e mais. São Paulo, SP.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='36' rx='8' fill='%231B2A4A'/%3E%3Cpath d='M10 26V10h4l4 10 4-10h4v16h-3.5V16l-3.5 10h-2L13.5 16V26H10z' fill='%23C9A84C'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Silva, Mendes & Associados — Advocacia">
+<meta property="og:description" content="Escritório de advocacia com tradição e excelência jurídica em São Paulo.">
+<meta property="og:url" content="https://templatesadv.vercel.app/classico-01">
+<link rel="canonical" href="https://templatesadv.vercel.app/classico-01">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1B2A4A;--navy-dark:#0D1B2A;--gold:#C9A84C;--gold-light:#D4AF37;
+  --white:#FFFFFF;--cream:#F8F6F0;--text:#333333;--text-light:#666666;
+  --heading:'Playfair Display',Georgia,serif;
+  --body:'Source Sans 3','Source Sans Pro',system-ui,sans-serif;
+  --transition:0.3s ease;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--text);line-height:1.7;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* UTILITY */
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+.section-label{font-family:var(--body);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);margin-bottom:.5rem}
+.section-title{font-family:var(--heading);font-size:clamp(1.8rem,4vw,2.8rem);color:var(--navy);line-height:1.2;margin-bottom:1rem}
+.section-desc{font-size:1.05rem;color:var(--text-light);max-width:600px}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;font-family:var(--body);font-size:.95rem;font-weight:600;border-radius:4px;transition:var(--transition);cursor:pointer;border:none}
+.btn-gold{background:var(--gold);color:var(--white)}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.5)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-navy{background:var(--navy);color:var(--white)}
+.btn-navy:hover{background:var(--navy-dark)}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:1000;transition:var(--transition)}
+.header.transparent{background:transparent}
+.header.solid{background:var(--navy-dark);box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1400px;margin:0 auto}
+.header-brand{display:flex;align-items:center;gap:1rem}
+.header-logo{font-family:var(--heading);font-size:1.35rem;color:var(--white);font-weight:700}
+.header-logo span{color:var(--gold)}
+.header-oab{font-size:.7rem;color:rgba(255,255,255,.6);font-weight:600;letter-spacing:.05em}
+.nav{display:flex;align-items:center;gap:2rem}
+.nav a{color:rgba(255,255,255,.85);font-size:.9rem;font-weight:500;transition:var(--transition);position:relative}
+.nav a:hover{color:var(--gold)}
+.nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gold);transition:var(--transition)}
+.nav a:hover::after{width:100%}
+.nav-cta{padding:.55rem 1.25rem;border:1.5px solid var(--gold);color:var(--gold) !important;border-radius:3px;font-weight:600}
+.nav-cta:hover{background:var(--gold);color:var(--white) !important}
+.nav-cta::after{display:none !important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem}
+.hamburger span{width:24px;height:2px;background:var(--white);transition:var(--transition)}
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--navy-dark);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:var(--white);font-family:var(--heading);font-size:1.5rem;font-weight:600}
+.mobile-nav .close-btn{position:absolute;top:1.5rem;right:1.5rem;color:var(--white);font-size:2rem;cursor:pointer;background:none;border:none}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(rgba(13,27,42,.75),rgba(27,42,74,.85)),url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80&auto=format&fit=crop') center/cover no-repeat;color:var(--white)}
+.hero-content{max-width:700px;padding:8rem 2rem 4rem;margin:0 auto 0 8%}
+.hero-label{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.25em;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.hero-label::before{content:'';width:40px;height:1.5px;background:var(--gold)}
+.hero h1{font-family:var(--heading);font-size:clamp(2.5rem,5.5vw,4rem);line-height:1.15;font-weight:800;margin-bottom:1.5rem}
+.hero p{font-size:1.15rem;line-height:1.8;color:rgba(255,255,255,.8);margin-bottom:2.5rem;max-width:550px}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(255,255,255,.5);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* ABOUT */
+.about{padding:6rem 0;background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img{position:relative}
+.about-img img{border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.1)}
+.about-img::before{content:'';position:absolute;top:-20px;left:-20px;width:100%;height:100%;border:2px solid var(--gold);border-radius:4px;z-index:-1}
+.about-text h2{font-family:var(--heading);font-size:clamp(1.8rem,3vw,2.5rem);color:var(--navy);margin-bottom:1rem;line-height:1.2}
+.about-text p{color:var(--text-light);margin-bottom:1.5rem;font-size:1.05rem}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.about-value{display:flex;align-items:flex-start;gap:.75rem}
+.about-value .icon{width:36px;height:36px;min-width:36px;border-radius:50%;background:rgba(201,168,76,.1);display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.about-value h4{font-size:.9rem;font-weight:700;color:var(--navy)}
+.about-value p{font-size:.8rem;color:var(--text-light);margin:0}
+
+/* STATS */
+.stats{background:var(--navy);padding:4rem 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.stat-item .stat-num{font-family:var(--heading);font-size:3rem;color:var(--gold);font-weight:800}
+.stat-item .stat-text{color:rgba(255,255,255,.7);font-size:.9rem;margin-top:.25rem}
+
+/* AREAS */
+.areas{padding:6rem 0;background:var(--cream)}
+.areas-header{text-align:center;margin-bottom:3.5rem}
+.areas-header .section-desc{margin:0 auto}
+.areas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.area-card{background:var(--white);padding:2.5rem 2rem;border-radius:4px;border:1px solid rgba(0,0,0,.06);transition:var(--transition);position:relative;overflow:hidden}
+.area-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:var(--transition)}
+.area-card:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(0,0,0,.08)}
+.area-card:hover::before{transform:scaleX(1)}
+.area-icon{width:56px;height:56px;border-radius:8px;background:rgba(27,42,74,.05);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.25rem}
+.area-card h3{font-family:var(--heading);font-size:1.15rem;color:var(--navy);margin-bottom:.75rem}
+.area-card p{font-size:.9rem;color:var(--text-light);line-height:1.6}
+
+/* TEAM */
+.team{padding:6rem 0;background:var(--white)}
+.team-header{text-align:center;margin-bottom:3.5rem}
+.team-header .section-desc{margin:0 auto}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.team-card{text-align:center;transition:var(--transition)}
+.team-card:hover{transform:translateY(-4px)}
+.team-photo{width:180px;height:180px;border-radius:50%;object-fit:cover;margin:0 auto 1.25rem;border:4px solid var(--cream);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.team-card h3{font-family:var(--heading);font-size:1.1rem;color:var(--navy)}
+.team-card .oab{font-size:.75rem;color:var(--gold);font-weight:700;margin:.25rem 0 .5rem;letter-spacing:.05em}
+.team-card .spec{font-size:.85rem;color:var(--text-light);font-weight:600}
+.team-card p{font-size:.85rem;color:var(--text-light);margin-top:.5rem;padding:0 .5rem;line-height:1.5}
+
+/* PARALLAX DIVIDER */
+.parallax{height:350px;background:linear-gradient(rgba(13,27,42,.7),rgba(27,42,74,.8)),url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1920&q=80&auto=format&fit=crop') center/cover fixed;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--white);padding:2rem}
+.parallax h2{font-family:var(--heading);font-size:clamp(1.5rem,3vw,2.2rem);max-width:700px;line-height:1.4}
+
+/* ARTICLES */
+.articles{padding:6rem 0;background:var(--cream)}
+.articles-header{text-align:center;margin-bottom:3.5rem}
+.articles-header .section-desc{margin:0 auto}
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.article-card{background:var(--white);border-radius:4px;overflow:hidden;border:1px solid rgba(0,0,0,.06);transition:var(--transition)}
+.article-card:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(0,0,0,.08)}
+.article-img{height:200px;overflow:hidden}
+.article-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.article-card:hover .article-img img{transform:scale(1.05)}
+.article-body{padding:1.5rem}
+.article-date{font-size:.75rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.article-body h3{font-family:var(--heading);font-size:1.1rem;color:var(--navy);margin:.5rem 0;line-height:1.3}
+.article-body p{font-size:.875rem;color:var(--text-light);line-height:1.6}
+
+/* CONTACT */
+.contact{padding:6rem 0;background:var(--white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.contact-info h2{font-family:var(--heading);font-size:clamp(1.8rem,3vw,2.5rem);color:var(--navy);margin-bottom:1rem}
+.contact-info>p{color:var(--text-light);margin-bottom:2rem;font-size:1.05rem}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem}
+.contact-item .ci-icon{width:44px;height:44px;min-width:44px;border-radius:50%;background:rgba(27,42,74,.05);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.contact-item h4{font-size:.9rem;font-weight:700;color:var(--navy)}
+.contact-item p{font-size:.9rem;color:var(--text-light);margin:0}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.contact-form input,.contact-form textarea{padding:1rem;border:1px solid #ddd;border-radius:4px;font-family:var(--body);font-size:.95rem;transition:var(--transition);background:var(--cream)}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.1)}
+.contact-form textarea{height:150px;resize:vertical}
+.contact-map{margin-top:2rem;border-radius:4px;overflow:hidden;height:200px;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--text-light);font-size:.9rem;border:1px solid #eee}
+
+/* FOOTER */
+.footer{background:var(--navy-dark);color:rgba(255,255,255,.7);padding:4rem 0 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer h4{color:var(--white);font-family:var(--heading);font-size:1rem;margin-bottom:1rem}
+.footer-brand .footer-logo{font-family:var(--heading);font-size:1.3rem;color:var(--white);margin-bottom:.5rem}
+.footer-brand .footer-logo span{color:var(--gold)}
+.footer-brand p{font-size:.875rem;line-height:1.6}
+.footer ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.footer ul li a{font-size:.875rem;transition:var(--transition)}
+.footer ul li a:hover{color:var(--gold)}
+.footer-contact-item{display:flex;align-items:center;gap:.5rem;font-size:.875rem;margin-bottom:.5rem}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.8rem}
+.footer-disclaimer{text-align:center;padding:1rem 2rem;background:rgba(0,0,0,.2);font-size:.75rem;color:rgba(255,255,255,.4)}
+.footer-social{display:flex;gap:.75rem}
+.footer-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:var(--transition)}
+.footer-social a:hover{background:var(--gold);border-color:var(--gold);color:var(--white)}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .areas-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .nav{display:none}
+  .hamburger{display:flex}
+  .hero-content{padding:7rem 1.5rem 3rem;margin:0}
+  .hero h1{font-size:2rem}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .articles-grid{grid-template-columns:1fr}
+  .areas-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .parallax{background-attachment:scroll}
+}
+/* SKIP LINK */
+.skip-link{position:absolute;top:-100%;left:1rem;background:var(--gold);color:var(--navy);padding:.75rem 1.5rem;border-radius:0 0 8px 8px;z-index:200;font-weight:600;font-size:.9rem;transition:top .2s}.skip-link:focus{top:0}
+/* FOCUS */
+*:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+/* WHATSAPP */
+.whatsapp-float{position:fixed;bottom:1.5rem;right:1.5rem;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;z-index:99;box-shadow:0 4px 15px rgba(37,211,102,.4);transition:var(--transition)}.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(37,211,102,.5)}
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:5rem;right:1.7rem;width:40px;height:40px;background:var(--navy);color:var(--gold);border:1px solid var(--gold);border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:99;opacity:0;transition:var(--transition)}.back-top.visible{opacity:1}.back-top:hover{background:var(--gold);color:var(--navy)}
+/* TOAST */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--gold);color:var(--navy);padding:1rem 2rem;border-radius:8px;font-weight:600;z-index:200;transition:.4s ease;opacity:0}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+/* PRINT */
+@media print{.header,.hero-section,.whatsapp-float,.back-top,.toast,a[href="/whitelabel/templates/"]{display:none!important}body{background:#fff!important;color:#000!important}section{break-inside:avoid;page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<a href="#sobre" class="skip-link">Pular para o conteúdo</a>
+
+<!-- HEADER -->
+<header class="header transparent" id="header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <a href="#">
+        <a href="#" class="header-logo">Silva, Mendes <span>&</span> Associados</a>
+        <div class="header-oab">OAB/SP 00.123 | Advocacia e Consultoria Jurídica</div>
+      </a>
+    </div>
+    <nav class="nav">
+      <a href="#">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#areas">Áreas de Atuação</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#artigos">Artigos</a>
+      <a href="#contato" class="nav-cta">Entre em Contato</a>
+    </nav>
+    <button class="hamburger" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-btn" onclick="this.parentElement.classList.remove('open')" aria-label="Fechar">✕</button>
+  <a href="#" onclick="this.parentElement.classList.remove('open')">Início</a>
+  <a href="#sobre" onclick="this.parentElement.classList.remove('open')">Sobre</a>
+  <a href="#areas" onclick="this.parentElement.classList.remove('open')">Áreas de Atuação</a>
+  <a href="#equipe" onclick="this.parentElement.classList.remove('open')">Equipe</a>
+  <a href="#artigos" onclick="this.parentElement.classList.remove('open')">Artigos</a>
+  <a href="#contato" onclick="this.parentElement.classList.remove('open')">Contato</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Tradição e Excelência Jurídica</div>
+    <h1>Compromisso com a Justiça e o Direito</h1>
+    <p>Há mais de 25 anos atuando com ética, dedicação e conhecimento técnico nas mais diversas áreas do Direito, sempre orientados pelos princípios de transparência e responsabilidade.</p>
+    <div class="hero-btns">
+      <a href="#contato" class="btn btn-gold">Entre em Contato</a>
+      <a href="#sobre" class="btn btn-outline">Conheça o Escritório</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <span>↓</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80&auto=format&fit=crop" alt="Escritório Silva, Mendes & Associados">
+      </div>
+      <div class="about-text reveal">
+        <span class="section-label">Sobre o Escritório</span>
+        <h2>Uma Trajetória de Dedicação ao Direito</h2>
+        <p>Fundado em 2001, o escritório Silva, Mendes & Associados nasceu da união de profissionais comprometidos com a prática jurídica responsável e ética. Ao longo de mais de duas décadas, consolidamos nossa atuação em diversas áreas do Direito.</p>
+        <p>Nossa equipe é formada por advogados especializados, comprometidos com o estudo contínuo e a atualização permanente, oferecendo orientação jurídica fundamentada e personalizada.</p>
+        <div class="about-values">
+          <div class="about-value"><div class="icon">⚖️</div><div><h4>Ética</h4><p>Atuação pautada pela integridade</p></div></div>
+          <div class="about-value"><div class="icon">📚</div><div><h4>Conhecimento</h4><p>Estudo e atualização constantes</p></div></div>
+          <div class="about-value"><div class="icon">🤝</div><div><h4>Compromisso</h4><p>Dedicação a cada caso atendido</p></div></div>
+          <div class="about-value"><div class="icon">🔒</div><div><h4>Sigilo</h4><p>Confidencialidade garantida</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal"><div class="stat-num" data-target="25">0</div><div class="stat-text">Anos de Atuação</div></div>
+      <div class="stat-item reveal"><div class="stat-num" data-target="12">0</div><div class="stat-text">Advogados na Equipe</div></div>
+      <div class="stat-item reveal"><div class="stat-num" data-target="6">0</div><div class="stat-text">Áreas de Atuação</div></div>
+      <div class="stat-item reveal"><div class="stat-num" data-target="3">0</div><div class="stat-text">Unidades de Atendimento</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas" id="areas">
+  <div class="container">
+    <div class="areas-header">
+      <span class="section-label">Áreas de Atuação</span>
+      <h2 class="section-title">Atuação Jurídica Especializada</h2>
+      <p class="section-desc">Oferecemos orientação jurídica em diversas áreas do Direito, sempre com abordagem técnica e personalizada.</p>
+    </div>
+    <div class="areas-grid">
+      <div class="area-card reveal">
+        <div class="area-icon">🏛️</div>
+        <h3>Direito Civil</h3>
+        <p>Orientação em questões contratuais, responsabilidade civil, direito das obrigações, posse e propriedade, e demais relações jurídicas civis.</p>
+      </div>
+      <div class="area-card reveal">
+        <div class="area-icon">🏢</div>
+        <h3>Direito Empresarial</h3>
+        <p>Assessoria em constituição societária, contratos comerciais, recuperação judicial, fusões e aquisições, e governança corporativa.</p>
+      </div>
+      <div class="area-card reveal">
+        <div class="area-icon">👷</div>
+        <h3>Direito Trabalhista</h3>
+        <p>Atuação em relações de trabalho, tanto para empresas quanto para trabalhadores, incluindo questões sindicais e previdenciárias.</p>
+      </div>
+      <div class="area-card reveal">
+        <div class="area-icon">📊</div>
+        <h3>Direito Tributário</h3>
+        <p>Consultoria e contencioso tributário, planejamento fiscal, defesas administrativas e judiciais em matéria tributária.</p>
+      </div>
+      <div class="area-card reveal">
+        <div class="area-icon">🏠</div>
+        <h3>Direito Imobiliário</h3>
+        <p>Assessoria em transações imobiliárias, contratos de compra e venda, locação, incorporação e regularização de imóveis.</p>
+      </div>
+      <div class="area-card reveal">
+        <div class="area-icon">👨‍👩‍👧‍👦</div>
+        <h3>Direito de Família</h3>
+        <p>Atuação em divórcios, guarda, pensão alimentícia, inventários, testamentos e planejamento sucessório.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="equipe">
+  <div class="container">
+    <div class="team-header">
+      <span class="section-label">Nossa Equipe</span>
+      <h2 class="section-title">Profissionais Especializados</h2>
+      <p class="section-desc">Conheça os advogados que compõem nosso corpo jurídico, unidos pelo compromisso com a excelência profissional.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <img class="team-photo" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&q=80&auto=format&fit=crop&crop=face" alt="Dr. Ricardo Silva">
+        <h3>Dr. Ricardo Silva</h3>
+        <div class="oab">OAB/SP 00.001</div>
+        <div class="spec">Direito Civil e Empresarial</div>
+        <p>Sócio fundador. Mestre em Direito Civil pela USP. Mais de 30 anos de experiência em consultoria jurídica.</p>
+      </div>
+      <div class="team-card reveal">
+        <img class="team-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&q=80&auto=format&fit=crop&crop=face" alt="Dra. Fernanda Mendes">
+        <h3>Dra. Fernanda Mendes</h3>
+        <div class="oab">OAB/SP 00.002</div>
+        <div class="spec">Direito Trabalhista</div>
+        <p>Sócia. Especialista em Direito do Trabalho pela PUC-SP. Atuação em contencioso e consultivo trabalhista.</p>
+      </div>
+      <div class="team-card reveal">
+        <img class="team-photo" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&q=80&auto=format&fit=crop&crop=face" alt="Dr. Marcos Oliveira">
+        <h3>Dr. Marcos Oliveira</h3>
+        <div class="oab">OAB/SP 00.003</div>
+        <div class="spec">Direito Tributário</div>
+        <p>Associado sênior. Doutor em Direito Tributário pela FGV. Experiência em planejamento fiscal e contencioso.</p>
+      </div>
+      <div class="team-card reveal">
+        <img class="team-photo" src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=400&q=80&auto=format&fit=crop&crop=face" alt="Dra. Camila Torres">
+        <h3>Dra. Camila Torres</h3>
+        <div class="oab">OAB/SP 00.004</div>
+        <div class="spec">Direito de Família</div>
+        <p>Associada. Especialista em Direito de Família e Sucessões. Mediadora certificada pelo CNJ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARALLAX -->
+<section class="parallax">
+  <h2>"A advocacia é exercício diário de estudo, responsabilidade e compromisso com a Justiça."</h2>
+</section>
+
+<!-- ARTICLES -->
+<section class="articles" id="artigos">
+  <div class="container">
+    <div class="articles-header">
+      <span class="section-label">Artigos e Informações</span>
+      <h2 class="section-title">Conteúdo Informativo</h2>
+      <p class="section-desc">Publicações de caráter informativo elaboradas pela nossa equipe sobre temas jurídicos relevantes.</p>
+    </div>
+    <div class="articles-grid">
+      <div class="article-card reveal">
+        <div class="article-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80&auto=format&fit=crop" alt="Artigo sobre contratos" loading="lazy"></div>
+        <div class="article-body">
+          <span class="article-date">15 de Março de 2026</span>
+          <h3>Aspectos Relevantes da Nova Lei de Licitações</h3>
+          <p>Uma análise informativa sobre as principais mudanças introduzidas pela Lei nº 14.133/2021 e seus impactos nas contratações públicas.</p>
+        </div>
+      </div>
+      <div class="article-card reveal">
+        <div class="article-img"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80&auto=format&fit=crop" alt="Artigo sobre empresas" loading="lazy"></div>
+        <div class="article-body">
+          <span class="article-date">08 de Março de 2026</span>
+          <h3>LGPD e os Desafios para Pequenas Empresas</h3>
+          <p>Informações sobre a adequação de pequenas e médias empresas à Lei Geral de Proteção de Dados Pessoais.</p>
+        </div>
+      </div>
+      <div class="article-card reveal">
+        <div class="article-img"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80&auto=format&fit=crop" alt="Artigo sobre trabalho" loading="lazy"></div>
+        <div class="article-body">
+          <span class="article-date">01 de Março de 2026</span>
+          <h3>Teletrabalho: Aspectos Jurídicos e Regulamentação</h3>
+          <p>Considerações informativas sobre os direitos e deveres no regime de teletrabalho conforme a legislação vigente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contato">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <span class="section-label">Contato</span>
+        <h2>Entre em Contato com o Escritório</h2>
+        <p>Estamos à disposição para atendê-lo. Entre em contato pelos canais abaixo ou preencha o formulário.</p>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div><h4>Endereço</h4><p>Av. Paulista, 1000 — Cj. 1501<br>Bela Vista, São Paulo — SP, 01310-100</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div><h4>Telefone</h4><p>(11) 3000-0000</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div><h4>E-mail</h4><p>contato@silvamendes.adv.br</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">💬</div>
+          <div><h4>WhatsApp</h4><p>(11) 99000-0000</p></div>
+        </div>
+        <div class="contact-map">📍 Mapa do Google Maps — Embed aqui</div>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <input type="text" placeholder="Nome completo" aria-label="Nome completo" required>
+        <input type="email" placeholder="E-mail" aria-label="E-mail" required>
+        <input type="tel" placeholder="Telefone" aria-label="Telefone">
+        <textarea placeholder="Mensagem" aria-label="Mensagem" required></textarea>
+        <button class="btn btn-navy" type="submit">Enviar Mensagem</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Silva, Mendes <span>&</span> Associados</div>
+        <p>Advocacia e Consultoria Jurídica.<br>OAB/SP 00.123<br><br>Tradição, ética e dedicação ao Direito há mais de 25 anos.</p>
+        <div class="footer-social" style="margin-top:1rem">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="Facebook">fb</a>
+        </div>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#areas">Áreas de Atuação</a></li>
+          <li><a href="#equipe">Equipe</a></li>
+          <li><a href="#artigos">Artigos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Áreas</h4>
+        <ul>
+          <li><a href="#">Direito Civil</a></li>
+          <li><a href="#">Direito Empresarial</a></li>
+          <li><a href="#">Direito Trabalhista</a></li>
+          <li><a href="#">Direito Tributário</a></li>
+          <li><a href="#">Direito Imobiliário</a></li>
+          <li><a href="#">Direito de Família</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <div class="footer-contact-item">📍 Av. Paulista, 1000 — Cj. 1501</div>
+        <div class="footer-contact-item">📞 (11) 3000-0000</div>
+        <div class="footer-contact-item">✉️ contato@silvamendes.adv.br</div>
+        <div class="footer-contact-item">💬 (11) 99000-0000</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Silva, Mendes & Associados — Todos os direitos reservados.</p>
+      <p>OAB/SP 00.123</p>
+    </div>
+  </div>
+  <div class="footer-disclaimer">Este site é um template demonstrativo com dados fictícios, desenvolvido com caráter meramente informativo, em conformidade com o Provimento 205/2021 da OAB.
+<p style="font-size:.7rem;color:rgba(255,255,255,.35);margin-top:.5rem">Desenvolvido por <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer" style="color:var(--gold)">PixelCode Studio</a> — Dev Full Stack & Web Design: Vinicius Ribeiro</p>
+<p style="font-size:.6rem;color:rgba(255,255,255,.25);margin-top:.25rem">Portfólios: <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer" style="color:var(--gold)">pixelcodestudio.com.br</a> · <a href="https://portfolio-politico.vercel.app" target="_blank" rel="noopener noreferrer" style="color:var(--gold)">portfolio-politico.vercel.app</a></p></div>
+</footer>
+
+<a href="/whitelabel/templates/" style="position:fixed;bottom:1.5rem;left:1.5rem;background:var(--navy);color:var(--white);padding:.5rem 1rem;border-radius:4px;font-size:.8rem;font-family:var(--body);font-weight:600;z-index:99;opacity:.7;transition:var(--transition)" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">← Galeria</a>
+
+<script>
+// STICKY HEADER
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>{header.classList.toggle('solid',window.scrollY>80);header.classList.toggle('transparent',window.scrollY<=80)});
+
+// SCROLL REVEAL
+const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+// COUNTER ANIMATION
+const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target,target=+el.dataset.target;let c=0;const step=Math.max(1,Math.floor(target/40));const t=setInterval(()=>{c+=step;if(c>=target){el.textContent=target;clearInterval(t)}else el.textContent=c},40);counterObs.unobserve(el)}})},{threshold:.5});
+document.querySelectorAll('.stat-num[data-target]').forEach(el=>counterObs.observe(el));
+// Back to top
+const bt=document.getElementById('backTop');
+window.addEventListener('scroll',()=>{bt.classList.toggle('visible',scrollY>500)});
+// Form
+const form=document.getElementById('contactForm');
+if(form){form.addEventListener('submit',e=>{e.preventDefault();const toast=document.getElementById('toast');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),3000);form.reset()})}
+</script>
+<a href="https://wa.me/5511900000000" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Fale conosco pelo WhatsApp">💬</a>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+<div class="toast" id="toast">✓ Mensagem enviada com sucesso!</div>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LegalService","name":"Silva, Mendes & Associados","description":"Escritório de advocacia com tradição e excelência em São Paulo","url":"https://templatesadv.vercel.app/classico-01","telephone":"(11) 3000-0000","email":"contato@silvamendes.adv.br","address":{"@type":"PostalAddress","streetAddress":"Rua Augusta, 1500 — Sala 2010","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"}}
+</script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaDireito Advocacia — Inovação Jurídica</title>
+<meta name="description" content="NovaDireito Advocacia — Pensamento jurídico inovador no Rio de Janeiro. Direito Digital, Empresarial, Civil, Trabalhista e mais.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='36' rx='8' fill='%230D9488'/%3E%3Cpath d='M10 26V10h4l4 10 4-10h4v16h-3.5V16l-3.5 10h-2L13.5 16V26H10z' fill='white'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NovaDireito Advocacia — Inovação Jurídica">
+<meta property="og:description" content="Pensamento jurídico inovador no Rio de Janeiro.">
+<meta property="og:url" content="https://templatesadv.vercel.app/moderno-02">
+<link rel="canonical" href="https://templatesadv.vercel.app/moderno-02">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0D9488;--teal-light:#14B8A6;--teal-dark:#0F766E;
+  --charcoal:#1E293B;--dark:#0F172A;--white:#FFFFFF;--offwhite:#F0FDFA;
+  --text:#334155;--text-light:#64748B;--line:rgba(0,0,0,.06);
+  --heading:'Space Grotesk','DM Sans',system-ui,sans-serif;
+  --body:'DM Sans',system-ui,sans-serif;
+  --glass:rgba(255,255,255,.12);--glass-border:rgba(255,255,255,.18);
+  --transition:.35s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}body{font-family:var(--body);color:var(--text);line-height:1.7;overflow-x:hidden}
+img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;padding:.75rem 0;transition:var(--transition)}
+.header.solid{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);box-shadow:0 1px 12px rgba(0,0,0,.04)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;max-width:1400px;margin:0 auto;padding:0 2rem}
+.h-logo{font-family:var(--heading);font-weight:700;font-size:1.25rem;transition:var(--transition)}
+.h-logo.white{color:#fff}.header.solid .h-logo{color:var(--charcoal)}
+.h-logo span{background:var(--teal);color:#fff;padding:.05em .35em;border-radius:6px;margin-right:.15em}
+.nav{display:flex;align-items:center;gap:2rem}
+.nav a{font-size:.85rem;font-weight:500;transition:var(--transition)}
+.nav.white a{color:rgba(255,255,255,.8)}.header.solid .nav a{color:var(--text)}
+.nav a:hover{color:var(--teal)}
+.nav-cta{background:var(--teal)!important;color:#fff!important;padding:.5rem 1.25rem;border-radius:8px}
+.nav-cta:hover{background:var(--teal-light)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem}
+.hamburger span{width:24px;height:2px;transition:var(--transition)}
+.hamburger.white span{background:#fff}.header.solid .hamburger span{background:var(--charcoal)}
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--dark);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:#fff;font-family:var(--heading);font-size:1.3rem;font-weight:600}
+.mobile-close{position:absolute;top:1.5rem;right:1.5rem;color:#fff;font-size:2rem;cursor:pointer;background:none;border:none}
+
+/* HERO GRADIENT */
+.hero{min-height:100vh;background:linear-gradient(135deg,var(--dark) 0%,#1a2e35 40%,var(--teal-dark) 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:6rem 2rem}
+.hero::before{content:'';position:absolute;top:10%;right:-15%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.2) 0%,transparent 70%);animation:pulse 6s ease-in-out infinite}
+.hero::after{content:'';position:absolute;bottom:-10%;left:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,.15) 0%,transparent 70%);animation:pulse 6s ease-in-out 3s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.2);opacity:1}}
+.hero-content{text-align:center;color:#fff;max-width:780px;z-index:2;position:relative}
+.hero-chip{display:inline-flex;align-items:center;gap:.4rem;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--glass-border);padding:.4rem 1.2rem;border-radius:50px;font-size:.75rem;font-weight:600;color:var(--teal-light);margin-bottom:2rem}
+.hero h1{font-family:var(--heading);font-size:clamp(2.5rem,5.5vw,4rem);font-weight:700;line-height:1.08;letter-spacing:-.04em;margin-bottom:1.25rem}
+.hero h1 .grad{background:linear-gradient(135deg,var(--teal-light),#5EEAD4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.1rem;color:rgba(255,255,255,.55);max-width:600px;margin:0 auto 2.5rem;line-height:1.7}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.75rem;font-family:var(--heading);font-size:.9rem;font-weight:600;border-radius:10px;transition:var(--transition);cursor:pointer;border:none}
+.btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{background:var(--teal-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(13,148,136,.3)}
+.btn-glass{background:var(--glass);backdrop-filter:blur(10px);color:#fff;border:1px solid var(--glass-border)}.btn-glass:hover{background:rgba(255,255,255,.2)}
+
+/* GLASS STATS */
+.stats-bar{margin-top:-3rem;position:relative;z-index:5}
+.stats-glass{background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border-radius:20px;padding:2.5rem 3rem;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;box-shadow:0 20px 60px rgba(0,0,0,.08);border:1px solid rgba(255,255,255,.5)}
+.stat-item{text-align:center}
+.stat-num{font-family:var(--heading);font-size:2.2rem;font-weight:700;color:var(--teal)}
+.stat-text{font-size:.8rem;color:var(--text-light);margin-top:.1rem}
+
+/* SECTION */
+.section{padding:6rem 0}
+.section-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--teal);margin-bottom:.4rem;display:inline-block;padding:.25rem .75rem;background:rgba(13,148,136,.06);border-radius:50px}
+.section-title{font-family:var(--heading);font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;color:var(--charcoal);line-height:1.15;margin:.75rem 0;letter-spacing:-.02em}
+.section-desc{font-size:.95rem;color:var(--text-light);max-width:550px;margin-bottom:3rem}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img{position:relative;border-radius:20px;overflow:hidden}
+.about-img img{width:100%;height:420px;object-fit:cover}
+.about-img .tag{position:absolute;top:1.5rem;left:1.5rem;background:var(--teal);color:#fff;padding:.35rem .9rem;border-radius:8px;font-size:.75rem;font-weight:700}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.5rem}
+.av{padding:1rem;background:var(--offwhite);border-radius:12px;border-left:3px solid var(--teal);transition:var(--transition)}
+.av:hover{box-shadow:0 4px 15px rgba(0,0,0,.04)}
+.av h4{font-family:var(--heading);font-size:.85rem;font-weight:700;color:var(--charcoal);margin-bottom:.15rem}
+.av p{font-size:.75rem;color:var(--text-light)}
+
+/* AREAS */
+.areas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.area-card{padding:2rem;background:var(--white);border:1px solid var(--line);border-radius:16px;transition:var(--transition);position:relative;overflow:hidden}
+.area-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(13,148,136,.08);border-color:var(--teal)}
+.area-num{font-family:var(--heading);font-size:3rem;font-weight:800;color:rgba(13,148,136,.06);line-height:1;position:absolute;top:.5rem;right:1rem}
+.area-card h3{font-family:var(--heading);font-size:1.05rem;font-weight:700;color:var(--charcoal);margin-bottom:.5rem}
+.area-card p{font-size:.85rem;color:var(--text-light);line-height:1.6}
+.area-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);margin-bottom:1rem;display:inline-block}
+
+/* TEAM FLIP */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.flip-card{perspective:800px;height:380px}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d;cursor:default}
+.flip-card:hover .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:16px;overflow:hidden}
+.flip-front img{width:100%;height:100%;object-fit:cover}
+.flip-front .ff-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.25rem;background:linear-gradient(0deg,rgba(0,0,0,.7) 0%,transparent 100%)}
+.flip-front h3{color:#fff;font-family:var(--heading);font-size:1rem;font-weight:700}
+.flip-front .oab{color:var(--teal-light);font-size:.7rem;font-weight:700;letter-spacing:.04em}
+.flip-back{background:var(--charcoal);color:#fff;transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;padding:2rem}
+.flip-back h3{font-family:var(--heading);font-size:1.1rem;font-weight:700;margin-bottom:.15rem}
+.flip-back .oab{color:var(--teal-light);font-size:.7rem;font-weight:700;margin-bottom:1rem}
+.flip-back .spec{font-size:.85rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:.75rem}
+.flip-back p{font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.6}
+
+/* ARTICLES */
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.art-card{background:var(--white);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:var(--transition)}
+.art-card:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,.05)}
+.art-img{height:180px;overflow:hidden}
+.art-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.art-card:hover .art-img img{transform:scale(1.05)}
+.art-body{padding:1.5rem}
+.art-tag{display:inline-block;padding:.2rem .6rem;background:rgba(13,148,136,.07);color:var(--teal);font-size:.7rem;font-weight:700;border-radius:5px;margin-bottom:.5rem}
+.art-body h3{font-family:var(--heading);font-size:1rem;font-weight:700;color:var(--charcoal);line-height:1.3;margin-bottom:.4rem}
+.art-body p{font-size:.8rem;color:var(--text-light)}
+
+/* CONTACT */
+.contact-section{background:var(--charcoal)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;color:var(--white)}
+.c-info h3{font-family:var(--heading);font-size:1.3rem;font-weight:700;margin-bottom:.75rem}
+.c-info p{color:rgba(255,255,255,.5);font-size:.9rem;margin-bottom:2rem}
+.c-detail{display:flex;gap:1rem;align-items:start;margin-bottom:1.5rem}
+.c-detail .c-icon{width:44px;height:44px;border-radius:10px;background:rgba(13,148,136,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.c-detail h4{font-family:var(--heading);font-size:.85rem;font-weight:600;margin-bottom:.1rem}
+.c-detail p{font-size:.8rem;color:rgba(255,255,255,.5);margin:0}
+.c-form{display:flex;flex-direction:column;gap:1rem}
+.c-form input,.c-form textarea{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:1rem;border-radius:10px;color:#fff;font-family:var(--body);font-size:.9rem;transition:var(--transition)}
+.c-form input::placeholder,.c-form textarea::placeholder{color:rgba(255,255,255,.3)}
+.c-form input:focus,.c-form textarea:focus{outline:none;border-color:var(--teal);background:rgba(255,255,255,.08)}
+.c-form textarea{height:130px;resize:vertical}
+.c-submit{background:var(--teal);color:#fff;border:none;cursor:pointer;padding:.9rem;border-radius:10px;font-family:var(--heading);font-size:.9rem;font-weight:600;transition:var(--transition)}
+.c-submit:hover{background:var(--teal-light)}
+
+/* FOOTER */
+.footer{background:var(--dark);color:rgba(255,255,255,.5);padding:3rem 0 0}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.footer h4{color:#fff;font-family:var(--heading);font-size:.9rem;margin-bottom:.75rem}
+.footer p,.footer ul a{font-size:.82rem}
+.footer ul{list-style:none;display:flex;flex-direction:column;gap:.25rem}
+.footer ul a:hover{color:var(--teal-light)}
+.footer-bar{display:flex;justify-content:space-between;padding:1.5rem 0;flex-wrap:wrap;gap:1rem}
+.footer-bar p{font-size:.75rem}
+.disclaimer{text-align:center;padding:1rem;background:rgba(0,0,0,.3);font-size:.68rem;color:rgba(255,255,255,.25)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(25px);transition:all .65s ease}.reveal.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.about-grid,.contact-wrap{grid-template-columns:1fr}.stats-glass{grid-template-columns:repeat(2,1fr)}.team-grid{grid-template-columns:repeat(2,1fr)}.areas-grid{grid-template-columns:1fr 1fr}.articles-grid{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.nav{display:none}.hamburger{display:flex}.areas-grid,.team-grid{grid-template-columns:1fr}.stats-glass{grid-template-columns:1fr;padding:1.5rem}.about-values{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}.footer-bar{flex-direction:column;text-align:center}.flip-card{height:320px}}
+.skip-link{position:absolute;top:-100%;left:1rem;background:var(--teal);color:#fff;padding:.75rem 1.5rem;border-radius:0 0 8px 8px;z-index:200;font-weight:600;font-size:.9rem;transition:top .2s}.skip-link:focus{top:0}
+*:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:4px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.whatsapp-float{position:fixed;bottom:1.5rem;right:1.5rem;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;z-index:99;box-shadow:0 4px 15px rgba(37,211,102,.4);transition:var(--transition)}.whatsapp-float:hover{transform:scale(1.1)}
+.back-top{position:fixed;bottom:5rem;right:1.7rem;width:40px;height:40px;background:var(--teal);color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:99;opacity:0;transition:var(--transition)}.back-top.visible{opacity:1}.back-top:hover{background:var(--teal-light)}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--teal);color:#fff;padding:1rem 2rem;border-radius:10px;font-weight:600;z-index:200;transition:.4s ease;opacity:0}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-card{cursor:pointer}
+.flip-card:focus-within .flip-inner{transform:rotateY(180deg)}
+@media print{.header,.hero,.whatsapp-float,.back-top,.toast,.stats-bar,a[href="/whitelabel/templates/"]{display:none!important}body{background:#fff!important;color:#000!important}section{break-inside:avoid}.flip-front{display:none!important}.flip-back{position:static!important;transform:none!important;backface-visibility:visible!important}}
+</style>
+</head>
+<body>
+<a href="#sobre" class="skip-link">Pular para o conteúdo</a>
+<header class="header" id="header">
+<div class="header-inner">
+  <a href="#" class="h-logo white" style="text-decoration:none"><span>N</span>NovaDireito</a>
+  <nav class="nav white"><a href="#">Início</a><a href="#sobre">Sobre</a><a href="#areas">Áreas</a><a href="#equipe">Equipe</a><a href="#artigos">Artigos</a><a href="#contato" class="nav-cta">Contato</a></nav>
+  <button class="hamburger white" onclick="document.getElementById('mn').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+</div>
+</header>
+<div class="mobile-nav" id="mn"><button class="mobile-close" onclick="this.parentElement.classList.remove('open')">✕</button><a href="#" onclick="this.parentElement.classList.remove('open')">Início</a><a href="#sobre" onclick="this.parentElement.classList.remove('open')">Sobre</a><a href="#areas" onclick="this.parentElement.classList.remove('open')">Áreas</a><a href="#equipe" onclick="this.parentElement.classList.remove('open')">Equipe</a><a href="#artigos" onclick="this.parentElement.classList.remove('open')">Artigos</a><a href="#contato" onclick="this.parentElement.classList.remove('open')">Contato</a></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-chip">⚖️ OAB/RJ 00.660</div>
+    <h1>Pensamento Jurídico <span class="grad">Inovador</span></h1>
+    <p>Combinamos tecnologia, agilidade e conhecimento técnico para oferecer orientação jurídica que acompanha o ritmo das transformações do mercado.</p>
+    <div class="hero-btns"><a href="#contato" class="btn btn-teal">Fale Conosco</a><a href="#areas" class="btn btn-glass">Nossas Áreas</a></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar"><div class="container">
+  <div class="stats-glass">
+    <div class="stat-item"><div class="stat-num" data-target="12">0</div><div class="stat-text">Anos de Atuação</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="8">0</div><div class="stat-text">Advogados</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="6">0</div><div class="stat-text">Áreas de Atuação</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="2">0</div><div class="stat-text">Escritórios</div></div>
+  </div>
+</div></div>
+
+<!-- ABOUT -->
+<section class="section" id="sobre">
+<div class="container">
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80&auto=format&fit=crop" alt="Escritório">
+      <div class="tag">Desde 2014</div>
+    </div>
+    <div class="reveal">
+      <span class="section-label">Sobre Nós</span>
+      <h2 class="section-title">Advocacia que Acompanha o Futuro</h2>
+      <p style="color:var(--text-light);margin-bottom:1rem">A NovaDireito nasceu com o propósito de integrar inovação ao exercício jurídico. Sediada no Rio de Janeiro, nossa equipe multidisciplinar alia sólida formação acadêmica a ferramentas e métodos contemporâneos.</p>
+      <p style="color:var(--text-light)">Acreditamos que a advocacia pode ser eficiente, acessível e transparente, sem abrir mão da profundidade técnica e do rigor ético.</p>
+      <div class="about-values">
+        <div class="av"><h4>Inovação</h4><p>Métodos e ferramentas atualizados</p></div>
+        <div class="av"><h4>Transparência</h4><p>Comunicação clara e objetiva</p></div>
+        <div class="av"><h4>Ética</h4><p>Conformidade em cada atuação</p></div>
+        <div class="av"><h4>Agilidade</h4><p>Respostas no tempo certo</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- AREAS -->
+<section class="section" style="background:var(--offwhite)" id="areas">
+<div class="container">
+  <div style="text-align:center"><span class="section-label">Áreas de Atuação</span>
+  <h2 class="section-title" style="margin-left:auto;margin-right:auto">Soluções Jurídicas Integradas</h2>
+  <p class="section-desc" style="margin-left:auto;margin-right:auto;text-align:center">Atendimento em diversas frentes do Direito com visão estratégica e foco em orientação estratégica.</p></div>
+  <div class="areas-grid">
+    <div class="area-card reveal"><span class="area-dot"></span><div class="area-num">01</div><h3>Direito Digital</h3><p>Proteção de dados, LGPD, contratos digitais, e-commerce e propriedade intelectual.</p></div>
+    <div class="area-card reveal"><span class="area-dot"></span><div class="area-num">02</div><h3>Direito Empresarial</h3><p>Estruturação societária, contratos comerciais, M&A e governança corporativa.</p></div>
+    <div class="area-card reveal"><span class="area-dot"></span><div class="area-num">03</div><h3>Direito Civil</h3><p>Contratos, responsabilidade civil, direitos reais e obrigações.</p></div>
+    <div class="area-card reveal"><span class="area-dot"></span><div class="area-num">04</div><h3>Direito Trabalhista</h3><p>Consultoria preventiva, contencioso e compliance trabalhista.</p></div>
+    <div class="area-card reveal"><span class="area-dot"></span><div class="area-num">05</div><h3>Direito do Consumidor</h3><p>Defesa nas relações de consumo, regulatório e contencioso.</p></div>
+    <div class="area-card reveal"><span class="area-dot"></span><div class="area-num">06</div><h3>Direito Tributário</h3><p>Planejamento fiscal, contencioso tributário e recuperação de créditos.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- TEAM FLIP CARDS -->
+<section class="section" id="equipe">
+<div class="container">
+  <div style="text-align:center"><span class="section-label">Equipe</span>
+  <h2 class="section-title">Profissionais Visionários</h2>
+  <p class="section-desc" style="margin-left:auto;margin-right:auto;text-align:center">Passe o mouse para conhecer cada profissional da nossa equipe.</p></div>
+  <div class="team-grid">
+    <div class="flip-card reveal" tabindex="0"><div class="flip-inner">
+      <div class="flip-front"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=480&q=80&auto=format&fit=crop&crop=face" alt="Dr. Lucas Ferreira"><div class="ff-overlay"><h3>Dr. Lucas Ferreira</h3><span class="oab">OAB/RJ 00.050</span></div></div>
+      <div class="flip-back"><h3>Dr. Lucas Ferreira</h3><span class="oab">OAB/RJ 00.050</span><div class="spec">Direito Digital & Empresarial</div><p>Sócio fundador. Especialista em direito digital pela UERJ. Certificado em Proteção de Dados (CDPO).</p></div>
+    </div></div>
+    <div class="flip-card reveal" tabindex="0"><div class="flip-inner">
+      <div class="flip-front"><img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=480&q=80&auto=format&fit=crop&crop=face" alt="Dra. Camila Sousa"><div class="ff-overlay"><h3>Dra. Camila Sousa</h3><span class="oab">OAB/RJ 00.051</span></div></div>
+      <div class="flip-back"><h3>Dra. Camila Sousa</h3><span class="oab">OAB/RJ 00.051</span><div class="spec">Direito Civil</div><p>Sócia. Mestre em Direito Civil pela PUC-Rio. Atua em contratos e responsabilidade civil.</p></div>
+    </div></div>
+    <div class="flip-card reveal" tabindex="0"><div class="flip-inner">
+      <div class="flip-front"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=480&q=80&auto=format&fit=crop&crop=face" alt="Dr. Pedro Almeida"><div class="ff-overlay"><h3>Dr. Pedro Almeida</h3><span class="oab">OAB/RJ 00.052</span></div></div>
+      <div class="flip-back"><h3>Dr. Pedro Almeida</h3><span class="oab">OAB/RJ 00.052</span><div class="spec">Direito Tributário</div><p>Associado sênior. Pós-graduado em Direito Tributário pela FGV. Foco em planejamento fiscal.</p></div>
+    </div></div>
+    <div class="flip-card reveal" tabindex="0"><div class="flip-inner">
+      <div class="flip-front"><img src="https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=400&h=480&q=80&auto=format&fit=crop&crop=face" alt="Dra. Juliana Reis"><div class="ff-overlay"><h3>Dra. Juliana Reis</h3><span class="oab">OAB/RJ 00.053</span></div></div>
+      <div class="flip-back"><h3>Dra. Juliana Reis</h3><span class="oab">OAB/RJ 00.053</span><div class="spec">Direito Trabalhista</div><p>Associada. Especialista em compliance trabalhista. Certificada em mediação de conflitos.</p></div>
+    </div></div>
+  </div>
+</div>
+</section>
+
+<!-- ARTICLES -->
+<section class="section" style="background:var(--offwhite)" id="artigos">
+<div class="container">
+  <span class="section-label">Artigos</span>
+  <h2 class="section-title">Conhecimento Compartilhado</h2>
+  <p class="section-desc">Publicações de caráter informativo sobre temas jurídicos atuais.</p>
+  <div class="articles-grid">
+    <div class="art-card reveal"><div class="art-img"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80&auto=format&fit=crop" alt="Artigo" loading="lazy"></div><div class="art-body"><span class="art-tag">LGPD</span><h3>A Evolução da LGPD e Seus Impactos nas Empresas</h3><p>Análise sobre os desafios e avanços da proteção de dados no Brasil.</p></div></div>
+    <div class="art-card reveal"><div class="art-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&auto=format&fit=crop" alt="Artigo" loading="lazy"></div><div class="art-body"><span class="art-tag">Empresarial</span><h3>Governança Digital para Startups</h3><p>Informações sobre estruturação jurídica adequada para empresas de tecnologia.</p></div></div>
+    <div class="art-card reveal"><div class="art-img"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80&auto=format&fit=crop" alt="Artigo" loading="lazy"></div><div class="art-body"><span class="art-tag">Trabalhista</span><h3>Trabalho Remoto: Aspectos Jurídicos</h3><p>Considerações sobre a regulamentação do teletrabalho no Brasil.</p></div></div>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contato">
+<div class="container">
+  <div class="contact-wrap">
+    <div class="c-info reveal">
+      <span class="section-label">Contato</span>
+      <h3>Vamos Conversar</h3>
+      <p>Entre em contato para agendar uma reunião com nossa equipe.</p>
+      <div class="c-detail"><div class="c-icon">📍</div><div><h4>Endereço</h4><p>Av. Rio Branco, 120 — Sl. 800<br>Centro, Rio de Janeiro — RJ</p></div></div>
+      <div class="c-detail"><div class="c-icon">📞</div><div><h4>Telefone</h4><p>(21) 3000-0000</p></div></div>
+      <div class="c-detail"><div class="c-icon">✉️</div><div><h4>E-mail</h4><p>contato@novadireito.adv.br</p></div></div>
+      <div class="c-detail"><div class="c-icon">💬</div><div><h4>WhatsApp</h4><p>(21) 99000-0000</p></div></div>
+    </div>
+    <form class="c-form reveal" id="contactForm">
+      <input type="text" placeholder="Nome completo" required aria-label="Nome completo"><input type="email" placeholder="E-mail" required aria-label="E-mail"><input type="tel" placeholder="Telefone" aria-label="Telefone">
+      <textarea placeholder="Como podemos ajudar?" required aria-label="Mensagem"></textarea>
+      <button class="c-submit" type="submit">Enviar Mensagem</button>
+    </form>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+  <div class="footer-inner">
+    <div><h4><span style="background:var(--teal);color:#fff;padding:.05em .35em;border-radius:5px;margin-right:.15em">N</span> NovaDireito</h4><p>Advocacia & Inovação Jurídica<br>OAB/RJ 00.660<br><br>Rio de Janeiro — RJ</p></div>
+    <div><h4>Navegação</h4><ul><li><a href="#sobre">Sobre</a></li><li><a href="#areas">Áreas</a></li><li><a href="#equipe">Equipe</a></li><li><a href="#artigos">Artigos</a></li><li><a href="#contato">Contato</a></li></ul></div>
+    <div><h4>Áreas</h4><ul><li><a href="#">Direito Digital</a></li><li><a href="#">Direito Empresarial</a></li><li><a href="#">Direito Civil</a></li><li><a href="#">Direito Trabalhista</a></li><li><a href="#">Direito do Consumidor</a></li><li><a href="#">Direito Tributário</a></li></ul></div>
+    <div><h4>Contato</h4><p>📍 Av. Rio Branco, 120 — Sl. 800<br>📞 (21) 3000-0000<br>✉️ contato@novadireito.adv.br</p></div>
+  </div>
+  <div class="footer-bar"><p>© 2026 NovaDireito Advocacia</p><p>OAB/RJ 00.660</p></div>
+</div>
+<p style="font-size:.7rem;color:rgba(255,255,255,.25);margin-top:.5rem;text-align:center">Desenvolvido por <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer" style="color:var(--teal-light)">PixelCode Studio</a> — Dev Full Stack & Web Design: Vinicius Ribeiro</p>
+<p style="font-size:.6rem;color:rgba(255,255,255,.18);margin-top:.25rem;text-align:center">Portfólios: <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer" style="color:var(--teal-light)">pixelcodestudio.com.br</a> · <a href="https://portfolio-politico.vercel.app" target="_blank" rel="noopener noreferrer" style="color:var(--teal-light)">portfolio-politico.vercel.app</a></p>
+<div class="disclaimer">Este site é um template demonstrativo com dados fictícios, desenvolvido com caráter meramente informativo, em conformidade com o Provimento 205/2021 da OAB.</div>
+</footer>
+
+<a href="/whitelabel/templates/" style="position:fixed;bottom:1.5rem;left:1.5rem;background:var(--teal);color:#fff;padding:.5rem 1rem;border-radius:8px;font-size:.8rem;font-family:var(--heading);font-weight:600;z-index:99;opacity:.7;transition:var(--transition)" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">← Galeria</a>
+
+<a href="https://wa.me/5521900000000" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp">💬</a>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+<div class="toast" id="toast">✓ Mensagem enviada com sucesso!</div>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LegalService","name":"NovaDireito Advocacia","description":"Pensamento jurídico inovador no Rio de Janeiro","url":"https://templatesadv.vercel.app/moderno-02","telephone":"(21) 3000-0000","address":{"@type":"PostalAddress","streetAddress":"Av. Rio Branco, 120 — Sl. 800","addressLocality":"Rio de Janeiro","addressRegion":"RJ","addressCountry":"BR"}}
+</script>
+<script>
+const h=document.getElementById('header');window.addEventListener('scroll',()=>{h.classList.toggle('solid',scrollY>80)});
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const cobs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const t=+x.target.dataset.target;let c=0;const s=Math.max(1,Math.floor(t/30));const i=setInterval(()=>{c+=s;if(c>=t){x.target.textContent=t;clearInterval(i)}else x.target.textContent=c},40);cobs.unobserve(x.target)}})},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(el=>cobs.observe(el));
+// Flip cards - click toggle for mobile
+document.querySelectorAll('.flip-card').forEach(card=>{card.addEventListener('click',()=>{document.querySelectorAll('.flip-card').forEach(c=>{if(c!==card)c.classList.remove('flipped')});card.classList.toggle('flipped')})});
+// Back to top
+const bt=document.getElementById('backTop');window.addEventListener('scroll',()=>{bt.classList.toggle('visible',scrollY>500)});
+// Form
+const cf=document.getElementById('contactForm');if(cf){cf.addEventListener('submit',e=>{e.preventDefault();const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);cf.reset()})}
+</script>
+</body>
+</html>

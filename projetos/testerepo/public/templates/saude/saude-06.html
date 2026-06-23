@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CardioVita — Instituto de Cardiologia e Medicina Cardiovascular</title>
+<meta name="description" content="CardioVita — Instituto de Cardiologia. Excelência em diagnóstico e tratamento de doenças cardiovasculares em São Paulo.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='36' rx='8' fill='%238B0000'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%23fff'%3E♥%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CardioVita — Cardiologia Avançada">
+<meta property="og:description" content="Instituto de Cardiologia com tecnologia de ponta e equipe multidisciplinar.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1200&q=80&auto=format&fit=crop">
+<link rel="canonical" href="https://templatesadv.vercel.app/saude-06">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --wine:#8B0000;--wine-light:#A52A2A;--wine-deep:#5C0000;
+  --graphite:#2D2D2D;--graphite-light:#3D3D3D;
+  --gold:#C5A55A;--gold-light:#D4B86A;
+  --white:#FFFFFF;--cream:#FAFAFA;--bg:#F5F5F3;
+  --text-dark:#1A1A1A;--text-body:#4A4A4A;--text-muted:#7A7A7A;
+  --radius:12px;--radius-lg:20px;
+  --transition:0.4s cubic-bezier(.4,0,.2,1);
+  --shadow:0 4px 30px rgba(0,0,0,0.08);
+  --shadow-lg:0 20px 60px rgba(0,0,0,0.12);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Work Sans',sans-serif;background:var(--white);color:var(--text-body);line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;color:var(--text-dark);line-height:1.2}
+
+.skip-link{position:absolute;top:-100%;left:1rem;background:var(--wine);color:#fff;padding:.75rem 1.5rem;border-radius:0 0 8px 8px;z-index:200;font-weight:600;font-size:.9rem;transition:top .2s}.skip-link:focus{top:0}
+*:focus-visible{outline:2px solid var(--wine);outline-offset:2px;border-radius:4px}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;transition:var(--transition)}
+.header-top{background:var(--graphite);padding:.5rem 5%;display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:rgba(255,255,255,0.7)}
+.header-top a{color:var(--gold);font-weight:500}
+.header-main{padding:1rem 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.05)}
+.header.scrolled .header-top{display:none}
+.header.scrolled .header-main{box-shadow:var(--shadow)}
+.logo{display:flex;align-items:center;gap:.75rem}
+.logo-mark{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--wine);font-weight:800}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--text-dark)}
+.logo-text span{font-weight:400;color:var(--text-muted);font-size:.75rem;font-family:'Work Sans',sans-serif;display:block;letter-spacing:.15em;text-transform:uppercase;margin-top:-2px}
+nav{display:flex;align-items:center;gap:2.5rem}
+nav a{font-size:.82rem;font-weight:500;color:var(--text-body);letter-spacing:.03em;transition:var(--transition);position:relative}
+nav a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--wine);transition:var(--transition)}
+nav a:hover::after{width:100%}
+nav a:hover{color:var(--wine)}
+.nav-cta{padding:.55rem 1.75rem;background:var(--wine);color:var(--white)!important;border-radius:4px;font-weight:600;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;transition:var(--transition)}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--wine-light);box-shadow:0 4px 15px rgba(139,0,0,0.3)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}
+.hamburger span{width:22px;height:2px;background:var(--text-dark);transition:var(--transition)}
+.mobile-nav{display:none;position:fixed;inset:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(30px);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:var(--transition)}
+.mobile-nav.open{opacity:1;pointer-events:all}
+.mobile-nav a{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;color:var(--text-dark)}
+.mobile-nav .close-btn{position:absolute;top:1.5rem;right:2rem;font-size:2rem;background:none;border:none;color:var(--text-dark);cursor:pointer}
+
+/* HERO - PREMIUM DARK */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:var(--graphite)}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1400&q=80&auto=format&fit=crop');background-size:cover;background-position:center;opacity:.25}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(45,45,45,0.5) 0%,rgba(45,45,45,0.85) 100%)}
+.hero-pulse{position:absolute;bottom:25%;left:50%;transform:translateX(-50%);opacity:.12}
+.hero-content{position:relative;z-index:1;text-align:center;max-width:800px;padding:8rem 2rem 4rem;color:#fff}
+.hero-eyebrow{font-family:'Work Sans',sans-serif;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;font-weight:500}
+.hero h1{font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:700;color:#fff;margin-bottom:1.25rem}
+.hero h1 .wine{color:var(--wine-light)}
+.hero h1 .gold{color:var(--gold)}
+.hero-line{width:60px;height:2px;background:var(--gold);margin:1.5rem auto}
+.hero p{font-size:1.05rem;color:rgba(255,255,255,0.65);max-width:550px;margin:0 auto 2.5rem}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-wine{padding:.9rem 2.5rem;background:var(--wine);color:#fff;border-radius:4px;font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;transition:var(--transition);border:none;cursor:pointer;font-family:'Work Sans',sans-serif}
+.btn-wine:hover{background:var(--wine-light);box-shadow:0 6px 25px rgba(139,0,0,0.3)}
+.btn-outline{padding:.9rem 2.5rem;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:4px;font-weight:500;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;transition:var(--transition);cursor:pointer;font-family:'Work Sans',sans-serif}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+
+/* SOBRE */
+.about{padding:7rem 5%;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-image{position:relative}
+.about-image img{width:100%;border-radius:var(--radius);box-shadow:var(--shadow-lg);object-fit:cover;height:450px}
+.about-image::before{content:'';position:absolute;top:-15px;left:-15px;right:15px;bottom:15px;border:2px solid var(--gold);border-radius:var(--radius);z-index:-1;opacity:.3}
+.section-label{display:inline-flex;align-items:center;gap:.5rem;font-family:'Work Sans',sans-serif;font-size:.68rem;font-weight:600;color:var(--wine);text-transform:uppercase;letter-spacing:.2em;margin-bottom:1rem}
+.section-label::before{content:'';width:28px;height:1.5px;background:var(--wine)}
+.about h2{font-size:2.4rem;margin-bottom:1rem;font-weight:700}
+.about p{margin-bottom:1rem;font-size:.95rem}
+
+/* ESPECIALIDADES */
+.specialties{padding:7rem 5%;background:var(--bg)}
+.specialties .container{max-width:1200px;margin:0 auto}
+.specialties h2{font-size:2.4rem;text-align:center;margin-bottom:.5rem;font-weight:700}
+.specialties .subtitle{text-align:center;color:var(--text-muted);margin-bottom:3.5rem;font-size:.95rem}
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.spec-card{background:var(--white);padding:2.25rem;border-radius:var(--radius);transition:var(--transition);border:1px solid rgba(0,0,0,0.04);position:relative;overflow:hidden}
+.spec-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--wine);transition:var(--transition)}
+.spec-card:hover::before{height:100%}
+.spec-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.spec-number{font-family:'Playfair Display',serif;font-size:2.5rem;color:rgba(139,0,0,0.08);font-weight:800;margin-bottom:.5rem;line-height:1}
+.spec-card h3{font-size:1.1rem;margin-bottom:.5rem;font-weight:700}
+.spec-card p{font-size:.85rem;color:var(--text-muted);line-height:1.6}
+
+/* NÚMEROS */
+.counters{padding:5rem 5%;background:var(--graphite);position:relative;overflow:hidden}
+.counters::before{content:'♥';position:absolute;font-size:300px;opacity:.02;color:#fff;top:50%;left:50%;transform:translate(-50%,-50%)}
+.counters .container{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;color:#fff}
+.counter-item .num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--gold)}
+.counter-item .label{font-family:'Work Sans',sans-serif;font-size:.78rem;color:rgba(255,255,255,0.5);margin-top:.25rem;letter-spacing:.1em;text-transform:uppercase}
+
+/* EQUIPE */
+.team{padding:7rem 5%;max-width:1200px;margin:0 auto}
+.team h2{font-size:2.4rem;text-align:center;margin-bottom:.5rem;font-weight:700}
+.team .subtitle{text-align:center;color:var(--text-muted);margin-bottom:3.5rem;font-size:.95rem}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.team-card{background:var(--white);border-radius:var(--radius);overflow:hidden;transition:var(--transition);border:1px solid rgba(0,0,0,0.04)}
+.team-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.team-card img{width:100%;height:280px;object-fit:cover;filter:grayscale(30%);transition:var(--transition)}
+.team-card:hover img{filter:grayscale(0%)}
+.team-card .info{padding:1.25rem;text-align:center}
+.team-card h3{font-size:1.05rem;margin-bottom:.2rem;font-weight:700}
+.team-card .role{font-size:.72rem;color:var(--wine);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.team-card .crm{font-size:.72rem;color:var(--text-muted);margin-top:.35rem}
+
+/* ARTIGOS */
+.articles{padding:7rem 5%;background:var(--bg)}
+.articles .container{max-width:1200px;margin:0 auto}
+.articles h2{font-size:2.4rem;text-align:center;margin-bottom:.5rem;font-weight:700}
+.articles .subtitle{text-align:center;color:var(--text-muted);margin-bottom:3.5rem;font-size:.95rem}
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.article-card{background:var(--white);border-radius:var(--radius);overflow:hidden;transition:var(--transition);border:1px solid rgba(0,0,0,0.04)}
+.article-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.article-card img{width:100%;height:200px;object-fit:cover}
+.article-card .content{padding:1.5rem}
+.article-card .date{font-size:.68rem;color:var(--wine);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
+.article-card h3{font-size:1.05rem;font-family:'Playfair Display',serif;margin-bottom:.5rem;font-weight:700}
+.article-card p{font-size:.85rem;color:var(--text-muted)}
+
+/* CONTATO */
+.contact{padding:7rem 5%;max-width:1200px;margin:0 auto}
+.contact h2{font-size:2.4rem;text-align:center;margin-bottom:.5rem;font-weight:700}
+.contact .subtitle{text-align:center;color:var(--text-muted);margin-bottom:3.5rem;font-size:.95rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-info{display:flex;flex-direction:column;gap:1.25rem}
+.info-card{display:flex;gap:1rem;padding:1.25rem;background:var(--bg);border-radius:var(--radius);border:1px solid rgba(0,0,0,0.04)}
+.info-card .icon{width:48px;height:48px;border-radius:50%;background:rgba(139,0,0,0.05);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.info-card h4{font-size:.95rem;margin-bottom:.2rem;font-weight:600}
+.info-card p{font-size:.85rem;color:var(--text-muted)}
+.contact-form{background:var(--bg);padding:2.5rem;border-radius:var(--radius-lg);border:1px solid rgba(0,0,0,0.04)}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-size:.75rem;font-weight:600;color:var(--text-dark);margin-bottom:.35rem;letter-spacing:.05em;text-transform:uppercase}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:.85rem 1rem;border:1px solid rgba(0,0,0,0.1);border-radius:6px;font-family:inherit;font-size:.88rem;background:var(--white);color:var(--text-dark);transition:var(--transition)}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--wine);box-shadow:0 0 0 3px rgba(139,0,0,0.1)}
+.form-group textarea{min-height:110px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+/* FOOTER */
+.footer{background:var(--graphite);color:rgba(255,255,255,0.7);padding:5rem 5% 2rem}
+.footer .container{max-width:1200px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;gap:3rem}
+.footer-brand h4{font-family:'Playfair Display',serif;color:#fff;font-size:1.5rem;margin-bottom:.75rem;font-weight:700}
+.footer-brand p{max-width:350px;font-size:.85rem;line-height:1.6}
+.footer-nav{display:flex;gap:4rem}
+.footer-nav div h5{font-family:'Work Sans',sans-serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:600}
+.footer-nav div a{display:block;font-size:.85rem;color:rgba(255,255,255,0.5);line-height:2;transition:var(--transition)}
+.footer-nav div a:hover{color:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.75rem;color:rgba(255,255,255,0.3)}
+.footer-bottom a{color:var(--gold)}
+.footer-disclaimer{font-size:.72rem;color:rgba(255,255,255,0.25);max-width:600px;line-height:1.5;margin-top:1rem}
+
+.whatsapp-float{position:fixed;bottom:2rem;right:2rem;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:90;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:var(--transition)}
+.whatsapp-float:hover{transform:scale(1.1)}
+.whatsapp-float svg{width:26px;height:26px;fill:#fff}
+.back-top{position:fixed;bottom:2rem;right:5.5rem;width:42px;height:42px;background:var(--wine);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:90;opacity:0;transform:translateY(10px);transition:var(--transition)}
+.back-top.visible{opacity:1;transform:none}
+.back-top:hover{background:var(--wine-light)}
+.gallery-link{position:fixed;bottom:2rem;left:2rem;padding:.5rem 1.15rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border:1px solid rgba(0,0,0,0.1);border-radius:4px;font-size:.75rem;font-weight:600;color:var(--text-dark);z-index:90;transition:var(--transition);display:flex;align-items:center;gap:.5rem;letter-spacing:.05em;text-transform:uppercase}
+.gallery-link:hover{background:var(--wine);color:#fff;border-color:var(--wine)}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--wine);color:#fff;padding:1rem 2rem;border-radius:var(--radius);font-size:.88rem;font-weight:600;z-index:200;opacity:0;transition:var(--transition);box-shadow:var(--shadow-lg)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){
+  .about{grid-template-columns:1fr}
+  .about-image{display:none}
+  .spec-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-nav{gap:2rem}
+}
+@media(max-width:768px){
+  nav{display:none}.hamburger{display:flex}.mobile-nav{display:flex}
+  .header-top{display:none}
+  .counters .container{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr}
+  .articles-grid{grid-template-columns:1fr}
+  .footer-top{flex-direction:column}
+  .footer-nav{flex-direction:column;gap:2rem}
+}
+@media(max-width:480px){
+  .spec-grid,.team-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .hero h1{font-size:2rem}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+@media print{.header,.whatsapp-float,.back-top,.gallery-link{display:none!important}body{background:#fff!important;color:#000!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+<a href="#especialidades" class="skip-link">Pular para especialidades</a>
+
+<header class="header" id="header">
+  <div class="header-top">
+    <span>📞 (11) 3111-2233 — Atendimento 24h para urgências cardiológicas</span>
+    <a href="#contato">Agendar Check-up →</a>
+  </div>
+  <div class="header-main">
+    <a href="/saude-06" class="logo">
+      <span class="logo-mark">♥</span>
+      <div class="logo-text">CardioVita<span>Instituto de Cardiologia</span></div>
+    </a>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#especialidades">Especialidades</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#artigos">Publicações</a>
+      <a href="#contato" class="nav-cta">Agendar</a>
+    </nav>
+    <button class="hamburger" id="menuBtn" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-btn" id="closeNav" aria-label="Fechar menu">✕</button>
+  <a href="#sobre" onclick="closeMobile()">Sobre</a>
+  <a href="#especialidades" onclick="closeMobile()">Especialidades</a>
+  <a href="#equipe" onclick="closeMobile()">Equipe</a>
+  <a href="#artigos" onclick="closeMobile()">Publicações</a>
+  <a href="#contato" onclick="closeMobile()">Agendar</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <!-- Animated Heartbeat SVG -->
+  <svg class="hero-pulse" width="800" height="120" viewBox="0 0 800 120" fill="none">
+    <style>@media(prefers-reduced-motion:reduce){animate{display:none}path{stroke-dasharray:none!important;stroke-dashoffset:0!important}}</style>
+    <path d="M0 60 L150 60 L180 60 L210 20 L240 100 L270 40 L300 80 L330 60 L500 60 L530 60 L560 20 L590 100 L620 40 L650 80 L680 60 L800 60" stroke="rgba(139,0,0,0.5)" stroke-width="2" fill="none">
+      <animate attributeName="stroke-dashoffset" from="1600" to="0" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-dasharray" values="1600" dur="3s" repeatCount="indefinite"/>
+    </path>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Instituto de Cardiologia & Medicina Cardiovascular</div>
+    <h1>Seu Coração em <span class="gold">Boas Mãos</span></h1>
+    <div class="hero-line"></div>
+    <p>Mais de 20 anos de excelência em diagnóstico e tratamento de doenças cardiovasculares. Tecnologia de ponta e equipe multidisciplinar.</p>
+    <div class="hero-btns">
+      <a href="#contato" class="btn-wine">Agendar Check-up</a>
+      <a href="#especialidades" class="btn-outline">Nossas Especialidades</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="about reveal" id="sobre">
+  <div class="about-image">
+    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=700&q=80&auto=format&fit=crop" alt="Instituto CardioVita" loading="lazy">
+  </div>
+  <div>
+    <div class="section-label">Sobre o Instituto</div>
+    <h2>Tradição e Inovação em Cardiologia</h2>
+    <p>Fundado em 2004, o Instituto CardioVita é referência em medicina cardiovascular no estado de São Paulo. Unimos a experiência de profissionais renomados à tecnologia mais avançada disponível.</p>
+    <p>Nosso centro de diagnóstico conta com equipamentos de última geração para ecocardiografia, cateterismo cardíaco, ressonância magnética cardíaca e monitoramento contínuo. Cada paciente recebe atenção personalizada e um plano de cuidados individualizado.</p>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section class="specialties reveal" id="especialidades">
+  <div class="container">
+    <div class="section-label" style="text-align:center;display:flex;justify-content:center">Especialidades</div>
+    <h2>Áreas de Atuação</h2>
+    <p class="subtitle">Excelência em todas as subespecialidades cardiovasculares</p>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="spec-number">01</div>
+        <h3>Cardiologia Clínica</h3>
+        <p>Diagnóstico e tratamento clínico de hipertensão arterial, arritmias, insuficiência cardíaca, doença coronariana e prevenção cardiovascular primária e secundária.</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-number">02</div>
+        <h3>Hemodinâmica e Cateterismo</h3>
+        <p>Cateterismo cardíaco diagnóstico e terapêutico, angioplastia com stent, valvuloplastia percutânea e implante de TAVI com suporte de hemodinâmica 24h.</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-number">03</div>
+        <h3>Eletrofisiologia Cardíaca</h3>
+        <p>Estudo eletrofisiológico, ablação por radiofrequência e crioablação, implante de marcapasso, CDI e ressincronizador cardíaco.</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-number">04</div>
+        <h3>Ecocardiografia Avançada</h3>
+        <p>Ecocardiograma transtorácico, transesofágico, com Doppler tissular, Strain e ecografia fetal cardíaca para diagnósticos precisos e não invasivos.</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-number">05</div>
+        <h3>Cirurgia Cardiovascular</h3>
+        <p>Revascularização miocárdica (ponte de safena/mamária), cirurgias valvares, correção de aneurisma aórtico e cirurgia minimamente invasiva.</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-number">06</div>
+        <h3>Reabilitação Cardíaca</h3>
+        <p>Programa multidisciplinar de reabilitação pós-evento cardiovascular com exercícios supervisionados, nutrição e apoio psicológico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NÚMEROS -->
+<section class="counters reveal">
+  <div class="container">
+    <div class="counter-item"><div class="num" data-target="20">0</div><div class="label">Anos de Referência</div></div>
+    <div class="counter-item"><div class="num" data-target="35000">0</div><div class="label">Pacientes Tratados</div></div>
+    <div class="counter-item"><div class="num" data-target="8000">0</div><div class="label">Cateterismos Realizados</div></div>
+    <div class="counter-item"><div class="num" data-target="98">0%</div><div class="label">Taxa de Sucesso</div></div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section class="team reveal" id="equipe">
+  <div class="section-label" style="text-align:center;display:flex;justify-content:center">Equipe Médica</div>
+  <h2>Corpo Clínico</h2>
+  <p class="subtitle">Profissionais com formação nas melhores instituições do país</p>
+  <div class="team-grid">
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80&auto=format&fit=crop" alt="Dr. Ricardo Teixeira" loading="lazy">
+      <div class="info"><h3>Dr. Ricardo Teixeira</h3><p class="role">Cardiologia Clínica</p><p class="crm">CRM/SP 112.345 — RQE 56.789</p></div>
+    </div>
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80&auto=format&fit=crop" alt="Dra. Marina Vasconcelos" loading="lazy">
+      <div class="info"><h3>Dra. Marina Vasconcelos</h3><p class="role">Hemodinâmica</p><p class="crm">CRM/SP 223.456 — RQE 67.890</p></div>
+    </div>
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80&auto=format&fit=crop" alt="Dr. André Bastos" loading="lazy">
+      <div class="info"><h3>Dr. André Bastos</h3><p class="role">Eletrofisiologia</p><p class="crm">CRM/SP 334.567 — RQE 78.901</p></div>
+    </div>
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&q=80&auto=format&fit=crop" alt="Dr. Paulo Henrique Lima" loading="lazy">
+      <div class="info"><h3>Dr. Paulo Henrique Lima</h3><p class="role">Cirurgia Cardiovascular</p><p class="crm">CRM/SP 445.678 — RQE 89.012</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTIGOS -->
+<section class="articles reveal" id="artigos">
+  <div class="container">
+    <div class="section-label" style="text-align:center;display:flex;justify-content:center">Publicações</div>
+    <h2>Artigos e Informações</h2>
+    <p class="subtitle">Conteúdo científico para pacientes e profissionais</p>
+    <div class="articles-grid">
+      <div class="article-card">
+        <img src="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=600&q=80&auto=format&fit=crop" alt="Check-up Cardíaco" loading="lazy">
+        <div class="content"><div class="date">18 Mar 2026</div><h3>Check-up Cardiológico: Quando Começar?</h3><p>A partir dos 40 anos, exames periódicos são essenciais. Entenda os exames recomendados e sua periodicidade.</p></div>
+      </div>
+      <div class="article-card">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&auto=format&fit=crop" alt="Exercício e Coração" loading="lazy">
+        <div class="content"><div class="date">10 Mar 2026</div><h3>Exercício Físico e Saúde Cardiovascular</h3><p>Como a atividade física regular reduz em até 50% o risco de infarto e outros eventos cardíacos.</p></div>
+      </div>
+      <div class="article-card">
+        <img src="https://images.unsplash.com/photo-1505576399279-0a06e4393e28?w=600&q=80&auto=format&fit=crop" alt="Stent" loading="lazy">
+        <div class="content"><div class="date">02 Mar 2026</div><h3>Stent Cardíaco: Mitos e Verdades</h3><p>O que é, como funciona o implante e quais cuidados são necessários após o procedimento de angioplastia.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contact reveal" id="contato">
+  <div class="section-label" style="text-align:center;display:flex;justify-content:center">Contato</div>
+  <h2>Agende seu Check-up</h2>
+  <p class="subtitle">Cuidar do coração é um ato de amor à vida</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="info-card"><div class="icon">📍</div><div><h4>Endereço</h4><p>Av. Brigadeiro Faria Lima, 3900 — 18º Andar<br>Itaim Bibi, São Paulo — SP<br>CEP 04538-132</p></div></div>
+      <div class="info-card"><div class="icon">📞</div><div><h4>Telefone</h4><p>(11) 3111-2233<br>(11) 98111-5566 (WhatsApp)</p></div></div>
+      <div class="info-card"><div class="icon">🕐</div><div><h4>Horário</h4><p>Segunda a Sexta: 7h às 20h<br>Sábado: 7h às 14h<br>Urgência 24h: (11) 3111-2299</p></div></div>
+      <div class="info-card"><div class="icon">📧</div><div><h4>E-mail</h4><p>contato@cardiovita.com.br</p></div></div>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <div class="form-group"><label for="name">Nome Completo</label><input type="text" id="name" placeholder="Seu nome" required></div>
+        <div class="form-group"><label for="phone">Telefone</label><input type="tel" id="phone" placeholder="(11) 99999-9999" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="email">E-mail</label><input type="email" id="email" placeholder="seu@email.com" required></div>
+        <div class="form-group"><label for="specialty">Especialidade</label>
+          <select id="specialty"><option value="">Selecione...</option><option>Cardiologia Clínica</option><option>Hemodinâmica</option><option>Eletrofisiologia</option><option>Ecocardiografia</option><option>Cirurgia Cardiovascular</option><option>Reabilitação Cardíaca</option><option>Check-up Geral</option></select>
+        </div>
+      </div>
+      <div class="form-group"><label for="urgency">Urgência</label>
+        <select id="urgency"><option value="">Selecione...</option><option>Consulta de rotina</option><option>Exame diagnóstico</option><option>Retorno/Acompanhamento</option><option>Urgente — sintomas agudos</option></select>
+      </div>
+      <div class="form-group"><label for="message">Observações</label><textarea id="message" placeholder="Descreva brevemente o motivo da consulta..."></textarea></div>
+      <button type="submit" class="btn-wine" style="width:100%;text-align:center;display:flex;justify-content:center">Solicitar Agendamento</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h4>♥ CardioVita</h4>
+        <p>Instituto de Cardiologia e Medicina Cardiovascular. Mais de 20 anos de excelência no diagnóstico e tratamento de doenças do coração.</p>
+        <p style="margin-top:.75rem;font-size:.75rem;color:rgba(255,255,255,0.35)">CRM/SP 112.345 — RQE 56.789</p>
+      </div>
+      <div class="footer-nav">
+        <div><h5>Instituto</h5><a href="#sobre">Sobre</a><a href="#equipe">Equipe</a><a href="#artigos">Publicações</a><a href="#contato">Contato</a></div>
+        <div><h5>Especialidades</h5><a href="#especialidades">Cardiologia Clínica</a><a href="#especialidades">Hemodinâmica</a><a href="#especialidades">Eletrofisiologia</a><a href="#especialidades">Cirurgia Cardiovascular</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div><p>© 2026 CardioVita — Instituto de Cardiologia. Todos os direitos reservados.</p><p class="footer-disclaimer">Este site é meramente informativo e não substitui consulta médica. Dados fictícios para demonstração. Em conformidade com as normas do CFM (Resolução 1.974/2011).</p></div>
+      <p>Desenvolvido por <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer">PixelCode Studio</a></p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5511981115566?text=Olá! Gostaria de agendar uma consulta no Instituto CardioVita." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+<a href="/whitelabel/templates/" class="gallery-link">← Galeria</a>
+<div class="toast" id="toast">✓ Solicitação enviada com sucesso!</div>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MedicalBusiness","name":"CardioVita — Instituto de Cardiologia","description":"Instituto de Cardiologia e Medicina Cardiovascular em São Paulo.","url":"https://templatesadv.vercel.app/saude-06","telephone":"(11) 3111-2233","address":{"@type":"PostalAddress","streetAddress":"Av. Brigadeiro Faria Lima, 3900 — 18º Andar","addressLocality":"São Paulo","addressRegion":"SP","postalCode":"04538-132","addressCountry":"BR"},"medicalSpecialty":"Cardiology","openingHours":["Mo-Fr 07:00-20:00","Sa 07:00-14:00"]}
+</script>
+
+<script>
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',scrollY>50)});
+document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('mobileNav').classList.add('open'));
+document.getElementById('closeNav').addEventListener('click',closeMobile);
+function closeMobile(){document.getElementById('mobileNav').classList.remove('open')}
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('[data-target]').forEach(n=>{const t=+n.dataset.target;const s=n.textContent.replace(/[0-9]/g,'');let c=0;const i=t/60;const tm=setInterval(()=>{c+=i;if(c>=t){c=t;clearInterval(tm)}n.textContent=Math.floor(c).toLocaleString('pt-BR')+s},30)});counterObs.unobserve(e.target)}})},{threshold:0.3});
+document.querySelectorAll('.counters').forEach(el=>counterObs.observe(el));
+document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4000);e.target.reset()});
+const backTop=document.getElementById('backTop');
+window.addEventListener('scroll',()=>{backTop.classList.toggle('visible',scrollY>400)});
+</script>
+</body>
+</html>

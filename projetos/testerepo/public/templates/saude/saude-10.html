@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DiagnosPrime — Centro de Medicina Diagnóstica</title>
+<meta name="description" content="Centro de Medicina Diagnóstica com tecnologia de ponta em exames de imagem, análises clínicas, check-up executivo e medicina preventiva. Resultados online em até 24h.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='36' rx='8' fill='%23143642'/%3E%3Cpath d='M10 18h5l2-6 3 12 2-6h4' stroke='%230F7173' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DiagnosPrime — Centro de Medicina Diagnóstica">
+<meta property="og:description" content="Centro de Medicina Diagnóstica com tecnologia de ponta. Resultados online em até 24h.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=1200&q=80&auto=format&fit=crop">
+<link rel="canonical" href="https://templatesadv.vercel.app/saude-10">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#143642;--teal:#0F7173;--teal-light:#41B3A3;--sand:#E7D4B5;--cream:#FAF6F1;
+  --white:#FFFFFF;--dark:#0C1B21;--gray:#6B7280;--gray-light:#F7F8FA;
+  --font-heading:'Outfit',sans-serif;--font-body:'DM Sans',sans-serif;
+  --shadow:0 4px 20px rgba(20,54,66,0.08);--shadow-lg:0 12px 40px rgba(20,54,66,0.12);
+  --radius:12px;--transition:0.3s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--white);color:var(--dark);line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+.skip-link{position:absolute;top:-100%;left:1rem;background:var(--teal);color:#fff;padding:.75rem 1.5rem;border-radius:0 0 8px 8px;z-index:200;font-weight:600;font-size:.9rem;transition:top .2s}.skip-link:focus{top:0}
+*:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:4px}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,54,66,0.06);transition:var(--transition)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:.875rem 2rem;max-width:1400px;margin:0 auto}
+.header-top{background:var(--navy);color:rgba(255,255,255,0.9);font-size:.78rem;padding:.45rem 0;text-align:center;letter-spacing:.02em}
+.header-top a{color:var(--teal-light);font-weight:600}
+.logo{display:flex;align-items:center;gap:.6rem}
+.logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--navy),var(--teal));border-radius:10px;display:flex;align-items:center;justify-content:center}
+.logo-icon svg{width:22px;height:22px}
+.logo-text{font-family:var(--font-heading);font-size:1.3rem;font-weight:700;color:var(--navy);letter-spacing:-0.02em}
+.logo-text span{color:var(--teal)}
+.nav{display:flex;align-items:center;gap:2rem}
+.nav a{font-size:.9rem;color:var(--gray);font-weight:500;transition:var(--transition);position:relative}
+.nav a:hover{color:var(--teal)}
+.nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--teal);transition:var(--transition)}
+.nav a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.6rem;border-radius:8px;font-family:var(--font-body);font-size:.9rem;font-weight:600;cursor:pointer;transition:var(--transition);border:none}
+.btn-primary{background:var(--teal);color:#fff}.btn-primary:hover{background:var(--navy);transform:translateY(-1px)}
+.btn-outline{background:transparent;border:2px solid var(--teal);color:var(--teal)}.btn-outline:hover{background:var(--teal);color:#fff}
+.btn-white{background:#fff;color:var(--navy)}.btn-white:hover{background:var(--cream);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}
+.hamburger span{width:24px;height:2px;background:var(--navy);border-radius:2px;transition:var(--transition)}
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--white);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;visibility:hidden;transition:var(--transition)}
+.mobile-nav.active{opacity:1;visibility:visible}
+.mobile-nav a{font-size:1.25rem;font-weight:600;color:var(--navy)}
+.mobile-nav .close-btn{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;font-size:1.75rem;cursor:pointer;color:var(--navy)}
+
+/* HERO - DIAGNOSTIC CENTER STYLE */
+.hero{padding:10rem 0 5rem;background:linear-gradient(170deg,var(--cream) 0%,var(--white) 40%,var(--gray-light) 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(15,113,115,0.06) 0%,transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-100px;left:-150px;width:400px;height:400px;background:radial-gradient(circle,rgba(20,54,66,0.04) 0%,transparent 70%);border-radius:50%}
+.hero .container{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1}
+.hero-content{max-width:560px}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;background:rgba(15,113,115,0.08);border:1px solid rgba(15,113,115,0.15);border-radius:50px;font-size:.8rem;color:var(--teal);font-weight:600;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.05em}
+.hero h1{font-family:var(--font-heading);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:800;line-height:1.15;color:var(--navy);margin-bottom:1.25rem;letter-spacing:-0.03em}
+.hero h1 .highlight{color:var(--teal);position:relative}
+.hero h1 .highlight::after{content:'';position:absolute;bottom:2px;left:0;width:100%;height:8px;background:rgba(15,113,115,0.12);border-radius:4px;z-index:-1}
+.hero p{font-size:1.1rem;color:var(--gray);line-height:1.8;margin-bottom:2rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-features{display:flex;gap:2rem;margin-top:2.5rem}
+.hero-feat{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--gray);font-weight:500}
+.hero-feat .icon{width:32px;height:32px;background:rgba(15,113,115,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem}
+.hero-visual{position:relative}
+.hero-visual .main-img{border-radius:20px;box-shadow:var(--shadow-lg);overflow:hidden}
+.hero-visual .main-img img{width:100%;height:480px;object-fit:cover}
+.hero-visual .float-card{position:absolute;background:#fff;padding:1rem 1.25rem;border-radius:12px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:.75rem;animation:floatY 4s ease-in-out infinite}
+.hero-visual .float-card.top{top:-20px;right:-20px}
+.hero-visual .float-card.bottom{bottom:30px;left:-30px;animation-delay:2s}
+.float-card .fc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.float-card .fc-text{font-size:.8rem;color:var(--gray)}
+.float-card .fc-num{font-family:var(--font-heading);font-size:1.15rem;font-weight:700;color:var(--navy)}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* SERVICES STRIP */
+.services-strip{padding:1rem 0;background:var(--navy);overflow:hidden}
+.services-marquee{display:flex;gap:3rem;animation:marquee 30s linear infinite;white-space:nowrap}
+.services-marquee span{font-size:.85rem;color:rgba(255,255,255,0.7);font-weight:500;display:flex;align-items:center;gap:.5rem}
+.services-marquee span::before{content:'◆';color:var(--teal-light);font-size:.5rem}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SECTION COMMON */
+.section{padding:5rem 0}
+.section-header{text-align:center;margin-bottom:3.5rem}
+.section-eyebrow{font-size:.8rem;color:var(--teal);font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:.75rem}
+.section-title{font-family:var(--font-heading);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:1rem;letter-spacing:-0.02em}
+.section-desc{font-size:1.05rem;color:var(--gray);max-width:600px;margin:0 auto;line-height:1.7}
+
+/* ABOUT */
+.about{background:var(--white)}
+.about .container{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-image{position:relative}
+.about-image img{border-radius:16px;box-shadow:var(--shadow);width:100%;height:420px;object-fit:cover}
+.about-image .badge{position:absolute;bottom:-20px;right:20px;background:var(--teal);color:#fff;padding:1.25rem 1.5rem;border-radius:12px;text-align:center;box-shadow:var(--shadow-lg)}
+.about-image .badge .num{font-family:var(--font-heading);font-size:2rem;font-weight:800}
+.about-image .badge .txt{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;opacity:.9}
+.about-content .section-eyebrow,.about-content .section-title{text-align:left}
+.about-content p{font-size:1rem;color:var(--gray);line-height:1.8;margin-bottom:1.5rem}
+.about-list{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1.5rem 0 2rem}
+.about-list li{display:flex;align-items:center;gap:.5rem;font-size:.9rem;color:var(--dark);font-weight:500;list-style:none}
+.about-list li::before{content:'✓';width:22px;height:22px;background:rgba(15,113,115,0.1);color:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0}
+
+/* EXAMS / SERVICES */
+.exams{background:var(--gray-light)}
+.exams-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.exam-card{background:var(--white);border-radius:var(--radius);padding:2rem;border:1px solid rgba(20,54,66,0.06);transition:var(--transition);position:relative;overflow:hidden}
+.exam-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:0;background:linear-gradient(180deg,var(--teal),var(--teal-light));transition:height .4s ease}
+.exam-card:hover::before{height:100%}
+.exam-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:rgba(15,113,115,0.15)}
+.exam-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(15,113,115,0.08),rgba(65,179,163,0.08));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.25rem}
+.exam-card h3{font-family:var(--font-heading);font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
+.exam-card p{font-size:.87rem;color:var(--gray);line-height:1.6}
+.exam-card .exam-tag{display:inline-block;margin-top:.75rem;font-size:.72rem;font-weight:600;color:var(--teal);text-transform:uppercase;letter-spacing:.08em;padding:.25rem .65rem;background:rgba(15,113,115,0.06);border-radius:20px}
+
+/* DIFFERENTIALS */
+.differentials{background:var(--navy);color:#fff;padding:5rem 0;position:relative;overflow:hidden}
+.differentials::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:linear-gradient(135deg,transparent,rgba(15,113,115,0.15));pointer-events:none}
+.differentials .section-eyebrow{color:var(--teal-light)}
+.differentials .section-title{color:#fff}
+.differentials .section-desc{color:rgba(255,255,255,0.7)}
+.diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;position:relative;z-index:1}
+.diff-item{text-align:center;padding:2rem 1rem}
+.diff-num{font-family:var(--font-heading);font-size:2.75rem;font-weight:800;color:var(--teal-light);margin-bottom:.5rem}
+.diff-label{font-size:.9rem;color:rgba(255,255,255,0.8);font-weight:500}
+.diff-sub{font-size:.75rem;color:rgba(255,255,255,0.5);margin-top:.25rem}
+
+/* TECHNOLOGY */
+.technology .container{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.tech-content .section-eyebrow,.tech-content .section-title{text-align:left}
+.tech-list{display:flex;flex-direction:column;gap:1.25rem;margin-top:2rem}
+.tech-item{display:flex;gap:1rem;align-items:flex-start}
+.tech-item .tech-icon{width:44px;height:44px;background:rgba(15,113,115,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.tech-item h4{font-family:var(--font-heading);font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.2rem}
+.tech-item p{font-size:.85rem;color:var(--gray);line-height:1.6}
+.tech-image img{border-radius:16px;box-shadow:var(--shadow);width:100%;height:450px;object-fit:cover}
+
+/* TEAM */
+.team{background:var(--gray-light)}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.team-card{background:var(--white);border-radius:var(--radius);overflow:hidden;transition:var(--transition);border:1px solid rgba(20,54,66,0.06)}
+.team-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.team-card img{width:100%;height:260px;object-fit:cover}
+.team-info{padding:1.25rem}
+.team-info h3{font-family:var(--font-heading);font-size:1rem;font-weight:700;color:var(--navy)}
+.team-info .specialty{font-size:.8rem;color:var(--teal);font-weight:600;margin:.25rem 0}
+.team-info .crm{font-size:.75rem;color:var(--gray)}
+
+/* ARTICLES */
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.article-card{background:var(--white);border-radius:var(--radius);overflow:hidden;border:1px solid rgba(20,54,66,0.06);transition:var(--transition)}
+.article-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.article-card img{width:100%;height:200px;object-fit:cover}
+.article-body{padding:1.5rem}
+.article-date{font-size:.75rem;color:var(--teal);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem}
+.article-body h3{font-family:var(--font-heading);font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:.5rem;line-height:1.4}
+.article-body p{font-size:.85rem;color:var(--gray);line-height:1.6}
+
+/* CONTACT */
+.contact{background:var(--gray-light)}
+.contact .container{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem}
+.contact-card{background:var(--white);padding:1.5rem;border-radius:var(--radius);display:flex;gap:1rem;align-items:flex-start;box-shadow:var(--shadow)}
+.contact-card .cc-icon{width:44px;height:44px;background:rgba(15,113,115,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.contact-card h4{font-family:var(--font-heading);font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.2rem}
+.contact-card p{font-size:.85rem;color:var(--gray);line-height:1.5}
+.contact-form{background:var(--white);padding:2.5rem;border-radius:var(--radius);box-shadow:var(--shadow)}
+.contact-form h3{font-family:var(--font-heading);font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:1.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:.35rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.7rem 1rem;border:1.5px solid rgba(20,54,66,0.12);border-radius:8px;font-family:var(--font-body);font-size:.9rem;color:var(--dark);transition:var(--transition);background:var(--white)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(15,113,115,0.1)}
+.form-group textarea{resize:vertical;min-height:100px}
+
+/* FOOTER */
+.footer{background:var(--navy);color:rgba(255,255,255,0.85);padding:4rem 0 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.08)}
+.footer-brand p{font-size:.87rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-top:.75rem;max-width:320px}
+.footer-col h4{font-family:var(--font-heading);font-size:.9rem;font-weight:700;margin-bottom:1rem;color:#fff;text-transform:uppercase;letter-spacing:.05em}
+.footer-col a{display:block;font-size:.85rem;color:rgba(255,255,255,0.6);margin-bottom:.5rem;transition:var(--transition)}
+.footer-col a:hover{color:var(--teal-light);transform:translateX(3px)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.78rem;color:rgba(255,255,255,0.4)}
+.footer-bottom a{color:var(--teal-light)}
+
+/* WHATSAPP */
+.whatsapp-float{position:fixed;bottom:2rem;right:2rem;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(37,211,102,0.35);z-index:99;transition:var(--transition)}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(37,211,102,0.5)}
+.whatsapp-float svg{width:28px;height:28px;fill:#fff}
+
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:6rem;right:2rem;width:44px;height:44px;background:var(--navy);color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;z-index:99;opacity:0;transform:translateY(10px);transition:var(--transition);box-shadow:0 4px 12px rgba(20,54,66,0.25)}.back-top.visible{opacity:1;transform:none}.back-top:hover{background:var(--teal)}
+
+/* GALLERY LINK */
+.gallery-link{position:fixed;bottom:2rem;left:2rem;padding:.6rem 1.2rem;background:var(--navy);color:#fff;border-radius:8px;font-size:.8rem;font-weight:600;z-index:99;transition:var(--transition);box-shadow:0 4px 12px rgba(20,54,66,0.25)}.gallery-link:hover{background:var(--teal)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}.reveal.active{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero .container{grid-template-columns:1fr;text-align:center}
+  .hero-content{max-width:100%}
+  .hero-btns{justify-content:center}
+  .hero-features{justify-content:center}
+  .hero-visual{max-width:500px;margin:2rem auto 0}
+  .hero-visual .float-card.top{right:0}.hero-visual .float-card.bottom{left:0}
+  .about .container,.technology .container{grid-template-columns:1fr}
+  .contact .container{grid-template-columns:1fr}
+  .exams-grid{grid-template-columns:repeat(2,1fr)}
+  .diff-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .nav{display:none}
+  .hamburger{display:flex}
+  .mobile-nav{display:flex}
+  .header-top{font-size:.7rem}
+  .hero{padding:8rem 0 3rem}
+  .hero h1{font-size:2rem}
+  .hero-features{flex-direction:column;align-items:center;gap:1rem}
+  .exams-grid,.articles-grid{grid-template-columns:1fr}
+  .diff-grid{grid-template-columns:1fr 1fr}
+  .team-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .hero{padding:7rem 0 2rem}
+  .diff-grid{grid-template-columns:1fr}
+  .about-list{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+@media print{.header,.hero,.whatsapp-float,.back-top,.gallery-link,.header-top,.services-strip{display:none!important}body{background:#fff!important;color:#000!important}}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Pular para o conteúdo</a>
+
+<!-- HEADER TOP -->
+<div class="header-top">
+  📞 Central de Agendamento: <a href="tel:+551132008000">(11) 3200-8000</a> &nbsp;|&nbsp; 🕐 Seg-Sex 6h-21h · Sáb 6h-16h &nbsp;|&nbsp; 📍 3 Unidades em São Paulo
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h4l2-5 3 10 2-5h5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span class="logo-text">Diagnos<span>Prime</span></span>
+    </a>
+    <nav class="nav">
+      <a href="#sobre">Sobre</a>
+      <a href="#exames">Exames</a>
+      <a href="#tecnologia">Tecnologia</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#contato">Contato</a>
+      <a href="#" class="btn btn-primary">Agendar Exame</a>
+    </nav>
+    <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.add('active')" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+  <button class="close-btn" onclick="this.parentElement.classList.remove('active')" aria-label="Fechar menu">✕</button>
+  <a href="#sobre" onclick="this.parentElement.classList.remove('active')">Sobre</a>
+  <a href="#exames" onclick="this.parentElement.classList.remove('active')">Exames</a>
+  <a href="#tecnologia" onclick="this.parentElement.classList.remove('active')">Tecnologia</a>
+  <a href="#equipe" onclick="this.parentElement.classList.remove('active')">Equipe</a>
+  <a href="#contato" onclick="this.parentElement.classList.remove('active')">Contato</a>
+  <a href="#" class="btn btn-primary" onclick="this.parentElement.classList.remove('active')">Agendar Exame</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">🏥 Referência em diagnóstico desde 2003</div>
+      <h1>Precisão e <span class="highlight">Tecnologia</span> a Serviço da Sua Saúde</h1>
+      <p>Centro de Medicina Diagnóstica com equipamentos de última geração, equipe multidisciplinar e resultados online em até 24 horas. Mais de 3.000 tipos de exames disponíveis.</p>
+      <div class="hero-btns">
+        <a href="#contato" class="btn btn-primary">Agendar Exame →</a>
+        <a href="#exames" class="btn btn-outline">Nossos Exames</a>
+      </div>
+      <div class="hero-features">
+        <div class="hero-feat"><div class="icon">⏱️</div> Resultados em 24h</div>
+        <div class="hero-feat"><div class="icon">📱</div> App de Resultados</div>
+        <div class="hero-feat"><div class="icon">🅿️</div> Estacionamento Grátis</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="main-img">
+        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&q=80&auto=format&fit=crop" alt="Equipamento de diagnóstico por imagem" loading="eager">
+      </div>
+      <div class="float-card top">
+        <div class="fc-icon" style="background:rgba(15,113,115,0.1)">🔬</div>
+        <div><div class="fc-num">3.000+</div><div class="fc-text">Tipos de Exames</div></div>
+      </div>
+      <div class="float-card bottom">
+        <div class="fc-icon" style="background:rgba(15,113,115,0.1)">⭐</div>
+        <div><div class="fc-num">98.7%</div><div class="fc-text">Satisfação Pacientes</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES MARQUEE -->
+<div class="services-strip">
+  <div class="services-marquee">
+    <span>Ressonância Magnética 3T</span><span>Tomografia Computadorizada</span><span>PET-CT</span><span>Ultrassonografia</span><span>Densitometria Óssea</span><span>Mamografia Digital</span><span>Ecocardiograma</span><span>Endoscopia</span><span>Colonoscopia</span><span>Check-up Executivo</span><span>Análises Clínicas</span><span>Anatomia Patológica</span>
+    <span>Ressonância Magnética 3T</span><span>Tomografia Computadorizada</span><span>PET-CT</span><span>Ultrassonografia</span><span>Densitometria Óssea</span><span>Mamografia Digital</span><span>Ecocardiograma</span><span>Endoscopia</span><span>Colonoscopia</span><span>Check-up Executivo</span><span>Análises Clínicas</span><span>Anatomia Patológica</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about section" id="sobre">
+  <div class="container">
+    <div class="about-image reveal">
+      <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=700&q=80&auto=format&fit=crop" alt="Recepção moderna da clínica">
+      <div class="badge"><div class="num">22</div><div class="txt">Anos de<br>Excelência</div></div>
+    </div>
+    <div class="about-content reveal">
+      <div class="section-eyebrow">Sobre Nós</div>
+      <h2 class="section-title">Diagnósticos Precisos, Cuidado Humanizado</h2>
+      <p>A DiagnosPrime é referência em medicina diagnóstica em São Paulo desde 2003. Com 3 unidades estrategicamente localizadas, oferecemos mais de 3.000 tipos de exames com tecnologia de ponta e equipe altamente qualificada.</p>
+      <p>Nosso compromisso vai além da precisão técnica. Acreditamos que cada paciente merece um atendimento acolhedor, com conforto e agilidade em todas as etapas do processo diagnóstico.</p>
+      <ul class="about-list">
+        <li>Acreditação ONA Nível 3</li>
+        <li>Certificação ISO 9001:2015</li>
+        <li>Resultados Online 24h</li>
+        <li>250+ Convênios Aceitos</li>
+        <li>Equipe Multidisciplinar</li>
+        <li>Laudos Dupla Verificação</li>
+      </ul>
+      <a href="#contato" class="btn btn-primary">Agendar Exame →</a>
+    </div>
+  </div>
+</section>
+
+<!-- EXAMS -->
+<section class="exams section" id="exames">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Nossos Exames</div>
+      <h2 class="section-title">Diagnósticos Completos com Tecnologia Avançada</h2>
+      <p class="section-desc">Oferecemos uma ampla gama de exames com equipamentos de última geração e profissionais especializados.</p>
+    </div>
+    <div class="exams-grid">
+      <div class="exam-card reveal">
+        <div class="exam-icon">🧲</div>
+        <h3>Ressonância Magnética 3T</h3>
+        <p>Equipamento Siemens MAGNETOM Vida de 3 Tesla com IA para reconstrução de imagem. Exames mais rápidos e confortáveis com furo amplo de 70cm.</p>
+        <span class="exam-tag">Alta Complexidade</span>
+      </div>
+      <div class="exam-card reveal">
+        <div class="exam-icon">📡</div>
+        <h3>Tomografia Computadorizada</h3>
+        <p>TC de 256 cortes com dose ultra-baixa de radiação. Ideal para estudos cardíacos, angiotomografias e avaliação de corpo inteiro em segundos.</p>
+        <span class="exam-tag">128-256 Cortes</span>
+      </div>
+      <div class="exam-card reveal">
+        <div class="exam-icon">🔬</div>
+        <h3>Análises Clínicas</h3>
+        <p>Laboratório automatizado com mais de 2.500 tipos de exames de sangue, urina e líquidos biológicos. Resultados em até 4 horas para urgências.</p>
+        <span class="exam-tag">2.500+ Testes</span>
+      </div>
+      <div class="exam-card reveal">
+        <div class="exam-icon">💗</div>
+        <h3>Cardiologia Diagnóstica</h3>
+        <p>Ecocardiograma, teste ergométrico, holter 24h, MAPA e angiotomografia coronariana. Avaliação cardiovascular completa em um único dia.</p>
+        <span class="exam-tag">Check-up Cardíaco</span>
+      </div>
+      <div class="exam-card reveal">
+        <div class="exam-icon">🎯</div>
+        <h3>PET-CT Oncológico</h3>
+        <p>PET-CT digital com tecnologia de cristal digital para detecção precoce de tumores e estadiamento oncológico com precisão milimétrica.</p>
+        <span class="exam-tag">Oncologia</span>
+      </div>
+      <div class="exam-card reveal">
+        <div class="exam-icon">🏥</div>
+        <h3>Check-up Executivo</h3>
+        <p>Programas personalizados de check-up por faixa etária e sexo. Mais de 50 exames em um único dia com laudo integrado e orientação médica.</p>
+        <span class="exam-tag">Medicina Preventiva</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIALS / NUMBERS -->
+<section class="differentials">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Em Números</div>
+      <h2 class="section-title">A Confiança de Quem Escolhe a DiagnosPrime</h2>
+      <p class="section-desc">Números que refletem nosso compromisso com a excelência diagnóstica e o cuidado com cada paciente.</p>
+    </div>
+    <div class="diff-grid reveal">
+      <div class="diff-item">
+        <div class="diff-num" data-target="150000">0</div>
+        <div class="diff-label">Exames por Ano</div>
+        <div class="diff-sub">+12% ao ano</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-num" data-target="45">0</div>
+        <div class="diff-label">Médicos Especialistas</div>
+        <div class="diff-sub">18 especialidades</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-num" data-target="250">0</div>
+        <div class="diff-label">Convênios Aceitos</div>
+        <div class="diff-sub">Todos os principais</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-num" data-target="3">0</div>
+        <div class="diff-label">Unidades em SP</div>
+        <div class="diff-sub">Fácil acesso</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="technology section" id="tecnologia">
+  <div class="container">
+    <div class="tech-content reveal">
+      <div class="section-eyebrow">Tecnologia</div>
+      <h2 class="section-title">Equipamentos de Última Geração</h2>
+      <p style="color:var(--gray);margin-bottom:1rem">Investimos continuamente na aquisição dos mais modernos equipamentos disponíveis no mercado mundial, garantindo diagnósticos mais precisos e confortáveis.</p>
+      <div class="tech-list">
+        <div class="tech-item">
+          <div class="tech-icon">🧲</div>
+          <div><h4>RM 3 Tesla com IA</h4><p>Siemens MAGNETOM Vida com reconstrução de imagem por inteligência artificial, reduzindo tempo de exame em até 50%.</p></div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">🖥️</div>
+          <div><h4>Workstation 3D</h4><p>Estações de trabalho com reconstrução tridimensional para análise avançada de imagens e planejamento cirúrgico.</p></div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">🤖</div>
+          <div><h4>IA Diagnóstica</h4><p>Algoritmos de inteligência artificial como segunda opinião médica, aumentando a acurácia diagnóstica para 99.2%.</p></div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">☁️</div>
+          <div><h4>Cloud PACS</h4><p>Sistema de armazenamento em nuvem com acesso a imagens e laudos de qualquer lugar, a qualquer momento.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="tech-image reveal">
+      <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=700&q=80&auto=format&fit=crop" alt="Equipamento de ressonância magnética moderno">
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team section" id="equipe">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Equipe Médica</div>
+      <h2 class="section-title">Corpo Clínico de Excelência</h2>
+      <p class="section-desc">Médicos com formação nas melhores instituições do país e experiência internacional.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80&auto=format&fit=crop" alt="Dr. Ricardo Mendes" loading="lazy">
+        <div class="team-info">
+          <h3>Dr. Ricardo Mendes</h3>
+          <div class="specialty">Radiologia e Diagnóstico por Imagem</div>
+          <div class="crm">CRM/SP 98.234 · Diretor Técnico</div>
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80&auto=format&fit=crop" alt="Dra. Camila Torres" loading="lazy">
+        <div class="team-info">
+          <h3>Dra. Camila Torres</h3>
+          <div class="specialty">Medicina Nuclear e PET-CT</div>
+          <div class="crm">CRM/SP 112.445</div>
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80&auto=format&fit=crop" alt="Dr. Fernando Lima" loading="lazy">
+        <div class="team-info">
+          <h3>Dr. Fernando Lima</h3>
+          <div class="specialty">Patologia Clínica e Laboratorial</div>
+          <div class="crm">CRM/SP 87.102</div>
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964ac31?w=400&q=80&auto=format&fit=crop" alt="Dra. Beatriz Alves" loading="lazy">
+        <div class="team-info">
+          <h3>Dra. Beatriz Alves</h3>
+          <div class="specialty">Cardiologia Diagnóstica</div>
+          <div class="crm">CRM/SP 105.678</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section class="articles section" id="artigos">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Blog</div>
+      <h2 class="section-title">Conteúdo em Saúde Diagnóstica</h2>
+      <p class="section-desc">Informações úteis sobre exames, prevenção e saúde para você e sua família.</p>
+    </div>
+    <div class="articles-grid">
+      <div class="article-card reveal">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&q=80&auto=format&fit=crop" alt="Artigo sobre check-up" loading="lazy">
+        <div class="article-body">
+          <div class="article-date">15 Mar 2026</div>
+          <h3>Check-up Anual: Quais Exames São Essenciais por Faixa Etária?</h3>
+          <p>Descubra quais exames preventivos são recomendados para cada fase da vida e por que o diagnóstico precoce salva vidas.</p>
+        </div>
+      </div>
+      <div class="article-card reveal">
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500&q=80&auto=format&fit=crop" alt="Artigo sobre ressonância" loading="lazy">
+        <div class="article-body">
+          <div class="article-date">08 Mar 2026</div>
+          <h3>Ressonância Magnética 3T: O Que Mudou com a Inteligência Artificial?</h3>
+          <p>A IA está revolucionando os exames de imagem. Entenda como a tecnologia garante diagnósticos mais rápidos e precisos.</p>
+        </div>
+      </div>
+      <div class="article-card reveal">
+        <img src="https://images.unsplash.com/photo-1551190822-a9ce113ac100?w=500&q=80&auto=format&fit=crop" alt="Artigo sobre PET-CT" loading="lazy">
+        <div class="article-body">
+          <div class="article-date">28 Fev 2026</div>
+          <h3>PET-CT: Como Funciona e Quando é Indicado na Oncologia?</h3>
+          <p>O PET-CT é hoje o exame mais importante no diagnóstico e acompanhamento de diversos tipos de câncer. Saiba mais.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact section" id="contato">
+  <div class="container">
+    <div class="contact-info reveal">
+      <div class="section-eyebrow" style="text-align:left">Contato</div>
+      <h2 class="section-title" style="text-align:left">Agende Seu Exame</h2>
+      <p style="color:var(--gray);margin-bottom:1.5rem">Central de Agendamento disponível de segunda a sábado. Aceitamos mais de 250 convênios.</p>
+      <div class="contact-card">
+        <div class="cc-icon">📞</div>
+        <div><h4>Telefone / WhatsApp</h4><p>(11) 3200-8000 · (11) 98800-0022</p></div>
+      </div>
+      <div class="contact-card">
+        <div class="cc-icon">📍</div>
+        <div><h4>Unidade Paulista (Sede)</h4><p>Av. Paulista, 1842 — Bela Vista, São Paulo/SP</p></div>
+      </div>
+      <div class="contact-card">
+        <div class="cc-icon">📍</div>
+        <div><h4>Unidade Itaim</h4><p>Rua Joaquim Floriano, 1120 — Itaim Bibi, SP</p></div>
+      </div>
+      <div class="contact-card">
+        <div class="cc-icon">🕐</div>
+        <div><h4>Horário</h4><p>Seg-Sex: 6h-21h · Sáb: 6h-16h</p></div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <h3>Solicite seu Agendamento</h3>
+      <form id="contactForm">
+        <div class="form-row">
+          <div class="form-group"><label for="name">Nome Completo</label><input type="text" id="name" placeholder="Seu nome completo" required></div>
+          <div class="form-group"><label for="phone">Telefone</label><input type="tel" id="phone" placeholder="(11) 99999-9999" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="email">E-mail</label><input type="email" id="email" placeholder="seu@email.com" required></div>
+          <div class="form-group"><label for="convenio">Convênio</label>
+            <select id="convenio" required><option value="">Selecione...</option><option>Amil</option><option>Bradesco Saúde</option><option>SulAmérica</option><option>Unimed</option><option>NotreDame Intermédica</option><option>Porto Seguro</option><option>Particular</option><option>Outro</option></select>
+          </div>
+        </div>
+        <div class="form-group"><label for="exam">Tipo de Exame</label>
+          <select id="exam" required><option value="">Selecione o exame...</option><option>Ressonância Magnética</option><option>Tomografia</option><option>Ultrassonografia</option><option>Análises Clínicas (Sangue)</option><option>PET-CT</option><option>Ecocardiograma</option><option>Endoscopia / Colonoscopia</option><option>Mamografia</option><option>Densitometria Óssea</option><option>Check-up Executivo</option><option>Outro</option></select>
+        </div>
+        <div class="form-group"><label for="message">Observações</label><textarea id="message" placeholder="Informações adicionais, pedido médico, preferência de horário..."></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Solicitar Agendamento →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-text" style="color:#fff">Diagnos<span>Prime</span></span>
+        <p>Centro de Medicina Diagnóstica com mais de 22 anos de tradição em excelência, tecnologia e cuidado humanizado. Acreditação ONA Nível 3.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Exames</h4>
+        <a href="#">Ressonância Magnética</a>
+        <a href="#">Tomografia</a>
+        <a href="#">Análises Clínicas</a>
+        <a href="#">PET-CT</a>
+        <a href="#">Check-up Executivo</a>
+      </div>
+      <div class="footer-col">
+        <h4>Unidades</h4>
+        <a href="#">Unidade Paulista</a>
+        <a href="#">Unidade Itaim</a>
+        <a href="#">Unidade Moema</a>
+        <a href="#">Resultados Online</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <a href="tel:+551132008000">(11) 3200-8000</a>
+        <a href="mailto:contato@diagnosprime.com.br">contato@diagnosprime.com.br</a>
+        <a href="#">Portal do Médico</a>
+        <a href="#">Trabalhe Conosco</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 DiagnosPrime — Todos os direitos reservados. Este site é demonstrativo com dados fictícios.<br>Em conformidade com as normas do CFM (Resolução 1.974/2011) e ANVISA.</p>
+      <p>Desenvolvido por <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer">PixelCode Studio</a></p>
+    </div>
+  </div>
+</footer>
+
+<main id="main"></main>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5511988000022?text=Olá! Gostaria de agendar um exame na DiagnosPrime." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Falar pelo WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.314 0-4.458-.766-6.18-2.059l-.432-.329-3.167 1.062 1.062-3.167-.329-.432A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+
+<!-- GALLERY LINK -->
+<a href="/whitelabel/templates/" class="gallery-link">← Galeria</a>
+
+<!-- TOAST -->
+<div id="toast" style="position:fixed;top:2rem;right:2rem;background:var(--teal);color:#fff;padding:1rem 1.5rem;border-radius:10px;font-weight:600;font-size:.9rem;opacity:0;transform:translateY(-20px);transition:var(--transition);z-index:200;box-shadow:var(--shadow-lg)">✓ Solicitação enviada com sucesso!</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MedicalBusiness","name":"DiagnosPrime — Centro de Medicina Diagnóstica","description":"Centro de Medicina Diagnóstica com tecnologia de ponta em exames de imagem, análises clínicas e check-up executivo.","url":"https://templatesadv.vercel.app/saude-10","telephone":"(11) 3200-8000","address":{"@type":"PostalAddress","streetAddress":"Av. Paulista, 1842","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"},"medicalSpecialty":"DiagnosticRadiology","openingHours":"Mo-Fr 06:00-21:00, Sa 06:00-16:00"}
+</script>
+
+<script>
+// Scroll Header Effect
+const header=document.querySelector('.header');
+window.addEventListener('scroll',()=>{
+  header.style.boxShadow=scrollY>50?'0 2px 20px rgba(20,54,66,0.08)':'none';
+});
+
+// Reveal on scroll
+const revealElements=document.querySelectorAll('.reveal');
+const revealObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('active');revealObserver.unobserve(entry.target)}});
+},{threshold:0.15});
+revealElements.forEach(el=>revealObserver.observe(el));
+
+// Counter Animation
+const counters=document.querySelectorAll('[data-target]');
+const counterObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const el=entry.target;const target=+el.dataset.target;
+      const duration=2000;const step=target/duration*16;
+      let current=0;
+      const update=()=>{current+=step;if(current<target){el.textContent=Math.floor(current).toLocaleString('pt-BR');requestAnimationFrame(update)}else{el.textContent=target.toLocaleString('pt-BR')+'+'}};
+      update();counterObserver.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+counters.forEach(c=>counterObserver.observe(c));
+
+// Form mock
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const toast=document.getElementById('toast');
+  toast.style.opacity='1';toast.style.transform='translateY(0)';
+  setTimeout(()=>{toast.style.opacity='0';toast.style.transform='translateY(-20px)'},4000);
+  this.reset();
+});
+
+// Back to top
+const backTop=document.getElementById('backTop');
+window.addEventListener('scroll',()=>{backTop.classList.toggle('visible',scrollY>400)});
+</script>
+</body>
+</html>

@@ -1,4 +1,8 @@
 import { defineConfig } from 'vite';
+import { resolve } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 export default defineConfig({
   server: {
@@ -8,8 +12,11 @@ export default defineConfig({
   build: {
     target: 'esnext',
     rollupOptions: {
-      output: {
-        // manualChunks removido para compatibilidade com Vite
+      input: {
+        // re-incluir a home raiz, senão ela some do build ao definir input
+        main: resolve(__dirname, 'index.html'),
+        whitelabel: resolve(__dirname, 'whitelabel/index.html'),
+        'whitelabel-templates': resolve(__dirname, 'whitelabel/templates/index.html')
       }
     }
   }

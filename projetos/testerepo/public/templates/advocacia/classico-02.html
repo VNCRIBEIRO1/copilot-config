@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campos Borges Advocacia — Consultoria e Assessoria Jurídica</title>
+<meta name="description" content="Campos Borges Advocacia — Tradição e excelência jurídica em Curitiba. Atuação em Direito Civil, Empresarial, Tributário e mais.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='36' rx='8' fill='%23800020'/%3E%3Cpath d='M10 26V10h4l4 10 4-10h4v16h-3.5V16l-3.5 10h-2L13.5 16V26H10z' fill='%23C9A84C'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Campos Borges Advocacia">
+<meta property="og:description" content="Tradição e excelência jurídica em Curitiba.">
+<meta property="og:url" content="https://templatesadv.vercel.app/classico-02">
+<link rel="canonical" href="https://templatesadv.vercel.app/classico-02">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --burgundy:#800020;--burgundy-dark:#5C0015;--cream:#FDF8F0;--cream-dark:#F5EDE0;
+  --gold:#C9A84C;--black:#1A1A1A;--text:#2D2D2D;--text-light:#6B6B6B;--white:#FFFFFF;
+  --heading:'Cormorant Garamond',Georgia,serif;
+  --body:'Raleway',system-ui,sans-serif;
+  --transition:0.3s ease;--sidebar-w:280px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--text);line-height:1.7;overflow-x:hidden;background:var(--cream)}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* SIDEBAR NAV — desktop only */
+.sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;background:var(--burgundy-dark);display:flex;flex-direction:column;align-items:center;padding:2rem 1.5rem;z-index:100;overflow-y:auto}
+.sidebar-logo{text-align:center;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.15);width:100%}
+.sidebar-logo h2{font-family:var(--heading);color:var(--white);font-size:1.4rem;line-height:1.3;font-weight:700}
+.sidebar-logo h2 span{color:var(--gold)}
+.sidebar-logo p{font-size:.65rem;color:rgba(255,255,255,.5);margin-top:.5rem;letter-spacing:.1em;text-transform:uppercase}
+.sidebar-nav{width:100%;display:flex;flex-direction:column;gap:.25rem}
+.sidebar-nav a{display:block;padding:.75rem 1rem;color:rgba(255,255,255,.7);font-size:.85rem;font-weight:500;border-radius:6px;transition:var(--transition);letter-spacing:.02em}
+.sidebar-nav a:hover,.sidebar-nav a.active{color:var(--white);background:rgba(255,255,255,.08)}
+.sidebar-nav a::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-right:.75rem;opacity:0;transition:var(--transition)}
+.sidebar-nav a:hover::before,.sidebar-nav a.active::before{opacity:1}
+.sidebar-bottom{margin-top:auto;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);width:100%;text-align:center}
+.sidebar-bottom p{font-size:.7rem;color:rgba(255,255,255,.4);line-height:1.5}
+.sidebar-social{display:flex;justify-content:center;gap:.5rem;margin-top:1rem}
+.sidebar-social a{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:.7rem;transition:var(--transition)}
+.sidebar-social a:hover{background:var(--gold);border-color:var(--gold);color:var(--white)}
+
+/* MAIN CONTENT */
+.main{margin-left:var(--sidebar-w)}
+
+/* MOBILE HEADER */
+.mobile-header{display:none;position:fixed;top:0;left:0;right:0;z-index:100;background:var(--burgundy-dark);padding:.75rem 1.25rem;justify-content:space-between;align-items:center}
+.mobile-header h2{font-family:var(--heading);color:var(--white);font-size:1.1rem}
+.mobile-header h2 span{color:var(--gold)}
+.hamburger{background:none;border:none;display:flex;flex-direction:column;gap:4px;cursor:pointer;padding:.5rem}
+.hamburger span{width:22px;height:2px;background:var(--white);transition:var(--transition)}
+.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:98}
+.mobile-overlay.open{display:block}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,rgba(92,0,21,.85),rgba(128,0,32,.7)),url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1920&q=80&auto=format&fit=crop') center/cover no-repeat}
+.hero-content{padding:4rem;max-width:800px}
+.hero-divider{width:60px;height:2px;background:var(--gold);margin-bottom:2rem}
+.hero h1{font-family:var(--heading);font-size:clamp(2.5rem,5vw,4rem);color:var(--white);line-height:1.15;font-weight:700;margin-bottom:1.5rem}
+.hero p{font-size:1.1rem;color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:2.5rem;max-width:550px}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;font-family:var(--body);font-size:.9rem;font-weight:600;border-radius:3px;transition:var(--transition);cursor:pointer;border:none;letter-spacing:.03em}
+.btn-gold{background:var(--gold);color:var(--white)}
+.btn-gold:hover{background:#b8973f;transform:translateY(-2px)}
+.btn-outline-w{background:transparent;border:2px solid rgba(255,255,255,.4);color:var(--white)}
+.btn-outline-w:hover{border-color:var(--gold);color:var(--gold)}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* SECTION SHARED */
+.section{padding:5rem 4rem}
+.section-label{font-family:var(--body);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--burgundy);margin-bottom:.5rem;display:flex;align-items:center;gap:.75rem}
+.section-label::before{content:'';width:30px;height:1.5px;background:var(--gold)}
+.section-title{font-family:var(--heading);font-size:clamp(1.8rem,3vw,2.5rem);color:var(--burgundy-dark);line-height:1.2;margin-bottom:1rem}
+.section-desc{font-size:1rem;color:var(--text-light);max-width:600px;margin-bottom:2.5rem}
+.bg-white{background:var(--white)}
+.bg-cream{background:var(--cream)}
+
+/* ABOUT ALTERNATING */
+.about-row{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:3rem}
+.about-row.reverse{direction:rtl}
+.about-row.reverse>*{direction:ltr}
+.about-img{position:relative;overflow:hidden;border-radius:4px}
+.about-img img{width:100%;height:350px;object-fit:cover;border-radius:4px}
+.about-img .img-accent{position:absolute;bottom:-10px;right:-10px;width:80%;height:80%;border:2px solid var(--gold);border-radius:4px;z-index:-1}
+.about-text h3{font-family:var(--heading);font-size:1.6rem;color:var(--burgundy-dark);margin-bottom:1rem;line-height:1.3}
+.about-text p{color:var(--text-light);font-size:.95rem;line-height:1.8;margin-bottom:1rem}
+
+/* AREAS ACCORDION */
+.accordion{max-width:800px}
+.accordion-item{border-bottom:1px solid rgba(0,0,0,.08);overflow:hidden}
+.accordion-header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 0;cursor:pointer;transition:var(--transition)}
+.accordion-header:hover{color:var(--burgundy)}
+.accordion-header h3{font-family:var(--heading);font-size:1.2rem;color:var(--burgundy-dark);display:flex;align-items:center;gap:.75rem;font-weight:600}
+.accordion-icon{font-size:1.5rem;color:var(--gold);transition:transform .3s ease;font-weight:300}
+.accordion-item.open .accordion-icon{transform:rotate(45deg)}
+.accordion-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.accordion-item.open .accordion-body{max-height:300px}
+.accordion-body p{padding:0 0 1.5rem;color:var(--text-light);font-size:.95rem;line-height:1.8;padding-left:2.25rem}
+
+/* TEAM ALTERNATING */
+.team-member{display:grid;grid-template-columns:300px 1fr;gap:3rem;align-items:center;margin-bottom:3rem;padding:2rem;background:var(--white);border-radius:6px;border:1px solid rgba(0,0,0,.04);transition:var(--transition)}
+.team-member:hover{box-shadow:0 10px 40px rgba(0,0,0,.06)}
+.team-member:nth-child(even){grid-template-columns:1fr 300px}
+.team-member:nth-child(even) .team-img{order:2}
+.team-photo{width:100%;height:350px;object-fit:cover;border-radius:4px}
+.team-info h3{font-family:var(--heading);font-size:1.5rem;color:var(--burgundy-dark);margin-bottom:.25rem}
+.team-info .oab{font-size:.75rem;color:var(--gold);font-weight:700;letter-spacing:.05em;margin-bottom:.5rem}
+.team-info .spec{font-size:.9rem;color:var(--burgundy);font-weight:600;margin-bottom:1rem}
+.team-info p{font-size:.9rem;color:var(--text-light);line-height:1.7}
+
+/* ARTICLES */
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.article-card{background:var(--white);border-radius:6px;overflow:hidden;border:1px solid rgba(0,0,0,.04);transition:var(--transition)}
+.article-card:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(0,0,0,.08)}
+.article-img{height:200px;overflow:hidden}
+.article-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.article-card:hover .article-img img{transform:scale(1.05)}
+.article-body{padding:1.5rem}
+.article-date{font-size:.7rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.article-body h3{font-family:var(--heading);font-size:1.1rem;color:var(--burgundy-dark);margin:.5rem 0;line-height:1.3}
+.article-body p{font-size:.85rem;color:var(--text-light);line-height:1.6}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.contact-items{display:flex;flex-direction:column;gap:1.5rem}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;padding:1.25rem;background:var(--white);border-radius:6px;border:1px solid rgba(0,0,0,.04)}
+.contact-item .ci-icon{width:44px;height:44px;min-width:44px;border-radius:50%;background:rgba(128,0,32,.06);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.contact-item h4{font-size:.85rem;font-weight:700;color:var(--burgundy-dark)}
+.contact-item p{font-size:.85rem;color:var(--text-light);margin:0}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.contact-form input,.contact-form textarea,.contact-form select{padding:1rem;border:1px solid #e0d5c5;border-radius:4px;font-family:var(--body);font-size:.9rem;background:var(--white);transition:var(--transition)}
+.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{outline:none;border-color:var(--burgundy);box-shadow:0 0 0 3px rgba(128,0,32,.08)}
+.contact-form textarea{height:130px;resize:vertical}
+.btn-burgundy{background:var(--burgundy);color:var(--white);border:none;cursor:pointer}
+.btn-burgundy:hover{background:var(--burgundy-dark)}
+
+/* FOOTER */
+.footer{background:var(--burgundy-dark);color:rgba(255,255,255,.7);padding:3rem 4rem 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer h4{color:var(--white);font-family:var(--heading);font-size:1rem;margin-bottom:.75rem}
+.footer-brand p{font-size:.85rem;line-height:1.6}
+.footer ul{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.footer ul a{font-size:.85rem;transition:var(--transition)}
+.footer ul a:hover{color:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;padding:1.5rem 0;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.75rem}
+.footer-disclaimer{text-align:center;padding:1rem;background:rgba(0,0,0,.2);font-size:.7rem;color:rgba(255,255,255,.35)}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(25px);transition:all .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .sidebar{display:none}
+  .main{margin-left:0}
+  .mobile-header{display:flex}
+  .section{padding:4rem 1.5rem}
+  .hero-content{padding:6rem 1.5rem 3rem}
+  .about-row,.about-row.reverse{grid-template-columns:1fr}
+  .team-member,.team-member:nth-child(even){grid-template-columns:1fr}
+  .team-member:nth-child(even) .team-img{order:0}
+  .contact-grid{grid-template-columns:1fr}
+  .articles-grid{grid-template-columns:1fr}
+  .footer{padding:3rem 1.5rem 0}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .hero h1{font-size:2rem}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+/* SKIP LINK */
+.skip-link{position:absolute;top:-100%;left:1rem;background:var(--gold);color:var(--burgundy);padding:.75rem 1.5rem;border-radius:0 0 8px 8px;z-index:200;font-weight:600;font-size:.9rem;transition:top .2s}.skip-link:focus{top:0}
+/* FOCUS */
+*:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+/* WHATSAPP */
+.whatsapp-float{position:fixed;bottom:1.5rem;right:1.5rem;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;z-index:99;box-shadow:0 4px 15px rgba(37,211,102,.4);transition:var(--transition)}.whatsapp-float:hover{transform:scale(1.1)}
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:5rem;right:1.7rem;width:40px;height:40px;background:var(--burgundy);color:var(--gold);border:1px solid var(--gold);border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:99;opacity:0;transition:var(--transition)}.back-top.visible{opacity:1}.back-top:hover{background:var(--gold);color:var(--burgundy)}
+/* TOAST */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--gold);color:var(--burgundy);padding:1rem 2rem;border-radius:8px;font-weight:600;z-index:200;transition:.4s ease;opacity:0}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+/* PRINT */
+@media print{.sidebar,.whatsapp-float,.back-top,.toast,a[href="/whitelabel/templates/"]{display:none!important}.main{margin-left:0!important}body{background:#fff!important;color:#000!important}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<a href="#sobre" class="skip-link">Pular para o conteúdo</a>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <a href="#">
+      <h2>Campos <span>Borges</span><br>Advocacia</h2>
+      <p>OAB/RJ 00.456</p>
+    </a>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="#inicio" class="active">Início</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#areas">Áreas de Atuação</a>
+    <a href="#equipe">Equipe</a>
+    <a href="#artigos">Artigos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+  <div class="sidebar-bottom">
+    <p>Advocacia e Assessoria Jurídica<br>Rio de Janeiro — RJ</p>
+    <div class="sidebar-social">
+      <a href="#" aria-label="LinkedIn">in</a>
+      <a href="#" aria-label="Instagram">ig</a>
+    </div>
+  </div>
+</aside>
+
+<!-- MOBILE HEADER -->
+<header class="mobile-header">
+  <h2>Campos <span>Borges</span></h2>
+  <button class="hamburger" onclick="document.querySelector('.sidebar').style.display='flex';document.querySelector('.sidebar').style.position='fixed';document.querySelector('.sidebar').style.zIndex='200';document.querySelector('.mobile-overlay').classList.add('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<div class="mobile-overlay" onclick="document.querySelector('.sidebar').style.display='';this.classList.remove('open')"></div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-divider"></div>
+    <h1>Assessoria Jurídica com Tradição e Responsabilidade</h1>
+    <p>Há mais de 20 anos atuando com seriedade e competência, oferecendo orientação jurídica fundamentada em diversas áreas do Direito.</p>
+    <div class="hero-btns">
+      <a href="#contato" class="btn btn-gold">Agende uma Conversa</a>
+      <a href="#sobre" class="btn btn-outline-w">Conheça o Escritório</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section bg-white" id="sobre">
+  <div class="section-label">Sobre o Escritório</div>
+  <h2 class="section-title">Tradição Construída com Dedicação</h2>
+  <p class="section-desc">O escritório Campos Borges Advocacia foi fundado com o objetivo de oferecer serviços jurídicos de excelência, pautados pela ética e pelo compromisso com cada cliente.</p>
+
+  <div class="about-row reveal">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700&q=80&auto=format&fit=crop" alt="Escritório">
+      <div class="img-accent"></div>
+    </div>
+    <div class="about-text">
+      <h3>Nossa História</h3>
+      <p>Fundado em 2005 no coração do Rio de Janeiro, nosso escritório nasceu da união de profissionais com ampla experiência acadêmica e prática jurídica. Desde então, construímos uma trajetória sólida, baseada em valores como ética, transparência e respeito.</p>
+      <p>Nosso compromisso é oferecer orientação jurídica qualificada e personalizada, tratando cada caso com a atenção e o cuidado que merece.</p>
+    </div>
+  </div>
+
+  <div class="about-row reverse reveal">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?w=700&q=80&auto=format&fit=crop" alt="Sala de reuniões">
+    </div>
+    <div class="about-text">
+      <h3>Nossos Valores</h3>
+      <p><strong>Ética profissional</strong> — Atuação sempre pautada pelo Código de Ética e Disciplina da OAB, com integridade e transparência em todas as relações.</p>
+      <p><strong>Atualização constante</strong> — Investimos continuamente na formação e especialização da nossa equipe para oferecer orientação jurídica atualizada e fundamentada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="section bg-cream" id="areas">
+  <div class="section-label">Áreas de Atuação</div>
+  <h2 class="section-title">Expertise Jurídica Multidisciplinar</h2>
+  <p class="section-desc">Conheça as áreas em que oferecemos orientação e assessoria jurídica especializada.</p>
+
+  <div class="accordion">
+    <div class="accordion-item open">
+      <div class="accordion-header" role="button" aria-expanded="true" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true')">
+        <h3>🏛️ Direito Civil</h3><span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body"><p>Atuação em questões contratuais, responsabilidade civil, direito das obrigações, posse e propriedade, indenizações e demais relações jurídicas civis. Oferecemos orientação tanto na esfera consultiva quanto contenciosa.</p></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true')">
+        <h3>🏢 Direito Empresarial</h3><span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body"><p>Assessoria em constituição e alteração societária, contratos comerciais, due diligence, recuperação judicial e extrajudicial, governança corporativa e compliance empresarial.</p></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true')">
+        <h3>👷 Direito Trabalhista</h3><span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body"><p>Orientação em relações de trabalho para empresas e trabalhadores, incluindo elaboração de contratos, questões sindicais, processos trabalhistas e consultoria preventiva.</p></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true')">
+        <h3>📊 Direito Tributário</h3><span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body"><p>Consultoria tributária, planejamento fiscal, defesa em processos administrativos e judiciais, recuperação de créditos tributários e orientação sobre regimes especiais de tributação.</p></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true')">
+        <h3>🏠 Direito Imobiliário</h3><span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body"><p>Assessoria em contratos de compra, venda e locação de imóveis, incorporações, regularização fundiária, análise de matrículas e orientação em transações imobiliárias.</p></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded',this.getAttribute('aria-expanded')==='true'?'false':'true')">
+        <h3>👨‍👩‍👧‍👦 Direito de Família e Sucessões</h3><span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body"><p>Atuação em divórcio consensual e litigioso, guarda e regulamentação de visitas, pensão alimentícia, inventários e partilhas, testamentos e planejamento sucessório.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section bg-white" id="equipe">
+  <div class="section-label">Nossa Equipe</div>
+  <h2 class="section-title">Advogados Comprometidos</h2>
+  <p class="section-desc">Conheça os profissionais que conduzem o escritório com dedicação e competência.</p>
+
+  <div class="team-member reveal">
+    <div class="team-img"><img class="team-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=600&q=80&auto=format&fit=crop&crop=face" alt="Dr. Henrique Campos"></div>
+    <div class="team-info">
+      <h3>Dr. Henrique Campos</h3>
+      <div class="oab">OAB/RJ 00.010</div>
+      <div class="spec">Direito Civil e Imobiliário</div>
+      <p>Sócio fundador. Graduado pela UERJ com Mestrado em Direito Civil pela PUC-Rio. Atua há mais de 25 anos na área cível, com ênfase em contratos e direito imobiliário. Membro da Comissão de Direito Imobiliário da OAB/RJ.</p>
+    </div>
+  </div>
+
+  <div class="team-member reveal">
+    <div class="team-img"><img class="team-photo" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&h=600&q=80&auto=format&fit=crop&crop=face" alt="Dra. Luciana Borges"></div>
+    <div class="team-info">
+      <h3>Dra. Luciana Borges</h3>
+      <div class="oab">OAB/RJ 00.011</div>
+      <div class="spec">Direito Empresarial</div>
+      <p>Sócia. Formada pela UFRJ com especialização em Direito Societário pela FGV. Experiência em assessoria empresarial, M&A e governança corporativa. Professora convidada em cursos de pós-graduação.</p>
+    </div>
+  </div>
+
+  <div class="team-member reveal">
+    <div class="team-img"><img class="team-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&q=80&auto=format&fit=crop&crop=face" alt="Dr. Rafael Montenegro"></div>
+    <div class="team-info">
+      <h3>Dr. Rafael Montenegro</h3>
+      <div class="oab">OAB/RJ 00.012</div>
+      <div class="spec">Direito Trabalhista e Tributário</div>
+      <p>Associado sênior. Graduado pela UFF com pós-graduação em Direito do Trabalho e Processo do Trabalho. Atua em consultivo e contencioso trabalhista, com experiência também em planejamento tributário.</p>
+    </div>
+  </div>
+
+  <div class="team-member reveal">
+    <div class="team-img"><img class="team-photo" src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=500&h=600&q=80&auto=format&fit=crop&crop=face" alt="Dra. Isabela Fonseca"></div>
+    <div class="team-info">
+      <h3>Dra. Isabela Fonseca</h3>
+      <div class="oab">OAB/RJ 00.013</div>
+      <div class="spec">Direito de Família e Sucessões</div>
+      <p>Associada. Formada pela PUC-Rio com especialização em Direito de Família pelo IBMEC. Mediadora certificada. Atua com sensibilidade e técnica em questões familiares e sucessórias.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section class="section bg-cream" id="artigos">
+  <div class="section-label">Artigos Informativos</div>
+  <h2 class="section-title">Publicações e Informações</h2>
+  <p class="section-desc">Conteúdo de caráter informativo elaborado por nossa equipe sobre temas jurídicos atuais.</p>
+
+  <div class="articles-grid">
+    <div class="article-card reveal">
+      <div class="article-img"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&auto=format&fit=crop" alt="Contratos" loading="lazy"></div>
+      <div class="article-body">
+        <span class="article-date">12 de Março de 2026</span>
+        <h3>Cláusulas Essenciais em Contratos de Locação Comercial</h3>
+        <p>Uma análise informativa sobre os pontos de atenção na elaboração e revisão de contratos de locação de imóveis comerciais.</p>
+      </div>
+    </div>
+    <div class="article-card reveal">
+      <div class="article-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80&auto=format&fit=crop" alt="Empresarial" loading="lazy"></div>
+      <div class="article-body">
+        <span class="article-date">05 de Março de 2026</span>
+        <h3>Compliance Empresarial: Importância e Implementação</h3>
+        <p>Informações sobre a adoção de programas de compliance como ferramenta de gestão de riscos e governança corporativa.</p>
+      </div>
+    </div>
+    <div class="article-card reveal">
+      <div class="article-img"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80&auto=format&fit=crop" alt="Trabalho" loading="lazy"></div>
+      <div class="article-body">
+        <span class="article-date">28 de Fevereiro de 2026</span>
+        <h3>Reforma Trabalhista: Principais Pontos de Atenção</h3>
+        <p>Considerações informativas sobre as alterações promovidas na legislação trabalhista e seus reflexos nas relações de trabalho.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section bg-white" id="contato">
+  <div class="section-label">Contato</div>
+  <h2 class="section-title">Fale com o Escritório</h2>
+  <p class="section-desc">Entre em contato pelos canais abaixo ou preencha o formulário para agendarmos uma conversa.</p>
+
+  <div class="contact-grid">
+    <div class="contact-items reveal">
+      <div class="contact-item">
+        <div class="ci-icon">📍</div>
+        <div><h4>Endereço</h4><p>Rua da Assembleia, 100 — Sala 1200<br>Centro, Rio de Janeiro — RJ, 20011-000</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon">📞</div>
+        <div><h4>Telefone</h4><p>(21) 3000-0000</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon">✉️</div>
+        <div><h4>E-mail</h4><p>contato@camposborges.adv.br</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon">💬</div>
+        <div><h4>WhatsApp</h4><p>(21) 99000-0000</p></div>
+      </div>
+    </div>
+    <form class="contact-form reveal">
+      <input type="text" placeholder="Nome completo" required aria-label="Nome completo">
+      <input type="email" placeholder="E-mail" required aria-label="E-mail">
+      <input type="tel" placeholder="Telefone" required aria-label="Telefone">
+      <select required aria-label="Área de interesse">
+        <option value="">Selecione a área de interesse</option>
+        <option>Direito Civil</option><option>Direito Empresarial</option>
+        <option>Direito Trabalhista</option><option>Direito Tributário</option>
+        <option>Direito Imobiliário</option><option>Direito de Família</option>
+        <option>Outro</option>
+      </select>
+      <textarea placeholder="Mensagem" required aria-label="Mensagem"></textarea>
+      <button class="btn btn-burgundy" type="submit">Enviar Mensagem</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h4 style="font-family:var(--heading);font-size:1.2rem">Campos Borges <span style="color:var(--gold)">Advocacia</span></h4>
+      <p>Advocacia e Assessoria Jurídica<br>OAB/RJ 00.456<br><br>Tradição, competência e responsabilidade na prática do Direito há mais de 20 anos.</p>
+    </div>
+    <div><h4>Navegação</h4><ul><li><a href="#sobre">Sobre</a></li><li><a href="#areas">Áreas de Atuação</a></li><li><a href="#equipe">Equipe</a></li><li><a href="#artigos">Artigos</a></li><li><a href="#contato">Contato</a></li></ul></div>
+    <div><h4>Áreas</h4><ul><li><a href="#">Direito Civil</a></li><li><a href="#">Direito Empresarial</a></li><li><a href="#">Direito Trabalhista</a></li><li><a href="#">Direito Tributário</a></li><li><a href="#">Direito Imobiliário</a></li><li><a href="#">Direito de Família</a></li></ul></div>
+    <div><h4>Contato</h4><p style="font-size:.85rem">📍 Rua da Assembleia, 100 — Sala 1200<br>📞 (21) 3000-0000<br>✉️ contato@camposborges.adv.br<br>💬 (21) 99000-0000</p></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Campos Borges Advocacia — Todos os direitos reservados.</p>
+    <p>OAB/RJ 00.456</p>
+  </div>
+  <p style="font-size:.7rem;color:rgba(255,255,255,.35);margin-top:.5rem;text-align:center">Desenvolvido por <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer" style="color:var(--gold)">PixelCode Studio</a> — Dev Full Stack & Web Design: Vinicius Ribeiro</p>
+  <p style="font-size:.6rem;color:rgba(255,255,255,.25);margin-top:.25rem;text-align:center">Portfólios: <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer" style="color:var(--gold)">pixelcodestudio.com.br</a> · <a href="https://portfolio-politico.vercel.app" target="_blank" rel="noopener noreferrer" style="color:var(--gold)">portfolio-politico.vercel.app</a></p>
+  <div class="footer-disclaimer">Este site é um template demonstrativo com dados fictícios, desenvolvido com caráter meramente informativo, em conformidade com o Provimento 205/2021 da OAB.</div>
+</footer>
+
+</div><!-- /.main -->
+
+<a href="/whitelabel/templates/" style="position:fixed;bottom:1.5rem;left:1.5rem;background:var(--burgundy);color:var(--white);padding:.5rem 1rem;border-radius:4px;font-size:.8rem;font-family:var(--body);font-weight:600;z-index:99;opacity:.7;transition:var(--transition)" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">← Galeria</a>
+
+<script>
+// SCROLL REVEAL
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ACTIVE NAV
+const sections=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  const scrollY=window.scrollY+200;
+  sections.forEach(sec=>{
+    const top=sec.offsetTop,h=sec.offsetHeight,id=sec.getAttribute('id');
+    const link=document.querySelector(`.sidebar-nav a[href="#${id}"]`);
+    if(link){if(scrollY>=top&&scrollY<top+h)link.classList.add('active');else link.classList.remove('active')}
+  });
+});
+
+// Back to top
+const bt=document.getElementById('backTop');
+window.addEventListener('scroll',()=>{bt.classList.toggle('visible',scrollY>500)});
+// Form
+document.querySelector('.contact-form')?.addEventListener('submit',e=>{e.preventDefault();const toast=document.getElementById('toast');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),3000);e.target.reset()});
+</script>
+
+<a href="https://wa.me/5541900000000" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp">💬</a>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+<div class="toast" id="toast">✓ Mensagem enviada com sucesso!</div>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LegalService","name":"Campos Borges Advocacia","description":"Tradição e excelência jurídica em Curitiba","url":"https://templatesadv.vercel.app/classico-02","telephone":"(41) 3000-0000","address":{"@type":"PostalAddress","streetAddress":"Rua XV de Novembro, 1200 — Sala 800","addressLocality":"Curitiba","addressRegion":"PR","addressCountry":"BR"}}
+</script>
+</body>
+</html>

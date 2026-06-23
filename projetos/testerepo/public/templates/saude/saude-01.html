@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dra. Helena Martins — Ginecologia e Obstetrícia</title>
+<meta name="description" content="Consultório de Ginecologia e Obstetrícia da Dra. Helena Martins. Atendimento humanizado, pré-natal, saúde da mulher e cirurgias ginecológicas em São Paulo.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='36' rx='8' fill='%237B2D4E'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='20' fill='%23E8A0BF'%3E♀%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dra. Helena Martins — Ginecologia e Obstetrícia">
+<meta property="og:description" content="Consultório de Ginecologia e Obstetrícia. Atendimento humanizado e especializado em saúde da mulher.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&q=80&auto=format&fit=crop">
+<link rel="canonical" href="https://templatesadv.vercel.app/saude-01">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --rose:#E8A0BF;--rose-light:#F5D5E5;--rose-dark:#D485A8;
+  --burgundy:#7B2D4E;--burgundy-deep:#5A1D38;
+  --cream:#FFF9F5;--white:#FFFFFF;
+  --text-dark:#3D2035;--text-body:#5C4055;--text-muted:#8C7085;
+  --bg-section:#FFF5F8;--bg-card:#FFFFFF;
+  --radius:16px;--radius-sm:10px;
+  --transition:0.35s cubic-bezier(.4,0,.2,1);
+  --shadow:0 4px 24px rgba(123,45,78,0.08);
+  --shadow-lg:0 12px 48px rgba(123,45,78,0.12);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Mulish',sans-serif;background:var(--cream);color:var(--text-body);line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--burgundy);line-height:1.2}
+
+/* SKIP LINK */
+.skip-link{position:absolute;top:-100%;left:1rem;background:var(--burgundy);color:#fff;padding:.75rem 1.5rem;border-radius:0 0 8px 8px;z-index:200;font-weight:600;font-size:.9rem;transition:top .2s}.skip-link:focus{top:0}
+*:focus-visible{outline:2px solid var(--burgundy);outline-offset:2px;border-radius:4px}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;background:rgba(255,249,245,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(123,45,78,0.08);transition:var(--transition)}
+.header.scrolled{box-shadow:var(--shadow)}
+.logo{display:flex;align-items:center;gap:.75rem}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--burgundy),var(--rose-dark));border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem;font-weight:700;font-family:'Cormorant Garamond',serif}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--burgundy)}
+.logo-text span{color:var(--rose-dark)}
+nav{display:flex;align-items:center;gap:2rem}
+nav a{font-size:.9rem;font-weight:500;color:var(--text-muted);transition:var(--transition);position:relative}
+nav a:hover{color:var(--burgundy)}
+nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--rose);transition:var(--transition)}
+nav a:hover::after{width:100%}
+.nav-cta{padding:.6rem 1.5rem;background:var(--burgundy);color:#fff;border-radius:50px;font-weight:600;font-size:.85rem;transition:var(--transition)}
+.nav-cta:hover{background:var(--burgundy-deep);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}
+.hamburger span{width:24px;height:2px;background:var(--burgundy);transition:var(--transition);border-radius:2px}
+
+/* MOBILE NAV */
+.mobile-nav{display:none;position:fixed;inset:0;background:rgba(255,249,245,0.98);backdrop-filter:blur(30px);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:var(--transition)}
+.mobile-nav.open{opacity:1;pointer-events:all}
+.mobile-nav a{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--burgundy)}
+.mobile-nav .close-btn{position:absolute;top:1.5rem;right:2rem;font-size:2rem;background:none;border:none;color:var(--burgundy);cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 5% 4rem;gap:4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:60%;height:140%;background:radial-gradient(ellipse,var(--rose-light) 0%,transparent 70%);opacity:.4;z-index:0}
+.hero-content{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1.25rem;background:rgba(232,160,191,0.2);border:1px solid rgba(232,160,191,0.3);border-radius:50px;font-size:.8rem;color:var(--burgundy);font-weight:600;margin-bottom:1.5rem;letter-spacing:.03em}
+.hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;margin-bottom:1.5rem;letter-spacing:-0.02em}
+.hero h1 .accent{color:var(--rose-dark)}
+.hero p{font-size:1.1rem;color:var(--text-muted);max-width:480px;margin-bottom:2rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{padding:.85rem 2rem;background:var(--burgundy);color:#fff;border-radius:50px;font-weight:600;font-size:.95rem;transition:var(--transition);display:inline-flex;align-items:center;gap:.5rem;border:none;cursor:pointer;font-family:inherit}
+.btn-primary:hover{background:var(--burgundy-deep);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.btn-secondary{padding:.85rem 2rem;background:transparent;color:var(--burgundy);border:2px solid var(--rose);border-radius:50px;font-weight:600;font-size:.95rem;transition:var(--transition);display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;font-family:inherit}
+.btn-secondary:hover{background:var(--rose-light);border-color:var(--rose-dark)}
+.hero-image{position:relative;z-index:1}
+.hero-image img{width:100%;max-width:520px;border-radius:30px 30px 30px 100px;box-shadow:var(--shadow-lg);object-fit:cover;height:600px}
+.hero-image::before{content:'';position:absolute;top:-15px;left:-15px;right:15px;bottom:15px;border:2px solid var(--rose);border-radius:30px 30px 30px 100px;z-index:-1}
+
+/* SOBRE */
+.about{padding:6rem 5%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1300px;margin:0 auto}
+.about-image img{width:100%;border-radius:var(--radius);box-shadow:var(--shadow);object-fit:cover;height:450px}
+.section-label{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:700;color:var(--rose-dark);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
+.section-label::before{content:'';width:30px;height:2px;background:var(--rose)}
+.about h2{font-size:2.5rem;margin-bottom:1rem}
+.about p{margin-bottom:1rem;color:var(--text-body)}
+.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.about-highlight{padding:1rem;background:var(--bg-section);border-radius:var(--radius-sm);text-align:center}
+.about-highlight .num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--burgundy)}
+.about-highlight .label{font-size:.8rem;color:var(--text-muted);margin-top:.25rem}
+
+/* ESPECIALIDADES */
+.specialties{padding:6rem 5%;background:var(--bg-section)}
+.specialties .container{max-width:1300px;margin:0 auto}
+.specialties h2{font-size:2.5rem;text-align:center;margin-bottom:.5rem}
+.specialties .subtitle{text-align:center;color:var(--text-muted);margin-bottom:3rem;font-size:1.05rem}
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.spec-card{background:var(--bg-card);padding:2rem;border-radius:var(--radius);border:1px solid rgba(123,45,78,0.06);transition:var(--transition);position:relative;overflow:hidden}
+.spec-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rose),var(--burgundy));transform:scaleX(0);transform-origin:left;transition:var(--transition)}
+.spec-card:hover::before{transform:scaleX(1)}
+.spec-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.spec-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem;background:linear-gradient(135deg,var(--rose-light),rgba(232,160,191,0.3))}
+.spec-card h3{font-size:1.2rem;margin-bottom:.5rem}
+.spec-card p{font-size:.88rem;color:var(--text-muted);line-height:1.6}
+
+/* NÚMEROS */
+.counters{padding:4rem 5%;background:linear-gradient(135deg,var(--burgundy),var(--burgundy-deep));color:#fff}
+.counters .container{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.counter-item .num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:700;color:var(--rose-light)}
+.counter-item .label{font-size:.85rem;opacity:.8;margin-top:.25rem}
+
+/* EQUIPE */
+.team{padding:6rem 5%;max-width:1300px;margin:0 auto}
+.team h2{font-size:2.5rem;text-align:center;margin-bottom:.5rem}
+.team .subtitle{text-align:center;color:var(--text-muted);margin-bottom:3rem;font-size:1.05rem}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.team-card{background:var(--bg-card);border-radius:var(--radius);overflow:hidden;border:1px solid rgba(123,45,78,0.06);transition:var(--transition);text-align:center}
+.team-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.team-card img{width:100%;height:280px;object-fit:cover}
+.team-card .info{padding:1.5rem}
+.team-card h3{font-size:1.15rem;margin-bottom:.25rem}
+.team-card .role{font-size:.8rem;color:var(--rose-dark);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.team-card .crm{font-size:.75rem;color:var(--text-muted);margin-top:.35rem}
+
+/* ARTIGOS */
+.articles{padding:6rem 5%;background:var(--bg-section)}
+.articles .container{max-width:1300px;margin:0 auto}
+.articles h2{font-size:2.5rem;text-align:center;margin-bottom:.5rem}
+.articles .subtitle{text-align:center;color:var(--text-muted);margin-bottom:3rem;font-size:1.05rem}
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.article-card{background:var(--bg-card);border-radius:var(--radius);overflow:hidden;border:1px solid rgba(123,45,78,0.06);transition:var(--transition)}
+.article-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.article-card img{width:100%;height:200px;object-fit:cover}
+.article-card .content{padding:1.5rem}
+.article-card .date{font-size:.75rem;color:var(--rose-dark);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem}
+.article-card h3{font-size:1.1rem;font-family:'Cormorant Garamond',serif;color:var(--burgundy);margin-bottom:.5rem}
+.article-card p{font-size:.85rem;color:var(--text-muted);line-height:1.6}
+
+/* CONTATO */
+.contact{padding:6rem 5%;max-width:1300px;margin:0 auto}
+.contact h2{font-size:2.5rem;text-align:center;margin-bottom:.5rem}
+.contact .subtitle{text-align:center;color:var(--text-muted);margin-bottom:3rem;font-size:1.05rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem}
+.info-card{display:flex;gap:1rem;align-items:flex-start;padding:1.5rem;background:var(--bg-section);border-radius:var(--radius-sm)}
+.info-card .icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--rose-light),rgba(232,160,191,0.3));display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.info-card h4{font-size:1rem;margin-bottom:.25rem}
+.info-card p{font-size:.88rem;color:var(--text-muted)}
+.contact-form{background:var(--bg-section);padding:2.5rem;border-radius:var(--radius)}
+.form-group{margin-bottom:1.25rem}
+.form-group label{display:block;font-size:.85rem;font-weight:600;color:var(--text-dark);margin-bottom:.4rem}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:.85rem 1rem;border:1px solid rgba(123,45,78,0.15);border-radius:var(--radius-sm);font-family:inherit;font-size:.9rem;background:var(--white);color:var(--text-dark);transition:var(--transition)}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 3px rgba(232,160,191,0.2)}
+.form-group textarea{min-height:120px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+/* FOOTER */
+.footer{background:var(--burgundy-deep);color:rgba(255,255,255,0.85);padding:4rem 5% 2rem}
+.footer .container{max-width:1300px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer h4{font-family:'Cormorant Garamond',serif;color:var(--rose-light);font-size:1.15rem;margin-bottom:1rem}
+.footer p,.footer a{font-size:.88rem;color:rgba(255,255,255,0.65);line-height:1.8}
+.footer a:hover{color:var(--rose-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.8rem;color:rgba(255,255,255,0.4)}
+.footer-bottom a{color:var(--rose-light)}
+.footer-disclaimer{font-size:.75rem;color:rgba(255,255,255,0.35);max-width:600px;line-height:1.5;margin-top:1rem}
+
+/* WHATSAPP */
+.whatsapp-float{position:fixed;bottom:2rem;right:2rem;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:90;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:var(--transition);cursor:pointer}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,0.5)}
+.whatsapp-float svg{width:28px;height:28px;fill:#fff}
+
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:2rem;right:5.5rem;width:44px;height:44px;background:var(--burgundy);color:#fff;border:none;border-radius:12px;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;z-index:90;opacity:0;transform:translateY(10px);transition:var(--transition);box-shadow:0 4px 15px rgba(123,45,78,0.3)}
+.back-top.visible{opacity:1;transform:none}
+.back-top:hover{background:var(--burgundy-deep);transform:translateY(-2px)}
+
+/* GALERIA LINK */
+.gallery-link{position:fixed;bottom:2rem;left:2rem;padding:.6rem 1.25rem;background:rgba(255,249,245,0.95);backdrop-filter:blur(10px);border:1px solid rgba(123,45,78,0.15);border-radius:50px;font-size:.8rem;font-weight:600;color:var(--burgundy);z-index:90;transition:var(--transition);display:flex;align-items:center;gap:.5rem}
+.gallery-link:hover{background:var(--burgundy);color:#fff}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--burgundy);color:#fff;padding:1rem 2rem;border-radius:var(--radius-sm);font-size:.9rem;font-weight:500;z-index:200;opacity:0;transition:var(--transition);display:flex;align-items:center;gap:.5rem;box-shadow:var(--shadow-lg)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;text-align:center;padding:8rem 5% 4rem}
+  .hero-content{order:2}
+  .hero-image{order:1;display:flex;justify-content:center}
+  .hero-image img{max-width:400px;height:450px}
+  .hero-image::before{display:none}
+  .hero p{margin:0 auto 2rem}
+  .hero-btns{justify-content:center}
+  .about{grid-template-columns:1fr}
+  .about-image{display:none}
+  .spec-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .articles-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  nav{display:none}
+  .hamburger{display:flex}
+  .mobile-nav{display:flex}
+  .header{padding:.75rem 1.25rem}
+  .counters .container{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .spec-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .articles-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .hero h1{font-size:2rem}
+  .about-highlights{grid-template-columns:1fr}
+}
+
+/* PRINT */
+@media print{.header,.whatsapp-float,.back-top,.gallery-link{display:none!important}body{background:#fff!important;color:#000!important}}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+<a href="#especialidades" class="skip-link">Pular para especialidades</a>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <a href="/saude-01" class="logo">
+    <div class="logo-icon">H</div>
+    <span class="logo-text">Dra. Helena <span>Martins</span></span>
+  </a>
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#especialidades">Especialidades</a>
+    <a href="#equipe">Equipe</a>
+    <a href="#artigos">Blog</a>
+    <a href="#contato" class="nav-cta">Agendar Consulta</a>
+  </nav>
+  <button class="hamburger" id="menuBtn" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-btn" id="closeNav" aria-label="Fechar menu">✕</button>
+  <a href="#sobre" onclick="closeMobile()">Sobre</a>
+  <a href="#especialidades" onclick="closeMobile()">Especialidades</a>
+  <a href="#equipe" onclick="closeMobile()">Equipe</a>
+  <a href="#artigos" onclick="closeMobile()">Blog</a>
+  <a href="#contato" onclick="closeMobile()">Agendar Consulta</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🌸 Ginecologia & Obstetrícia</div>
+    <h1>Cuidado <span class="accent">Humanizado</span> para Todas as Fases da Mulher</h1>
+    <p>Atendimento personalizado com acolhimento e tecnologia de ponta. Do pré-natal à menopausa, cada mulher é única e merece atenção especial.</p>
+    <div class="hero-btns">
+      <a href="#contato" class="btn-primary">Agendar Consulta →</a>
+      <a href="#sobre" class="btn-secondary">Conheça a Clínica</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&q=80&auto=format&fit=crop" alt="Consultório de Ginecologia" loading="eager">
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="about reveal" id="sobre">
+  <div class="about-image">
+    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=700&q=80&auto=format&fit=crop" alt="Dra. Helena Martins" loading="lazy">
+  </div>
+  <div>
+    <div class="section-label">Sobre a Dra. Helena</div>
+    <h2>Mais de 20 Anos Dedicados à Saúde da Mulher</h2>
+    <p>A Dra. Helena Martins é ginecologista e obstetra formada pela Universidade de São Paulo (USP), com residência médica no Hospital das Clínicas e fellowship em Medicina Fetal na Universidade de Barcelona.</p>
+    <p>Sua prática combina evidência científica atualizada com um olhar empático e acolhedor, garantindo que cada paciente se sinta segura e bem cuidada em todas as fases da vida.</p>
+    <div class="about-highlights">
+      <div class="about-highlight">
+        <div class="num" data-target="20">0</div>
+        <div class="label">Anos de Experiência</div>
+      </div>
+      <div class="about-highlight">
+        <div class="num" data-target="8000">0</div>
+        <div class="label">Partos Realizados</div>
+      </div>
+      <div class="about-highlight">
+        <div class="num" data-target="15000">0</div>
+        <div class="label">Pacientes Atendidas</div>
+      </div>
+      <div class="about-highlight">
+        <div class="num" data-target="3">0</div>
+        <div class="label">Especializações</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section class="specialties reveal" id="especialidades">
+  <div class="container">
+    <div class="section-label" style="text-align:center;display:flex;justify-content:center">Nossos Serviços</div>
+    <h2>Especialidades</h2>
+    <p class="subtitle">Cuidado completo e especializado para a saúde feminina</p>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="spec-icon">🤰</div>
+        <h3>Pré-Natal de Alto Risco</h3>
+        <p>Acompanhamento gestacional completo com ultrassonografia 3D/4D, ecocardiografia fetal e monitoramento especializado para gestações de risco.</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">🔬</div>
+        <h3>Colposcopia e Preventivo</h3>
+        <p>Exames preventivos com tecnologia de alta resolução para detecção precoce de alterações no colo do útero e rastreamento do HPV.</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">💊</div>
+        <h3>Planejamento Familiar</h3>
+        <p>Orientação personalizada sobre métodos contraceptivos, incluindo DIU, implante hormonal e planejamento reprodutivo.</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">🌡️</div>
+        <h3>Climatério e Menopausa</h3>
+        <p>Tratamento das alterações hormonais com terapia personalizada, promovendo qualidade de vida na maturidade feminina.</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">🏥</div>
+        <h3>Cirurgias Ginecológicas</h3>
+        <p>Procedimentos minimamente invasivos: videolaparoscopia, histeroscopia e cirurgias robóticas com menor tempo de recuperação.</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon">🩺</div>
+        <h3>Saúde da Mama</h3>
+        <p>Rastreamento mamográfico, punção guiada por ultrassom e acompanhamento multidisciplinar para prevenção e diagnóstico precoce.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NÚMEROS -->
+<section class="counters reveal">
+  <div class="container">
+    <div class="counter-item">
+      <div class="num" data-target="20">0</div>
+      <div class="label">Anos de Experiência</div>
+    </div>
+    <div class="counter-item">
+      <div class="num" data-target="8000">0</div>
+      <div class="label">Partos Realizados</div>
+    </div>
+    <div class="counter-item">
+      <div class="num" data-target="15000">0</div>
+      <div class="label">Pacientes Atendidas</div>
+    </div>
+    <div class="counter-item">
+      <div class="num" data-target="98">0%</div>
+      <div class="label">Satisfação</div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section class="team reveal" id="equipe">
+  <div class="section-label" style="text-align:center;display:flex;justify-content:center">Nossa Equipe</div>
+  <h2>Profissionais Dedicados</h2>
+  <p class="subtitle">Equipe multidisciplinar especializada em saúde feminina</p>
+  <div class="team-grid">
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80&auto=format&fit=crop" alt="Dra. Helena Martins" loading="lazy">
+      <div class="info">
+        <h3>Dra. Helena Martins</h3>
+        <p class="role">Ginecologia e Obstetrícia</p>
+        <p class="crm">CRM/SP 123.456 — RQE 78.901</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1594824476967-48c8b964ac31?w=400&q=80&auto=format&fit=crop" alt="Dra. Camila Rocha" loading="lazy">
+      <div class="info">
+        <h3>Dra. Camila Rocha</h3>
+        <p class="role">Medicina Fetal</p>
+        <p class="crm">CRM/SP 234.567 — RQE 89.012</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80&auto=format&fit=crop" alt="Dr. Ricardo Alves" loading="lazy">
+      <div class="info">
+        <h3>Dr. Ricardo Alves</h3>
+        <p class="role">Mastologia</p>
+        <p class="crm">CRM/SP 345.678 — RQE 90.123</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&q=80&auto=format&fit=crop" alt="Enf. Juliana Costa" loading="lazy">
+      <div class="info">
+        <h3>Enf. Juliana Costa</h3>
+        <p class="role">Enfermeira Obstétrica</p>
+        <p class="crm">COREN/SP 456.789</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTIGOS -->
+<section class="articles reveal" id="artigos">
+  <div class="container">
+    <div class="section-label" style="text-align:center;display:flex;justify-content:center">Blog</div>
+    <h2>Artigos & Informações</h2>
+    <p class="subtitle">Conteúdo educativo sobre saúde feminina</p>
+    <div class="articles-grid">
+      <div class="article-card">
+        <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&q=80&auto=format&fit=crop" alt="Pré-natal" loading="lazy">
+        <div class="content">
+          <div class="date">15 Mar 2026</div>
+          <h3>A Importância do Pré-Natal no Primeiro Trimestre</h3>
+          <p>Entenda quais exames são essenciais nas primeiras semanas de gestação e como o acompanhamento precoce protege mãe e bebê.</p>
+        </div>
+      </div>
+      <div class="article-card">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80&auto=format&fit=crop" alt="Saúde da mulher" loading="lazy">
+        <div class="content">
+          <div class="date">08 Mar 2026</div>
+          <h3>HPV: Prevenção, Diagnóstico e Tratamento</h3>
+          <p>Tudo o que você precisa saber sobre o Papilomavírus Humano, vacinação e a importância dos exames preventivos regulares.</p>
+        </div>
+      </div>
+      <div class="article-card">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&auto=format&fit=crop" alt="Menopausa" loading="lazy">
+        <div class="content">
+          <div class="date">01 Mar 2026</div>
+          <h3>Menopausa: Mitos e Verdades</h3>
+          <p>Desmistificando o climatério: abordagens modernas para o manejo dos sintomas e manutenção da qualidade de vida.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contact reveal" id="contato">
+  <div class="section-label" style="text-align:center;display:flex;justify-content:center">Contato</div>
+  <h2>Agende sua Consulta</h2>
+  <p class="subtitle">Entre em contato para marcar seu atendimento</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="info-card">
+        <div class="icon">📍</div>
+        <div>
+          <h4>Endereço</h4>
+          <p>Av. Paulista, 1578 — Sala 1204<br>Bela Vista, São Paulo — SP<br>CEP 01310-200</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="icon">📞</div>
+        <div>
+          <h4>Telefone</h4>
+          <p>(11) 3456-7890<br>(11) 98765-4321 (WhatsApp)</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="icon">🕐</div>
+        <div>
+          <h4>Horário de Atendimento</h4>
+          <p>Segunda a Sexta: 8h às 19h<br>Sábado: 8h às 13h</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="icon">📧</div>
+        <div>
+          <h4>E-mail</h4>
+          <p>contato@drahelena.com.br<br>agendamento@drahelena.com.br</p>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Nome Completo</label>
+          <input type="text" id="name" placeholder="Seu nome" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Telefone</label>
+          <input type="tel" id="phone" placeholder="(11) 99999-9999" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="seu@email.com" required>
+      </div>
+      <div class="form-group">
+        <label for="specialty">Especialidade</label>
+        <select id="specialty">
+          <option value="">Selecione...</option>
+          <option>Pré-Natal</option>
+          <option>Colposcopia</option>
+          <option>Planejamento Familiar</option>
+          <option>Climatério e Menopausa</option>
+          <option>Cirurgia Ginecológica</option>
+          <option>Saúde da Mama</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Mensagem</label>
+        <textarea id="message" placeholder="Descreva brevemente o motivo da consulta..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;justify-content:center">Enviar Solicitação →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Dra. Helena Martins</h4>
+        <p>Ginecologia e Obstetrícia com foco em atendimento humanizado, tecnologia e medicina baseada em evidências.</p>
+        <p style="margin-top:1rem">CRM/SP 123.456 — RQE 78.901</p>
+      </div>
+      <div>
+        <h4>Especialidades</h4>
+        <p><a href="#especialidades">Pré-Natal</a></p>
+        <p><a href="#especialidades">Colposcopia</a></p>
+        <p><a href="#especialidades">Planejamento Familiar</a></p>
+        <p><a href="#especialidades">Climatério</a></p>
+      </div>
+      <div>
+        <h4>Links Rápidos</h4>
+        <p><a href="#sobre">Sobre</a></p>
+        <p><a href="#equipe">Equipe</a></p>
+        <p><a href="#artigos">Blog</a></p>
+        <p><a href="#contato">Contato</a></p>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <p>Av. Paulista, 1578 — Sala 1204</p>
+        <p>(11) 3456-7890</p>
+        <p>contato@drahelena.com.br</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>
+        <p>© 2026 Dra. Helena Martins — Todos os direitos reservados.</p>
+        <p class="footer-disclaimer">Este site é meramente informativo e não substitui consulta médica. Os dados apresentados são fictícios para fins de demonstração. Em conformidade com as normas do CFM (Resolução 1.974/2011) e legislação vigente.</p>
+      </div>
+      <p>Desenvolvido por <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer">PixelCode Studio</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/5511987654321?text=Olá! Gostaria de agendar uma consulta." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+
+<!-- LINK GALERIA -->
+<a href="/whitelabel/templates/" class="gallery-link">← Galeria</a>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✓ Mensagem enviada com sucesso!</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Physician",
+  "name":"Dra. Helena Martins — Ginecologia e Obstetrícia",
+  "description":"Consultório de Ginecologia e Obstetrícia. Atendimento humanizado e especializado em saúde da mulher.",
+  "url":"https://templatesadv.vercel.app/saude-01",
+  "telephone":"(11) 3456-7890",
+  "address":{"@type":"PostalAddress","streetAddress":"Av. Paulista, 1578 — Sala 1204","addressLocality":"São Paulo","addressRegion":"SP","postalCode":"01310-200","addressCountry":"BR"},
+  "medicalSpecialty":"Gynecology",
+  "openingHours":["Mo-Fr 08:00-19:00","Sa 08:00-13:00"]
+}
+</script>
+
+<script>
+// HEADER SCROLL
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',scrollY>50)});
+
+// MOBILE NAV
+document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('mobileNav').classList.add('open'));
+document.getElementById('closeNav').addEventListener('click',closeMobile);
+function closeMobile(){document.getElementById('mobileNav').classList.remove('open')}
+
+// REVEAL ON SCROLL
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// COUNTER ANIMATION
+const counterObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){const nums=e.target.querySelectorAll('[data-target]');nums.forEach(n=>{const target=+n.dataset.target;const suffix=n.textContent.replace(/[0-9]/g,'');let current=0;const increment=target/60;const timer=setInterval(()=>{current+=increment;if(current>=target){current=target;clearInterval(timer)}n.textContent=Math.floor(current).toLocaleString('pt-BR')+suffix},30)});counterObserver.unobserve(e.target)}})},{threshold:0.3});
+document.querySelectorAll('.counters,.about-highlights').forEach(el=>counterObserver.observe(el));
+
+// FORM
+document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const toast=document.getElementById('toast');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),4000);e.target.reset()});
+
+// BACK TO TOP
+const backTop=document.getElementById('backTop');
+window.addEventListener('scroll',()=>{backTop.classList.toggle('visible',scrollY>400)});
+</script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advocacia Dinâmica — Direito com Energia</title>
+<meta name="description" content="Advocacia Dinâmica — Direito com energia e propósito em São Paulo. Atuação em Direito Civil, Empresarial, Trabalhista, Digital e mais.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='36' rx='8' fill='%234F46E5'/%3E%3Cpath d='M10 26V10h4l4 10 4-10h4v16h-3.5V16l-3.5 10h-2L13.5 16V26H10z' fill='%23A78BFA'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Advocacia Dinâmica — Direito com Energia">
+<meta property="og:description" content="Equipe jovem e preparada em São Paulo.">
+<meta property="og:url" content="https://templatesadv.vercel.app/moderno-03">
+<link rel="canonical" href="https://templatesadv.vercel.app/moderno-03">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --indigo:#4F46E5;--indigo-light:#6366F1;--lilac:#A78BFA;--lilac-light:#C4B5FD;
+  --dark:#0F0B2E;--darker:#0A0721;--white:#FFFFFF;--offwhite:#F5F3FF;
+  --text:#374151;--text-light:#6B7280;--line:rgba(0,0,0,.06);
+  --heading:'Outfit',system-ui,sans-serif;
+  --body:'Sora','Outfit',system-ui,sans-serif;
+  --transition:.35s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}body{font-family:var(--body);color:var(--text);line-height:1.7;overflow-x:hidden}
+img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;transition:var(--transition)}
+.header.solid{background:rgba(255,255,255,.94);backdrop-filter:blur(20px);box-shadow:0 1px 15px rgba(0,0,0,.04)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;max-width:1400px;margin:0 auto;padding:.85rem 2rem}
+.h-logo{font-family:var(--heading);font-weight:800;font-size:1.25rem;letter-spacing:-.03em;transition:var(--transition)}
+.h-logo.w{color:#fff}.header.solid .h-logo{color:var(--dark)}
+.h-logo span{color:var(--lilac)}
+.nav{display:flex;align-items:center;gap:2rem}
+.nav a{font-size:.85rem;font-weight:500;transition:var(--transition)}
+.nav.w a{color:rgba(255,255,255,.75)}.header.solid .nav a{color:var(--text)}
+.nav a:hover{color:var(--indigo)}
+.nav-cta{background:var(--indigo)!important;color:#fff!important;padding:.5rem 1.2rem;border-radius:8px}
+.nav-cta:hover{background:var(--indigo-light)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem}
+.hamburger span{width:24px;height:2px;transition:var(--transition)}
+.hamburger.w span{background:#fff}.header.solid .hamburger span{background:var(--dark)}
+.mob-nav{display:none;position:fixed;inset:0;background:var(--darker);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mob-nav.open{display:flex}
+.mob-nav a{color:#fff;font-family:var(--heading);font-size:1.4rem;font-weight:700}
+.mob-close{position:absolute;top:1.5rem;right:1.5rem;color:#fff;font-size:2rem;cursor:pointer;background:none;border:none}
+
+/* HERO — MESH GRADIENT */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;position:relative;overflow:hidden;padding:5rem 2rem;background:var(--darker)}
+.hero-mesh{position:absolute;inset:0;background:
+  radial-gradient(ellipse at 20% 50%,rgba(79,70,229,.45) 0%,transparent 50%),
+  radial-gradient(ellipse at 80% 20%,rgba(167,139,250,.35) 0%,transparent 50%),
+  radial-gradient(ellipse at 50% 80%,rgba(99,102,241,.3) 0%,transparent 50%),
+  var(--darker);animation:meshMove 12s ease-in-out infinite alternate}
+@keyframes meshMove{0%{background-position:0% 0%}100%{background-position:100% 100%}}
+.hero-content{position:relative;z-index:2;max-width:780px}
+.hero-chip{display:inline-flex;padding:.35rem 1rem;border:1px solid rgba(167,139,250,.3);background:rgba(167,139,250,.08);border-radius:50px;font-size:.72rem;font-weight:700;color:var(--lilac-light);letter-spacing:.05em;margin-bottom:1.5rem}
+.hero h1{font-family:var(--heading);font-size:clamp(2.6rem,6vw,4.2rem);font-weight:900;line-height:1.05;letter-spacing:-.04em;margin-bottom:1.25rem}
+.hero h1 .accent{background:linear-gradient(135deg,var(--lilac),var(--indigo-light));background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.05rem;color:rgba(255,255,255,.5);max-width:580px;margin:0 auto 2.5rem;line-height:1.75}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.75rem;font-family:var(--heading);font-size:.9rem;font-weight:600;border-radius:10px;transition:var(--transition);cursor:pointer;border:none}
+.btn-indigo{background:var(--indigo);color:#fff}.btn-indigo:hover{background:var(--indigo-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(79,70,229,.35)}
+.btn-outline{border:1px solid rgba(255,255,255,.2);color:#fff;background:transparent}.btn-outline:hover{background:rgba(255,255,255,.08)}
+
+/* SECTION */
+.section{padding:6rem 0}
+.section-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--indigo)}
+.section-title{font-family:var(--heading);font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:var(--dark);line-height:1.12;margin:.5rem 0 .5rem;letter-spacing:-.02em}
+.section-desc{font-size:.95rem;color:var(--text-light);max-width:520px;margin-bottom:3rem}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img{border-radius:20px;overflow:hidden;position:relative}
+.about-img img{width:100%;height:440px;object-fit:cover}
+.about-badge{position:absolute;bottom:1.5rem;right:1.5rem;background:var(--indigo);color:#fff;padding:.75rem 1.25rem;border-radius:12px;font-family:var(--heading);font-weight:700;font-size:1.5rem;line-height:1}
+.about-badge small{display:block;font-size:.6rem;font-weight:500;opacity:.7;margin-top:.1rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.5rem}
+.af{display:flex;gap:.6rem;align-items:start}
+.af-icon{width:32px;height:32px;border-radius:8px;background:var(--offwhite);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.af h4{font-family:var(--heading);font-size:.82rem;font-weight:700;color:var(--dark)}
+.af p{font-size:.72rem;color:var(--text-light)}
+
+/* AREAS — TABS */
+.tabs-header{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.tab-btn{padding:.6rem 1.2rem;font-family:var(--heading);font-size:.82rem;font-weight:600;border:1px solid var(--line);border-radius:8px;background:var(--white);cursor:pointer;transition:var(--transition);color:var(--text)}
+.tab-btn.active{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+.tab-btn:hover:not(.active){background:var(--offwhite)}
+.tab-content{display:none;animation:fadeTab .4s ease}
+.tab-content.active{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+@keyframes fadeTab{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.tab-text h3{font-family:var(--heading);font-size:1.3rem;font-weight:800;color:var(--dark);margin-bottom:.75rem}
+.tab-text p{font-size:.9rem;color:var(--text-light);line-height:1.7;margin-bottom:1rem}
+.tab-text ul{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.tab-text ul li{font-size:.85rem;color:var(--text);padding-left:1.5rem;position:relative}
+.tab-text ul li::before{content:'';position:absolute;left:0;top:.55em;width:8px;height:8px;background:var(--lilac);border-radius:50%}
+.tab-img{border-radius:16px;overflow:hidden}
+.tab-img img{width:100%;height:320px;object-fit:cover}
+
+/* COUNTERS */
+.counters{background:var(--dark);padding:4rem 0;color:var(--white)}
+.cnt-grid{display:grid;grid-template-columns:repeat(4,1fr);text-align:center;gap:2rem}
+.cnt-num{font-family:var(--heading);font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--lilac),var(--indigo-light));background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cnt-txt{font-size:.8rem;color:rgba(255,255,255,.45);margin-top:.15rem}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.team-card{background:var(--white);border-radius:16px;overflow:hidden;border:1px solid var(--line);transition:var(--transition);text-align:center}
+.team-card:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(79,70,229,.08)}
+.team-card img{width:100%;height:260px;object-fit:cover}
+.team-body{padding:1.25rem}
+.team-body h3{font-family:var(--heading);font-size:1rem;font-weight:700;color:var(--dark)}
+.team-body .oab{color:var(--indigo);font-size:.7rem;font-weight:700;letter-spacing:.04em}
+.team-body .spec{font-size:.8rem;font-weight:500;color:var(--text);margin:.2rem 0 .4rem}
+.team-body p{font-size:.78rem;color:var(--text-light)}
+
+/* ARTICLES */
+.art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.art-card{background:var(--white);border-radius:16px;overflow:hidden;border:1px solid var(--line);transition:var(--transition)}
+.art-card:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,.05)}
+.art-img{height:180px;overflow:hidden}
+.art-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.art-card:hover .art-img img{transform:scale(1.05)}
+.art-body{padding:1.5rem}
+.art-cat{display:inline-block;padding:.2rem .65rem;background:var(--offwhite);color:var(--indigo);font-size:.68rem;font-weight:700;border-radius:5px;margin-bottom:.5rem}
+.art-body h3{font-family:var(--heading);font-size:1rem;font-weight:700;color:var(--dark);line-height:1.3;margin-bottom:.35rem}
+.art-body p{font-size:.8rem;color:var(--text-light)}
+
+/* CONTACT */
+.contact-split{display:grid;grid-template-columns:1fr 1fr;min-height:600px}
+.contact-left{background:linear-gradient(135deg,var(--dark) 0%,#1a1250 100%);color:#fff;padding:4rem;display:flex;flex-direction:column;justify-content:center}
+.contact-left h2{font-family:var(--heading);font-size:2rem;font-weight:800;margin-bottom:.5rem}
+.contact-left>p{color:rgba(255,255,255,.5);margin-bottom:2.5rem;font-size:.95rem}
+.c-item{display:flex;gap:1rem;margin-bottom:1.5rem}
+.c-icon{width:44px;height:44px;border-radius:12px;background:rgba(167,139,250,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.c-item h4{font-family:var(--heading);font-size:.85rem;font-weight:600;margin-bottom:.1rem}
+.c-item p{font-size:.8rem;color:rgba(255,255,255,.5)}
+.contact-right{padding:4rem;display:flex;flex-direction:column;justify-content:center;background:var(--offwhite)}
+.contact-right h3{font-family:var(--heading);font-size:1.3rem;font-weight:700;color:var(--dark);margin-bottom:1.5rem}
+.c-form{display:flex;flex-direction:column;gap:1rem}
+.c-form input,.c-form textarea{padding:.9rem;border:1px solid #e5e7eb;border-radius:10px;font-family:var(--body);font-size:.88rem;background:#fff;transition:var(--transition)}
+.c-form input:focus,.c-form textarea:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(79,70,229,.1)}
+.c-form textarea{height:120px;resize:vertical}
+.c-submit{background:var(--indigo);color:#fff;border:none;cursor:pointer;padding:.85rem;border-radius:10px;font-family:var(--heading);font-size:.9rem;font-weight:600;transition:var(--transition)}
+.c-submit:hover{background:var(--indigo-light)}
+
+/* FOOTER */
+.footer{background:var(--darker);color:rgba(255,255,255,.5);padding:3.5rem 0 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:2rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.footer h4{color:#fff;font-family:var(--heading);font-size:.9rem;margin-bottom:.75rem}
+.footer p,.footer ul a{font-size:.82rem}
+.footer ul{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.footer ul a:hover{color:var(--lilac)}
+.fbar{display:flex;justify-content:space-between;padding:1.5rem 0;flex-wrap:wrap;gap:1rem}
+.fbar p{font-size:.72rem}
+.fdisclaimer{text-align:center;padding:1rem;background:rgba(0,0,0,.3);font-size:.68rem;color:rgba(255,255,255,.22)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(25px);transition:all .65s ease}.reveal.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.about-grid,.tab-content.active,.contact-split{grid-template-columns:1fr}.team-grid,.art-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}.contact-left,.contact-right{padding:3rem 2rem}}
+@media(max-width:768px){.nav{display:none}.hamburger{display:flex}.team-grid,.art-grid{grid-template-columns:1fr}.cnt-grid{grid-template-columns:repeat(2,1fr)}.about-features{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.fbar{flex-direction:column;text-align:center}.tabs-header{justify-content:center}}
+.skip-link{position:absolute;top:-100%;left:1rem;background:var(--indigo);color:#fff;padding:.75rem 1.5rem;border-radius:0 0 8px 8px;z-index:200;font-weight:600;font-size:.9rem;transition:top .2s}.skip-link:focus{top:0}
+*:focus-visible{outline:2px solid var(--lilac);outline-offset:2px;border-radius:4px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.hero-mesh{animation:none!important}}
+.whatsapp-float{position:fixed;bottom:1.5rem;right:1.5rem;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;z-index:99;box-shadow:0 4px 15px rgba(37,211,102,.4);transition:var(--transition)}.whatsapp-float:hover{transform:scale(1.1)}
+.back-top{position:fixed;bottom:5rem;right:1.7rem;width:40px;height:40px;background:var(--indigo);color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:99;opacity:0;transition:var(--transition)}.back-top.visible{opacity:1}.back-top:hover{background:var(--indigo-light)}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--indigo);color:#fff;padding:1rem 2rem;border-radius:10px;font-weight:600;z-index:200;transition:.4s ease;opacity:0}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+@media print{.header,.hero,.whatsapp-float,.back-top,.toast,.counters,a[href="/whitelabel/templates/"]{display:none!important}body{background:#fff!important;color:#000!important}section{break-inside:avoid}.tab-content{display:grid!important}}
+</style>
+</head>
+<body>
+<a href="#sobre" class="skip-link">Pular para o conteúdo</a>
+<header class="header" id="header">
+<div class="header-inner">
+  <a href="#" class="h-logo w" style="text-decoration:none">Advocacia <span>Dinâmica</span></a>
+  <nav class="nav w"><a href="#">Início</a><a href="#sobre">Sobre</a><a href="#areas">Áreas</a><a href="#equipe">Equipe</a><a href="#artigos">Artigos</a><a href="#contato" class="nav-cta">Contato</a></nav>
+  <button class="hamburger w" onclick="document.getElementById('mn').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+</div>
+</header>
+<div class="mob-nav" id="mn"><button class="mob-close" onclick="this.parentElement.classList.remove('open')">✕</button><a href="#" onclick="this.parentElement.classList.remove('open')">Início</a><a href="#sobre" onclick="this.parentElement.classList.remove('open')">Sobre</a><a href="#areas" onclick="this.parentElement.classList.remove('open')">Áreas</a><a href="#equipe" onclick="this.parentElement.classList.remove('open')">Equipe</a><a href="#artigos" onclick="this.parentElement.classList.remove('open')">Artigos</a><a href="#contato" onclick="this.parentElement.classList.remove('open')">Contato</a></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-content">
+    <div class="hero-chip">⚖️ OAB/SP 00.770</div>
+    <h1>Direito com <span class="accent">Energia</span> e Propósito</h1>
+    <p>Somos uma equipe jovem e preparada, que transforma complexidade jurídica em clareza e eficiência para nossos clientes.</p>
+    <div class="hero-btns"><a href="#contato" class="btn btn-indigo">Entre em Contato</a><a href="#sobre" class="btn btn-outline">Saiba Mais</a></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="sobre">
+<div class="container">
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&q=80&auto=format&fit=crop" alt="Equipe">
+      <div class="about-badge">15<small>anos</small></div>
+    </div>
+    <div class="reveal">
+      <span class="section-label">Sobre Nós</span>
+      <h2 class="section-title">Jovens no Espírito, Sólidos na Atuação</h2>
+      <p style="color:var(--text-light);margin-bottom:1rem;font-size:.95rem">A Advocacia Dinâmica nasceu da vontade de fazer diferente. Fundada em São Paulo em 2011, unimos profissionais com formação de ponta a uma abordagem prática e orientada a resultados.</p>
+      <p style="color:var(--text-light);font-size:.95rem">Nossa filosofia é simples: entender profundamente o problema, comunicar com clareza e agir com agilidade.</p>
+      <div class="about-features">
+        <div class="af"><div class="af-icon">⚡</div><div><h4>Agilidade</h4><p>Respostas rápidas</p></div></div>
+        <div class="af"><div class="af-icon">🎯</div><div><h4>Foco</h4><p>Soluções objetivas</p></div></div>
+        <div class="af"><div class="af-icon">🤝</div><div><h4>Proximidade</h4><p>Atendimento humano</p></div></div>
+        <div class="af"><div class="af-icon">📚</div><div><h4>Atualização</h4><p>Estudo constante</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- AREAS — TABS -->
+<section class="section" style="background:var(--offwhite)" id="areas">
+<div class="container">
+  <div style="text-align:center"><span class="section-label">Áreas de Atuação</span>
+  <h2 class="section-title" style="margin-left:auto;margin-right:auto">Explore Nossas Especialidades</h2>
+  <p class="section-desc" style="margin-left:auto;margin-right:auto;text-align:center">Clique para ver detalhes de cada área.</p></div>
+  <div class="tabs-header" role="tablist">
+    <button class="tab-btn active" data-tab="t1" role="tab" aria-selected="true" aria-controls="t1">Direito Civil</button>
+    <button class="tab-btn" data-tab="t2" role="tab" aria-selected="false" aria-controls="t2">Direito Empresarial</button>
+    <button class="tab-btn" data-tab="t3" role="tab" aria-selected="false" aria-controls="t3">Direito Trabalhista</button>
+    <button class="tab-btn" data-tab="t4" role="tab" aria-selected="false" aria-controls="t4">Direito do Consumidor</button>
+    <button class="tab-btn" data-tab="t5" role="tab" aria-selected="false" aria-controls="t5">Direito Digital</button>
+    <button class="tab-btn" data-tab="t6" role="tab" aria-selected="false" aria-controls="t6">Direito Tributário</button>
+  </div>
+  <div class="tab-content active" id="t1" role="tabpanel"><div class="tab-text"><h3>Direito Civil</h3><p>Atuação completa em questões civis, com foco em contratos, responsabilidade civil e resolução de conflitos. Orientação clara e acessível.</p><ul><li>Contratos e obrigações</li><li>Responsabilidade civil</li><li>Indenizações</li><li>Direitos reais e posse</li></ul></div><div class="tab-img"><img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&q=80&auto=format&fit=crop" alt="Civil"></div></div>
+  <div class="tab-content" id="t2" role="tabpanel"><div class="tab-text"><h3>Direito Empresarial</h3><p>Orientação estratégica para empresas de todos os portes, desde a constituição até operações complexas de M&A e governança.</p><ul><li>Estruturação societária</li><li>Contratos comerciais</li><li>Governança corporativa</li><li>Compliance empresarial</li></ul></div><div class="tab-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&auto=format&fit=crop" alt="Empresarial"></div></div>
+  <div class="tab-content" id="t3" role="tabpanel"><div class="tab-text"><h3>Direito Trabalhista</h3><p>Atuação preventiva e contenciosa em relações de trabalho. Atendemos tanto empresas quanto colaboradores.</p><ul><li>Consultoria preventiva</li><li>Contencioso trabalhista</li><li>Compliance trabalhista</li><li>Relações sindicais</li></ul></div><div class="tab-img"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80&auto=format&fit=crop" alt="Trabalhista"></div></div>
+  <div class="tab-content" id="t4" role="tabpanel"><div class="tab-text"><h3>Direito do Consumidor</h3><p>Defesa dos interesses nas relações de consumo com abordagem estratégica e orientada à resolução eficiente.</p><ul><li>Defesa do consumidor</li><li>Regulatório</li><li>Contencioso consumerista</li><li>Acordos e negociações</li></ul></div><div class="tab-img"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80&auto=format&fit=crop" alt="Consumidor"></div></div>
+  <div class="tab-content" id="t5" role="tabpanel"><div class="tab-text"><h3>Direito Digital</h3><p>Assessoria completa em temas de tecnologia, proteção de dados e relações digitais.</p><ul><li>LGPD e proteção de dados</li><li>Contratos de tecnologia</li><li>E-commerce</li><li>Propriedade intelectual digital</li></ul></div><div class="tab-img"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80&auto=format&fit=crop" alt="Digital"></div></div>
+  <div class="tab-content" id="t6" role="tabpanel"><div class="tab-text"><h3>Direito Tributário</h3><p>Planejamento fiscal e contencioso tributário com visão estratégica e atualização constante da legislação.</p><ul><li>Planejamento tributário</li><li>Contencioso fiscal</li><li>Recuperação de créditos</li><li>Consultoria preventiva</li></ul></div><div class="tab-img"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80&auto=format&fit=crop" alt="Tributário"></div></div>
+</div>
+</section>
+
+<!-- COUNTERS -->
+<section class="counters">
+<div class="container"><div class="cnt-grid">
+  <div><div class="cnt-num" data-target="15">0</div><div class="cnt-txt">Anos de Atuação</div></div>
+  <div><div class="cnt-num" data-target="9">0</div><div class="cnt-txt">Advogados</div></div>
+  <div><div class="cnt-num" data-target="6">0</div><div class="cnt-txt">Áreas Especializadas</div></div>
+  <div><div class="cnt-num" data-target="3">0</div><div class="cnt-txt">Escritórios</div></div>
+</div></div>
+</section>
+
+<!-- TEAM -->
+<section class="section" id="equipe">
+<div class="container">
+  <div style="text-align:center"><span class="section-label">Equipe</span>
+  <h2 class="section-title">Profissionais com Propósito</h2>
+  <p class="section-desc" style="margin-left:auto;margin-right:auto;text-align:center">Uma equipe diversa, preparada e motivada.</p></div>
+  <div class="team-grid">
+    <div class="team-card reveal"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=350&q=80&auto=format&fit=crop&crop=face" alt="Dr. Gabriel Diniz"><div class="team-body"><h3>Dr. Gabriel Diniz</h3><div class="oab">OAB/SP 00.060</div><div class="spec">Direito Empresarial</div><p>Sócio fundador. MBA em Gestão pela FGV. Atua em operações societárias.</p></div></div>
+    <div class="team-card reveal"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=350&q=80&auto=format&fit=crop&crop=face" alt="Dra. Larissa Vieira"><div class="team-body"><h3>Dra. Larissa Vieira</h3><div class="oab">OAB/SP 00.061</div><div class="spec">Direito Digital</div><p>Sócia. DPO certificada. Mestre em Direito e Tecnologia.</p></div></div>
+    <div class="team-card reveal"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=350&q=80&auto=format&fit=crop&crop=face" alt="Dr. Thiago Rocha"><div class="team-body"><h3>Dr. Thiago Rocha</h3><div class="oab">OAB/SP 00.062</div><div class="spec">Direito Tributário</div><p>Associado sênior. Pós em Direito Tributário. Experiência em planejamento fiscal.</p></div></div>
+    <div class="team-card reveal"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=350&q=80&auto=format&fit=crop&crop=face" alt="Dra. Isabela Cruz"><div class="team-body"><h3>Dra. Isabela Cruz</h3><div class="oab">OAB/SP 00.063</div><div class="spec">Direito do Consumidor</div><p>Associada. Especialista em relações de consumo e mediação.</p></div></div>
+  </div>
+</div>
+</section>
+
+<!-- ARTICLES -->
+<section class="section" style="background:var(--offwhite)" id="artigos">
+<div class="container">
+  <span class="section-label">Artigos</span>
+  <h2 class="section-title">Informação Jurídica Acessível</h2>
+  <p class="section-desc">Publicações de caráter informativo sobre temas relevantes.</p>
+  <div class="art-grid">
+    <div class="art-card reveal"><div class="art-img"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80&auto=format&fit=crop" alt="Artigo" loading="lazy"></div><div class="art-body"><span class="art-cat">Empresarial</span><h3>Compliance para Pequenas Empresas</h3><p>Informações sobre implementação de programas de conformidade em empresas de pequeno porte.</p></div></div>
+    <div class="art-card reveal"><div class="art-img"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80&auto=format&fit=crop" alt="Artigo" loading="lazy"></div><div class="art-body"><span class="art-cat">Digital</span><h3>Inteligência Artificial e Direito</h3><p>Análise sobre regulamentação de IA e seus impactos nas relações jurídicas.</p></div></div>
+    <div class="art-card reveal"><div class="art-img"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80&auto=format&fit=crop" alt="Artigo" loading="lazy"></div><div class="art-body"><span class="art-cat">Trabalhista</span><h3>Novas Modalidades de Trabalho</h3><p>Considerações sobre regulamentação do trabalho por plataformas digitais.</p></div></div>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contato">
+<div class="contact-split">
+  <div class="contact-left">
+    <span class="section-label" style="color:var(--lilac-light)">Contato</span>
+    <h2>Fale Conosco</h2>
+    <p>Estamos prontos para ouvir você e agendar uma reunião.</p>
+    <div class="c-item"><div class="c-icon">📍</div><div><h4>Endereço</h4><p>Av. Faria Lima, 1800 — Cj. 1500<br>Pinheiros, São Paulo — SP</p></div></div>
+    <div class="c-item"><div class="c-icon">📞</div><div><h4>Telefone</h4><p>(11) 3100-0000</p></div></div>
+    <div class="c-item"><div class="c-icon">✉️</div><div><h4>E-mail</h4><p>contato@advocaciadinamica.adv.br</p></div></div>
+    <div class="c-item"><div class="c-icon">💬</div><div><h4>WhatsApp</h4><p>(11) 99100-0000</p></div></div>
+  </div>
+  <div class="contact-right">
+    <h3>Envie uma Mensagem</h3>
+    <form class="c-form" id="contactForm">
+      <input type="text" placeholder="Nome completo" required aria-label="Nome completo"><input type="email" placeholder="E-mail" required aria-label="E-mail"><input type="tel" placeholder="Telefone" aria-label="Telefone">
+      <textarea placeholder="Descreva sua necessidade" required aria-label="Mensagem"></textarea>
+      <button class="c-submit" type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+  <div class="footer-grid">
+    <div><h4>Advocacia <span style="color:var(--lilac)">Dinâmica</span></h4><p>Direito com Energia e Propósito<br>OAB/SP 00.770<br><br>São Paulo — SP</p></div>
+    <div><h4>Navegação</h4><ul><li><a href="#sobre">Sobre</a></li><li><a href="#areas">Áreas</a></li><li><a href="#equipe">Equipe</a></li><li><a href="#artigos">Artigos</a></li><li><a href="#contato">Contato</a></li></ul></div>
+    <div><h4>Áreas</h4><ul><li><a href="#">Direito Civil</a></li><li><a href="#">Direito Empresarial</a></li><li><a href="#">Direito Trabalhista</a></li><li><a href="#">Direito do Consumidor</a></li><li><a href="#">Direito Digital</a></li><li><a href="#">Direito Tributário</a></li></ul></div>
+    <div><h4>Contato</h4><p>📍 Av. Faria Lima, 1800 — Cj. 1500<br>📞 (11) 3100-0000<br>✉️ contato@advocaciadinamica.adv.br</p></div>
+  </div>
+  <div class="fbar"><p>© 2026 Advocacia Dinâmica</p><p>OAB/SP 00.770</p></div>
+</div>
+<p style="font-size:.68rem;color:rgba(255,255,255,.22);margin-top:.5rem;text-align:center">Desenvolvido por <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer" style="color:var(--lilac)">PixelCode Studio</a> — Dev Full Stack & Web Design: Vinicius Ribeiro</p>
+<p style="font-size:.58rem;color:rgba(255,255,255,.16);margin-top:.25rem;text-align:center">Portfólios: <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer" style="color:var(--lilac)">pixelcodestudio.com.br</a> · <a href="https://portfolio-politico.vercel.app" target="_blank" rel="noopener noreferrer" style="color:var(--lilac)">portfolio-politico.vercel.app</a></p>
+<div class="fdisclaimer">Este site é um template demonstrativo com dados fictícios, desenvolvido com caráter meramente informativo, em conformidade com o Provimento 205/2021 da OAB.</div>
+</footer>
+
+<a href="/whitelabel/templates/" style="position:fixed;bottom:1.5rem;left:1.5rem;background:var(--indigo);color:#fff;padding:.5rem 1rem;border-radius:8px;font-size:.8rem;font-family:var(--heading);font-weight:600;z-index:99;opacity:.7;transition:var(--transition)" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">← Galeria</a>
+
+<a href="https://wa.me/5511900000000" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp">💬</a>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+<div class="toast" id="toast">✓ Mensagem enviada com sucesso!</div>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LegalService","name":"Advocacia Dinâmica","description":"Direito com energia e propósito em São Paulo","url":"https://templatesadv.vercel.app/moderno-03","telephone":"(11) 3100-0000","address":{"@type":"PostalAddress","streetAddress":"Av. Faria Lima, 1800 — Cj. 1500","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"}}
+</script>
+
+<script>
+const h=document.getElementById('header');window.addEventListener('scroll',()=>{h.classList.toggle('solid',scrollY>80)});
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+// Tabs with ARIA
+const tabBtns=document.querySelectorAll('.tab-btn');
+tabBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    tabBtns.forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false')});
+    btn.classList.add('active');btn.setAttribute('aria-selected','true');
+    document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+  btn.addEventListener('keydown',e=>{
+    const btns=[...tabBtns];const idx=btns.indexOf(btn);
+    if(e.key==='ArrowRight'){e.preventDefault();btns[(idx+1)%btns.length].click();btns[(idx+1)%btns.length].focus()}
+    if(e.key==='ArrowLeft'){e.preventDefault();btns[(idx-1+btns.length)%btns.length].click();btns[(idx-1+btns.length)%btns.length].focus()}
+  });
+});
+const bt=document.getElementById('backTop');window.addEventListener('scroll',()=>{bt.classList.toggle('visible',scrollY>500)});
+const cf=document.getElementById('contactForm');if(cf){cf.addEventListener('submit',e=>{e.preventDefault();const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);cf.reset()})}
+// Counters
+const cobs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const t=+x.target.dataset.target;let c=0;const s=Math.max(1,Math.floor(t/30));const i=setInterval(()=>{c+=s;if(c>=t){x.target.textContent=t;clearInterval(i)}else x.target.textContent=c},40);cobs.unobserve(x.target)}})},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(el=>cobs.observe(el));
+</script>
+</body>
+</html>

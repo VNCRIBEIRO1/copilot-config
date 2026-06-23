@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barros & Leal Advogados — Advocacia Moderna e Estratégica</title>
+<meta name="description" content="Barros & Leal Advogados — Advocacia moderna e estratégica em São Paulo. Direito Civil, Empresarial, Trabalhista, Tributário e mais.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='36' rx='8' fill='%23334155'/%3E%3Cpath d='M10 26V10h4l4 10 4-10h4v16h-3.5V16l-3.5 10h-2L13.5 16V26H10z' fill='%23E76F51'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Barros & Leal Advogados">
+<meta property="og:description" content="Advocacia moderna e estratégica em São Paulo.">
+<meta property="og:url" content="https://templatesadv.vercel.app/moderno-01">
+<link rel="canonical" href="https://templatesadv.vercel.app/moderno-01">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --slate:#334155;--slate-dark:#1E293B;--slate-darker:#0F172A;
+  --coral:#E76F51;--coral-light:#F4845F;--white:#FFFFFF;--offwhite:#F8FAFC;
+  --text:#1F2937;--text-light:#6B7280;--line:rgba(0,0,0,.06);
+  --heading:'Plus Jakarta Sans',system-ui,sans-serif;
+  --body:'Work Sans','Plus Jakarta Sans',system-ui,sans-serif;
+  --transition:.3s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}body{font-family:var(--body);color:var(--text);line-height:1.7;overflow-x:hidden}
+img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;transition:var(--transition)}
+.header.top{background:transparent}.header.solid{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);box-shadow:0 1px 20px rgba(0,0,0,.05)}
+.header.solid .h-logo{color:var(--slate-dark)}.header.solid .nav a{color:var(--text)}.header.solid .hamburger span{background:var(--slate-dark)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1400px;margin:0 auto}
+.h-logo{font-family:var(--heading);font-size:1.2rem;font-weight:800;color:var(--white);transition:var(--transition);letter-spacing:-.03em}
+.h-logo span{color:var(--coral)}
+.nav{display:flex;align-items:center;gap:2rem}
+.nav a{color:rgba(255,255,255,.85);font-size:.85rem;font-weight:500;transition:var(--transition)}
+.nav a:hover{color:var(--coral)}
+.nav-cta{padding:.55rem 1.25rem;background:var(--coral);color:var(--white)!important;border-radius:8px;font-weight:600}
+.nav-cta:hover{background:var(--coral-light)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem}
+.hamburger span{width:24px;height:2px;background:#fff;transition:var(--transition)}
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--slate-darker);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:#fff;font-family:var(--heading);font-size:1.3rem;font-weight:600}
+.mobile-nav .close-btn{position:absolute;top:1.5rem;right:1.5rem;color:#fff;font-size:2rem;cursor:pointer;background:none;border:none}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;background:var(--slate-darker);color:var(--white)}
+.hero-text{display:flex;flex-direction:column;justify-content:center;padding:8rem 5% 4rem}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;background:rgba(231,111,81,.15);border:1px solid rgba(231,111,81,.3);border-radius:50px;font-size:.75rem;font-weight:600;color:var(--coral);margin-bottom:2rem;width:fit-content}
+.hero h1{font-family:var(--heading);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.5rem}
+.hero h1 span{color:var(--coral)}
+.hero p{font-size:1.05rem;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:2.5rem;max-width:480px}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.75rem;font-family:var(--heading);font-size:.9rem;font-weight:600;border-radius:10px;transition:var(--transition);cursor:pointer;border:none}
+.btn-coral{background:var(--coral);color:#fff}.btn-coral:hover{background:var(--coral-light);transform:translateY(-2px);box-shadow:0 8px 25px rgba(231,111,81,.3)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.15)}.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.hero-image{background:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80&auto=format&fit=crop') center/cover no-repeat;position:relative}
+.hero-image::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--slate-darker) 0%,transparent 30%)}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)}
+.hero-stat .hs-num{font-family:var(--heading);font-size:2rem;font-weight:800;color:var(--coral)}
+.hero-stat .hs-text{font-size:.8rem;color:rgba(255,255,255,.5)}
+
+/* SECTION */
+.section{padding:6rem 0}
+.section-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--coral);margin-bottom:.5rem}
+.section-title{font-family:var(--heading);font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:800;color:var(--slate-darker);line-height:1.15;letter-spacing:-.02em;margin-bottom:.75rem}
+.section-desc{font-size:1rem;color:var(--text-light);max-width:550px;margin-bottom:3rem}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img{position:relative;border-radius:16px;overflow:hidden}
+.about-img img{width:100%;height:420px;object-fit:cover;border-radius:16px}
+.about-img .float-card{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);padding:1.25rem;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.1)}
+.float-card .fc-num{font-family:var(--heading);font-size:2rem;font-weight:800;color:var(--coral)}
+.float-card .fc-text{font-size:.8rem;color:var(--text-light)}
+.about-text h3{font-family:var(--heading);font-size:1.5rem;font-weight:700;color:var(--slate-dark);margin-bottom:1rem;line-height:1.3}
+.about-text p{font-size:.95rem;color:var(--text-light);margin-bottom:1rem}
+.about-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+.about-pill{padding:.4rem 1rem;background:var(--offwhite);border-radius:50px;font-size:.8rem;font-weight:500;color:var(--slate);border:1px solid var(--line)}
+
+/* AREAS GRID */
+.areas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.area-card{padding:2rem;background:var(--white);border-radius:14px;border:1px solid var(--line);transition:var(--transition);position:relative;overflow:hidden}
+.area-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--coral);transform:scaleX(0);transition:var(--transition)}.area-card:hover::after{transform:scaleX(1)}
+.area-card:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,0,0,.06)}
+.area-icon{width:48px;height:48px;border-radius:12px;background:rgba(231,111,81,.08);display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:1rem}
+.area-card h3{font-family:var(--heading);font-size:1.05rem;font-weight:700;color:var(--slate-dark);margin-bottom:.5rem}
+.area-card p{font-size:.875rem;color:var(--text-light);line-height:1.6}
+
+/* COUNTERS */
+.counters{background:var(--slate-darker);padding:4rem 0;color:var(--white)}
+.counters-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.counter-item .c-num{font-family:var(--heading);font-size:2.5rem;font-weight:800;color:var(--coral)}
+.counter-item .c-text{font-size:.85rem;color:rgba(255,255,255,.55);margin-top:.25rem}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.team-card{background:var(--white);border-radius:14px;overflow:hidden;border:1px solid var(--line);transition:var(--transition)}
+.team-card:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,0,0,.06)}
+.team-card img{width:100%;height:280px;object-fit:cover}
+.team-body{padding:1.25rem}
+.team-body h3{font-family:var(--heading);font-size:1rem;font-weight:700;color:var(--slate-dark)}
+.team-body .oab{font-size:.7rem;color:var(--coral);font-weight:700;letter-spacing:.04em;margin:.15rem 0 .3rem}
+.team-body .spec{font-size:.8rem;color:var(--slate);font-weight:500;margin-bottom:.5rem}
+.team-body p{font-size:.8rem;color:var(--text-light);line-height:1.5}
+
+/* ARTICLES */
+.articles-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:1.5rem}
+.article-card{background:var(--white);border-radius:14px;overflow:hidden;border:1px solid var(--line);transition:var(--transition)}
+.article-card:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,.06)}
+.article-card:first-child{grid-row:span 2}
+.article-card:first-child .article-img{height:280px}
+.article-img{height:180px;overflow:hidden}
+.article-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.article-card:hover .article-img img{transform:scale(1.05)}
+.article-body{padding:1.25rem}
+.article-date{font-size:.7rem;color:var(--coral);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.article-body h3{font-family:var(--heading);font-size:1rem;font-weight:700;color:var(--slate-dark);margin:.4rem 0;line-height:1.3}
+.article-body p{font-size:.8rem;color:var(--text-light);line-height:1.5}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cc{padding:1.5rem;background:var(--offwhite);border-radius:12px;transition:var(--transition)}
+.cc:hover{background:var(--white);box-shadow:0 8px 25px rgba(0,0,0,.05)}
+.cc .cc-icon{font-size:1.5rem;margin-bottom:.75rem}
+.cc h4{font-family:var(--heading);font-size:.85rem;font-weight:700;color:var(--slate-dark);margin-bottom:.25rem}
+.cc p{font-size:.8rem;color:var(--text-light)}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.contact-form input,.contact-form textarea{padding:1rem;border:1px solid #e5e7eb;border-radius:10px;font-family:var(--body);font-size:.9rem;transition:var(--transition);background:var(--offwhite)}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--coral);box-shadow:0 0 0 3px rgba(231,111,81,.1);background:var(--white)}
+.contact-form textarea{height:130px;resize:vertical}
+.btn-submit{background:var(--coral);color:#fff;border:none;cursor:pointer;padding:.9rem;border-radius:10px;font-family:var(--heading);font-size:.9rem;font-weight:600;transition:var(--transition)}
+.btn-submit:hover{background:var(--coral-light)}
+
+/* FOOTER */
+.footer{background:var(--slate-darker);color:rgba(255,255,255,.6);padding:4rem 0 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:2.5rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer h4{color:var(--white);font-family:var(--heading);font-size:.9rem;font-weight:700;margin-bottom:.75rem}
+.footer p{font-size:.85rem;line-height:1.6}
+.footer ul{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.footer ul a{font-size:.85rem;transition:var(--transition)}
+.footer ul a:hover{color:var(--coral)}
+.footer-bottom{display:flex;justify-content:space-between;padding:1.5rem 0;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.75rem}
+.footer-disclaimer{text-align:center;padding:1rem;background:rgba(0,0,0,.2);font-size:.7rem;color:rgba(255,255,255,.3)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s ease}.reveal.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.hero{grid-template-columns:1fr}.hero-image{min-height:40vh}.hero-text{padding:7rem 2rem 3rem}.about-grid,.contact-grid{grid-template-columns:1fr}.team-grid{grid-template-columns:repeat(2,1fr)}.areas-grid{grid-template-columns:1fr 1fr}.articles-grid{grid-template-columns:1fr}.article-card:first-child{grid-row:auto}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.nav{display:none}.hamburger{display:flex}.areas-grid,.team-grid,.contact-cards{grid-template-columns:1fr}.counters-grid{grid-template-columns:repeat(2,1fr)}.hero-stats{flex-wrap:wrap;gap:1.5rem}.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column;text-align:center}}
+.skip-link{position:absolute;top:-100%;left:1rem;background:var(--coral);color:var(--white);padding:.75rem 1.5rem;border-radius:0 0 8px 8px;z-index:200;font-weight:600;font-size:.9rem;transition:top .2s}.skip-link:focus{top:0}
+*:focus-visible{outline:2px solid var(--coral);outline-offset:2px;border-radius:4px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.whatsapp-float{position:fixed;bottom:1.5rem;right:1.5rem;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;z-index:99;box-shadow:0 4px 15px rgba(37,211,102,.4);transition:var(--transition)}.whatsapp-float:hover{transform:scale(1.1)}
+.back-top{position:fixed;bottom:5rem;right:1.7rem;width:40px;height:40px;background:var(--coral);color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:99;opacity:0;transition:var(--transition)}.back-top.visible{opacity:1}.back-top:hover{background:var(--coral-light)}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--coral);color:#fff;padding:1rem 2rem;border-radius:10px;font-weight:600;z-index:200;transition:.4s ease;opacity:0}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+@media print{.header,.hero,.whatsapp-float,.back-top,.toast,.counters,a[href="/whitelabel/templates/"]{display:none!important}body{background:#fff!important;color:#000!important}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<a href="#sobre" class="skip-link">Pular para o conteúdo</a>
+<header class="header top" id="header">
+<div class="header-inner">
+  <a href="#" class="h-logo" style="text-decoration:none">Barros <span>&</span> Leal</a>
+  <nav class="nav"><a href="#">Início</a><a href="#sobre">Sobre</a><a href="#areas">Áreas</a><a href="#equipe">Equipe</a><a href="#artigos">Artigos</a><a href="#contato" class="nav-cta">Contato</a></nav>
+  <button class="hamburger" onclick="document.getElementById('mn').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+</div>
+</header>
+<div class="mobile-nav" id="mn"><button class="close-btn" onclick="this.parentElement.classList.remove('open')">✕</button><a href="#" onclick="this.parentElement.classList.remove('open')">Início</a><a href="#sobre" onclick="this.parentElement.classList.remove('open')">Sobre</a><a href="#areas" onclick="this.parentElement.classList.remove('open')">Áreas</a><a href="#equipe" onclick="this.parentElement.classList.remove('open')">Equipe</a><a href="#artigos" onclick="this.parentElement.classList.remove('open')">Artigos</a><a href="#contato" onclick="this.parentElement.classList.remove('open')">Contato</a></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">⚖️ OAB/SP 00.555</div>
+    <h1>Advocacia Estratégica com <span>Visão Moderna</span></h1>
+    <p>Unimos conhecimento jurídico sólido a uma abordagem contemporânea para oferecer orientação eficiente e personalizada.</p>
+    <div class="hero-btns"><a href="#contato" class="btn btn-coral">Entre em Contato</a><a href="#sobre" class="btn btn-ghost">Conheça o Escritório</a></div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hs-num" data-target="18">0</div><div class="hs-text">Anos de atuação</div></div>
+      <div class="hero-stat"><div class="hs-num" data-target="10">0</div><div class="hs-text">Advogados</div></div>
+      <div class="hero-stat"><div class="hs-num" data-target="6">0</div><div class="hs-text">Áreas de atuação</div></div>
+    </div>
+  </div>
+  <div class="hero-image" role="img" aria-label="Escritório moderno"></div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="sobre">
+<div class="container">
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=700&q=80&auto=format&fit=crop" alt="Escritório">
+      <div class="float-card"><div class="fc-num">2008</div><div class="fc-text">Ano de fundação</div></div>
+    </div>
+    <div class="about-text reveal">
+      <span class="section-label">Sobre Nós</span>
+      <h3>Advocacia que Entende o Mundo Atual</h3>
+      <p>O Barros & Leal Advogados foi fundado em São Paulo com a proposta de unir solidez jurídica a uma visão estratégica contemporânea. Acreditamos que a advocacia eficiente começa pela compreensão profunda do contexto de cada cliente.</p>
+      <p>Nossa equipe é formada por profissionais com formação acadêmica sólida e experiência prática diversificada, atuando de forma integrada nas diferentes áreas do Direito.</p>
+      <div class="about-pills">
+        <span class="about-pill">Ética Profissional</span><span class="about-pill">Inovação</span><span class="about-pill">Transparência</span><span class="about-pill">Eficiência</span><span class="about-pill">Atualização Constante</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- AREAS -->
+<section class="section" style="background:var(--offwhite)" id="areas">
+<div class="container">
+  <span class="section-label">Áreas de Atuação</span>
+  <h2 class="section-title">Expertise Jurídica Multidisciplinar</h2>
+  <p class="section-desc">Orientação fundamentada em diversas áreas do Direito, com abordagem estratégica e personalizada.</p>
+  <div class="areas-grid">
+    <div class="area-card reveal"><div class="area-icon">🏛️</div><h3>Direito Civil</h3><p>Contratos, responsabilidade civil, obrigações, indenizações e direitos reais.</p></div>
+    <div class="area-card reveal"><div class="area-icon">🏢</div><h3>Direito Empresarial</h3><p>Societário, M&A, governança corporativa, compliance e contratos comerciais.</p></div>
+    <div class="area-card reveal"><div class="area-icon">👷</div><h3>Direito Trabalhista</h3><p>Consultoria preventiva, contencioso, relações sindicais e compliance trabalhista.</p></div>
+    <div class="area-card reveal"><div class="area-icon">📊</div><h3>Direito Tributário</h3><p>Planejamento fiscal, contencioso tributário e recuperação de créditos.</p></div>
+    <div class="area-card reveal"><div class="area-icon">🏠</div><h3>Direito Imobiliário</h3><p>Transações imobiliárias, incorporações, locação e regularização fundiária.</p></div>
+    <div class="area-card reveal"><div class="area-icon">👨‍👩‍👧‍👦</div><h3>Direito de Família</h3><p>Divórcio, guarda, pensão, inventários e planejamento sucessório.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- TEAM -->
+<section class="section" id="equipe">
+<div class="container">
+  <span class="section-label">Nossa Equipe</span>
+  <h2 class="section-title">Profissionais Qualificados</h2>
+  <p class="section-desc">Conheça os advogados que conduzem nosso trabalho com dedicação e competência.</p>
+  <div class="team-grid">
+    <div class="team-card reveal"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&q=80&auto=format&fit=crop&crop=face" alt="Dr. Felipe Barros"><div class="team-body"><h3>Dr. Felipe Barros</h3><div class="oab">OAB/SP 00.040</div><div class="spec">Direito Empresarial</div><p>Sócio fundador. MBA em Gestão Empresarial pela FGV.</p></div></div>
+    <div class="team-card reveal"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&q=80&auto=format&fit=crop&crop=face" alt="Dra. Marina Leal"><div class="team-body"><h3>Dra. Marina Leal</h3><div class="oab">OAB/SP 00.041</div><div class="spec">Direito Civil</div><p>Sócia. Mestre em Direito Civil pela PUC-SP.</p></div></div>
+    <div class="team-card reveal"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&q=80&auto=format&fit=crop&crop=face" alt="Dr. André Moreira"><div class="team-body"><h3>Dr. André Moreira</h3><div class="oab">OAB/SP 00.042</div><div class="spec">Direito Tributário</div><p>Associado sênior. Especialista em Direito Tributário.</p></div></div>
+    <div class="team-card reveal"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&q=80&auto=format&fit=crop&crop=face" alt="Dra. Beatriz Nunes"><div class="team-body"><h3>Dra. Beatriz Nunes</h3><div class="oab">OAB/SP 00.043</div><div class="spec">Direito de Família</div><p>Associada. Mediadora certificada pelo CNJ.</p></div></div>
+  </div>
+</div>
+</section>
+
+<!-- ARTICLES -->
+<section class="section" style="background:var(--offwhite)" id="artigos">
+<div class="container">
+  <span class="section-label">Artigos</span>
+  <h2 class="section-title">Conteúdo Informativo</h2>
+  <p class="section-desc">Publicações de caráter informativo sobre temas jurídicos relevantes.</p>
+  <div class="articles-grid">
+    <div class="article-card reveal"><div class="article-img"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80&auto=format&fit=crop" alt="Artigo" loading="lazy"></div><div class="article-body"><span class="article-date">14 Mar 2026</span><h3>Startups e o Direito Societário: Aspectos Essenciais</h3><p>Informações sobre os principais pontos de atenção na constituição e estruturação jurídica de startups e empresas de tecnologia.</p></div></div>
+    <div class="article-card reveal"><div class="article-img"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80&auto=format&fit=crop" alt="Artigo" loading="lazy"></div><div class="article-body"><span class="article-date">07 Mar 2026</span><h3>ESG e Compliance Corporativo</h3><p>Análise informativa sobre a integração de práticas ESG nos programas de compliance empresarial.</p></div></div>
+    <div class="article-card reveal"><div class="article-img"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80&auto=format&fit=crop" alt="Artigo" loading="lazy"></div><div class="article-body"><span class="article-date">01 Mar 2026</span><h3>Proteção de Dados nas Relações de Trabalho</h3><p>Considerações sobre a aplicação da LGPD no contexto das relações trabalhistas.</p></div></div>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contato">
+<div class="container">
+  <span class="section-label">Contato</span>
+  <h2 class="section-title">Fale Conosco</h2>
+  <p class="section-desc">Entre em contato para agendar uma conversa com nossa equipe.</p>
+  <div class="contact-grid">
+    <div class="contact-cards reveal">
+      <div class="cc"><div class="cc-icon">📍</div><h4>Endereço</h4><p>Rua Funchal, 400 — Cj. 1200<br>Vila Olímpia, São Paulo — SP</p></div>
+      <div class="cc"><div class="cc-icon">📞</div><h4>Telefone</h4><p>(11) 3000-0000</p></div>
+      <div class="cc"><div class="cc-icon">✉️</div><h4>E-mail</h4><p>contato@barrosleal.adv.br</p></div>
+      <div class="cc"><div class="cc-icon">💬</div><h4>WhatsApp</h4><p>(11) 99000-0000</p></div>
+    </div>
+    <form class="contact-form reveal" id="contactForm">
+      <input type="text" placeholder="Nome completo" required aria-label="Nome completo"><input type="email" placeholder="E-mail" required aria-label="E-mail"><input type="tel" placeholder="Telefone" aria-label="Telefone">
+      <textarea placeholder="Mensagem" required aria-label="Mensagem"></textarea>
+      <button class="btn-submit" type="submit">Enviar Mensagem</button>
+    </form>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+  <div class="footer-grid">
+    <div><h4>Barros & Leal <span style="color:var(--coral)">Advogados</span></h4><p>Advocacia Moderna e Estratégica<br>OAB/SP 00.555<br><br>São Paulo — SP</p></div>
+    <div><h4>Navegação</h4><ul><li><a href="#sobre">Sobre</a></li><li><a href="#areas">Áreas</a></li><li><a href="#equipe">Equipe</a></li><li><a href="#artigos">Artigos</a></li><li><a href="#contato">Contato</a></li></ul></div>
+    <div><h4>Áreas</h4><ul><li><a href="#">Direito Civil</a></li><li><a href="#">Direito Empresarial</a></li><li><a href="#">Direito Trabalhista</a></li><li><a href="#">Direito Tributário</a></li><li><a href="#">Direito Imobiliário</a></li><li><a href="#">Direito de Família</a></li></ul></div>
+    <div><h4>Contato</h4><p style="font-size:.85rem">📍 Rua Funchal, 400 — Cj. 1200<br>📞 (11) 3000-0000<br>✉️ contato@barrosleal.adv.br</p></div>
+  </div>
+  <p style="font-size:.72rem;color:rgba(255,255,255,.35);margin-top:.5rem;text-align:center">Desenvolvido por <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer" style="color:var(--coral)">PixelCode Studio</a> — Dev Full Stack & Web Design: Vinicius Ribeiro</p>
+  <p style="font-size:.6rem;color:rgba(255,255,255,.25);margin-top:.25rem;text-align:center;padding-bottom:1rem">Portfólios: <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer" style="color:var(--coral)">pixelcodestudio.com.br</a> · <a href="https://portfolio-politico.vercel.app" target="_blank" rel="noopener noreferrer" style="color:var(--coral)">portfolio-politico.vercel.app</a></p>
+  <div class="footer-bottom"><p>© 2026 Barros & Leal Advogados</p><p>OAB/SP 00.555</p></div>
+</div>
+<div class="footer-disclaimer">Este site é um template demonstrativo com dados fictícios, desenvolvido com caráter meramente informativo, em conformidade com o Provimento 205/2021 da OAB.</div>
+</footer>
+
+<a href="/whitelabel/templates/" style="position:fixed;bottom:1.5rem;left:1.5rem;background:var(--coral);color:#fff;padding:.5rem 1rem;border-radius:8px;font-size:.8rem;font-family:var(--heading);font-weight:600;z-index:99;opacity:.7;transition:var(--transition)" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">← Galeria</a>
+
+<a href="https://wa.me/5511900000000" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp">💬</a>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+<div class="toast" id="toast">✓ Mensagem enviada com sucesso!</div>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LegalService","name":"Barros & Leal Advogados","description":"Advocacia moderna e estratégica em São Paulo","url":"https://templatesadv.vercel.app/moderno-01","telephone":"(11) 3000-0000","address":{"@type":"PostalAddress","streetAddress":"Rua Funchal, 400 — Cj. 1200","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"}}
+</script>
+
+<script>
+const h=document.getElementById('header');window.addEventListener('scroll',()=>{h.classList.toggle('solid',scrollY>80);h.classList.toggle('top',scrollY<=80)});
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const cobs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const t=+x.target.dataset.target;let c=0;const s=Math.max(1,Math.floor(t/30));const i=setInterval(()=>{c+=s;if(c>=t){x.target.textContent=t;clearInterval(i)}else x.target.textContent=c},40);cobs.unobserve(x.target)}})},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(el=>cobs.observe(el));
+const bt=document.getElementById('backTop');window.addEventListener('scroll',()=>{bt.classList.toggle('visible',scrollY>500)});
+const cf=document.getElementById('contactForm');if(cf){cf.addEventListener('submit',e=>{e.preventDefault();const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);cf.reset()})}
+</script>
+</body>
+</html>

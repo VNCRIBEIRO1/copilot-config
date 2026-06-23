@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ribeiro & Associados — Advocacia</title>
+<meta name="description" content="Ribeiro & Associados — Orientação jurídica com clareza e propósito em Brasília. Direito Civil, Empresarial, Trabalhista, Tributário, Imobiliário e Família.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='36' rx='8' fill='%232C2C2C'/%3E%3Cpath d='M10 26V10h4l4 10 4-10h4v16h-3.5V16l-3.5 10h-2L13.5 16V26H10z' fill='%23C0C0C0'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ribeiro & Associados — Advocacia">
+<meta property="og:description" content="Orientação jurídica com clareza e propósito em Brasília.">
+<meta property="og:url" content="https://templatesadv.vercel.app/classico-04">
+<link rel="canonical" href="https://templatesadv.vercel.app/classico-04">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --charcoal:#2C2C2C;--charcoal-dark:#1A1A1A;--silver:#C0C0C0;--silver-light:#E0E0E0;
+  --white:#FFFFFF;--offwhite:#FAFAFA;--text:#222;--text-light:#777;--line:#E5E5E5;
+  --heading:'Merriweather',Georgia,serif;--body:'Lato',system-ui,sans-serif;
+  --transition:.3s ease;
+}
+html{scroll-behavior:smooth}body{font-family:var(--body);color:var(--text);line-height:1.8;background:var(--white);overflow-x:hidden}
+img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
+.container{max-width:1100px;margin:0 auto;padding:0 2rem}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;transition:var(--transition)}
+.header.top{background:transparent}.header.solid{background:var(--white);box-shadow:0 1px 0 var(--line)}
+.header.solid .h-logo,.header.solid .nav a{color:var(--charcoal)}
+.header.solid .hamburger span{background:var(--charcoal)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2rem;max-width:1200px;margin:0 auto}
+.h-logo{font-family:var(--heading);font-size:1.15rem;color:var(--white);font-weight:700;letter-spacing:-.02em;transition:var(--transition)}
+.h-logo span{font-weight:300;color:var(--silver)}
+.nav{display:flex;align-items:center;gap:2.5rem}
+.nav a{color:rgba(255,255,255,.8);font-size:.8rem;font-weight:400;text-transform:uppercase;letter-spacing:.12em;transition:var(--transition)}
+.nav a:hover{color:var(--silver)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem}
+.hamburger span{width:22px;height:1.5px;background:#fff;transition:var(--transition)}
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--charcoal-dark);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:#fff;font-size:1.2rem;text-transform:uppercase;letter-spacing:.15em;font-weight:300}
+.mobile-nav .close-btn{position:absolute;top:1.5rem;right:1.5rem;color:#fff;font-size:1.5rem;cursor:pointer;background:none;border:none}
+
+/* HERO — minimal with grayscale */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;background:#111;color:var(--white);overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80&auto=format&fit=crop') center/cover;filter:grayscale(1);opacity:.35}
+.hero-content{position:relative;z-index:1;max-width:700px;padding:2rem}
+.hero-line{width:50px;height:1px;background:var(--silver);margin:0 auto 2rem}
+.hero h1{font-family:var(--heading);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:300;letter-spacing:-.02em;line-height:1.2;margin-bottom:1.5rem}
+.hero h1 strong{font-weight:900}
+.hero p{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,.6);margin-bottom:2.5rem;letter-spacing:.02em}
+.hero-oab{font-size:.7rem;color:rgba(255,255,255,.35);letter-spacing:.2em;text-transform:uppercase;margin-top:3rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 2rem;font-family:var(--body);font-weight:400;border-radius:0;transition:var(--transition);cursor:pointer;border:none;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
+.btn-white{background:var(--white);color:var(--charcoal)}.btn-white:hover{background:var(--silver)}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff}.btn-ghost:hover{border-color:#fff}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--line);max-width:100px;margin:0 auto}
+
+/* SECTION */
+.section{padding:6rem 0}
+.section-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.25em;color:var(--silver);text-align:center;margin-bottom:.75rem}
+.section-title{font-family:var(--heading);font-size:clamp(1.6rem,3vw,2.2rem);text-align:center;font-weight:300;color:var(--charcoal);margin-bottom:1rem;letter-spacing:-.01em}
+.section-title strong{font-weight:900}
+.section-desc{text-align:center;color:var(--text-light);font-size:.95rem;max-width:550px;margin:0 auto 3rem;font-weight:300}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-img img{filter:grayscale(1);border-radius:2px;transition:filter .5s}.about-img:hover img{filter:grayscale(0)}
+.about-text h3{font-family:var(--heading);font-size:1.3rem;font-weight:300;color:var(--charcoal);margin-bottom:1rem;line-height:1.4}
+.about-text h3 strong{font-weight:700}
+.about-text p{font-size:.95rem;color:var(--text-light);font-weight:300;margin-bottom:1rem}
+.about-text .about-vals{margin-top:1.5rem;display:flex;flex-direction:column;gap:.75rem}
+.about-val{display:flex;align-items:center;gap:.75rem;font-size:.85rem;color:var(--text)}
+.about-val::before{content:'';width:20px;height:1px;background:var(--charcoal)}
+
+/* AREAS */
+.areas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line)}
+.area-cell{padding:2.5rem 2rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:var(--transition);background:var(--white)}
+.area-cell:nth-child(3n){border-right:none}
+.area-cell:nth-child(n+4){border-bottom:none}
+.area-cell:hover{background:var(--charcoal);color:var(--white)}
+.area-cell:hover h3{color:var(--white)}.area-cell:hover p{color:rgba(255,255,255,.6)}
+.area-cell h3{font-family:var(--heading);font-size:1rem;color:var(--charcoal);margin-bottom:.5rem;font-weight:700;transition:var(--transition)}
+.area-cell p{font-size:.85rem;color:var(--text-light);font-weight:300;line-height:1.6;transition:var(--transition)}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.team-card{text-align:center}
+.team-card img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(1);transition:filter .5s;border-radius:2px}
+.team-card:hover img{filter:grayscale(0)}
+.team-card h3{font-family:var(--heading);font-size:.95rem;color:var(--charcoal);margin-top:1rem;font-weight:700}
+.team-card .oab{font-size:.65rem;color:var(--silver);font-weight:700;letter-spacing:.1em;margin:.25rem 0 .35rem;text-transform:uppercase}
+.team-card .spec{font-size:.8rem;color:var(--text-light);font-weight:300}
+.team-card p{font-size:.8rem;color:var(--text-light);font-weight:300;margin-top:.35rem;line-height:1.5}
+
+/* PARALLAX */
+.parallax{padding:6rem 2rem;text-align:center;position:relative;overflow:hidden}
+.parallax-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1920&q=80&auto=format&fit=crop') center/cover fixed;filter:grayscale(1);opacity:.15}
+.parallax h2{font-family:var(--heading);font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:300;color:var(--charcoal);max-width:650px;margin:0 auto;line-height:1.5;position:relative}
+
+/* ARTICLES */
+.articles-list{display:flex;flex-direction:column;max-width:800px;margin:0 auto}
+.article-item{display:flex;align-items:center;gap:2rem;padding:2rem 0;border-bottom:1px solid var(--line);transition:var(--transition)}
+.article-item:hover{padding-left:1rem}
+.article-item .a-date{min-width:80px;font-size:.7rem;color:var(--silver);letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.article-item h3{font-family:var(--heading);font-size:1rem;color:var(--charcoal);font-weight:700;margin-bottom:.25rem}
+.article-item p{font-size:.85rem;color:var(--text-light);font-weight:300;line-height:1.5}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-info h3{font-family:var(--heading);font-size:1.3rem;font-weight:300;color:var(--charcoal);margin-bottom:2rem}
+.c-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem}
+.c-item h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--charcoal)}
+.c-item p{font-size:.85rem;color:var(--text-light);font-weight:300;margin:0}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.contact-form input,.contact-form textarea{padding:1rem;border:none;border-bottom:1px solid var(--line);font-family:var(--body);font-size:.9rem;font-weight:300;background:transparent;transition:var(--transition)}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--charcoal)}
+.contact-form textarea{height:120px;resize:vertical}
+.btn-dark{background:var(--charcoal);color:#fff;border:none;cursor:pointer;padding:.85rem 2.5rem;font-family:var(--body);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;transition:var(--transition)}
+.btn-dark:hover{background:var(--charcoal-dark)}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--line);padding:3rem 0 0;background:var(--white)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:2rem;padding-bottom:2.5rem}
+.footer h4{font-family:var(--heading);font-size:.85rem;font-weight:700;color:var(--charcoal);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.05em}
+.footer p{font-size:.8rem;color:var(--text-light);font-weight:300;line-height:1.6}
+.footer ul{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.footer ul a{font-size:.8rem;color:var(--text-light);font-weight:300;transition:var(--transition)}
+.footer ul a:hover{color:var(--charcoal)}
+.footer-bottom{border-top:1px solid var(--line);display:flex;justify-content:space-between;padding:1.25rem 0;flex-wrap:wrap;gap:.5rem}
+.footer-bottom p{font-size:.7rem;color:var(--silver);font-weight:300;letter-spacing:.05em}
+.footer-disclaimer{text-align:center;padding:1rem;background:var(--offwhite);border-top:1px solid var(--line);font-size:.7rem;color:var(--silver)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:all .8s ease}.reveal.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.about-grid,.contact-grid{grid-template-columns:1fr}.team-grid{grid-template-columns:repeat(2,1fr)}.areas-grid{grid-template-columns:1fr 1fr}.area-cell:nth-child(2n){border-right:none}.area-cell:nth-child(3){border-right:1px solid var(--line)}.area-cell:nth-child(n+4){border-bottom:1px solid var(--line)}.area-cell:nth-child(n+5){border-bottom:none}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.nav{display:none}.hamburger{display:flex}.areas-grid{grid-template-columns:1fr}.area-cell{border-right:none!important;border-bottom:1px solid var(--line)!important}.area-cell:last-child{border-bottom:none!important}.team-grid{grid-template-columns:1fr}.article-item{flex-direction:column;gap:.5rem;align-items:flex-start}.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column;text-align:center}.parallax-bg{background-attachment:scroll}}
+.skip-link{position:absolute;top:-100%;left:1rem;background:var(--charcoal);color:var(--white);padding:.75rem 1.5rem;border-radius:0 0 8px 8px;z-index:200;font-weight:600;font-size:.9rem;transition:top .2s}.skip-link:focus{top:0}
+*:focus-visible{outline:2px solid var(--charcoal);outline-offset:2px;border-radius:4px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.whatsapp-float{position:fixed;bottom:1.5rem;right:1.5rem;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;z-index:99;box-shadow:0 4px 15px rgba(37,211,102,.4);transition:var(--transition)}.whatsapp-float:hover{transform:scale(1.1)}
+.back-top{position:fixed;bottom:5rem;right:1.7rem;width:40px;height:40px;background:var(--charcoal);color:var(--silver);border:none;border-radius:0;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:99;opacity:0;transition:var(--transition)}.back-top.visible{opacity:1}.back-top:hover{background:var(--charcoal-dark);color:var(--white)}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--charcoal);color:var(--white);padding:1rem 2rem;border-radius:0;font-weight:400;letter-spacing:.05em;z-index:200;transition:.4s ease;opacity:0}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+@media print{.header,.hero,.whatsapp-float,.back-top,.toast,.parallax,a[href="/whitelabel/templates/"]{display:none!important}body{background:#fff!important;color:#000!important}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<a href="#sobre" class="skip-link">Pular para o conteúdo</a>
+<header class="header top" id="header">
+<div class="header-inner">
+  <a href="#" class="h-logo" style="text-decoration:none"><strong>Ribeiro</strong> <span>& Associados</span></a>
+  <nav class="nav"><a href="#">Início</a><a href="#sobre">Sobre</a><a href="#areas">Áreas</a><a href="#equipe">Equipe</a><a href="#artigos">Artigos</a><a href="#contato">Contato</a></nav>
+  <button class="hamburger" onclick="document.getElementById('mn').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+</div>
+</header>
+<div class="mobile-nav" id="mn"><button class="close-btn" onclick="this.parentElement.classList.remove('open')">✕</button><a href="#" onclick="this.parentElement.classList.remove('open')">Início</a><a href="#sobre" onclick="this.parentElement.classList.remove('open')">Sobre</a><a href="#areas" onclick="this.parentElement.classList.remove('open')">Áreas</a><a href="#equipe" onclick="this.parentElement.classList.remove('open')">Equipe</a><a href="#artigos" onclick="this.parentElement.classList.remove('open')">Artigos</a><a href="#contato" onclick="this.parentElement.classList.remove('open')">Contato</a></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-line"></div>
+    <h1><strong>Advocacia</strong> com Clareza e Propósito</h1>
+    <p>Orientação jurídica objetiva e fundamentada, com a sobriedade que o exercício do Direito exige.</p>
+    <div class="hero-btns"><a href="#contato" class="btn btn-white">Entre em Contato</a><a href="#sobre" class="btn btn-ghost">Sobre Nós</a></div>
+    <div class="hero-oab">OAB/DF 00.321 · Brasília — DF</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="sobre">
+<div class="container">
+  <div class="about-grid">
+    <div class="about-img reveal"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=700&q=80&auto=format&fit=crop" alt="Escritório"></div>
+    <div class="about-text reveal">
+      <span class="section-label" style="text-align:left">Sobre</span>
+      <h3>Um escritório construído sobre <strong>princípios sólidos</strong></h3>
+      <p>O Ribeiro & Associados atua em Brasília desde 2008 com uma proposta clara: oferecer orientação jurídica direta, fundamentada e responsável. Acreditamos que a advocacia eficiente é aquela que comunica com clareza e age com precisão.</p>
+      <p>Nossa equipe é compacta e especializada, privilegiando a profundidade do conhecimento em vez da amplitude indiscriminada.</p>
+      <div class="about-vals">
+        <div class="about-val">Ética e integridade profissional</div>
+        <div class="about-val">Comunicação clara e objetiva</div>
+        <div class="about-val">Atualização jurídica permanente</div>
+        <div class="about-val">Atendimento personalizado</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- AREAS -->
+<section class="section" id="areas">
+<div class="container">
+  <span class="section-label">Áreas de Atuação</span>
+  <h2 class="section-title"><strong>Especialidades</strong> Jurídicas</h2>
+  <p class="section-desc">Áreas em que oferecemos orientação e assessoria jurídica qualificada.</p>
+  <div class="areas-grid">
+    <div class="area-cell reveal"><h3>Direito Civil</h3><p>Contratos, responsabilidade civil, obrigações e direitos reais.</p></div>
+    <div class="area-cell reveal"><h3>Direito Empresarial</h3><p>Societário, contratos comerciais, governança e compliance.</p></div>
+    <div class="area-cell reveal"><h3>Direito Trabalhista</h3><p>Relações de trabalho, contencioso e consultoria preventiva.</p></div>
+    <div class="area-cell reveal"><h3>Direito Tributário</h3><p>Planejamento fiscal, contencioso tributário e recuperação de créditos.</p></div>
+    <div class="area-cell reveal"><h3>Direito Imobiliário</h3><p>Transações, locação, incorporação e regularização.</p></div>
+    <div class="area-cell reveal"><h3>Direito de Família</h3><p>Divórcio, guarda, inventário, testamento e mediação.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- TEAM -->
+<section class="section" style="background:var(--offwhite)" id="equipe">
+<div class="container">
+  <span class="section-label">Equipe</span>
+  <h2 class="section-title"><strong>Nossos</strong> Advogados</h2>
+  <p class="section-desc">Profissionais comprometidos com a excelência e a atualização constante.</p>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=530&q=80&auto=format&fit=crop&crop=face" alt="Dr. Eduardo Ribeiro">
+      <h3>Dr. Eduardo Ribeiro</h3><div class="oab">OAB/DF 00.030</div><div class="spec">Direito Civil e Empresarial</div>
+      <p>Sócio fundador. Mestre em Direito pela UnB.</p>
+    </div>
+    <div class="team-card reveal">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=530&q=80&auto=format&fit=crop&crop=face" alt="Dra. Patrícia Alves">
+      <h3>Dra. Patrícia Alves</h3><div class="oab">OAB/DF 00.031</div><div class="spec">Direito Tributário</div>
+      <p>Sócia. Especialista em Direito Tributário pela FGV.</p>
+    </div>
+    <div class="team-card reveal">
+      <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=530&q=80&auto=format&fit=crop&crop=face" alt="Dr. Gabriel Santos">
+      <h3>Dr. Gabriel Santos</h3><div class="oab">OAB/DF 00.032</div><div class="spec">Direito Trabalhista</div>
+      <p>Associado sênior. Pós-graduado em Direito do Trabalho.</p>
+    </div>
+    <div class="team-card reveal">
+      <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=530&q=80&auto=format&fit=crop&crop=face" alt="Dra. Juliana Costa">
+      <h3>Dra. Juliana Costa</h3><div class="oab">OAB/DF 00.033</div><div class="spec">Direito de Família</div>
+      <p>Associada. Mediadora certificada pelo CNJ.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PARALLAX -->
+<section class="parallax"><div class="parallax-bg"></div><h2>"A clareza na comunicação é o primeiro compromisso de quem advoga com responsabilidade."</h2></section>
+
+<!-- ARTICLES -->
+<section class="section" id="artigos">
+<div class="container">
+  <span class="section-label">Artigos</span>
+  <h2 class="section-title">Publicações <strong>Informativas</strong></h2>
+  <p class="section-desc">Conteúdo de caráter informativo sobre temas jurídicos atuais.</p>
+  <div class="articles-list">
+    <div class="article-item reveal"><div class="a-date">Mar 2026</div><div><h3>Reforma Tributária e seus Impactos no Planejamento Fiscal</h3><p>Análise informativa sobre as mudanças propostas e seus possíveis reflexos para empresas e contribuintes.</p></div></div>
+    <div class="article-item reveal"><div class="a-date">Fev 2026</div><div><h3>Mediação e Conciliação no Direito de Família</h3><p>Considerações sobre os métodos alternativos de resolução de conflitos em questões familiares.</p></div></div>
+    <div class="article-item reveal"><div class="a-date">Jan 2026</div><div><h3>Aspectos Jurídicos dos Contratos Digitais</h3><p>Informações sobre a validade e os requisitos legais dos contratos celebrados em meio eletrônico.</p></div></div>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" style="background:var(--offwhite)" id="contato">
+<div class="container">
+  <span class="section-label">Contato</span>
+  <h2 class="section-title"><strong>Entre</strong> em Contato</h2>
+  <p class="section-desc">Estamos à disposição para atendê-lo.</p>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>Informações</h3>
+      <div class="c-item"><div><h4>Endereço</h4><p>SCS Quadra 1, Bloco A — Sala 800<br>Asa Sul, Brasília — DF, 70300-000</p></div></div>
+      <div class="c-item"><div><h4>Telefone</h4><p>(61) 3000-0000</p></div></div>
+      <div class="c-item"><div><h4>E-mail</h4><p>contato@ribeiroassociados.adv.br</p></div></div>
+      <div class="c-item"><div><h4>WhatsApp</h4><p>(61) 99000-0000</p></div></div>
+    </div>
+    <form class="contact-form reveal" id="contactForm">
+      <input type="text" placeholder="Nome" required aria-label="Nome"><input type="email" placeholder="E-mail" required aria-label="E-mail"><input type="tel" placeholder="Telefone" aria-label="Telefone">
+      <textarea placeholder="Mensagem" required aria-label="Mensagem"></textarea>
+      <button class="btn-dark" type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+  <div class="footer-grid">
+    <div><h4>Ribeiro & Associados</h4><p>Advocacia<br>OAB/DF 00.321<br><br>Orientação jurídica com clareza e propósito desde 2008.</p></div>
+    <div><h4>Navegação</h4><ul><li><a href="#sobre">Sobre</a></li><li><a href="#areas">Áreas</a></li><li><a href="#equipe">Equipe</a></li><li><a href="#artigos">Artigos</a></li><li><a href="#contato">Contato</a></li></ul></div>
+    <div><h4>Áreas</h4><ul><li><a href="#">Direito Civil</a></li><li><a href="#">Direito Empresarial</a></li><li><a href="#">Direito Trabalhista</a></li><li><a href="#">Direito Tributário</a></li><li><a href="#">Direito Imobiliário</a></li><li><a href="#">Direito de Família</a></li></ul></div>
+    <div><h4>Contato</h4><p>SCS Quadra 1, Bloco A — Sala 800<br>(61) 3000-0000<br>contato@ribeiroassociados.adv.br</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Ribeiro & Associados</p><p>OAB/DF 00.321</p></div>
+</div>
+<p style="font-size:.7rem;color:var(--silver);margin-top:.5rem;text-align:center">Desenvolvido por <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer" style="color:var(--charcoal)">PixelCode Studio</a> — Dev Full Stack & Web Design: Vinicius Ribeiro</p>
+<p style="font-size:.6rem;color:var(--silver);margin-top:.25rem;text-align:center">Portfólios: <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer" style="color:var(--charcoal)">pixelcodestudio.com.br</a> · <a href="https://portfolio-politico.vercel.app" target="_blank" rel="noopener noreferrer" style="color:var(--charcoal)">portfolio-politico.vercel.app</a></p>
+<div class="footer-disclaimer">Este site é um template demonstrativo com dados fictícios, desenvolvido com caráter meramente informativo, em conformidade com o Provimento 205/2021 da OAB.</div>
+</footer>
+
+<a href="/whitelabel/templates/" style="position:fixed;bottom:1.5rem;left:1.5rem;background:var(--charcoal);color:#fff;padding:.5rem 1rem;border-radius:0;font-size:.7rem;font-family:var(--body);font-weight:400;letter-spacing:.1em;text-transform:uppercase;z-index:99;opacity:.6;transition:var(--transition)" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.6'">← Galeria</a>
+
+<a href="https://wa.me/5561900000000" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp">💬</a>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+<div class="toast" id="toast">✓ Mensagem enviada com sucesso!</div>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LegalService","name":"Ribeiro & Associados","description":"Orientação jurídica com clareza e propósito em Brasília","url":"https://templatesadv.vercel.app/classico-04","telephone":"(61) 3000-0000","address":{"@type":"PostalAddress","streetAddress":"SCS Quadra 1, Bloco A — Sala 800","addressLocality":"Brasília","addressRegion":"DF","addressCountry":"BR"}}
+</script>
+<script>
+const h=document.getElementById('header');
+window.addEventListener('scroll',()=>{h.classList.toggle('solid',scrollY>80);h.classList.toggle('top',scrollY<=80)});
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const bt=document.getElementById('backTop');window.addEventListener('scroll',()=>{bt.classList.toggle('visible',scrollY>500)});
+const cf=document.getElementById('contactForm');if(cf){cf.addEventListener('submit',e=>{e.preventDefault();const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);cf.reset()})}
+</script>
+</body>
+</html>

@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monteiro & Vasconcellos Advogados — Advocacia Estratégica e Humanizada</title>
+<meta name="description" content="Monteiro & Vasconcellos Advogados Associados — Atuação ética e humanizada em Campinas nas áreas de Direito Trabalhista, Civil, Imobiliário, Administrativo e Cálculos Judiciais.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='36' rx='4' fill='%231a1a2e'/%3E%3Ctext x='18' y='24' text-anchor='middle' fill='%23c8a961' font-family='serif' font-weight='700' font-size='14'%3EMV%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Monteiro & Vasconcellos Advogados — Advocacia Estratégica e Humanizada">
+<meta property="og:description" content="Atuação ética e humanizada em Campinas. Direito Trabalhista, Civil, Imobiliário, Administrativo e Cálculos Judiciais.">
+<meta property="og:url" content="https://templatesadv.vercel.app/moderno-05">
+<link rel="canonical" href="https://templatesadv.vercel.app/moderno-05">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg-dark:#0f0f1a;--bg-section:#fafafa;--bg-white:#ffffff;
+  --navy:#1a1a2e;--navy-light:#25254a;--navy-accent:#2d2d5e;
+  --gold:#c8a961;--gold-light:#d4b872;--gold-dark:#b8943e;--gold-pale:rgba(200,169,97,.1);
+  --text-dark:#1a1a2e;--text-body:#444;--text-light:#777;--text-muted:#aaa;
+  --white:#fff;--cream:#f8f6f1;--line:rgba(0,0,0,.08);
+  --heading:'Playfair Display',Georgia,serif;
+  --body:'Inter',system-ui,-apple-system,sans-serif;
+  --transition:.3s cubic-bezier(.4,0,.2,1);
+  --shadow:0 4px 24px rgba(0,0,0,.06);
+  --shadow-lg:0 12px 48px rgba(0,0,0,.1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--text-body);line-height:1.7;overflow-x:hidden;background:var(--bg-white)}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+
+/* ===== HEADER ===== */
+.header{position:fixed;top:0;left:0;right:0;z-index:1000;transition:var(--transition)}
+.header.at-top{background:transparent}
+.header.scrolled{background:rgba(26,26,46,.97);backdrop-filter:blur(16px);box-shadow:0 1px 20px rgba(0,0,0,.15)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;max-width:1400px;margin:0 auto}
+.h-brand{display:flex;align-items:center;gap:.85rem}
+.h-logo-icon{width:38px;height:38px;background:var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.h-logo-icon svg{width:20px;height:20px;fill:none;stroke:var(--navy);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.h-brand-text{display:flex;flex-direction:column}
+.h-brand-name{font-family:var(--heading);font-size:1.15rem;color:var(--white);font-weight:700;line-height:1.15}
+.h-brand-name span{color:var(--gold)}
+.h-brand-sub{font-size:.58rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.3em;font-weight:600}
+.nav{display:flex;align-items:center;gap:2rem}
+.nav a{color:rgba(255,255,255,.75);font-size:.82rem;font-weight:500;transition:var(--transition);letter-spacing:.02em}
+.nav a:hover{color:var(--gold)}
+.nav-cta{padding:.55rem 1.4rem;background:var(--gold);color:var(--navy)!important;border-radius:6px;font-weight:700!important;font-size:.78rem!important;letter-spacing:.04em;text-transform:uppercase;transition:var(--transition)}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px)}
+.nav-phone{display:flex;align-items:center;gap:.4rem;color:var(--gold)!important;font-weight:600!important;font-size:.82rem!important}
+.nav-phone svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:2}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem}
+.hamburger span{width:24px;height:2px;background:var(--white);transition:var(--transition);border-radius:2px}
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--navy);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:var(--white);font-size:1.2rem;font-weight:500}
+.mobile-nav a:hover{color:var(--gold)}
+.mobile-nav .close-btn{position:absolute;top:1.5rem;right:1.5rem;color:var(--white);font-size:1.8rem;cursor:pointer;background:none;border:none}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:8rem 4rem 4rem 5%;background:var(--navy);position:relative;z-index:2}
+.hero-left::after{content:'';position:absolute;right:-60px;top:0;bottom:0;width:120px;background:var(--navy);transform:skewX(-3deg);z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;background:rgba(200,169,97,.12);border:1px solid rgba(200,169,97,.2);border-radius:50px;font-size:.7rem;color:var(--gold);font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:2rem;width:fit-content}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:badgePulse 2s infinite}
+@keyframes badgePulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-oab{font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.15em;margin-bottom:1.5rem;text-transform:uppercase;font-weight:500}
+.hero h1{font-family:var(--heading);font-size:clamp(2.5rem,4.5vw,3.8rem);color:var(--white);font-weight:400;line-height:1.15;margin-bottom:1.5rem;letter-spacing:-.01em}
+.hero h1 strong{font-weight:700;display:block;color:var(--gold)}
+.hero-desc{font-size:1rem;color:rgba(255,255,255,.55);max-width:480px;line-height:1.8;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;position:relative;z-index:3}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;font-family:var(--body);font-size:.85rem;font-weight:700;border-radius:6px;transition:var(--transition);cursor:pointer;border:none;letter-spacing:.04em}
+.btn-gold{background:var(--gold);color:var(--navy)}.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,169,97,.3)}
+.btn-outline-w{background:transparent;border:1.5px solid rgba(255,255,255,.25);color:var(--white);border-radius:6px}.btn-outline-w:hover{border-color:var(--gold);color:var(--gold)}
+.hero-right{position:relative;overflow:hidden}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-right-overlay{position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,transparent 30%),linear-gradient(0deg,rgba(26,26,46,.3) 0%,transparent 40%);z-index:1}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:5;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.hero-scroll span{font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.25em;text-transform:uppercase}
+.scroll-indicator{width:20px;height:32px;border:1.5px solid rgba(255,255,255,.2);border-radius:12px;position:relative}
+.scroll-indicator::after{content:'';position:absolute;top:5px;left:50%;transform:translateX(-50%);width:3px;height:8px;background:var(--gold);border-radius:3px;animation:scrollDot 2s infinite}
+@keyframes scrollDot{0%{top:5px;opacity:1}100%{top:18px;opacity:0}}
+/* Hero decoration image */
+.hero-decoration{position:absolute;bottom:0;left:0;right:0;height:180px;z-index:3;overflow:hidden;pointer-events:none}
+.hero-decoration img{width:100%;height:100%;object-fit:cover;opacity:.08;filter:grayscale(1)}
+
+/* ===== ABOUT ===== */
+.about{padding:7rem 0;background:var(--bg-white)}
+.about-header{text-align:center;margin-bottom:4rem}
+.section-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.25em;color:var(--gold);margin-bottom:1rem}
+.section-tag::before,.section-tag::after{content:'';width:20px;height:1px;background:var(--gold)}
+.section-title{font-family:var(--heading);font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--text-dark);font-weight:400;line-height:1.2;margin-bottom:1rem}
+.section-title strong{font-weight:700}
+.section-desc{font-size:.95rem;color:var(--text-light);max-width:640px;margin:0 auto;line-height:1.8}
+.about-content{display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:center;margin-bottom:4rem}
+.about-text p{font-size:.92rem;color:var(--text-body);line-height:1.85;margin-bottom:1.25rem}
+.about-text p:last-child{margin-bottom:0}
+.about-img{position:relative;border-radius:8px;overflow:hidden;box-shadow:var(--shadow-lg)}
+.about-img img{width:100%;height:420px;object-fit:cover}
+.about-img-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(26,26,46,.92);backdrop-filter:blur(8px);padding:.85rem 1.25rem;border-radius:8px;display:flex;align-items:center;gap:.75rem}
+.about-img-badge .badge-icon{width:36px;height:36px;background:var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.about-img-badge .badge-text{color:var(--white);font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;line-height:1.4}
+.about-img-badge .badge-text strong{display:block;font-size:1rem;letter-spacing:0;text-transform:none}
+
+/* Values */
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.value-card{background:var(--bg-white);border:1px solid var(--line);border-radius:10px;padding:2rem 1.5rem;text-align:center;transition:var(--transition);position:relative;overflow:hidden}
+.value-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transition:var(--transition)}
+.value-card:hover::before{transform:scaleX(1)}
+.value-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent}
+.value-icon{width:56px;height:56px;border-radius:12px;background:var(--gold-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;transition:var(--transition)}
+.value-card:hover .value-icon{background:var(--gold);transform:scale(1.05)}
+.value-card h4{font-family:var(--heading);font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:.5rem}
+.value-card p{font-size:.82rem;color:var(--text-light);line-height:1.6}
+
+/* ===== MARQUEE ===== */
+.marquee-section{background:var(--navy);padding:1.25rem 0;overflow:hidden;position:relative}
+.marquee-track{display:flex;gap:2rem;animation:marquee 30s linear infinite;width:max-content}
+.marquee-item{display:flex;align-items:center;gap:.75rem;white-space:nowrap;font-size:.82rem;font-weight:600;color:rgba(255,255,255,.5);letter-spacing:.04em}
+.marquee-item .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.marquee-item.highlight{color:var(--gold)}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ===== AREAS ===== */
+.areas{padding:7rem 0;background:var(--bg-section)}
+.areas-header{text-align:center;margin-bottom:3.5rem}
+.areas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.area-card{background:var(--bg-white);border:1px solid var(--line);border-radius:10px;padding:2.25rem;transition:var(--transition);position:relative;overflow:hidden;cursor:pointer}
+.area-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transform:scaleX(0);transform-origin:left;transition:var(--transition)}
+.area-card:hover::after{transform:scaleX(1)}
+.area-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:transparent}
+.area-card-icon{width:50px;height:50px;border-radius:10px;background:var(--gold-pale);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;transition:var(--transition)}
+.area-card:hover .area-card-icon{background:var(--gold)}
+.area-card-icon svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.8;transition:var(--transition)}
+.area-card:hover .area-card-icon svg{stroke:var(--white)}
+.area-card h3{font-family:var(--heading);font-size:1.15rem;font-weight:600;color:var(--text-dark);margin-bottom:.6rem}
+.area-card p{font-size:.84rem;color:var(--text-light);line-height:1.7;margin-bottom:1rem}
+.area-link{font-size:.75rem;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.4rem;transition:var(--transition)}
+.area-card:hover .area-link{gap:.7rem}
+
+/* ===== TEAM ===== */
+.team{padding:7rem 0;background:var(--bg-white)}
+.team-header{text-align:center;margin-bottom:4rem}
+.team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3rem;max-width:900px;margin:0 auto}
+.team-card{background:var(--bg-white);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:var(--transition);text-align:center}
+.team-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:transparent}
+.team-photo{position:relative;padding:2.5rem 2.5rem 0;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%)}
+.team-photo img{width:200px;height:200px;border-radius:50%;object-fit:cover;margin:0 auto;border:4px solid rgba(200,169,97,.3);display:block;position:relative;z-index:1}
+.team-photo::before{content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:var(--bg-white);border-radius:12px 12px 0 0}
+.team-body{padding:1rem 2rem 2.5rem}
+.team-body h3{font-family:var(--heading);font-size:1.3rem;font-weight:600;color:var(--text-dark);margin-bottom:.3rem}
+.team-oab{font-size:.72rem;color:var(--gold);font-weight:700;letter-spacing:.1em;margin-bottom:.35rem;display:flex;align-items:center;justify-content:center;gap:.4rem}
+.team-oab::before{content:'';width:12px;height:1px;background:var(--gold)}
+.team-oab::after{content:'';width:12px;height:1px;background:var(--gold)}
+.team-specialty{font-size:.78rem;color:var(--text-light);font-weight:500;margin-bottom:1rem}
+.team-body p{font-size:.85rem;color:var(--text-light);line-height:1.7}
+
+/* ===== QUOTE ===== */
+.quote-section{padding:5rem 0;background:var(--navy);text-align:center;position:relative;overflow:hidden}
+.quote-section::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1920&q=60&auto=format&fit=crop') center/cover;opacity:.06}
+.quote-content{position:relative;z-index:1;max-width:750px;margin:0 auto;padding:0 2rem}
+.quote-mark{font-family:var(--heading);font-size:5rem;color:var(--gold);line-height:1;margin-bottom:-1rem;opacity:.5}
+.quote-content blockquote{font-family:var(--heading);font-size:clamp(1.2rem,2.5vw,1.7rem);color:var(--white);font-weight:400;font-style:italic;line-height:1.6;margin-bottom:2rem}
+.quote-author{font-size:.8rem;color:var(--gold);font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+
+/* ===== ARTICLES ===== */
+.articles{padding:7rem 0;background:var(--bg-section)}
+.articles-header{text-align:center;margin-bottom:3.5rem}
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.article-card{background:var(--bg-white);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:var(--transition)}
+.article-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent}
+.article-img{height:200px;overflow:hidden}
+.article-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.article-card:hover .article-img img{transform:scale(1.06)}
+.article-body{padding:1.5rem}
+.article-tag{font-size:.65rem;font-weight:700;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem}
+.article-body h3{font-family:var(--heading);font-size:1.05rem;font-weight:600;color:var(--text-dark);margin-bottom:.5rem;line-height:1.4}
+.article-body p{font-size:.82rem;color:var(--text-light);line-height:1.65;margin-bottom:1rem}
+.article-read{font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.3rem;transition:var(--transition)}
+.article-card:hover .article-read{gap:.6rem}
+.articles-more{text-align:center;margin-top:2.5rem}
+.btn-outline{background:transparent;border:1.5px solid var(--gold);color:var(--gold);border-radius:6px}.btn-outline:hover{background:var(--gold);color:var(--navy)}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--navy);color:rgba(255,255,255,.5);padding:5rem 0 2rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.footer-brand .h-brand-name{font-size:1.1rem;margin-bottom:.15rem}
+.footer-brand .h-brand-sub{margin-bottom:1rem}
+.footer-brand p{font-size:.82rem;line-height:1.75;max-width:300px;margin-bottom:1.5rem}
+.footer-oab-info{font-size:.72rem;color:rgba(255,255,255,.35);line-height:1.6}
+.footer-col h4{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);margin-bottom:1.25rem}
+.footer-col a{display:block;font-size:.84rem;color:rgba(255,255,255,.5);padding:.3rem 0;transition:var(--transition)}
+.footer-col a:hover{color:var(--gold);padding-left:.5rem}
+.footer-contact-item{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:1rem}
+.footer-contact-item svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:2;flex-shrink:0;margin-top:.15rem}
+.footer-contact-item span{font-size:.82rem;line-height:1.6}
+.footer-social{display:flex;gap:.75rem;margin-top:1.5rem}
+.footer-social a{width:36px;height:36px;border-radius:8px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:var(--transition)}
+.footer-social a:hover{border-color:var(--gold);background:var(--gold-pale)}
+.footer-social svg{width:16px;height:16px;fill:rgba(255,255,255,.5)}
+.footer-social a:hover svg{fill:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.72rem}
+.footer-bottom a{color:var(--gold)}
+.footer-compliance{font-size:.65rem;color:rgba(255,255,255,.3);max-width:500px;text-align:right;line-height:1.5}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float{position:fixed;bottom:2rem;right:2rem;z-index:99;display:flex;flex-direction:column;align-items:flex-end;gap:.75rem}
+.wa-btn{width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.35);transition:var(--transition);animation:waPulse 2s infinite}
+.wa-btn:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(37,211,102,.5)}
+.wa-btn svg{width:28px;height:28px;fill:#fff}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 16px rgba(37,211,102,.35)}50%{box-shadow:0 4px 24px rgba(37,211,102,.5),0 0 0 8px rgba(37,211,102,.08)}}
+.wa-label{background:var(--navy);color:var(--white);padding:.5rem 1rem;border-radius:8px;font-size:.75rem;font-weight:600;box-shadow:var(--shadow);opacity:0;transform:translateX(10px);transition:var(--transition);pointer-events:none;white-space:nowrap}
+.whatsapp-float:hover .wa-label{opacity:1;transform:none}
+
+/* ===== COOKIE BANNER ===== */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;background:var(--navy);border-top:1px solid rgba(200,169,97,.15);padding:1.25rem 2rem;z-index:200;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;transform:translateY(100%);transition:transform .4s ease;flex-wrap:wrap}
+.cookie-banner.show{transform:none}
+.cookie-text{font-size:.8rem;color:rgba(255,255,255,.6);max-width:700px;line-height:1.6}
+.cookie-text a{color:var(--gold);text-decoration:underline}
+.cookie-btns{display:flex;gap:.75rem;flex-shrink:0}
+.cookie-btn{padding:.55rem 1.25rem;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer;transition:var(--transition);border:none;font-family:var(--body);letter-spacing:.03em}
+.cookie-accept{background:var(--gold);color:var(--navy)}.cookie-accept:hover{background:var(--gold-light)}
+.cookie-essential{background:transparent;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6)}.cookie-essential:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ===== BACK TO TOP ===== */
+.back-top{position:fixed;bottom:6.5rem;right:2.25rem;width:40px;height:40px;background:var(--navy);color:var(--gold);border:1px solid rgba(200,169,97,.25);border-radius:8px;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;z-index:98;opacity:0;transform:translateY(10px);transition:var(--transition)}.back-top.visible{opacity:1;transform:none}.back-top:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{padding:8rem 2.5rem 5rem}
+  .hero-left::after{display:none}
+  .areas-grid{grid-template-columns:repeat(2,1fr)}
+  .articles-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .values-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .nav{display:none}
+  .header-inner{padding:.85rem 1.5rem}
+  .hero-left{padding:7rem 1.5rem 4rem}
+  .hero h1{font-size:2.2rem}
+  .about-content{grid-template-columns:1fr;gap:2.5rem}
+  .areas-grid,.articles-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr;max-width:400px}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .footer-compliance{text-align:center}
+  .values-grid{grid-template-columns:1fr 1fr}
+  .cookie-banner{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .hero h1{font-size:1.8rem}
+  .hero-btns{flex-direction:column}
+  .values-grid{grid-template-columns:1fr}
+  .team-photo img{width:160px;height:160px}
+}
+/* FOCUS */
+*:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+/* PRINT */
+@media print{.header,.whatsapp-float,.back-top,.cookie-banner,.hero-scroll,.marquee-section{display:none!important}body{background:#fff!important;color:#000!important}.hero{min-height:auto;display:block}.hero-left{background:#fff;padding:2rem}.hero h1{color:#000}.hero h1 strong{color:var(--gold)}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header at-top" id="header">
+  <div class="header-inner">
+    <a href="#" class="h-brand">
+      <div class="h-logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 3v18M8 21h8"/><path d="M5 7h14"/><path d="M12 3L5 7"/><path d="M12 3l7 4"/><path d="M5 7L3.5 12.5h3L5 7z" fill="var(--navy)"/><path d="M19 7l-1.5 5.5h3L19 7z" fill="var(--navy)"/></svg>
+      </div>
+      <div class="h-brand-text">
+        <div class="h-brand-name">Monteiro <span>&</span> Vasconcellos</div>
+        <div class="h-brand-sub">Advogados Associados</div>
+      </div>
+    </a>
+    <nav class="nav" role="navigation" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#areas">Áreas de Atuação</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#artigos">Artigos</a>
+      <a href="#contato" class="nav-cta">Contato</a>
+      <a href="tel:+5519987654321" class="nav-phone">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (19) 98765-4321
+      </a>
+    </nav>
+    <button class="hamburger" id="menuToggle" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile">
+  <button class="close-btn" id="menuClose" aria-label="Fechar menu">✕</button>
+  <a href="#sobre" onclick="closeMobile()">Sobre</a>
+  <a href="#areas" onclick="closeMobile()">Áreas de Atuação</a>
+  <a href="#equipe" onclick="closeMobile()">Equipe</a>
+  <a href="#artigos" onclick="closeMobile()">Artigos</a>
+  <a href="#contato" onclick="closeMobile()">Contato</a>
+  <a href="tel:+5519987654321" style="color:var(--gold)">(19) 98765-4321</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge"><span>Advocacia Estratégica e Humanizada</span></div>
+    <div class="hero-oab">OAB/SP • Advocacia Estratégica e Humanizada</div>
+    <h1>Compromisso com a Justiça e seus<strong>Direitos</strong></h1>
+    <p class="hero-desc">Monteiro & Vasconcellos Advogados Associados — atuação ética e humanizada em Campinas nas áreas de Direito Trabalhista, Civil, Imobiliário, Administrativo e Cálculos Judiciais.</p>
+    <div class="hero-btns">
+      <a href="https://api.whatsapp.com/send?phone=5519987654321&text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta." class="btn btn-gold" target="_blank" rel="noopener">Entre em Contato</a>
+      <a href="#sobre" class="btn btn-outline-w">Conheça o Escritório</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=80&auto=format&fit=crop" alt="Equipe Monteiro & Vasconcellos Advogados" loading="eager">
+    <div class="hero-right-overlay"></div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-indicator"></div>
+  </div>
+</section>
+
+<!-- HERO DECORATION -->
+<div class="hero-decoration">
+  <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=60&auto=format&fit=crop" alt="" aria-hidden="true" loading="lazy">
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="sobre">
+  <div class="container">
+    <div class="about-header">
+      <div class="section-tag">Sobre o Escritório</div>
+      <h2 class="section-title">Uma Trajetória de <strong>Dedicação ao Direito</strong></h2>
+    </div>
+
+    <div class="about-content reveal">
+      <div class="about-text">
+        <p>O escritório <strong>Monteiro & Vasconcellos Advogados Associados</strong> nasceu da união de profissionais comprometidos com a prática jurídica ética e responsável. Atuamos em Campinas e região com dedicação e rigor técnico.</p>
+        <p><strong>Rafael Monteiro da Silva</strong> (OAB/SP 412.358) e <strong>Lucas Vasconcellos Ribeiro</strong> (OAB/SP 389.741) lideram a equipe, oferecendo orientação jurídica personalizada e humanizada.</p>
+        <p>Nossa atuação se destaca pelo atendimento próximo ao cliente, buscando sempre a melhor estratégia jurídica para cada caso, com transparência e comprometimento em todas as etapas do processo.</p>
+      </div>
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80&auto=format&fit=crop" alt="Interior do escritório Monteiro & Vasconcellos" loading="lazy">
+        <div class="about-img-badge">
+          <div class="badge-icon">⚖️</div>
+          <div class="badge-text">Campinas<strong>Interior de SP</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VALUES -->
+    <div class="values-grid reveal">
+      <div class="value-card">
+        <div class="value-icon">⚖️</div>
+        <h4>Ética</h4>
+        <p>Atuação pautada pela integridade e respeito ao ordenamento jurídico e ao cliente.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">📚</div>
+        <h4>Conhecimento</h4>
+        <p>Estudo e atualização constantes para garantir a melhor assessoria jurídica.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <h4>Compromisso</h4>
+        <p>Dedicação integral a cada caso atendido, buscando sempre o melhor resultado.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔒</div>
+        <h4>Sigilo</h4>
+        <p>Confidencialidade garantida em todas as relações profissionais e processuais.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track" aria-hidden="true">
+    <span class="marquee-item highlight"><span class="dot"></span>Direito Trabalhista</span>
+    <span class="marquee-item"><span class="dot"></span>Ética</span>
+    <span class="marquee-item highlight"><span class="dot"></span>Direito Civil</span>
+    <span class="marquee-item"><span class="dot"></span>Compromisso</span>
+    <span class="marquee-item highlight"><span class="dot"></span>Direito Imobiliário</span>
+    <span class="marquee-item"><span class="dot"></span>Responsabilidade</span>
+    <span class="marquee-item highlight"><span class="dot"></span>Direito Administrativo</span>
+    <span class="marquee-item"><span class="dot"></span>Transparência</span>
+    <span class="marquee-item highlight"><span class="dot"></span>Cálculos Judiciais</span>
+    <span class="marquee-item"><span class="dot"></span>Excelência</span>
+    <span class="marquee-item"><span class="dot"></span>Atendimento Humanizado</span>
+    <span class="marquee-item"><span class="dot"></span>Sigilo Profissional</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="marquee-item highlight"><span class="dot"></span>Direito Trabalhista</span>
+    <span class="marquee-item"><span class="dot"></span>Ética</span>
+    <span class="marquee-item highlight"><span class="dot"></span>Direito Civil</span>
+    <span class="marquee-item"><span class="dot"></span>Compromisso</span>
+    <span class="marquee-item highlight"><span class="dot"></span>Direito Imobiliário</span>
+    <span class="marquee-item"><span class="dot"></span>Responsabilidade</span>
+    <span class="marquee-item highlight"><span class="dot"></span>Direito Administrativo</span>
+    <span class="marquee-item"><span class="dot"></span>Transparência</span>
+    <span class="marquee-item highlight"><span class="dot"></span>Cálculos Judiciais</span>
+    <span class="marquee-item"><span class="dot"></span>Excelência</span>
+    <span class="marquee-item"><span class="dot"></span>Atendimento Humanizado</span>
+    <span class="marquee-item"><span class="dot"></span>Sigilo Profissional</span>
+  </div>
+</div>
+
+<!-- ÁREAS DE ATUAÇÃO -->
+<section class="areas" id="areas">
+  <div class="container">
+    <div class="areas-header">
+      <div class="section-tag">Áreas de Atuação</div>
+      <h2 class="section-title">Atuação Jurídica <strong>Especializada</strong></h2>
+      <p class="section-desc">Oferecemos orientação jurídica em diversas áreas do Direito, sempre com abordagem técnica e personalizada.</p>
+    </div>
+
+    <div class="areas-grid">
+      <div class="area-card reveal">
+        <div class="area-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Direito Trabalhista</h3>
+        <p>Atuação em relações de trabalho, tanto para empresas quanto para trabalhadores, incluindo questões sindicais e previdenciárias.</p>
+        <span class="area-link">Saiba mais →</span>
+      </div>
+
+      <div class="area-card reveal">
+        <div class="area-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Direito Civil</h3>
+        <p>Orientação em questões contratuais, responsabilidade civil, direito das obrigações, posse e propriedade, e demais relações jurídicas civis.</p>
+        <span class="area-link">Saiba mais →</span>
+      </div>
+
+      <div class="area-card reveal">
+        <div class="area-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Direito Imobiliário</h3>
+        <p>Assessoria em transações imobiliárias, contratos de compra e venda, locação, incorporação e regularização de imóveis.</p>
+        <span class="area-link">Saiba mais →</span>
+      </div>
+
+      <div class="area-card reveal">
+        <div class="area-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/></svg>
+        </div>
+        <h3>Direito Administrativo</h3>
+        <p>Atuação em licitações, contratos administrativos, concursos públicos, mandados de segurança e processos disciplinares.</p>
+        <span class="area-link">Saiba mais →</span>
+      </div>
+
+      <div class="area-card reveal">
+        <div class="area-card-icon">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Cálculos Judiciais</h3>
+        <p>Elaboração e conferência de cálculos judiciais, liquidação de sentenças, atualização de débitos e perícias contábeis.</p>
+        <span class="area-link">Saiba mais →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section class="team" id="equipe">
+  <div class="container">
+    <div class="team-header">
+      <div class="section-tag">Nossa Equipe</div>
+      <h2 class="section-title">Profissionais <strong>Especializados</strong></h2>
+      <p class="section-desc">Conheça os advogados que compõem nosso corpo jurídico, unidos pelo compromisso com a excelência profissional.</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80&auto=format&fit=crop&crop=face" alt="Rafael Monteiro da Silva" loading="lazy">
+        </div>
+        <div class="team-body">
+          <h3>Rafael Monteiro da Silva</h3>
+          <div class="team-oab">OAB/SP 412.358</div>
+          <div class="team-specialty">Direito Trabalhista e Civil</div>
+          <p>Sócio fundador. Advogado com experiência em consultoria e contencioso jurídico, atuando na defesa dos direitos trabalhistas e civis.</p>
+        </div>
+      </div>
+
+      <div class="team-card reveal">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80&auto=format&fit=crop&crop=face" alt="Lucas Vasconcellos Ribeiro" loading="lazy">
+        </div>
+        <div class="team-body">
+          <h3>Lucas Vasconcellos Ribeiro</h3>
+          <div class="team-oab">OAB/SP 389.741</div>
+          <div class="team-specialty">Direito Trabalhista</div>
+          <p>Sócio fundador. Graduado em Direito pelo Pontifícia Universidade Católica de Campinas (2015), advogado desde 2016 com ampla experiência na área trabalhista.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="quote-content reveal">
+    <div class="quote-mark">"</div>
+    <blockquote>A advocacia é exercício diário de estudo, responsabilidade e compromisso com a Justiça.</blockquote>
+    <div class="quote-author">Monteiro & Vasconcellos Advogados</div>
+  </div>
+</section>
+
+<!-- ARTIGOS -->
+<section class="articles" id="artigos">
+  <div class="container">
+    <div class="articles-header">
+      <div class="section-tag">Artigos e Informações</div>
+      <h2 class="section-title">Conteúdo <strong>Informativo</strong></h2>
+      <p class="section-desc">Publicações informativas sobre temas jurídicos relevantes elaboradas pela nossa equipe.</p>
+    </div>
+
+    <div class="articles-grid">
+      <div class="article-card reveal">
+        <div class="article-img">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80&auto=format&fit=crop" alt="Demissão por justa causa" loading="lazy">
+        </div>
+        <div class="article-body">
+          <div class="article-tag">Direito Trabalhista</div>
+          <h3>Demissão por Justa Causa: Conheça Seus Direitos</h3>
+          <p>Entenda as hipóteses legais de demissão por justa causa e os direitos do trabalhador nessa situação.</p>
+          <span class="article-read">Leia mais →</span>
+        </div>
+      </div>
+
+      <div class="article-card reveal">
+        <div class="article-img">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&auto=format&fit=crop" alt="Responsabilidade civil" loading="lazy">
+        </div>
+        <div class="article-body">
+          <div class="article-tag">Direito Civil</div>
+          <h3>Responsabilidade Civil: Quando Cabe Indenização?</h3>
+          <p>Saiba quando uma pessoa pode ser responsabilizada civilmente por danos causados a outra.</p>
+          <span class="article-read">Leia mais →</span>
+        </div>
+      </div>
+
+      <div class="article-card reveal">
+        <div class="article-img">
+          <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=600&q=80&auto=format&fit=crop" alt="Assédio moral no trabalho" loading="lazy">
+        </div>
+        <div class="article-body">
+          <div class="article-tag">Direito Trabalhista</div>
+          <h3>Assédio Moral no Trabalho: Como Identificar e Agir</h3>
+          <p>Aprenda a identificar situações de assédio moral no ambiente de trabalho e como buscar reparação.</p>
+          <span class="article-read">Leia mais →</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="articles-more">
+      <a href="#" class="btn btn-outline">Ver Todos os Artigos</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contato">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="h-brand-name" style="font-family:var(--heading);color:var(--white)">Monteiro <span style="color:var(--gold)">&</span> Vasconcellos</div>
+        <div class="h-brand-sub" style="font-size:.6rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.25em;font-weight:600">Advogados Associados</div>
+        <p>Escritório de advocacia comprometido com a excelência e a ética profissional, oferecendo atuação estratégica e humanizada em Campinas e região.</p>
+        <div class="footer-oab-info">
+          Rafael Monteiro da Silva — OAB/SP 412.358<br>
+          Lucas Vasconcellos Ribeiro — OAB/SP 389.741
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <a href="#">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#areas">Áreas de Atuação</a>
+        <a href="#artigos">Artigos</a>
+        <a href="#contato">Contato</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Áreas de Atuação</h4>
+        <a href="#areas">Direito Trabalhista</a>
+        <a href="#areas">Direito Civil</a>
+        <a href="#areas">Direito Imobiliário</a>
+        <a href="#areas">Direito Administrativo</a>
+        <a href="#areas">Cálculos Judiciais</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Av. Francisco Glicério, 1024, Sala 508<br>Centro — Campinas, SP<br>CEP 13012-100</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span><a href="tel:+5519987654321" style="color:var(--gold)">(19) 98765-4321</a></span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span><a href="mailto:contato@monteirovasconcelos.adv.br" style="color:rgba(255,255,255,.5)">contato@monteirovasconcelos.adv.br</a></span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Seg a Sex, 08:00 às 18:00</span>
+        </div>
+        <div class="footer-social">
+          <a href="https://instagram.com/monteiro.vasconcelos.adv" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://facebook.com/monteirovasconcelos.adv" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Monteiro & Vasconcellos Advogados Associados. Todos os direitos reservados.</p>
+      <div class="footer-compliance">
+        Este site tem caráter informativo, nos termos do Provimento 205/2021 da OAB.<br>
+        <a href="#">Política de Privacidade</a> · <a href="#">Termos de Uso</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<div class="whatsapp-float">
+  <span class="wa-label">Fale com nosso Assistente</span>
+  <a href="https://api.whatsapp.com/send?phone=5519987654321&text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta." class="wa-btn" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text">
+    🔒 <strong>Privacidade e Cookies</strong> — Utilizamos cookies para melhorar sua experiência de navegação. Em conformidade com a LGPD (Lei nº 13.709/2018), solicitamos seu consentimento para o uso de cookies não essenciais. Para mais informações, consulte nossa <a href="#">Política de Privacidade</a>.
+  </div>
+  <div class="cookie-btns">
+    <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Aceitar Todos</button>
+    <button class="cookie-btn cookie-essential" onclick="acceptCookies()">Apenas Essenciais</button>
+  </div>
+</div>
+
+<script>
+// HEADER SCROLL
+const header=document.getElementById('header');
+function checkHeader(){
+  if(scrollY>60){header.classList.remove('at-top');header.classList.add('scrolled')}
+  else{header.classList.add('at-top');header.classList.remove('scrolled')}
+}
+window.addEventListener('scroll',checkHeader);checkHeader();
+
+// MOBILE MENU
+const toggle=document.getElementById('menuToggle'),mobileNav=document.getElementById('mobileNav'),closeBtn=document.getElementById('menuClose');
+toggle.addEventListener('click',()=>mobileNav.classList.add('open'));
+closeBtn.addEventListener('click',()=>mobileNav.classList.remove('open'));
+function closeMobile(){mobileNav.classList.remove('open')}
+
+// BACK TO TOP
+const backTop=document.getElementById('backTop');
+window.addEventListener('scroll',()=>{backTop.classList.toggle('visible',scrollY>500)});
+
+// REVEAL ON SCROLL
+const reveals=document.querySelectorAll('.reveal');
+const revealObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}})
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(el=>revealObs.observe(el));
+
+// SMOOTH ANCHORS
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+
+// COOKIE BANNER
+function acceptCookies(){
+  document.getElementById('cookieBanner').classList.remove('show');
+  localStorage.setItem('cookies-accepted','1');
+}
+if(!localStorage.getItem('cookies-accepted')){
+  setTimeout(()=>document.getElementById('cookieBanner').classList.add('show'),2000);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClearVision — Centro de Oftalmologia Avançada</title>
+<meta name="description" content="Centro de Oftalmologia com tecnologia de ponta em cirurgia refrativa, catarata, retina e glaucoma. Mais de 50.000 procedimentos realizados.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='36' rx='8' fill='%23006D77'/%3E%3Ccircle cx='18' cy='18' r='8' fill='none' stroke='%2383C5BE' stroke-width='2'/%3E%3Ccircle cx='18' cy='18' r='3' fill='%2383C5BE'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ClearVision — Centro de Oftalmologia Avançada">
+<meta property="og:description" content="Centro de Oftalmologia com tecnologia de ponta em cirurgia refrativa, catarata, retina e glaucoma.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?w=1200&q=80&auto=format&fit=crop">
+<link rel="canonical" href="https://templatesadv.vercel.app/saude-07">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#006D77;--teal-light:#83C5BE;--teal-dark:#004E57;
+  --peach:#FFDDD2;--cream:#FFF8F5;--white:#FFFFFF;--dark:#1A1A2E;--gray:#6B7280;--gray-light:#F3F4F6;
+  --font-heading:'DM Sans',sans-serif;--font-body:'Inter',sans-serif;
+  --shadow:0 4px 20px rgba(0,109,119,0.1);--shadow-lg:0 12px 40px rgba(0,109,119,0.15);
+  --radius:12px;--transition:0.3s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--dark);line-height:1.7;background:var(--white);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.skip-link{position:absolute;top:-100%;left:1rem;background:var(--teal);color:#fff;padding:.75rem 1.5rem;border-radius:0 0 8px 8px;z-index:200;font-weight:600;transition:top .2s}.skip-link:focus{top:0}
+
+/* HEADER - Institutional top bar + main nav */
+.header-top{background:var(--teal);color:#fff;padding:.4rem 2rem;display:flex;justify-content:space-between;align-items:center;font-size:.8rem}
+.header-top a{color:#fff;font-weight:500;transition:var(--transition)}.header-top a:hover{color:var(--peach)}
+.header-top-left{display:flex;gap:2rem;align-items:center}
+.header-top-right{display:flex;gap:1.5rem}
+.header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,109,119,0.08);padding:0 2rem}
+.header-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:.75rem}
+.logo-icon{width:40px;height:40px;background:var(--teal);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.logo-icon svg{width:24px;height:24px}
+.logo-text{font-family:var(--font-heading);font-size:1.4rem;font-weight:800;color:var(--dark)}.logo-text span{color:var(--teal)}
+.nav{display:flex;gap:2rem;align-items:center}
+.nav a{font-size:.9rem;font-weight:500;color:var(--gray);transition:var(--transition);position:relative}.nav a:hover{color:var(--teal)}
+.nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--teal);transition:var(--transition)}.nav a:hover::after{width:100%}
+.btn-schedule{background:var(--teal);color:#fff;padding:.65rem 1.5rem;border-radius:50px;font-size:.85rem;font-weight:600;font-family:var(--font-body);border:none;cursor:pointer;transition:var(--transition)}.btn-schedule:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:var(--shadow)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem}.hamburger span{display:block;width:24px;height:2px;background:var(--dark);transition:var(--transition)}
+
+/* HERO - Institutional style with floating stat cards */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;background:linear-gradient(135deg,var(--cream) 0%,#E6F7F8 50%,var(--white) 100%);overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(131,197,190,0.2),transparent 70%)}
+.hero::after{content:'';position:absolute;bottom:-15%;left:-5%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(0,109,119,0.08),transparent 70%)}
+.hero-inner{max-width:1280px;margin:0 auto;padding:2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1}
+.hero-content{max-width:560px}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,109,119,0.08);border:1px solid rgba(0,109,119,0.15);padding:.4rem 1rem;border-radius:50px;font-size:.8rem;color:var(--teal);font-weight:600;margin-bottom:1.5rem}
+.hero h1{font-family:var(--font-heading);font-size:clamp(2.2rem,4vw,3.5rem);font-weight:800;line-height:1.15;color:var(--dark);margin-bottom:1.5rem;letter-spacing:-0.02em}
+.hero h1 .highlight{color:var(--teal);position:relative}.hero h1 .highlight::after{content:'';position:absolute;bottom:2px;left:0;width:100%;height:8px;background:rgba(131,197,190,0.3);border-radius:4px;z-index:-1}
+.hero p{font-size:1.1rem;color:var(--gray);margin-bottom:2rem;line-height:1.8}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--teal);color:#fff;padding:.85rem 2rem;border-radius:50px;font-weight:600;font-size:.95rem;transition:var(--transition);display:inline-flex;align-items:center;gap:.5rem}.btn-primary:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.btn-outline{border:2px solid var(--teal);color:var(--teal);padding:.8rem 2rem;border-radius:50px;font-weight:600;font-size:.95rem;transition:var(--transition)}.btn-outline:hover{background:var(--teal);color:#fff}
+.hero-visual{position:relative}
+.hero-visual img{width:100%;max-width:520px;border-radius:24px;box-shadow:var(--shadow-lg);object-fit:cover;height:480px}
+.hero-visual .float-card{position:absolute;background:#fff;padding:1rem 1.5rem;border-radius:16px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:.75rem}
+.float-card .fc-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.float-card .fc-text{font-size:.8rem;color:var(--gray)}.float-card .fc-num{font-family:var(--font-heading);font-size:1.3rem;font-weight:800;color:var(--dark)}
+.float-card-1{top:20%;left:-30px;animation:floatY 4s ease-in-out infinite}
+.float-card-2{bottom:15%;right:-20px;animation:floatY 4s ease-in-out infinite 1s}
+.float-card-3{bottom:5%;left:10%;animation:floatY 4s ease-in-out infinite 2s}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* QUICK ACCESS - Like Einstein/Sírio */
+.quick-access{background:var(--white);padding:3rem 2rem;margin-top:-3rem;position:relative;z-index:2}
+.quick-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.quick-card{background:var(--gray-light);border-radius:var(--radius);padding:2rem;text-align:center;transition:var(--transition);border:2px solid transparent;cursor:pointer}
+.quick-card:hover{border-color:var(--teal);background:#fff;transform:translateY(-4px);box-shadow:var(--shadow)}
+.quick-card .qc-icon{width:56px;height:56px;border-radius:14px;background:rgba(0,109,119,0.08);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem;transition:var(--transition)}
+.quick-card:hover .qc-icon{background:var(--teal);color:#fff}
+.quick-card h3{font-family:var(--font-heading);font-size:1rem;font-weight:700;margin-bottom:.35rem}
+.quick-card p{font-size:.8rem;color:var(--gray)}
+
+/* SECTION STYLES */
+.section{padding:5rem 2rem}.section-alt{background:var(--gray-light)}
+.container{max-width:1280px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:3.5rem}
+.section-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(0,109,119,0.08);color:var(--teal);padding:.35rem 1rem;border-radius:50px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}
+.section-header h2{font-family:var(--font-heading);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;color:var(--dark);margin-bottom:.75rem;letter-spacing:-0.02em}
+.section-header p{font-size:1.05rem;color:var(--gray);max-width:600px;margin:0 auto}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img{border-radius:20px;overflow:hidden;position:relative}
+.about-img img{width:100%;height:450px;object-fit:cover;border-radius:20px}
+.about-img .accent-bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--teal-light))}
+.about-content h2{font-family:var(--font-heading);font-size:2rem;font-weight:800;margin-bottom:1rem;color:var(--dark)}
+.about-content p{color:var(--gray);margin-bottom:1.25rem;line-height:1.8}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.about-stat{text-align:center;padding:1.25rem;background:var(--gray-light);border-radius:var(--radius)}
+.about-stat .num{font-family:var(--font-heading);font-size:1.8rem;font-weight:800;color:var(--teal)}
+.about-stat .label{font-size:.75rem;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin-top:.25rem}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.service-card{background:#fff;border-radius:var(--radius);padding:2rem;border:1px solid rgba(0,109,119,0.08);transition:var(--transition);position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:0;background:var(--teal);transition:var(--transition)}.service-card:hover::before{height:100%}
+.service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:rgba(0,109,119,0.2)}
+.service-icon{width:52px;height:52px;border-radius:14px;background:rgba(0,109,119,0.06);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.25rem;transition:var(--transition)}
+.service-card:hover .service-icon{background:var(--teal);color:#fff;transform:scale(1.05)}
+.service-card h3{font-family:var(--font-heading);font-size:1.1rem;font-weight:700;margin-bottom:.5rem;color:var(--dark)}
+.service-card p{font-size:.85rem;color:var(--gray);line-height:1.7}
+
+/* COUNTERS */
+.counters{background:linear-gradient(135deg,var(--teal),var(--teal-dark));padding:4rem 2rem;color:#fff}
+.counters-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.counter-item .counter-num{font-family:var(--font-heading);font-size:2.8rem;font-weight:800}
+.counter-item .counter-label{font-size:.85rem;opacity:.85;margin-top:.35rem}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.team-card{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid rgba(0,109,119,0.08);transition:var(--transition)}
+.team-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.team-card img{width:100%;height:280px;object-fit:cover}
+.team-info{padding:1.25rem}
+.team-info h3{font-family:var(--font-heading);font-size:1.05rem;font-weight:700;color:var(--dark)}
+.team-info .specialty{font-size:.8rem;color:var(--teal);font-weight:600;margin:.25rem 0}
+.team-info .crm{font-size:.75rem;color:var(--gray)}
+
+/* ARTICLES */
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.article-card{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid rgba(0,109,119,0.08);transition:var(--transition)}
+.article-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.article-card img{width:100%;height:200px;object-fit:cover}
+.article-body{padding:1.5rem}
+.article-tag{font-size:.7rem;background:rgba(0,109,119,0.08);color:var(--teal);padding:.2rem .6rem;border-radius:20px;font-weight:600;display:inline-block;margin-bottom:.75rem}
+.article-body h3{font-family:var(--font-heading);font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:.5rem;line-height:1.4}
+.article-body p{font-size:.8rem;color:var(--gray);line-height:1.6}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-info h3{font-family:var(--font-heading);font-size:1.3rem;font-weight:700;color:var(--dark);margin-bottom:1rem}
+.contact-info p{color:var(--gray);margin-bottom:1.5rem;line-height:1.8}
+.info-card{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;padding:1rem;background:var(--gray-light);border-radius:var(--radius)}
+.info-card .ic-icon{width:40px;height:40px;border-radius:10px;background:rgba(0,109,119,0.08);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.info-card .ic-label{font-size:.75rem;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.info-card .ic-value{font-size:.9rem;color:var(--dark);font-weight:500}
+.contact-form{background:var(--gray-light);border-radius:20px;padding:2.5rem}
+.contact-form h3{font-family:var(--font-heading);font-size:1.3rem;font-weight:700;color:var(--dark);margin-bottom:1.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.8rem;font-weight:600;color:var(--dark);margin-bottom:.4rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.75rem 1rem;border:1px solid rgba(0,109,119,0.15);border-radius:10px;font-family:var(--font-body);font-size:.9rem;background:#fff;transition:var(--transition)}.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(0,109,119,0.1)}
+.form-group textarea{resize:vertical;min-height:100px}
+.btn-submit{background:var(--teal);color:#fff;padding:.85rem 2.5rem;border:none;border-radius:50px;font-family:var(--font-body);font-size:.95rem;font-weight:600;cursor:pointer;transition:var(--transition);width:100%}.btn-submit:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:var(--shadow)}
+
+/* FOOTER */
+.footer{background:var(--dark);color:#fff;padding:4rem 2rem 2rem}
+.footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:3rem}
+.footer h4{font-family:var(--font-heading);font-size:1rem;font-weight:700;margin-bottom:1rem}
+.footer p,.footer a{font-size:.85rem;color:rgba(255,255,255,0.7);line-height:1.8}.footer a:hover{color:var(--teal-light)}
+.footer-bottom{max-width:1280px;margin:0 auto;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.75rem;color:rgba(255,255,255,0.5)}
+.footer-bottom a{color:var(--teal-light)}
+
+/* UTILITIES */
+.whatsapp-float{position:fixed;bottom:2rem;right:2rem;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(37,211,102,0.4);z-index:99;transition:var(--transition);font-size:1.5rem;color:#fff}.whatsapp-float:hover{transform:scale(1.1)}
+.back-top{position:fixed;bottom:6rem;right:2rem;width:44px;height:44px;background:var(--teal);color:#fff;border:none;border-radius:12px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;z-index:99;opacity:0;transform:translateY(10px);transition:var(--transition);box-shadow:var(--shadow)}.back-top.visible{opacity:1;transform:none}.back-top:hover{background:var(--teal-dark)}
+.gallery-link{position:fixed;bottom:2rem;left:2rem;background:rgba(0,109,119,0.9);color:#fff;padding:.6rem 1.2rem;border-radius:50px;font-size:.8rem;font-weight:600;z-index:99;transition:var(--transition);backdrop-filter:blur(10px)}.gallery-link:hover{background:var(--teal)}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--teal);color:#fff;padding:1rem 2rem;border-radius:12px;font-weight:600;font-size:.9rem;z-index:200;transition:var(--transition);box-shadow:var(--shadow-lg);opacity:0}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}.reveal.active{opacity:1;transform:translateY(0)}
+
+/* MOBILE NAV */
+.mobile-nav{display:none;position:fixed;inset:0;background:rgba(255,255,255,0.98);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2rem;backdrop-filter:blur(20px)}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-size:1.3rem;font-weight:600;color:var(--dark)}
+.mobile-nav .close-btn{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;font-size:1.8rem;cursor:pointer;color:var(--dark)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;text-align:center;gap:2rem}
+  .hero-content{max-width:100%}.hero-btns{justify-content:center}
+  .hero-visual{display:flex;justify-content:center}.hero-visual img{max-width:400px;height:380px}
+  .float-card-1,.float-card-3{display:none}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .quick-grid{grid-template-columns:repeat(2,1fr)}
+  .services-grid,.articles-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .header-top{display:none}
+  .nav{display:none}
+  .hamburger{display:flex}
+  .hero{min-height:auto;padding:6rem 0 3rem}
+  .quick-grid{grid-template-columns:1fr}
+  .services-grid,.articles-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .counters-grid{grid-template-columns:repeat(2,1fr)}
+  .form-row{grid-template-columns:1fr}
+  .hero-visual .float-card{display:none}
+}
+@media(max-width:480px){
+  .hero h1{font-size:1.8rem}
+  .counters-grid{grid-template-columns:1fr}
+}
+*:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:4px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important}}
+@media print{.header,.header-top,.hero,.whatsapp-float,.back-top,.gallery-link{display:none!important}body{color:#000;background:#fff}}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Pular para o conteúdo</a>
+
+<!-- HEADER TOP BAR -->
+<div class="header-top">
+  <div class="header-top-left">
+    <span>📞 <a href="tel:+551130001000">(11) 3000-1000</a></span>
+    <span>📧 <a href="mailto:contato@clearvision.com.br">contato@clearvision.com.br</a></span>
+    <span>🕐 Seg-Sex: 7h às 19h · Sáb: 7h às 13h</span>
+  </div>
+  <div class="header-top-right">
+    <a href="#">Portal do Paciente</a>
+    <a href="#">Resultados de Exames</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#83C5BE"/></svg></div>
+      <span class="logo-text">Clear<span>Vision</span></span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Especialidades</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#artigos">Blog</a>
+      <a href="#contato">Contato</a>
+      <button class="btn-schedule" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Agendar Consulta</button>
+    </nav>
+    <button class="hamburger" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.add('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-btn" onclick="this.parentElement.classList.remove('open')" aria-label="Fechar menu">✕</button>
+  <a href="#sobre" onclick="this.parentElement.classList.remove('open')">Sobre</a>
+  <a href="#servicos" onclick="this.parentElement.classList.remove('open')">Especialidades</a>
+  <a href="#equipe" onclick="this.parentElement.classList.remove('open')">Equipe</a>
+  <a href="#artigos" onclick="this.parentElement.classList.remove('open')">Blog</a>
+  <a href="#contato" onclick="this.parentElement.classList.remove('open')">Contato</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="main">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">👁️ Centro de Referência em Oftalmologia</div>
+      <h1>Sua Visão Merece o Melhor <span class="highlight">Cuidado</span></h1>
+      <p>Centro de Oftalmologia com tecnologia de última geração, equipamentos importados e equipe de especialistas com formação internacional. Mais de 50.000 procedimentos realizados com excelência.</p>
+      <div class="hero-btns">
+        <a href="#contato" class="btn-primary">Agendar Consulta →</a>
+        <a href="#servicos" class="btn-outline">Nossas Especialidades</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?w=700&q=80&auto=format&fit=crop" alt="Consultório oftalmológico moderno" loading="eager">
+      <div class="float-card float-card-1">
+        <div class="fc-icon" style="background:rgba(0,109,119,0.1)">👁️</div>
+        <div><div class="fc-num">50.000+</div><div class="fc-text">Procedimentos</div></div>
+      </div>
+      <div class="float-card float-card-2">
+        <div class="fc-icon" style="background:rgba(131,197,190,0.2)">⭐</div>
+        <div><div class="fc-num">4.9/5</div><div class="fc-text">Avaliação</div></div>
+      </div>
+      <div class="float-card float-card-3">
+        <div class="fc-icon" style="background:rgba(255,221,210,0.4)">🏆</div>
+        <div><div class="fc-num">15 Anos</div><div class="fc-text">de Excelência</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK ACCESS -->
+<section class="quick-access">
+  <div class="quick-grid">
+    <div class="quick-card"><div class="qc-icon">📅</div><h3>Agendar Consulta</h3><p>Marque online ou por telefone</p></div>
+    <div class="quick-card"><div class="qc-icon">📋</div><h3>Resultados de Exames</h3><p>Acesse seus resultados online</p></div>
+    <div class="quick-card"><div class="qc-icon">🔬</div><h3>Exames Diagnósticos</h3><p>OCT, Campimetria, Topografia</p></div>
+    <div class="quick-card"><div class="qc-icon">🚨</div><h3>Urgência Ocular</h3><p>Atendimento de urgência 24h</p></div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="section" id="sobre">
+  <div class="container">
+    <div class="about-grid reveal">
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=700&q=80&auto=format&fit=crop" alt="Equipe ClearVision">
+        <div class="accent-bar"></div>
+      </div>
+      <div class="about-content">
+        <div class="section-badge">Sobre Nós</div>
+        <h2>Referência em Saúde Ocular há 15 Anos</h2>
+        <p>O ClearVision é um centro de oftalmologia de alta complexidade, equipado com as mais avançadas tecnologias disponíveis no mundo para diagnóstico e tratamento de doenças oculares.</p>
+        <p>Nossa equipe é formada por oftalmologistas com subespecialização e experiência em centros de referência no Brasil e exterior, garantindo atendimento de excelência em todas as áreas da oftalmologia.</p>
+        <div class="about-stats">
+          <div class="about-stat"><div class="num" data-target="50000">0</div><div class="label">Procedimentos</div></div>
+          <div class="about-stat"><div class="num" data-target="12">0</div><div class="label">Especialistas</div></div>
+          <div class="about-stat"><div class="num" data-target="15">0</div><div class="label">Anos</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="section section-alt" id="servicos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Especialidades</div>
+      <h2>Áreas de Atuação</h2>
+      <p>Cobertura completa em oftalmologia clínica e cirúrgica com tecnologia de ponta</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal"><div class="service-icon">💎</div><h3>Cirurgia Refrativa (LASIK/PRK)</h3><p>Correção de miopia, hipermetropia e astigmatismo com laser excimer de última geração. Procedimento rápido e indolor com recuperação em 24h.</p></div>
+      <div class="service-card reveal"><div class="service-icon">🔍</div><h3>Catarata</h3><p>Cirurgia de catarata com facoemulsificação e implante de lentes intraoculares premium, multifocais e tóricas. Procedimento ambulatorial.</p></div>
+      <div class="service-card reveal"><div class="service-icon">🎯</div><h3>Retina e Vítreo</h3><p>Tratamento de degeneração macular, retinopatia diabética, descolamento de retina e injeções intravítreas com anti-VEGF.</p></div>
+      <div class="service-card reveal"><div class="service-icon">📊</div><h3>Glaucoma</h3><p>Diagnóstico precoce com OCT e campimetria computadorizada. Tratamento clínico, laser (SLT/ALT) e cirúrgico (trabeculectomia, MIGS).</p></div>
+      <div class="service-card reveal"><div class="service-icon">👶</div><h3>Oftalmopediatria</h3><p>Atendimento especializado para crianças desde o teste do olhinho. Tratamento de estrabismo, ambliopia e erros refrativos infantis.</p></div>
+      <div class="service-card reveal"><div class="service-icon">✨</div><h3>Plástica Ocular</h3><p>Cirurgia de pálpebras (blefaroplastia), correção de ptose, remoção de lesões e procedimentos estéticos da região periocular.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTERS -->
+<section class="counters">
+  <div class="counters-grid">
+    <div class="counter-item"><div class="counter-num" data-target="50000">0</div><div class="counter-label">Procedimentos Realizados</div></div>
+    <div class="counter-item"><div class="counter-num" data-target="98">0</div><div class="counter-label">% de Satisfação</div></div>
+    <div class="counter-item"><div class="counter-num" data-target="12">0</div><div class="counter-label">Especialistas</div></div>
+    <div class="counter-item"><div class="counter-num" data-target="15">0</div><div class="counter-label">Anos de Experiência</div></div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section class="section" id="equipe">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Nossa Equipe</div>
+      <h2>Corpo Clínico</h2>
+      <p>Especialistas com formação internacional e subespecialização</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80&auto=format&fit=crop" alt="Dr. Ricardo Mendes">
+        <div class="team-info"><h3>Dr. Ricardo Mendes</h3><div class="specialty">Retina e Vítreo</div><div class="crm">CRM/SP 98.765 · RQE 34567</div></div>
+      </div>
+      <div class="team-card reveal">
+        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80&auto=format&fit=crop" alt="Dra. Carolina Vasconcelos">
+        <div class="team-info"><h3>Dra. Carolina Vasconcelos</h3><div class="specialty">Cirurgia Refrativa</div><div class="crm">CRM/SP 87.654 · RQE 23456</div></div>
+      </div>
+      <div class="team-card reveal">
+        <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&q=80&auto=format&fit=crop" alt="Dr. Fernando Albuquerque">
+        <div class="team-info"><h3>Dr. Fernando Albuquerque</h3><div class="specialty">Glaucoma</div><div class="crm">CRM/SP 76.543 · RQE 12345</div></div>
+      </div>
+      <div class="team-card reveal">
+        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964ac31?w=400&q=80&auto=format&fit=crop" alt="Dra. Beatriz Nakamura">
+        <div class="team-info"><h3>Dra. Beatriz Nakamura</h3><div class="specialty">Oftalmopediatria</div><div class="crm">CRM/SP 65.432 · RQE 67890</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTIGOS -->
+<section class="section section-alt" id="artigos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Blog</div>
+      <h2>ClearVision Explica</h2>
+      <p>Informações de qualidade sobre saúde ocular</p>
+    </div>
+    <div class="articles-grid">
+      <div class="article-card reveal">
+        <img src="https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?w=500&q=80&auto=format&fit=crop" alt="Cirurgia refrativa">
+        <div class="article-body"><span class="article-tag">Cirurgia Refrativa</span><h3>LASIK ou PRK: Qual a Melhor Opção para Você?</h3><p>Entenda as diferenças entre as técnicas de correção visual a laser e saiba qual é mais indicada para o seu caso.</p></div>
+      </div>
+      <div class="article-card reveal">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&q=80&auto=format&fit=crop" alt="Glaucoma">
+        <div class="article-body"><span class="article-tag">Glaucoma</span><h3>Glaucoma: O Ladrão Silencioso da Visão</h3><p>Saiba por que o diagnóstico precoce é fundamental e como a tecnologia OCT revolucionou a detecção desta doença.</p></div>
+      </div>
+      <div class="article-card reveal">
+        <img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=500&q=80&auto=format&fit=crop" alt="Saúde ocular infantil">
+        <div class="article-body"><span class="article-tag">Infantil</span><h3>Quando Levar Seu Filho ao Oftalmologista?</h3><p>Marcos importantes da saúde ocular infantil e sinais de alerta que os pais devem observar desde os primeiros meses.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="section" id="contato">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Contato</div>
+      <h2>Agende Sua Consulta</h2>
+      <p>Estamos prontos para cuidar da sua saúde ocular</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Informações de Contato</h3>
+        <p>Entre em contato conosco para agendar sua consulta ou tirar dúvidas. Nossa equipe está pronta para atendê-lo.</p>
+        <div class="info-card"><div class="ic-icon">📍</div><div><div class="ic-label">Endereço</div><div class="ic-value">Av. Paulista, 1578 - Sala 1201<br>Bela Vista, São Paulo - SP</div></div></div>
+        <div class="info-card"><div class="ic-icon">📞</div><div><div class="ic-label">Telefone</div><div class="ic-value">(11) 3000-1000</div></div></div>
+        <div class="info-card"><div class="ic-icon">📧</div><div><div class="ic-label">E-mail</div><div class="ic-value">contato@clearvision.com.br</div></div></div>
+        <div class="info-card"><div class="ic-icon">🕐</div><div><div class="ic-label">Horário</div><div class="ic-value">Seg-Sex: 7h às 19h · Sáb: 7h às 13h</div></div></div>
+      </div>
+      <div class="contact-form">
+        <h3>Formulário de Agendamento</h3>
+        <form onsubmit="event.preventDefault();showToast('Solicitação enviada com sucesso! Entraremos em contato.')">
+          <div class="form-row">
+            <div class="form-group"><label for="name">Nome Completo</label><input type="text" id="name" placeholder="Seu nome" required></div>
+            <div class="form-group"><label for="phone">Telefone</label><input type="tel" id="phone" placeholder="(11) 99999-9999" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label for="email">E-mail</label><input type="email" id="email" placeholder="seu@email.com" required></div>
+            <div class="form-group"><label for="specialty">Especialidade</label>
+              <select id="specialty" required><option value="">Selecione...</option><option>Cirurgia Refrativa</option><option>Catarata</option><option>Retina e Vítreo</option><option>Glaucoma</option><option>Oftalmopediatria</option><option>Plástica Ocular</option><option>Consulta Geral</option></select>
+            </div>
+          </div>
+          <div class="form-group"><label for="message">Observações</label><textarea id="message" placeholder="Descreva brevemente sua necessidade..."></textarea></div>
+          <button type="submit" class="btn-submit">Solicitar Agendamento →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h4>ClearVision</h4>
+      <p>Centro de Oftalmologia Avançada com tecnologia de última geração e equipe de especialistas com formação internacional.</p>
+      <p style="margin-top:1rem;font-size:.75rem;opacity:.5">Este site é um template demonstrativo com dados fictícios. Publicidade médica em conformidade com a Resolução 1.974/2011 do CFM.</p>
+    </div>
+    <div>
+      <h4>Especialidades</h4>
+      <a href="#servicos">Cirurgia Refrativa</a><br>
+      <a href="#servicos">Catarata</a><br>
+      <a href="#servicos">Retina e Vítreo</a><br>
+      <a href="#servicos">Glaucoma</a><br>
+      <a href="#servicos">Oftalmopediatria</a>
+    </div>
+    <div>
+      <h4>Links Úteis</h4>
+      <a href="#sobre">Sobre Nós</a><br>
+      <a href="#equipe">Corpo Clínico</a><br>
+      <a href="#artigos">Blog</a><br>
+      <a href="#contato">Contato</a><br>
+      <a href="#">Portal do Paciente</a>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <p>Av. Paulista, 1578 - Sala 1201<br>Bela Vista, São Paulo - SP</p>
+      <p>(11) 3000-1000</p>
+      <p>contato@clearvision.com.br</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>ClearVision © 2026 — Todos os direitos reservados. Template demonstrativo com dados fictícios.</p>
+    <p>Desenvolvido por <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer">PixelCode Studio</a></p>
+  </div>
+</footer>
+
+<!-- FLOAT ELEMENTS -->
+<a href="https://wa.me/5511930001000?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20no%20ClearVision." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">💬</a>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+<a href="/whitelabel/templates/" class="gallery-link">← Galeria</a>
+<div class="toast" id="toast"></div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MedicalBusiness","name":"ClearVision — Centro de Oftalmologia Avançada","description":"Centro de Oftalmologia com tecnologia de ponta em cirurgia refrativa, catarata, retina e glaucoma.","url":"https://templatesadv.vercel.app/saude-07","telephone":"(11) 3000-1000","address":{"@type":"PostalAddress","streetAddress":"Av. Paulista, 1578 - Sala 1201","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"},"medicalSpecialty":"Ophthalmology","openingHours":"Mo-Fr 07:00-19:00, Sa 07:00-13:00"}
+</script>
+
+<script>
+// Toast
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4000)}
+// Back to top
+const backTop=document.getElementById('backTop');
+window.addEventListener('scroll',()=>{backTop.classList.toggle('visible',scrollY>500)});
+// Scroll header
+const header=document.querySelector('.header');
+window.addEventListener('scroll',()=>{header.style.boxShadow=scrollY>50?'0 2px 20px rgba(0,0,0,0.08)':'none'});
+// Reveal animation
+const revealEls=document.querySelectorAll('.reveal');
+const revealObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');revealObs.unobserve(e.target)}})},{threshold:0.1});
+revealEls.forEach(el=>revealObs.observe(el));
+// Counter animation
+const counterEls=document.querySelectorAll('[data-target]');
+const counterObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){const target=+e.target.dataset.target;const duration=2000;const start=performance.now();const animate=(now)=>{const progress=Math.min((now-start)/duration,1);e.target.textContent=Math.floor(progress*target).toLocaleString('pt-BR');if(progress<1)requestAnimationFrame(animate)};requestAnimationFrame(animate);counterObs.unobserve(e.target)}})},{threshold:0.3});
+counterEls.forEach(el=>counterObs.observe(el));
+</script>
+</body>
+</html>

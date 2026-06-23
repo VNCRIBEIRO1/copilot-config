@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mente Plena — Psicologia Avançada | Dra. Juliana Almeida</title>
+<meta name="description" content="Psicóloga Clínica CRP 06/11223. Neuropsicologia e TCC. Atendimento presencial e online. Ambiente terapêutico premium em Presidente Prudente.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='36' height='36' rx='8' fill='%238B5CF6'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='white' font-family='sans-serif'%3EΨ%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mente Plena — Dra. Juliana Almeida, Psicóloga">
+<meta property="og:description" content="Psicologia avançada com abordagem científica. CRP 06/11223. Presidente Prudente.">
+<meta property="og:url" content="https://templatespixelcodestudio.vercel.app/psicologia-04">
+<link rel="canonical" href="https://templatespixelcodestudio.vercel.app/psicologia-04">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg-dark:#0A0118;--bg-card:#140826;--bg-glass:rgba(139,92,246,0.06);
+  --primary:#8B5CF6;--primary-light:#A78BFA;--primary-glow:rgba(139,92,246,0.25);
+  --accent:#00D4FF;--accent-glow:rgba(0,212,255,0.15);
+  --text:#E8E0F5;--text-light:#9B8FBD;--text-muted:#5E5178;
+  --border:rgba(139,92,246,0.1);
+  --heading:'Space Grotesk',system-ui,sans-serif;
+  --body:'IBM Plex Sans',system-ui,sans-serif;
+  --radius:16px;--radius-sm:10px;--radius-full:50px;
+  --shadow:0 8px 30px rgba(0,0,0,0.3);
+  --transition:0.3s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg-dark);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+.container{max-width:1100px;margin:0 auto;padding:0 2rem}
+.section-label{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.15em;margin-bottom:.5rem}
+.section-label::before{content:'';width:28px;height:2px;background:linear-gradient(90deg,var(--accent),var(--primary));border-radius:2px}
+.section-title{font-family:var(--heading);font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:700;line-height:1.2;margin-bottom:.75rem;background:linear-gradient(135deg,#fff,var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.75rem;border-radius:var(--radius-full);font-family:var(--body);font-size:.85rem;font-weight:700;cursor:pointer;transition:var(--transition);border:none}
+.btn-primary{background:linear-gradient(135deg,var(--primary),#6D28D9);color:#fff;box-shadow:0 4px 20px var(--primary-glow)}
+.btn-primary:hover{box-shadow:0 8px 30px rgba(139,92,246,0.4);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--primary-light);border:1.5px solid var(--primary);backdrop-filter:blur(4px)}
+.btn-outline:hover{background:var(--primary);color:#fff}
+.btn-accent{background:linear-gradient(135deg,var(--accent),#0090B0);color:var(--bg-dark);font-weight:700;box-shadow:0 4px 20px var(--accent-glow)}
+.btn-accent:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,212,255,0.35)}
+.skip-link{position:absolute;top:-100%;left:1rem;background:var(--primary);color:#fff;padding:.75rem 1.5rem;border-radius:0 0 8px 8px;z-index:200}.skip-link:focus{top:0}
+.glass{background:rgba(20,8,38,0.6);backdrop-filter:blur(20px);border:1px solid var(--border)}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;padding:.8rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(10,1,24,0.75);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.logo{display:flex;align-items:center;gap:.6rem}
+.logo-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.2rem}
+.logo-text{font-family:var(--heading);font-size:1.1rem;font-weight:700;background:linear-gradient(90deg,#fff,var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo-sub{font-size:.55rem;color:var(--text-muted);display:block;-webkit-text-fill-color:var(--text-muted)}
+nav{display:flex;align-items:center;gap:1.5rem}
+nav a{font-size:.82rem;font-weight:500;color:var(--text-light);transition:var(--transition)}
+nav a:hover{color:var(--primary-light)}
+.hamburger{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:5px}
+.hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px}
+.mobile-nav{position:fixed;inset:0;background:rgba(10,1,24,0.97);backdrop-filter:blur(20px);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;opacity:0;pointer-events:none;transition:var(--transition)}
+.mobile-nav.open{opacity:1;pointer-events:all}
+.mobile-nav a{font-family:var(--heading);font-size:1.2rem;color:var(--text)}
+.mobile-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:7rem 2rem 4rem;overflow:hidden}
+#particles{position:absolute;inset:0;z-index:0}
+.hero-glow{position:absolute;width:500px;height:500px;border-radius:50%;filter:blur(120px);opacity:.2;z-index:0}
+.hero-glow-1{background:var(--primary);top:-100px;right:-100px}
+.hero-glow-2{background:var(--accent);bottom:-100px;left:-100px;opacity:.1}
+.hero-content{position:relative;z-index:2;max-width:650px;margin:0 auto;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;background:var(--bg-glass);border:1px solid var(--border);border-radius:var(--radius-full);font-size:.72rem;font-weight:700;color:var(--accent);margin-bottom:1.5rem}
+.hero h1{font-family:var(--heading);font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.1;margin-bottom:1rem}
+.hero h1 .grad{background:linear-gradient(135deg,var(--primary-light),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1rem;color:var(--text-light);max-width:520px;margin:0 auto 2rem;line-height:1.8}
+.hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hero-stats{display:flex;justify-content:center;gap:3rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.hs-item{text-align:center}
+.hs-num{font-family:var(--heading);font-size:2rem;font-weight:700;background:linear-gradient(135deg,#fff,var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hs-label{font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em}
+
+/* TIMELINE */
+.timeline-section{padding:5rem 2rem;position:relative}
+.timeline{max-width:700px;margin:2.5rem auto 0;position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:14px;top:0;bottom:0;width:2px;background:linear-gradient(var(--primary),var(--accent))}
+.tl-item{position:relative;margin-bottom:2rem}
+.tl-dot{position:absolute;left:-34px;width:14px;height:14px;border-radius:50%;background:var(--primary);border:3px solid var(--bg-dark);z-index:1}
+.tl-item:nth-child(even) .tl-dot{background:var(--accent)}
+.tl-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.25rem;transition:var(--transition)}
+.tl-card:hover{border-color:var(--primary);box-shadow:0 4px 20px var(--primary-glow)}
+.tl-year{font-size:.7rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.1em}
+.tl-card h3{font-family:var(--heading);font-size:1rem;font-weight:600;margin:.2rem 0 .3rem}
+.tl-card p{font-size:.82rem;color:var(--text-light)}
+
+/* APPROACH CARDS */
+.approach{padding:5rem 2rem}
+.approach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem;margin-top:2.5rem}
+.approach-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;transition:var(--transition);position:relative;overflow:hidden}
+.approach-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));transform:scaleX(0);transition:var(--transition);transform-origin:left}
+.approach-card:hover::before{transform:scaleX(1)}
+.approach-card:hover{border-color:var(--primary);transform:translateY(-4px)}
+.approach-card .ac-icon{font-size:2rem;margin-bottom:.75rem}
+.approach-card h3{font-family:var(--heading);font-size:1rem;font-weight:600;margin-bottom:.5rem}
+.approach-card p{font-size:.82rem;color:var(--text-light);line-height:1.8}
+
+/* BOOKING STEPS */
+.booking{padding:5rem 2rem}
+.booking-wizard{max-width:600px;margin:2.5rem auto 0}
+.bw-progress{display:flex;justify-content:space-between;margin-bottom:2rem;position:relative}
+.bw-progress::before{content:'';position:absolute;top:50%;left:0;right:0;height:2px;background:var(--border);transform:translateY(-50%);z-index:0}
+.bw-step{width:42px;height:42px;border-radius:50%;background:var(--bg-card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:700;font-size:.85rem;z-index:1;transition:var(--transition);color:var(--text-muted)}
+.bw-step.active{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:0 0 20px var(--primary-glow)}
+.bw-step.done{background:var(--accent);border-color:var(--accent);color:var(--bg-dark)}
+.bw-panel{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;min-height:280px;display:none}
+.bw-panel.active{display:block}
+.bw-panel h3{font-family:var(--heading);font-size:1.1rem;font-weight:600;margin-bottom:1.5rem}
+.modal-select{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.modal-opt{background:var(--bg-glass);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:1rem;cursor:pointer;text-align:center;transition:var(--transition)}
+.modal-opt:hover{border-color:var(--primary-light)}
+.modal-opt.selected{border-color:var(--primary);background:var(--primary-glow);box-shadow:0 0 15px var(--primary-glow)}
+.modal-opt .mo-icon{font-size:1.5rem;margin-bottom:.3rem}
+.modal-opt h4{font-size:.85rem;font-weight:600;margin-bottom:.15rem}
+.modal-opt p{font-size:.7rem;color:var(--text-muted)}
+.date-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.4rem;margin:1rem 0}
+.dg-head{text-align:center;font-size:.65rem;font-weight:700;color:var(--text-muted);padding:.3rem}
+.dg-day{padding:.5rem;text-align:center;border-radius:8px;cursor:pointer;font-size:.8rem;transition:var(--transition);background:var(--bg-glass);border:1px solid var(--border)}
+.dg-day:hover{border-color:var(--primary)}
+.dg-day.selected{background:var(--primary);border-color:var(--primary);color:#fff}
+.dg-day.disabled{opacity:.2;cursor:not-allowed;pointer-events:none}
+.time-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-top:1rem}
+.tg-slot{padding:.6rem;text-align:center;background:var(--bg-glass);border:1.5px solid var(--border);border-radius:8px;font-size:.8rem;cursor:pointer;transition:var(--transition)}
+.tg-slot:hover{border-color:var(--accent)}
+.tg-slot.selected{background:var(--accent);border-color:var(--accent);color:var(--bg-dark);font-weight:700}
+.bw-actions{display:flex;justify-content:space-between;margin-top:1.5rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.78rem;font-weight:600;margin-bottom:.3rem;color:var(--text-light)}
+.form-group input,.form-group textarea{width:100%;padding:.7rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-dark);color:var(--text);font-family:var(--body);font-size:.85rem;transition:var(--transition)}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-glow)}
+.form-group textarea{resize:vertical;min-height:70px}
+.confirm-summary{background:var(--bg-glass);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.25rem;margin-bottom:1.5rem}
+.cs-row{display:flex;justify-content:space-between;margin-bottom:.4rem;font-size:.85rem}
+.cs-row span:last-child{color:var(--primary-light);font-weight:600}
+
+/* CHAT BOT */
+.chat-toggle{position:fixed;bottom:2rem;right:5.5rem;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--primary),#6D28D9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:90;box-shadow:0 4px 20px var(--primary-glow);transition:var(--transition)}
+.chat-toggle:hover{transform:scale(1.08)}
+.chat-toggle svg{width:24px;height:24px;fill:#fff}
+.chat-badge{position:absolute;top:-3px;right:-3px;width:16px;height:16px;background:var(--accent);border-radius:50%;font-size:.6rem;font-weight:700;color:var(--bg-dark);display:flex;align-items:center;justify-content:center}
+.chatbox{position:fixed;bottom:6rem;right:2rem;width:360px;max-height:500px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);display:flex;flex-direction:column;z-index:91;box-shadow:var(--shadow);opacity:0;transform:translateY(20px) scale(.95);pointer-events:none;transition:.3s ease}
+.chatbox.open{opacity:1;transform:none;pointer-events:all}
+.cb-header{background:linear-gradient(135deg,var(--primary),#6D28D9);padding:1rem 1.25rem;border-radius:var(--radius) var(--radius) 0 0;display:flex;justify-content:space-between;align-items:center}
+.cb-header h4{color:#fff;font-family:var(--heading);font-size:.9rem}
+.cb-header button{background:none;border:none;color:rgba(255,255,255,0.6);cursor:pointer;font-size:1.2rem}
+.cb-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.6rem;max-height:320px}
+.cb-msg{max-width:85%;padding:.6rem .9rem;border-radius:12px;font-size:.8rem;line-height:1.6;animation:msgIn .3s ease}
+.cb-bot{background:var(--bg-glass);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px}
+.cb-user{background:var(--primary);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.cb-options{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 1rem .75rem;animation:msgIn .3s ease}
+.cb-opt{padding:.35rem .7rem;background:var(--bg-glass);border:1px solid var(--border);border-radius:var(--radius-full);font-size:.72rem;cursor:pointer;transition:var(--transition);font-family:var(--body);color:var(--text)}
+.cb-opt:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* TESTIMONIALS */
+.testimonials{padding:5rem 2rem}
+.test-carousel{display:flex;gap:1.25rem;overflow-x:auto;padding:2rem 0;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.test-carousel::-webkit-scrollbar{height:6px}
+.test-carousel::-webkit-scrollbar-thumb{background:var(--primary);border-radius:3px}
+.test-card{min-width:320px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;scroll-snap-align:start;transition:var(--transition)}
+.test-card:hover{border-color:var(--primary)}
+.tc-stars{color:#F9CA24;font-size:.8rem;letter-spacing:2px;margin-bottom:.5rem}
+.tc-quote{font-size:.85rem;line-height:1.8;color:var(--text-light);font-style:italic;margin-bottom:1rem}
+.tc-author{font-size:.82rem;font-weight:700;color:var(--primary-light)}
+.tc-since{font-size:.68rem;color:var(--text-muted)}
+
+/* BLOG */
+.blog{padding:5rem 2rem}
+.blog-carousel-wrap{position:relative;max-width:1100px;margin:2.5rem auto 0;overflow:hidden}
+.blog-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.blog-slide{min-width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;padding:0 .5rem;flex-shrink:0}
+.blog-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition)}
+.blog-card:hover{border-color:var(--primary);transform:translateY(-4px)}
+.blog-thumb{height:180px;background:linear-gradient(135deg,var(--primary-glow),var(--accent-glow));display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+.blog-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,var(--bg-card))}
+.blog-body{padding:1.25rem}
+.blog-tag{display:inline-block;padding:.2rem .6rem;background:var(--primary-glow);border:1px solid var(--border);border-radius:var(--radius-full);font-size:.65rem;font-weight:700;color:var(--primary-light);margin-bottom:.5rem}
+.blog-card h3{font-family:var(--heading);font-size:.95rem;font-weight:600;line-height:1.4;margin-bottom:.5rem}
+.blog-card p{font-size:.78rem;color:var(--text-light);line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.blog-meta{display:flex;align-items:center;gap:.75rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border);font-size:.68rem;color:var(--text-muted)}
+.blog-nav{display:flex;justify-content:center;align-items:center;gap:1.5rem;margin-top:2rem}
+.blog-arrow{width:40px;height:40px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:var(--transition)}
+.blog-arrow:hover{background:var(--primary);border-color:var(--primary);color:#fff}
+.blog-arrow:disabled{opacity:.3;cursor:not-allowed}
+.blog-dots{display:flex;gap:.5rem}
+.blog-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;cursor:pointer;transition:var(--transition);padding:0}
+.blog-dot.active{background:var(--primary);width:24px;border-radius:4px}
+
+/* CONTACT */
+.contact{padding:5rem 2rem;background:var(--bg-card)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2.5rem;max-width:1100px;margin-left:auto;margin-right:auto}
+.cinfo{display:flex;flex-direction:column;gap:1rem}
+.ci-card{display:flex;gap:.85rem;padding:1rem;background:var(--bg-glass);border:1px solid var(--border);border-radius:var(--radius-sm);transition:var(--transition)}
+.ci-card:hover{border-color:var(--primary)}
+.ci-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-card h4{font-size:.82rem;font-weight:700}
+.ci-card p{font-size:.78rem;color:var(--text-muted)}
+
+/* FOOTER */
+.footer{padding:3rem 2rem 1.5rem;border-top:1px solid var(--border)}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2.5rem;max-width:1100px;margin:0 auto}
+.footer h4{font-family:var(--heading);margin-bottom:.75rem}
+.footer p,.footer a{font-size:.78rem;color:var(--text-muted);line-height:1.8}
+.footer a:hover{color:var(--primary-light)}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.footer-bottom{border-top:1px solid var(--border);margin-top:2rem;padding-top:1rem;text-align:center;max-width:1100px;margin-left:auto;margin-right:auto}
+.footer-bottom p{font-size:.65rem;color:var(--text-muted);line-height:1.8;opacity:.5}
+
+/* FLOAT */
+.gallery-link{position:fixed;bottom:2rem;left:2rem;padding:.5rem 1rem;background:rgba(139,92,246,0.85);color:#fff;border-radius:var(--radius-full);font-size:.72rem;font-weight:700;z-index:90;transition:var(--transition)}
+.gallery-link:hover{transform:translateY(-2px)}
+.back-top{position:fixed;bottom:5.5rem;right:2rem;width:40px;height:40px;background:var(--primary);color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:89;opacity:0;transform:translateY(10px);transition:var(--transition)}
+.back-top.visible{opacity:1;transform:none}
+
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:linear-gradient(135deg,var(--primary),#6D28D9);color:#fff;padding:1rem 2rem;border-radius:var(--radius-sm);font-weight:600;z-index:300;transition:.4s ease;opacity:0;font-size:.85rem}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+.reveal{opacity:0;transform:translateY(25px);transition:.6s ease}.reveal.active{opacity:1;transform:none}
+
+@media(max-width:1024px){nav{display:none}.hamburger{display:flex}.hero-stats{gap:1.5rem}.booking-wizard{max-width:100%}.modal-select{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}.test-card{min-width:280px}.blog-slide{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.time-grid{grid-template-columns:repeat(3,1fr)}.chatbox{width:calc(100vw - 2rem);right:1rem;bottom:5.5rem}.date-grid{font-size:.72rem}.blog-slide{grid-template-columns:1fr}.blog-thumb{height:140px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important}#particles{display:none}}
+@media print{.header,.gallery-link,.back-top,.chat-toggle,.chatbox,.mobile-nav{display:none!important}body{background:#fff!important;color:#000!important}:root{--text:#000;--text-light:#333;--bg-card:#fff;--border:#ccc}}
+*:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Pular para o conteúdo</a>
+
+<header class="header">
+  <a href="#" class="logo">
+    <div class="logo-icon">Ψ</div>
+    <div><span class="logo-text">Mente Plena</span><span class="logo-sub">Dra. Juliana Almeida • CRP 06/11223</span></div>
+  </a>
+  <nav>
+    <a href="#formacao">Formação</a>
+    <a href="#abordagens">Abordagens</a>
+    <a href="#agendar">Agendar</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#blog">Blog</a>
+    <a href="#contato">Contato</a>
+    <a href="#agendar" class="btn btn-primary" style="padding:.45rem 1.15rem;font-size:.78rem">Agendar →</a>
+  </nav>
+  <button class="hamburger" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" onclick="this.parentElement.classList.remove('open')">✕</button>
+  <a href="#formacao" onclick="this.parentElement.classList.remove('open')">Formação</a>
+  <a href="#abordagens" onclick="this.parentElement.classList.remove('open')">Abordagens</a>
+  <a href="#agendar" onclick="this.parentElement.classList.remove('open')">Agendar</a>
+  <a href="#blog" onclick="this.parentElement.classList.remove('open')">Blog</a>
+  <a href="#contato" onclick="this.parentElement.classList.remove('open')">Contato</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="main">
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <canvas id="particles"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge">✦ CRP 06/11223 — Neuropsicologia & TCC</div>
+    <h1>Transforme sua mente.<br>Desperte seu <span class="grad">potencial</span></h1>
+    <p>Psicologia clínica baseada em evidências científicas. Neuropsicologia, TCC de terceira onda e mindfulness. Atendimento presencial e online.</p>
+    <div class="hero-buttons">
+      <a href="#agendar" class="btn btn-primary">Agendar Consulta</a>
+      <a href="#formacao" class="btn btn-outline">Minha Formação</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs-item"><div class="hs-num" data-target="12">0</div><div class="hs-label">Anos de Prática</div></div>
+      <div class="hs-item"><div class="hs-num" data-target="2500">0</div><div class="hs-label">Pacientes</div></div>
+      <div class="hs-item"><div class="hs-num" data-target="98">0</div><div class="hs-label">% Satisfação</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section" id="formacao">
+  <div class="container" style="text-align:center">
+    <div class="section-label" style="justify-content:center;display:flex">Formação</div>
+    <h2 class="section-title">Trajetória Acadêmica</h2>
+  </div>
+  <div class="timeline reveal">
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-year">2014</div><h3>Graduação em Psicologia — USP</h3><p>Bacharelado e formação em psicologia clínica pela Universidade de São Paulo.</p></div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-year">2016</div><h3>Especialização em TCC — USP</h3><p>Pós-graduação em Terapia Cognitivo-Comportamental com ênfase em transtornos de ansiedade.</p></div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-year">2018</div><h3>Mestrado em Neuropsicologia — UNIFESP</h3><p>Pesquisa sobre neuroplasticidade e intervenções cognitivas em pacientes com TDAH.</p></div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-year">2020</div><h3>Formação em Mindfulness — Oxford</h3><p>Certificação internacional em Mindfulness-Based Cognitive Therapy (MBCT).</p></div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-year">2023</div><h3>Doutorado em Psicologia Clínica — USP</h3><p>Tese sobre protocolos de TCC de terceira onda em ambientes digitais.</p></div></div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach" id="abordagens">
+  <div class="container" style="text-align:center">
+    <div class="section-label" style="justify-content:center;display:flex">Abordagens</div>
+    <h2 class="section-title">Especialidades & Abordagens</h2>
+    <div class="approach-grid reveal">
+      <div class="approach-card"><div class="ac-icon">🧠</div><h3>Neuropsicologia</h3><p>Avaliação e reabilitação neuropsicológica. Mapeamento cognitivo para diagnóstico preciso.</p></div>
+      <div class="approach-card"><div class="ac-icon">⚡</div><h3>TCC 3ª Onda</h3><p>ACT, DBT e Terapia Focada na Compaixão. Evidências científicas para mudanças reais.</p></div>
+      <div class="approach-card"><div class="ac-icon">🧘</div><h3>Mindfulness</h3><p>MBCT — Terapia Cognitiva Baseada em Mindfulness. Redução de estresse e prevenção de recaídas.</p></div>
+      <div class="approach-card"><div class="ac-icon">🎯</div><h3>TDAH & Funções Executivas</h3><p>Protocolo especializado para crianças, adolescentes e adultos com déficit de atenção.</p></div>
+      <div class="approach-card"><div class="ac-icon">😰</div><h3>Ansiedade & Pânico</h3><p>Exposição gradual, reestruturação cognitiva e técnicas de regulação emocional.</p></div>
+      <div class="approach-card"><div class="ac-icon">💤</div><h3>Insônia & Sono</h3><p>TCC para insônia (TCC-I). Higiene do sono e regulação de ciclo circadiano.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING WIZARD -->
+<section class="booking" id="agendar">
+  <div class="container" style="text-align:center">
+    <div class="section-label" style="justify-content:center;display:flex">Agendamento</div>
+    <h2 class="section-title">Agende em 4 Passos</h2>
+    <p style="color:var(--text-light);max-width:500px;margin:0 auto">Processo simples e rápido. Escolha a modalidade, data, horário e confirme seus dados.</p>
+  </div>
+  <div class="booking-wizard reveal">
+    <div class="bw-progress">
+      <div class="bw-step active" id="bws1">1</div>
+      <div class="bw-step" id="bws2">2</div>
+      <div class="bw-step" id="bws3">3</div>
+      <div class="bw-step" id="bws4">4</div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="bw-panel active" id="bwp1">
+      <h3>Escolha a Modalidade</h3>
+      <div class="modal-select">
+        <div class="modal-opt" onclick="selectMod(this,'Presencial — R$ 200')"><div class="mo-icon">🏥</div><h4>Presencial</h4><p>R$ 200 • 50 min</p></div>
+        <div class="modal-opt" onclick="selectMod(this,'Online — R$ 170')"><div class="mo-icon">📹</div><h4>Online</h4><p>R$ 170 • 50 min</p></div>
+        <div class="modal-opt" onclick="selectMod(this,'Neuropsicologia — R$ 350')"><div class="mo-icon">🧠</div><h4>Neuropsicologia</h4><p>R$ 350 • 90 min</p></div>
+        <div class="modal-opt" onclick="selectMod(this,'Terapia de Casal — R$ 280')"><div class="mo-icon">💑</div><h4>Casal</h4><p>R$ 280 • 75 min</p></div>
+      </div>
+      <div class="bw-actions"><div></div><button class="btn btn-primary" onclick="nextStep(2)">Próximo →</button></div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="bw-panel" id="bwp2">
+      <h3>Escolha a Data</h3>
+      <div id="calHeader" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem">
+        <button class="btn btn-outline" style="padding:.3rem .7rem;font-size:.75rem" onclick="changeMonth(-1)">‹</button>
+        <span style="font-weight:700;font-size:.9rem" id="calTitle"></span>
+        <button class="btn btn-outline" style="padding:.3rem .7rem;font-size:.75rem" onclick="changeMonth(1)">›</button>
+      </div>
+      <div class="date-grid" id="dateGrid"></div>
+      <div class="bw-actions"><button class="btn btn-outline" onclick="nextStep(1)">← Voltar</button><button class="btn btn-primary" onclick="nextStep(3)">Próximo →</button></div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="bw-panel" id="bwp3">
+      <h3>Escolha o Horário</h3>
+      <div class="time-grid" id="timeGrid"></div>
+      <div class="bw-actions" style="margin-top:1.5rem"><button class="btn btn-outline" onclick="nextStep(2)">← Voltar</button><button class="btn btn-primary" onclick="nextStep(4)">Próximo →</button></div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="bw-panel" id="bwp4">
+      <h3>Confirme seus Dados</h3>
+      <div class="confirm-summary" id="confirmSummary"></div>
+      <form onsubmit="submitBooking(event)">
+        <div class="form-group"><label>Nome Completo *</label><input type="text" id="bkName" required placeholder="Seu nome completo"></div>
+        <div class="form-group"><label>Telefone *</label><input type="tel" id="bkPhone" required placeholder="(18) 99999-9999"></div>
+        <div class="form-group"><label>E-mail *</label><input type="email" id="bkEmail" required placeholder="seu@email.com"></div>
+        <div class="form-group"><label>Observações</label><textarea placeholder="Algo que gostaria de mencionar?"></textarea></div>
+        <div class="bw-actions"><button type="button" class="btn btn-outline" onclick="nextStep(3)">← Voltar</button><button type="submit" class="btn btn-accent">✓ Confirmar Agendamento</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="depoimentos">
+  <div class="container">
+    <div class="section-label">Depoimentos</div>
+    <h2 class="section-title">Resultados Reais</h2>
+    <div class="test-carousel reveal">
+      <div class="test-card"><div class="tc-stars">★★★★★</div><div class="tc-quote">"A Dra. Juliana utiliza técnicas que realmente funcionam. Em 3 meses de TCC, minha ansiedade generalizada diminuiu drasticamente. O ambiente do consultório é muito acolhedor."</div><div class="tc-author">Marcos R.</div><div class="tc-since">Paciente há 8 meses</div></div>
+      <div class="test-card"><div class="tc-stars">★★★★★</div><div class="tc-quote">"A avaliação neuropsicológica foi extremamente detalhada e finalmente entendi meu diagnóstico de TDAH. A Juliana é incrivelmente competente e empática."</div><div class="tc-author">Beatriz L.</div><div class="tc-since">Paciente há 1 ano</div></div>
+      <div class="test-card"><div class="tc-stars">★★★★★</div><div class="tc-quote">"A terapia com mindfulness mudou minha relação com o estresse do trabalho. Consegui sair do piloto automático e realmente viver o presente."</div><div class="tc-author">Gabriel T.</div><div class="tc-since">Paciente há 6 meses</div></div>
+      <div class="test-card"><div class="tc-stars">★★★★★</div><div class="tc-quote">"Profissional de excelência. A combinação de neurociência e terapia dá muita segurança no tratamento. Super recomendo."</div><div class="tc-author">Aline S.</div><div class="tc-since">Paciente há 1 ano e 2 meses</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="container" style="text-align:center">
+    <div class="section-label" style="justify-content:center;display:flex">Blog</div>
+    <h2 class="section-title">Artigos & Insights</h2>
+    <p style="color:var(--text-light);max-width:500px;margin:0 auto">Conteúdo baseado em ciência para ajudar você a entender melhor a mente humana.</p>
+  </div>
+  <div class="blog-carousel-wrap reveal">
+    <div class="blog-track" id="blogTrack">
+      <div class="blog-slide">
+        <div class="blog-card"><div class="blog-thumb">🧠</div><div class="blog-body"><span class="blog-tag">Neurociência</span><h3>Neuroplasticidade: Como o Cérebro se Transforma com a Terapia</h3><p>Descubra como a psicoterapia pode literalmente remodelar circuitos neurais e criar novos padrões de pensamento saudáveis.</p><div class="blog-meta"><span>📅 15 Mar 2026</span><span>⏱ 6 min leitura</span></div></div></div>
+        <div class="blog-card"><div class="blog-thumb">📱</div><div class="blog-body"><span class="blog-tag">Ansiedade</span><h3>Ansiedade na Era Digital: Estratégias Baseadas em Evidências</h3><p>O uso excessivo de tecnologia impacta nossa saúde mental. Conheça técnicas de TCC para lidar com a ansiedade digital.</p><div class="blog-meta"><span>📅 08 Mar 2026</span><span>⏱ 5 min leitura</span></div></div></div>
+        <div class="blog-card"><div class="blog-thumb">🧘</div><div class="blog-body"><span class="blog-tag">Mindfulness</span><h3>Mindfulness no Dia a Dia: Guia Prático para Iniciantes</h3><p>Aprenda exercícios simples de atenção plena que podem ser incorporados à rotina para reduzir estresse e aumentar o bem-estar.</p><div class="blog-meta"><span>📅 01 Mar 2026</span><span>⏱ 7 min leitura</span></div></div></div>
+      </div>
+      <div class="blog-slide">
+        <div class="blog-card"><div class="blog-thumb">🎯</div><div class="blog-body"><span class="blog-tag">TDAH</span><h3>TDAH em Adultos: Sinais, Diagnóstico e Tratamento</h3><p>Muitos adultos convivem com TDAH sem saber. Entenda os sinais, o processo de diagnóstico e as opções de tratamento eficazes.</p><div class="blog-meta"><span>📅 22 Fev 2026</span><span>⏱ 8 min leitura</span></div></div></div>
+        <div class="blog-card"><div class="blog-thumb">💤</div><div class="blog-body"><span class="blog-tag">Sono</span><h3>A Ciência do Sono: Como a TCC-I Pode Ajudar</h3><p>A Terapia Cognitivo-Comportamental para Insônia é o tratamento de primeira linha. Saiba como funciona e seus benefícios.</p><div class="blog-meta"><span>📅 15 Fev 2026</span><span>⏱ 6 min leitura</span></div></div></div>
+      </div>
+    </div>
+    <div class="blog-nav">
+      <button class="blog-arrow" id="blogPrev" onclick="slideBlog(-1)">‹</button>
+      <div class="blog-dots" id="blogDots"></div>
+      <button class="blog-arrow" id="blogNext" onclick="slideBlog(1)">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contato">
+  <div class="container">
+    <div class="section-label">Contato</div>
+    <h2 class="section-title">Entre em Contato</h2>
+    <div class="contact-grid">
+      <div class="cinfo reveal">
+        <div class="ci-card"><div class="ci-icon">📍</div><div><h4>Consultório</h4><p>R. Ten. Nicolau Maffei, 850, Sala 710<br>Centro — Presidente Prudente/SP</p></div></div>
+        <div class="ci-card"><div class="ci-icon">📞</div><div><h4>Telefone</h4><p>(18) 99888-7766</p></div></div>
+        <div class="ci-card"><div class="ci-icon">📧</div><div><h4>E-mail</h4><p>dra.juliana@menteplena.com.br</p></div></div>
+        <div class="ci-card"><div class="ci-icon">🕐</div><div><h4>Horários</h4><p>Seg a Sex: 7h às 21h<br>Sáb: 8h às 13h</p></div></div>
+      </div>
+      <div class="reveal">
+        <div style="background:var(--bg-glass);border:1px solid var(--border);border-radius:var(--radius);padding:2rem">
+          <h3 style="font-family:var(--heading);font-weight:600;margin-bottom:1.25rem">Mensagem Rápida</h3>
+          <form onsubmit="submitContact(event)">
+            <div class="form-group"><label>Nome *</label><input type="text" required placeholder="Seu nome"></div>
+            <div class="form-group"><label>E-mail *</label><input type="email" required placeholder="seu@email.com"></div>
+            <div class="form-group"><label>Mensagem *</label><textarea required placeholder="Como posso ajudar?"></textarea></div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Enviar Mensagem</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <h4>Mente Plena</h4>
+      <p>Dra. Juliana Almeida — CRP 06/11223<br>Psicóloga Clínica • Neuropsicologia • TCC</p>
+      <p style="margin-top:.5rem;font-size:.68rem;opacity:.4">Atendimento em conformidade com o Código de Ética do Psicólogo e Resolução CFP nº 011/2012.</p>
+    </div>
+    <div><h4>Links</h4><ul class="footer-links"><li><a href="#formacao">Formação</a></li><li><a href="#abordagens">Abordagens</a></li><li><a href="#agendar">Agendar</a></li><li><a href="#blog">Blog</a></li><li><a href="#contato">Contato</a></li></ul></div>
+    <div><h4>Contato</h4><ul class="footer-links"><li>📍 R. Nicolau Maffei, 850</li><li>📞 (18) 99888-7766</li><li>📧 dra.juliana@menteplena.com.br</li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>Mente Plena © 2026 — Dados fictícios para demonstração. CFP nº 011/2012 e LGPD. Desenvolvido por <a href="https://www.pixelcodestudio.com.br" target="_blank" rel="noopener noreferrer" style="color:var(--primary-light)">PixelCode Studio</a></p></div>
+</footer>
+
+<a href="/whitelabel/templates/" class="gallery-link">← Galeria</a>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+
+<!-- CHAT BOT -->
+<button class="chat-toggle" id="chatToggle" aria-label="Assistente virtual"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg><div class="chat-badge">1</div></button>
+<div class="chatbox" id="chatbox">
+  <div class="cb-header"><h4>🧠 Assistente Mente Plena</h4><button onclick="toggleChat()">✕</button></div>
+  <div class="cb-messages" id="chatMessages"></div>
+  <div id="chatOpts"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// HEADER + BACK TOP
+window.addEventListener('scroll',()=>{document.getElementById('backTop').classList.toggle('visible',scrollY>500)});
+
+// REVEAL
+const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');revealObs.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+// COUNTERS
+const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target;const t=parseInt(el.dataset.target);let c=0;const s=t/120;const tmr=setInterval(()=>{c+=s;if(c>=t){el.textContent=t.toLocaleString('pt-BR');clearInterval(tmr)}else el.textContent=Math.floor(c).toLocaleString('pt-BR')},16);counterObs.unobserve(el)}})},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(el=>counterObs.observe(el));
+
+// PARTICLES
+(function(){
+  const c=document.getElementById('particles');if(!c)return;
+  const ctx=c.getContext('2d');
+  let w,h,pts=[];
+  function resize(){w=c.width=c.offsetWidth;h=c.height=c.offsetHeight}
+  resize();window.addEventListener('resize',resize);
+  for(let i=0;i<60;i++)pts.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.8+.5});
+  function draw(){ctx.clearRect(0,0,w,h);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(139,92,246,0.3)';ctx.fill()});
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<120){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(0,212,255,${.08*(1-d/120)})`;ctx.stroke()}}
+  requestAnimationFrame(draw)}draw()
+})();
+
+// ==== CMS API CLIENT ====
+const TEMPLATE_ID='psi04';
+const API_BASE='/api';
+async function cmsApi(path,opts={}){try{const r=await fetch(API_BASE+path,{...opts,headers:{'Content-Type':'application/json'}});return r.json()}catch{return{error:'Erro de conexão'}}}
+async function cmsGetSlots(date){return cmsApi(`/slots?template=${TEMPLATE_ID}&date=${date}`)}
+async function cmsBookAppointment(data){return cmsApi('/appointments',{method:'POST',body:JSON.stringify({template:TEMPLATE_ID,...data})})}
+
+let step=1;
+let selDate='',selTime='',selDateStr='';
+let curMonth=new Date().getMonth(),curYear=new Date().getFullYear();
+const months=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+function goStep(n){
+  step=n;
+  document.querySelectorAll('.wz-step').forEach(s=>s.classList.remove('active'));
+  document.querySelector(`.wz-step:nth-child(${n})`).classList.add('active');
+  document.querySelectorAll('.wz-pane').forEach(p=>p.classList.remove('active'));
+  document.getElementById('wzPane'+n).classList.add('active');
+}
+
+function selectService(el){
+  document.querySelectorAll('.svc-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('selService').textContent=el.querySelector('h4').textContent;
+  goStep(2);
+  renderCal();
+}
+
+function renderCal(){
+  document.getElementById('calTitle').textContent=months[curMonth]+' '+curYear;
+  const first=new Date(curYear,curMonth,1).getDay();
+  const dim=new Date(curYear,curMonth+1,0).getDate();
+  const today=new Date();
+  let h='';
+  for(let i=0;i<first;i++) h+='<div></div>';
+  for(let d=1;d<=dim;d++){
+    const dt=new Date(curYear,curMonth,d);
+    const past=dt<new Date(today.getFullYear(),today.getMonth(),today.getDate());
+    const sun=dt.getDay()===0;
+    const sel=selDate===d+'/'+curMonth+'/'+curYear;
+    let cls='cal-d';
+    if(past||sun)cls+=' off';
+    if(sel)cls+=' sel';
+    h+=`<div class="${cls}" ${(!past&&!sun)?`onclick="selectDate(this,${d})"`:''}>` +d+'</div>';
+  }
+  document.getElementById('calGrid').innerHTML=h;
+}
+
+function changeMo(dir){curMonth+=dir;if(curMonth>11){curMonth=0;curYear++}if(curMonth<0){curMonth=11;curYear--}renderCal()}
+
+async function selectDate(el,d){
+  document.querySelectorAll('.cal-d').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+  selDate=d+'/'+curMonth+'/'+curYear;
+  selDateStr=`${curYear}-${String(curMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+  document.getElementById('selDate').textContent=String(d).padStart(2,'0')+'/'+String(curMonth+1).padStart(2,'0')+'/'+curYear;
+  goStep(3);
+  await renderTimes();
+}
+
+async function renderTimes(){
+  const tg=document.getElementById('timesGrid');
+  tg.innerHTML='<div style="text-align:center;padding:1rem;color:rgba(255,255,255,.5);grid-column:1/-1">⏳ Carregando...</div>';
+  const data=await cmsGetSlots(selDateStr);
+  if(!data.slots||data.slots.length===0){tg.innerHTML='<div style="text-align:center;padding:1rem;color:rgba(255,255,255,.5);grid-column:1/-1">'+(data.message||'Sem horários')+'</div>';return}
+  tg.innerHTML=data.slots.map(s=>{
+    const sel=selTime===s.time;
+    return `<button class="tm-btn${!s.available?' off':''}${sel?' sel':''}" ${!s.available?'disabled':''} onclick="selectTime(this,'${s.time}')">${s.time}</button>`;
+  }).join('');
+}
+
+function selectTime(el,v){
+  document.querySelectorAll('.tm-btn').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+  selTime=v;
+  document.getElementById('selTime').textContent=v;
+  goStep(4);
+}
+
+async function submitBooking(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('button[type="submit"]');
+  if(btn){btn.textContent='Enviando...';btn.disabled=true}
+  const svc=document.querySelector('.svc-card.selected h4')?.textContent||'individual';
+  const result=await cmsBookAppointment({
+    date:selDateStr,time:selTime,service:svc,
+    name:e.target.querySelector('input[placeholder*="nome"]')?.value||e.target.querySelector('input[type="text"]')?.value||'',
+    email:e.target.querySelector('input[type="email"]')?.value||'',
+    phone:e.target.querySelector('input[type="tel"]')?.value||'',
+    notes:e.target.querySelector('textarea')?.value||''
+  });
+  if(btn){btn.textContent='Confirmar Agendamento';btn.disabled=false}
+  if(result.error){showToast('❌ '+result.error);return}
+  showToast('✅ '+(result.message||'Agendamento enviado!'));
+  e.target.reset();
+  selDate='';selTime='';selDateStr='';
+  goStep(1);
+}
+
+// CHAT BOT
+const botResponses={
+  'agendar':{msg:'Para agendar, role até a seção "Agendar" ou clique no botão "Agendar Consulta" no topo. O processo é em 4 passos: modalidade → data → horário → confirmação.',opts:['valores','online','contato']},
+  'valores':{msg:'📋 Nossos valores:\n• Presencial — R$ 200 (50 min)\n• Online — R$ 170 (50 min)\n• Neuropsicologia — R$ 350 (90 min)\n• Terapia de Casal — R$ 280 (75 min)\n\nAceitamos PIX e cartão.',opts:['agendar','primeira sessão','contato']},
+  'online':{msg:'🖥️ O atendimento online é feito por Zoom ou Google Meet, com a mesma qualidade do presencial. Ideal para quem busca flexibilidade. Sigilo garantido conforme CFP.',opts:['agendar','valores','primeira sessão']},
+  'primeira sessão':{msg:'Na primeira sessão, faremos uma avaliação inicial completa. Vou entender seus objetivos e juntos definiremos o plano terapêutico. Sem compromisso de continuidade.',opts:['agendar','valores','especialidades']},
+  'especialidades':{msg:'🎯 Principais áreas:\n• Neuropsicologia e avaliação cognitiva\n• TCC de terceira onda (ACT, DBT)\n• Mindfulness (MBCT)\n• TDAH e funções executivas\n• Ansiedade e pânico\n• Insônia',opts:['agendar','valores','online']},
+  'contato':{msg:'📞 Entre em contato pelo telefone (18) 99888-7766 ou e-mail dra.juliana@menteplena.com.br. Respondemos em até 2 horas durante o horário comercial!',opts:['agendar','valores','especialidades']}
+};
+let chatOpen=false;
+
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('chatbox').classList.toggle('open',chatOpen);
+  if(chatOpen&&document.getElementById('chatMessages').children.length===0)initChat();
+  document.querySelector('.chat-badge').style.display=chatOpen?'none':'flex';
+}
+document.getElementById('chatToggle').addEventListener('click',toggleChat);
+
+function initChat(){
+  addBotMsg('Olá! 👋 Sou a assistente virtual da Mente Plena. Como posso ajudar?');
+  showOpts(['agendar','valores','online','especialidades','contato']);
+}
+
+function addBotMsg(text){
+  const m=document.createElement('div');m.className='cb-msg cb-bot';m.textContent=text;
+  document.getElementById('chatMessages').appendChild(m);scrollChat();
+}
+
+function addUserMsg(text){
+  const m=document.createElement('div');m.className='cb-msg cb-user';m.textContent=text;
+  document.getElementById('chatMessages').appendChild(m);scrollChat();
+}
+
+function showOpts(opts){
+  const c=document.getElementById('chatOpts');c.innerHTML='';
+  const w=document.createElement('div');w.className='cb-options';
+  opts.forEach(o=>{const b=document.createElement('button');b.className='cb-opt';b.textContent=o.charAt(0).toUpperCase()+o.slice(1);b.onclick=()=>handleOpt(o);w.appendChild(b)});
+  c.appendChild(w);
+}
+
+function handleOpt(key){
+  document.getElementById('chatOpts').innerHTML='';
+  addUserMsg(key.charAt(0).toUpperCase()+key.slice(1));
+  const r=botResponses[key];
+  if(r){setTimeout(()=>{addBotMsg(r.msg);showOpts(r.opts)},500)}
+}
+
+function scrollChat(){const m=document.getElementById('chatMessages');m.scrollTop=m.scrollHeight}
+
+// CONTACT
+function submitContact(e){e.preventDefault();showToast('✅ Mensagem enviada! Retornaremos em breve.');e.target.reset()}
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4000)}
+
+// BLOG CAROUSEL
+let blogCur=0;const blogTotal=document.querySelectorAll('.blog-slide').length;
+function slideBlog(dir){blogCur=Math.max(0,Math.min(blogTotal-1,blogCur+dir));updateBlog()}
+function updateBlog(){document.getElementById('blogTrack').style.transform=`translateX(-${blogCur*100}%)`;document.getElementById('blogPrev').disabled=blogCur===0;document.getElementById('blogNext').disabled=blogCur===blogTotal-1;renderDots()}
+function renderDots(){const d=document.getElementById('blogDots');d.innerHTML='';for(let i=0;i<blogTotal;i++){const b=document.createElement('button');b.className='blog-dot'+(i===blogCur?' active':'');b.onclick=()=>{blogCur=i;updateBlog()};d.appendChild(b)}}
+updateBlog();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Psychologist","name":"Dra. Juliana Almeida — Mente Plena","description":"Psicóloga Clínica. Neuropsicologia e TCC. CRP 06/11223. Presidente Prudente.","url":"https://templatespixelcodestudio.vercel.app/psicologia-04","telephone":"(18) 99888-7766","medicalSpecialty":"Neuropsychology","priceRange":"R$ 170 - R$ 350","address":{"@type":"PostalAddress","streetAddress":"R. Ten. Nicolau Maffei, 850, Sala 710","addressLocality":"Presidente Prudente","addressRegion":"SP","addressCountry":"BR"}}
+</script>
+</body>
+</html>
